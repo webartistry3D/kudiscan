@@ -20,13 +20,16 @@ export function BottomNavigation() {
           const isActive = location === item.path;
           
           return (
-            <Link key={item.path} href={item.path}>
-              <a className={`flex flex-col items-center py-2 px-3 transition-colors ${
+            <Link 
+              key={item.path} 
+              href={item.path}
+              className={`flex flex-col items-center py-2 px-3 transition-colors ${
                 isActive ? 'text-primary' : 'text-gray-500 hover:text-primary'
-              }`} data-testid={`nav-${item.label.toLowerCase()}`}>
-                <IconComponent className="w-5 h-5 mb-1" />
-                <span className="text-xs font-medium">{item.label}</span>
-              </a>
+              }`} 
+              data-testid={`nav-${item.label.toLowerCase()}`}
+            >
+              <IconComponent className="w-5 h-5 mb-1" />
+              <span className="text-xs font-medium">{item.label}</span>
             </Link>
           );
         })}

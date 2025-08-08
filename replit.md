@@ -5,6 +5,7 @@ KudiScan is a mobile-first expense tracking application that allows users to sca
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
+User feedback (Jan 2025): Confirmed the app look and feel works well, particularly appreciates the Nigerian-focused design with Naira currency formatting.
 
 # System Architecture
 
