@@ -1,87 +1,170 @@
-import { type Expense, type InsertExpense } from "@shared/schema";
-import { randomUUID } from "crypto";
+import { 
+  type Expense, 
+  type InsertExpense, 
+  type User, 
+  type InsertUser,
+  users,
+  expenses
+} from "@shared/schema";
+import { db } from "./db";
+import { eq, and, gte, lte } from "drizzle-orm";
+import bcrypt from "bcryptjs";
 
 export interface IStorage {
-  getExpenses(): Promise<Expense[]>;
-  getExpenseById(id: string): Promise<Expense | undefined>;
-  createExpense(expense: InsertExpense): Promise<Expense>;
-  updateExpense(id: string, updates: Partial<InsertExpense>): Promise<Expense | undefined>;
-  deleteExpense(id: string): Promise<boolean>;
-  getExpensesByDateRange(startDate: Date, endDate: Date): Promise<Expense[]>;
-  getExpensesByCategory(category: string): Promise<Expense[]>;
-  getTotalExpenses(): Promise<number>;
-  getCategoryTotals(): Promise<Record<string, number>>;
+  // User operations
+  getUserById(id: string): Promise<User | undefined>;
+  getUserByEmail(email: string): Promise<User | undefined>;
+  createUser(userData: InsertUser): Promise<User>;
+  updateUser(id: string, updates: Partial<InsertUser>): Promise<User | undefined>;
+  deleteUser(id: string): Promise<boolean>;
+  
+  // Expense operations
+  getExpenses(userId: string): Promise<Expense[]>;
+  getExpenseById(id: string, userId: string): Promise<Expense | undefined>;
+  createExpense(expense: InsertExpense, userId: string): Promise<Expense>;
+  updateExpense(id: string, updates: Partial<InsertExpense>, userId: string): Promise<Expense | undefined>;
+  deleteExpense(id: string, userId: string): Promise<boolean>;
+  getExpensesByDateRange(userId: string, startDate: Date, endDate: Date): Promise<Expense[]>;
+  getExpensesByCategory(userId: string, category: string): Promise<Expense[]>;
+  getTotalExpenses(userId: string): Promise<number>;
+  getCategoryTotals(userId: string): Promise<Record<string, number>>;
+  
+  // Admin operations
+  getAllUsers(): Promise<User[]>;
+  getAllExpenses(): Promise<Expense[]>;
 }
 
-export class MemStorage implements IStorage {
-  private expenses: Map<string, Expense>;
-
-  constructor() {
-    this.expenses = new Map();
+export class DatabaseStorage implements IStorage {
+  // User operations
+  async getUserById(id: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
-  async getExpenses(): Promise<Expense[]> {
-    return Array.from(this.expenses.values()).sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user;
   }
 
-  async getExpenseById(id: string): Promise<Expense | undefined> {
-    return this.expenses.get(id);
+  async createUser(userData: InsertUser): Promise<User> {
+    const hashedPassword = await bcrypt.hash(userData.password, 12);
+    const [user] = await db
+      .insert(users)
+      .values({
+        ...userData,
+        password: hashedPassword,
+      })
+      .returning();
+    return user;
   }
 
-  async createExpense(insertExpense: InsertExpense): Promise<Expense> {
-    const id = randomUUID();
-    const expense: Expense = {
-      ...insertExpense,
-      id,
-      createdAt: new Date(),
-    };
-    this.expenses.set(id, expense);
+  async updateUser(id: string, updates: Partial<InsertUser>): Promise<User | undefined> {
+    const updateData = { ...updates };
+    if (updateData.password) {
+      updateData.password = await bcrypt.hash(updateData.password, 12);
+    }
+    
+    const [user] = await db
+      .update(users)
+      .set({ ...updateData, updatedAt: new Date() })
+      .where(eq(users.id, id))
+      .returning();
+    return user;
+  }
+
+  async deleteUser(id: string): Promise<boolean> {
+    const result = await db.delete(users).where(eq(users.id, id));
+    return (result.rowCount ?? 0) > 0;
+  }
+
+  // Expense operations
+  async getExpenses(userId: string): Promise<Expense[]> {
+    return await db
+      .select()
+      .from(expenses)
+      .where(eq(expenses.userId, userId))
+      .orderBy(expenses.createdAt);
+  }
+
+  async getExpenseById(id: string, userId: string): Promise<Expense | undefined> {
+    const [expense] = await db
+      .select()
+      .from(expenses)
+      .where(and(eq(expenses.id, id), eq(expenses.userId, userId)));
     return expense;
   }
 
-  async updateExpense(id: string, updates: Partial<InsertExpense>): Promise<Expense | undefined> {
-    const expense = this.expenses.get(id);
-    if (!expense) return undefined;
-
-    const updatedExpense = { ...expense, ...updates };
-    this.expenses.set(id, updatedExpense);
-    return updatedExpense;
+  async createExpense(insertExpense: InsertExpense, userId: string): Promise<Expense> {
+    const [expense] = await db
+      .insert(expenses)
+      .values({
+        ...insertExpense,
+        userId,
+      })
+      .returning();
+    return expense;
   }
 
-  async deleteExpense(id: string): Promise<boolean> {
-    return this.expenses.delete(id);
+  async updateExpense(id: string, updates: Partial<InsertExpense>, userId: string): Promise<Expense | undefined> {
+    const [expense] = await db
+      .update(expenses)
+      .set(updates)
+      .where(and(eq(expenses.id, id), eq(expenses.userId, userId)))
+      .returning();
+    return expense;
   }
 
-  async getExpensesByDateRange(startDate: Date, endDate: Date): Promise<Expense[]> {
-    const expenses = Array.from(this.expenses.values());
-    return expenses.filter(expense => {
-      const expenseDate = new Date(expense.date);
-      return expenseDate >= startDate && expenseDate <= endDate;
-    });
+  async deleteExpense(id: string, userId: string): Promise<boolean> {
+    const result = await db
+      .delete(expenses)
+      .where(and(eq(expenses.id, id), eq(expenses.userId, userId)));
+    return (result.rowCount ?? 0) > 0;
   }
 
-  async getExpensesByCategory(category: string): Promise<Expense[]> {
-    const expenses = Array.from(this.expenses.values());
-    return expenses.filter(expense => expense.category === category);
+  async getExpensesByDateRange(userId: string, startDate: Date, endDate: Date): Promise<Expense[]> {
+    return await db
+      .select()
+      .from(expenses)
+      .where(
+        and(
+          eq(expenses.userId, userId),
+          gte(expenses.date, startDate),
+          lte(expenses.date, endDate)
+        )
+      );
   }
 
-  async getTotalExpenses(): Promise<number> {
-    const expenses = Array.from(this.expenses.values());
-    return expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+  async getExpensesByCategory(userId: string, category: string): Promise<Expense[]> {
+    return await db
+      .select()
+      .from(expenses)
+      .where(and(eq(expenses.userId, userId), eq(expenses.category, category)));
   }
 
-  async getCategoryTotals(): Promise<Record<string, number>> {
-    const expenses = Array.from(this.expenses.values());
+  async getTotalExpenses(userId: string): Promise<number> {
+    const userExpenses = await this.getExpenses(userId);
+    return userExpenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+  }
+
+  async getCategoryTotals(userId: string): Promise<Record<string, number>> {
+    const userExpenses = await this.getExpenses(userId);
     const totals: Record<string, number> = {};
     
-    for (const expense of expenses) {
+    for (const expense of userExpenses) {
       totals[expense.category] = (totals[expense.category] || 0) + parseFloat(expense.amount);
     }
     
     return totals;
   }
+
+  // Admin operations
+  async getAllUsers(): Promise<User[]> {
+    return await db.select().from(users).orderBy(users.createdAt);
+  }
+
+  async getAllExpenses(): Promise<Expense[]> {
+    return await db.select().from(expenses).orderBy(expenses.createdAt);
+  }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();

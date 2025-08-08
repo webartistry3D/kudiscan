@@ -1,17 +1,93 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertExpenseSchema } from "@shared/schema";
+import { insertExpenseSchema, loginSchema, registerSchema } from "@shared/schema";
 import { z } from "zod";
 import multer from "multer";
+import passport from "passport";
+import { setupAuth, isAuthenticated, isAdmin, getCurrentUser } from "./auth";
 
 const upload = multer({ storage: multer.memoryStorage() });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Get all expenses
-  app.get("/api/expenses", async (req, res) => {
+  // Setup authentication
+  setupAuth(app);
+
+  // Authentication routes
+  app.post("/api/auth/register", async (req, res) => {
     try {
-      const expenses = await storage.getExpenses();
+      const validatedData = registerSchema.parse(req.body);
+      
+      // Check if user already exists
+      const existingUser = await storage.getUserByEmail(validatedData.email);
+      if (existingUser) {
+        return res.status(400).json({ message: "User already exists with this email" });
+      }
+
+      const { confirmPassword, ...userData } = validatedData;
+      const user = await storage.createUser(userData);
+      
+      // Auto-login after registration
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(500).json({ message: "Registration successful but login failed" });
+        }
+        const { password: _, ...userWithoutPassword } = user;
+        res.status(201).json({ user: userWithoutPassword });
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid data", errors: error.errors });
+      }
+      res.status(500).json({ message: "Registration failed" });
+    }
+  });
+
+  app.post("/api/auth/login", (req, res, next) => {
+    try {
+      loginSchema.parse(req.body);
+      
+      passport.authenticate("local", (err: any, user: any, info: any) => {
+        if (err) {
+          return res.status(500).json({ message: "Login failed" });
+        }
+        if (!user) {
+          return res.status(401).json({ message: info?.message || "Invalid credentials" });
+        }
+        
+        req.login(user, (err) => {
+          if (err) {
+            return res.status(500).json({ message: "Login failed" });
+          }
+          res.json({ user });
+        });
+      })(req, res, next);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid data", errors: error.errors });
+      }
+      res.status(500).json({ message: "Login failed" });
+    }
+  });
+
+  app.post("/api/auth/logout", (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).json({ message: "Logout failed" });
+      }
+      res.json({ message: "Logged out successfully" });
+    });
+  });
+
+  app.get("/api/auth/user", isAuthenticated, async (req, res) => {
+    res.json({ user: getCurrentUser(req) });
+  });
+
+  // Protected expense routes
+  app.get("/api/expenses", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const expenses = await storage.getExpenses(userId);
       res.json(expenses);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch expenses" });
@@ -19,9 +95,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get expense by ID
-  app.get("/api/expenses/:id", async (req, res) => {
+  app.get("/api/expenses/:id", isAuthenticated, async (req, res) => {
     try {
-      const expense = await storage.getExpenseById(req.params.id);
+      const userId = getCurrentUser(req).id;
+      const expense = await storage.getExpenseById(req.params.id, userId);
       if (!expense) {
         return res.status(404).json({ message: "Expense not found" });
       }
@@ -32,10 +109,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create new expense
-  app.post("/api/expenses", async (req, res) => {
+  app.post("/api/expenses", isAuthenticated, async (req, res) => {
     try {
+      const userId = getCurrentUser(req).id;
       const validatedData = insertExpenseSchema.parse(req.body);
-      const expense = await storage.createExpense(validatedData);
+      const expense = await storage.createExpense(validatedData, userId);
       res.status(201).json(expense);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -46,10 +124,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Update expense
-  app.patch("/api/expenses/:id", async (req, res) => {
+  app.patch("/api/expenses/:id", isAuthenticated, async (req, res) => {
     try {
+      const userId = getCurrentUser(req).id;
       const updates = insertExpenseSchema.partial().parse(req.body);
-      const expense = await storage.updateExpense(req.params.id, updates);
+      const expense = await storage.updateExpense(req.params.id, updates, userId);
       if (!expense) {
         return res.status(404).json({ message: "Expense not found" });
       }
@@ -63,9 +142,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete expense
-  app.delete("/api/expenses/:id", async (req, res) => {
+  app.delete("/api/expenses/:id", isAuthenticated, async (req, res) => {
     try {
-      const deleted = await storage.deleteExpense(req.params.id);
+      const userId = getCurrentUser(req).id;
+      const deleted = await storage.deleteExpense(req.params.id, userId);
       if (!deleted) {
         return res.status(404).json({ message: "Expense not found" });
       }
@@ -76,17 +156,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get dashboard statistics
-  app.get("/api/dashboard/stats", async (req, res) => {
+  app.get("/api/dashboard/stats", isAuthenticated, async (req, res) => {
     try {
+      const userId = getCurrentUser(req).id;
       const now = new Date();
       const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
       const startOfWeek = new Date(now.getTime() - (now.getDay() * 24 * 60 * 60 * 1000));
       
-      const totalExpenses = await storage.getTotalExpenses();
-      const monthlyExpenses = await storage.getExpensesByDateRange(startOfMonth, now);
-      const weeklyExpenses = await storage.getExpensesByDateRange(startOfWeek, now);
-      const categoryTotals = await storage.getCategoryTotals();
-      const recentTransactions = (await storage.getExpenses()).slice(0, 10);
+      const totalExpenses = await storage.getTotalExpenses(userId);
+      const monthlyExpenses = await storage.getExpensesByDateRange(userId, startOfMonth, now);
+      const weeklyExpenses = await storage.getExpensesByDateRange(userId, startOfWeek, now);
+      const categoryTotals = await storage.getCategoryTotals(userId);
+      const recentTransactions = (await storage.getExpenses(userId)).slice(0, 10);
       
       const monthlyTotal = monthlyExpenses.reduce((sum, expense) => sum + parseFloat(expense.amount), 0);
       const weeklyTotal = weeklyExpenses.reduce((sum, expense) => sum + parseFloat(expense.amount), 0);
@@ -101,24 +182,77 @@ export async function registerRoutes(app: Express): Promise<Server> {
         recentTransactions: recentTransactions.slice(0, 5)
       });
     } catch (error) {
+      console.error("Dashboard stats error:", error);
       res.status(500).json({ message: "Failed to fetch dashboard stats" });
     }
   });
 
   // Upload receipt image
-  app.post("/api/upload-receipt", upload.single('receipt'), async (req, res) => {
+  app.post("/api/upload-receipt", isAuthenticated, upload.single('receipt'), async (req, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
       }
 
-      // In a real app, you would save the file to cloud storage
-      // For now, we'll just return a mock URL
+      // Convert file to base64 data URL for OCR processing
       const imageUrl = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
       
       res.json({ imageUrl });
     } catch (error) {
       res.status(500).json({ message: "Failed to upload image" });
+    }
+  });
+
+  // Admin routes
+  app.get("/api/admin/users", isAdmin, async (req, res) => {
+    try {
+      const users = await storage.getAllUsers();
+      // Remove passwords from response
+      const usersWithoutPasswords = users.map(({ password: _, ...user }) => user);
+      res.json(usersWithoutPasswords);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch users" });
+    }
+  });
+
+  app.get("/api/admin/expenses", isAdmin, async (req, res) => {
+    try {
+      const expenses = await storage.getAllExpenses();
+      res.json(expenses);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch all expenses" });
+    }
+  });
+
+  app.patch("/api/admin/users/:id", isAdmin, async (req, res) => {
+    try {
+      const { isActive, isAdmin: makeAdmin } = req.body;
+      const updates: any = {};
+      
+      if (typeof isActive === 'boolean') updates.isActive = isActive;
+      if (typeof makeAdmin === 'boolean') updates.isAdmin = makeAdmin;
+      
+      const user = await storage.updateUser(req.params.id, updates);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      const { password: _, ...userWithoutPassword } = user;
+      res.json(userWithoutPassword);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to update user" });
+    }
+  });
+
+  app.delete("/api/admin/users/:id", isAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deleteUser(req.params.id);
+      if (!deleted) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete user" });
     }
   });
 
