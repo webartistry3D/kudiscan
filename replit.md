@@ -24,7 +24,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Applied semantic color classes (bg-background, text-foreground) for consistent dark theme
 - Fixed horizontal overlapping sections with proper responsive design and container constraints
 - Enhanced "I want to" CTA section with better layout and overflow prevention
-- Added subtle KudiScan green backgrounds (bg-primary/5) to Features and Testimonials sections for aesthetic appeal
+- Added subtle KudiScan green backgrounds (bg-primary/5) to Features and Hero sections for aesthetic appeal
+- Applied stronger KudiScan green background (bg-primary/10) to Trust indicators and Testimonials sections
+- Enhanced visual hierarchy with strategic use of KudiScan green backgrounds across key sections
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates

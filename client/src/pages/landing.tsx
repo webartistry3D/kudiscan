@@ -25,7 +25,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section className="px-4 py-16 w-full">
+      <section className="px-4 py-16 w-full bg-primary/5">
         <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display">
             The <em className="italic text-primary">fastest</em>
@@ -34,7 +34,7 @@ export default function Landing() {
           </h1>
           
           {/* Trust Badge */}
-          <div className="flex items-center justify-center space-x-2 mb-8">
+          <div className="flex items-center justify-center space-x-2 mb-8 p-4 bg-primary/10 rounded-lg max-w-md mx-auto">
             <Badge variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1">
               Trustpilot
             </Badge>
@@ -270,7 +270,7 @@ export default function Landing() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-4 py-16 w-full bg-primary/5">
+      <section className="px-4 py-16 w-full bg-primary/10">
         <div className="max-w-4xl mx-auto w-full">
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
             {/* First Testimonial */}
