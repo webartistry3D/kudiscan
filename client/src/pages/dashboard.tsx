@@ -163,59 +163,63 @@ export default function Dashboard() {
       
       <main className="pb-20 max-w-full">
         {/* Dashboard Overview Section */}
-        <section className="px-4 py-6 bg-primary text-white max-w-full">
-          <div className="flex items-center justify-between mb-4 max-w-full">
-            <div className="flex-1 min-w-0 pr-3">
-              <p className="text-green-100 text-sm font-medium">Total Expenses</p>
-              <h2 className="text-xl font-bold truncate" data-testid="text-total-expenses">
-                {formatNaira(stats?.monthlyTotal || 0)}
-              </h2>
-              <p className="text-green-100 text-xs mt-1">This month</p>
-            </div>
-            <div className="text-right flex-1 min-w-0">
-              <p className="text-green-100 text-sm">Budget Left</p>
-              <p className="text-lg font-semibold truncate" data-testid="text-budget-left">
-                {formatNaira(Math.max(0, budgetLeft))}
-              </p>
-              <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
-                <div 
-                  className="h-full bg-green-300 rounded-full transition-all" 
-                  style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
-                />
+        <section className="px-4 py-4 max-w-full">
+          <Card className="bg-primary text-white border-0">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between mb-4 max-w-full">
+                <div className="flex-1 min-w-0 pr-3">
+                  <p className="text-green-100 text-sm font-medium">Total Expenses</p>
+                  <h2 className="text-xl font-bold truncate" data-testid="text-total-expenses">
+                    {formatNaira(stats?.monthlyTotal || 0)}
+                  </h2>
+                  <p className="text-green-100 text-xs mt-1">This month</p>
+                </div>
+                <div className="text-right flex-1 min-w-0">
+                  <p className="text-green-100 text-sm">Budget Left</p>
+                  <p className="text-lg font-semibold truncate" data-testid="text-budget-left">
+                    {formatNaira(Math.max(0, budgetLeft))}
+                  </p>
+                  <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
+                    <div 
+                      className="h-full bg-green-300 rounded-full transition-all" 
+                      style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          
-          {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-3 mt-6 max-w-full">
-            <Card className="bg-white/10 border-0 max-w-full">
-              <CardContent className="p-2 text-center">
-                <i className="fas fa-receipt text-white/80 mb-1 text-sm" />
-                <p className="text-xs text-green-100">Receipts</p>
-                <p className="font-semibold text-sm" data-testid="text-receipt-count">
-                  {stats?.receiptCount || 0}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 border-0 max-w-full">
-              <CardContent className="p-2 text-center">
-                <i className="fas fa-chart-line text-white/80 mb-1 text-sm" />
-                <p className="text-xs text-green-100">Categories</p>
-                <p className="font-semibold text-sm" data-testid="text-category-count">
-                  {stats?.categoryCount || 0}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 border-0 max-w-full">
-              <CardContent className="p-2 text-center">
-                <i className="fas fa-calendar-day text-white/80 mb-1 text-sm" />
-                <p className="text-xs text-green-100">This Week</p>
-                <p className="font-semibold text-sm truncate" data-testid="text-weekly-expenses">
-                  {formatNaira(stats?.weeklyTotal || 0)}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+              
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-3 mt-6 max-w-full">
+                <Card className="bg-white/10 border-0 max-w-full">
+                  <CardContent className="p-2 text-center">
+                    <i className="fas fa-receipt text-white/80 mb-1 text-sm" />
+                    <p className="text-xs text-green-100">Receipts</p>
+                    <p className="font-semibold text-sm" data-testid="text-receipt-count">
+                      {stats?.receiptCount || 0}
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white/10 border-0 max-w-full">
+                  <CardContent className="p-2 text-center">
+                    <i className="fas fa-chart-line text-white/80 mb-1 text-sm" />
+                    <p className="text-xs text-green-100">Categories</p>
+                    <p className="font-semibold text-sm" data-testid="text-category-count">
+                      {stats?.categoryCount || 0}
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white/10 border-0 max-w-full">
+                  <CardContent className="p-2 text-center">
+                    <i className="fas fa-calendar-day text-white/80 mb-1 text-sm" />
+                    <p className="text-xs text-green-100">This Week</p>
+                    <p className="font-semibold text-sm truncate" data-testid="text-weekly-expenses">
+                      {formatNaira(stats?.weeklyTotal || 0)}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         {/* Quick Actions */}
@@ -241,12 +245,12 @@ export default function Dashboard() {
         </section>
 
         {/* Recent Transactions */}
-        <section className="px-4 py-2">
-          <div className="flex items-center justify-between mb-4">
+        <section className="px-4 py-2 max-w-full">
+          <div className="flex items-center justify-between mb-4 max-w-full">
             <h3 className="text-lg font-semibold text-muted-foreground">Recent Transactions</h3>
             <Button 
               variant="link" 
-              className="text-primary text-sm font-medium p-0"
+              className="text-primary text-sm font-medium p-0 flex-shrink-0"
               data-testid="button-view-all-transactions"
             >
               View All
@@ -274,7 +278,7 @@ export default function Dashboard() {
 
         {/* Spending Categories */}
         {stats?.categoryTotals && Object.keys(stats.categoryTotals).length > 0 && (
-          <section className="px-4 py-6">
+          <section className="px-4 py-6 max-w-full">
             <CategoryChart categoryTotals={stats.categoryTotals} />
           </section>
         )}
