@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "@/components/header";
 import { BottomNavigation } from "@/components/bottom-navigation";
@@ -13,6 +13,11 @@ import { type Expense } from "@shared/schema";
 export default function Transactions() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [dateFilter, setDateFilter] = useState<string>("all");
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const { data: expenses = [], isLoading } = useQuery<Expense[]>({
     queryKey: ['/api/expenses']

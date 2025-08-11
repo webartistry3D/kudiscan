@@ -18,6 +18,7 @@ User color preference (Jan 2025): Prefers dark theme colors matching Replit's co
 - Ensured no horizontal scrolling on any page with proper container width management
 - Made all sections contained within proper boundaries rather than stretched end-to-end
 - Applied uniform padding and spacing across all contained panels for visual consistency
+- Implemented scroll-to-top functionality on all main pages (Dashboard, Admin, Transactions, Reports, Settings, Profile) for consistent navigation experience
 
 ## January 2025 - Push Notifications & Admin Dashboard
 - Fixed push notification toggle functionality with proper async handling and browser permission requests

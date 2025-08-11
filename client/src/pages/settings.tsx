@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Header } from "@/components/header";
 import { BottomNavigation } from "@/components/bottom-navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,6 +27,11 @@ export default function Settings() {
   const { user, isAdmin, logout, isLoggingOut } = useAuth();
   const { settings, togglePushNotifications, toggleDarkMode, toggleAutoCapture } = useSettings();
   const { toast } = useToast();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handlePushNotificationToggle = async () => {
     const result = await togglePushNotifications();
