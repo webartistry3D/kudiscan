@@ -263,7 +263,7 @@ export default function Landing() {
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Financial Reporting</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Build tailored reports to analyze spend, identify trends, make smarter decisions, secure bank loans.
+                Generate tailored reports to analyze spend, identify trends, make smarter decisions, secure bank loans.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
@@ -321,9 +321,9 @@ export default function Landing() {
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Scan className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>1. Add Expense</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
-                Upload your receipt with the Scan button.
+                Press the Scan or Upload button to add receipt
               </p>
             </div>
 
@@ -331,7 +331,7 @@ export default function Landing() {
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <PieChart className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>2. Track & Analyze</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Track & Analyze</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
                 View spending analytics, category breakdowns, and budget tracking to understand your spending patterns.
               </p>
@@ -341,9 +341,9 @@ export default function Landing() {
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-5xl" style={{color: '#29A378'}}>₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>3. Generate Reports</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
-                Generate expense reports for tracking or reimbursement.
+                Generate expense reports for tracking, reimbursements, investors and bank loan applications.
               </p>
             </div>
           </div>
