@@ -34,14 +34,14 @@ export default function Landing() {
             </p>
             
             {/* Process Flow */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4">
               {/* Step 1: Snap */}
-              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
-                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
-                  <Camera className="w-6 h-6 text-primary" />
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-4 w-48">
+                <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <Camera className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">Snap</h3>
-                <p className="text-sm text-muted-foreground">Simply snap a receipt and scan your expenses automatically</p>
+                <p className="text-xs text-muted-foreground">Snap / Upload a receipt to scan your expenses</p>
               </div>
               
               {/* Arrow 1 */}
@@ -55,12 +55,12 @@ export default function Landing() {
               </div>
               
               {/* Step 2: Track */}
-              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
-                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
-                  <TrendingUp className="w-6 h-6 text-primary" />
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-4 w-48">
+                <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <TrendingUp className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">Track</h3>
-                <p className="text-sm text-muted-foreground">Track spending across categories with intelligent insights</p>
+                <p className="text-xs text-muted-foreground">Track spending across categories with intelligent insights</p>
               </div>
               
               {/* Arrow 2 */}
@@ -74,12 +74,12 @@ export default function Landing() {
               </div>
               
               {/* Step 3: Report */}
-              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
-                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
-                  <FileText className="w-6 h-6 text-primary" />
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-4 w-48">
+                <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <FileText className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">Report</h3>
-                <p className="text-sm text-muted-foreground">Generate professional expense reports for business use</p>
+                <p className="text-xs text-muted-foreground">Generate professional expense reports for business use</p>
               </div>
               
               {/* Arrow 3 */}
@@ -93,12 +93,12 @@ export default function Landing() {
               </div>
               
               {/* Step 4: Scale */}
-              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
-                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
-                  <Building className="w-6 h-6 text-primary" />
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-4 w-48">
+                <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <Building className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">Scale</h3>
-                <p className="text-sm text-muted-foreground">Secure loans from banks and investors to scale your business</p>
+                <p className="text-xs text-muted-foreground">Secure loans from banks and investors to scale your business</p>
               </div>
             </div>
           </div>

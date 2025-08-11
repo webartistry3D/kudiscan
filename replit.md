@@ -34,6 +34,8 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Enhanced hero description with process flow cards featuring icons and arrows
 - Created 4-step visual workflow: Snap → Track → Report → Scale with card-based styling
 - Used relatable icons (Camera, TrendingUp, FileText, Building) connected by arrows for clear process understanding
+- Updated first step text to "Snap / Upload a receipt to scan your expenses" for clarity
+- Optimized card sizing with fixed width (w-48) and larger icons (w-8 h-8) in bigger containers (w-16 h-16)
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
