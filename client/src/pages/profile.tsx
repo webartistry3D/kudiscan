@@ -227,26 +227,26 @@ export default function Profile() {
             ) : (
               <div className="space-y-4">
                 <div>
-                  <label className="text-sm text-gray-600 dark:text-gray-400">First Name</label>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <label className="text-sm text-muted-foreground">First Name</label>
+                  <p className="font-medium text-foreground">
                     {user?.firstName || "Not set"}
                   </p>
                 </div>
                 <div>
-                  <label className="text-sm text-gray-600 dark:text-gray-400">Last Name</label>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <label className="text-sm text-muted-foreground">Last Name</label>
+                  <p className="font-medium text-foreground">
                     {user?.lastName || "Not set"}
                   </p>
                 </div>
                 <div>
-                  <label className="text-sm text-gray-600 dark:text-gray-400">Email</label>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <label className="text-sm text-muted-foreground">Email</label>
+                  <p className="font-medium text-foreground">
                     {user?.email}
                   </p>
                 </div>
                 <div>
-                  <label className="text-sm text-gray-600 dark:text-gray-400">Member Since</label>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <label className="text-sm text-muted-foreground">Member Since</label>
+                  <p className="font-medium text-foreground">
                     {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Recently'}
                   </p>
                 </div>
@@ -264,11 +264,11 @@ export default function Profile() {
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-primary/10 rounded-lg">
                 <p className="text-2xl font-bold text-primary">0</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Total Expenses</p>
+                <p className="text-sm text-muted-foreground">Total Expenses</p>
               </div>
               <div className="text-center p-3 bg-secondary/10 rounded-lg">
                 <p className="text-2xl font-bold text-secondary">0</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Receipts Scanned</p>
+                <p className="text-sm text-muted-foreground">Receipts Scanned</p>
               </div>
             </div>
           </CardContent>
