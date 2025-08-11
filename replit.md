@@ -95,3 +95,5 @@ Typography preference: Selected Google Fonts + Glacial Indifference combination 
 - Added Integration section with #22262A background and #292E33 cards for Email, Bank, and Export integrations
 - Added FAQ section with #0C3124 background, #2D3339 cards, and #29A378 question text covering pricing, bank compatibility, and security
 - Added Testimonials section with sliding animation featuring Chidinma (Lagos entrepreneur) and Tunde (freelancer) testimonials
+- Implemented flowing pulsation sequence for process cards: Snap → Track → Report → Scale with 0.8s delays creating smooth sine wave-like animation
+- Enhanced card and icon animations with glow effects, scaling, and border color changes for better visual feedback
