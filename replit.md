@@ -36,6 +36,8 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Used relatable icons (Camera, TrendingUp, FileText, Building) connected by arrows for clear process understanding
 - Updated first step text to "Snap / Upload a receipt to scan your expenses" for clarity
 - Optimized card sizing with fixed width (w-48) and larger icons (w-8 h-8) in bigger containers (w-16 h-16)
+- Updated process flow cards to use #29A378 background color with white text and icons for better contrast
+- Applied white/20 opacity for icon containers and white/80 for description text on green background
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
