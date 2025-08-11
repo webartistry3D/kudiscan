@@ -138,17 +138,17 @@ export default function Admin() {
     <div className="max-w-md mx-auto bg-background min-h-screen overflow-x-hidden">
       <Header title="Admin Dashboard" />
       
-      {/* Margin separation from header */}
-      <div className="pt-4">
-        <main className="pb-20">
-          <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mx-4 mb-6 bg-card border border-border">
-              <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Overview</TabsTrigger>
-              <TabsTrigger value="users" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Users</TabsTrigger>
-              <TabsTrigger value="reports" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Reports</TabsTrigger>
+      <main className="pb-20 pt-4">
+        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full max-w-md mx-auto">
+          <div className="px-4 mb-4">
+            <TabsList className="grid w-full grid-cols-3 bg-card border border-border">
+              <TabsTrigger value="overview" className="text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Overview</TabsTrigger>
+              <TabsTrigger value="users" className="text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Users</TabsTrigger>
+              <TabsTrigger value="reports" className="text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Reports</TabsTrigger>
             </TabsList>
+          </div>
 
-          <TabsContent value="overview" className="px-4 space-y-4">
+          <TabsContent value="overview" className="px-4 space-y-4 max-w-full">
             {/* Key Metrics */}
             <div className="grid grid-cols-2 gap-3 w-full max-w-full">
               <Card>
@@ -233,7 +233,7 @@ export default function Admin() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="users" className="px-4 space-y-4">
+          <TabsContent value="users" className="px-4 space-y-4 max-w-full">
             {/* User Filters */}
             <Card>
               <CardContent className="p-4 space-y-3">
@@ -354,7 +354,7 @@ export default function Admin() {
             </div>
           </TabsContent>
 
-          <TabsContent value="reports" className="px-4 space-y-4">
+          <TabsContent value="reports" className="px-4 space-y-4 max-w-full">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center text-lg">
@@ -427,9 +427,8 @@ export default function Admin() {
               </CardContent>
             </Card>
           </TabsContent>
-          </Tabs>
-        </main>
-      </div>
+        </Tabs>
+      </main>
 
       <BottomNavigation />
     </div>
