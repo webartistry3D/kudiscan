@@ -237,69 +237,69 @@ export default function Landing() {
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Scan className="w-12 h-12" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Receipt scanning</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Receipt Scanning</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Snap a photo, forward to receipts@kudiscan.com, or upload a file – we'll scan the details!
+                Snap to Scan, Save & Track receipts.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
-            {/* OCR-Powered Scanning */}
+            {/* AI + OCR Integration */}
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl" style={{color: '#082118'}}>🧠</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>OCR + AI Recognition</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>AI + OCR Integration</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Advanced OCR technology combined with AI automatically extracts merchant, amount, and item details from any receipt.
+                AI powered OCR technology automatically extracts and categorizes all data on receipts.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
-            {/* Analytics */}
+            {/* Financial Reporting */}
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <PieChart className="w-12 h-12" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Financial reporting</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Financial Reporting</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Build tailored reports to analyze spend, identify trends, and support smarter decisions.
+                Build tailored reports to analyze spend, identify trends, make smarter decisions, secure bank loans.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
-            {/* Mobile App */}
+            {/* Mobile-First Approach */}
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Smartphone className="w-12 h-12" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Mobile app</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Mobile-First Approach</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Manage expenses and scan receipts on the go. All functionality included.
+                Manage expenses and scan receipts on-the-go.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
-            {/* Security */}
+            {/* Bank-level Security */}
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-12 h-12" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Bank-level security</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Bank-level Security</h3>
               <p className="text-sm" style={{color: '#082118'}}>
                 Your financial data is protected with enterprise-grade encryption and security.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
-            {/* Local Currency */}
+            {/* Naira Currency */}
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-4xl" style={{color: '#082118'}}>₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Naira currency</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Naira Currency</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Built specifically for Nigerian users with native Naira support and local preferences.
+                Built for Nigerian users with native Naira support and local preferences.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
