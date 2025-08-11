@@ -49,6 +49,12 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Changed process flow card descriptions to use #082118 color for better contrast
 - Moved dashboard preview section above trust indicators section
 - Updated Features section background to #29A378 with #082118 text and icons
+- Reduced CTA section width for better centering and visual balance
+- Doubled icon sizes in Features section from w-8 h-8 to w-12 h-12
+- Removed "See All Features" button for cleaner presentation
+- Changed "How KudiScan's free trial works" to "How KudiScan works"
+- Added comprehensive Pricing section with Freemium (10 receipts/month) and Premium (₦2,500/month) plans
+- Applied #22262A background with #E1E7EF primary text and #959AA0 secondary text colors to pricing section
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates

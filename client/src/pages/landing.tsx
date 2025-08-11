@@ -104,10 +104,10 @@ export default function Landing() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-card/60 border border-border rounded-2xl p-6 md:p-8 mb-8 w-full max-w-3xl mx-auto">
+          <div className="bg-card/60 border border-border rounded-2xl p-6 md:p-8 mb-8 w-full max-w-lg mx-auto">
             <h3 className="text-lg font-semibold mb-4 font-display text-foreground text-center">I want to:</h3>
             
-            <div className="flex flex-col gap-3 w-full max-w-2xl mx-auto">
+            <div className="flex flex-col gap-3 w-full mx-auto">
               <Link href="/register" className="w-full">
                 <Button size="lg" className="w-full justify-center text-center px-4" data-testid="button-personal">
                   Track my personal expenses
@@ -249,8 +249,8 @@ export default function Landing() {
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 w-full">
             {/* Receipt Scanning */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-8 h-8" style={{color: '#082118'}} />
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-12 h-12" style={{color: '#082118'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Receipt scanning</h3>
               <p className="text-sm" style={{color: '#082118'}}>
@@ -261,8 +261,8 @@ export default function Landing() {
 
             {/* Expense Management */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Receipt className="w-8 h-8" style={{color: '#082118'}} />
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-12 h-12" style={{color: '#082118'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Expense management</h3>
               <p className="text-sm" style={{color: '#082118'}}>
@@ -273,8 +273,8 @@ export default function Landing() {
 
             {/* Analytics */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-8 h-8" style={{color: '#082118'}} />
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-12 h-12" style={{color: '#082118'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Financial reporting</h3>
               <p className="text-sm" style={{color: '#082118'}}>
@@ -285,8 +285,8 @@ export default function Landing() {
 
             {/* Mobile App */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-8 h-8" style={{color: '#082118'}} />
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="w-12 h-12" style={{color: '#082118'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Mobile app</h3>
               <p className="text-sm" style={{color: '#082118'}}>
@@ -297,8 +297,8 @@ export default function Landing() {
 
             {/* Security */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8" style={{color: '#082118'}} />
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-12 h-12" style={{color: '#082118'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Bank-level security</h3>
               <p className="text-sm" style={{color: '#082118'}}>
@@ -309,8 +309,8 @@ export default function Landing() {
 
             {/* Local Currency */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl" style={{color: '#082118'}}>₦</span>
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-4xl" style={{color: '#082118'}}>₦</span>
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Naira currency</h3>
               <p className="text-sm" style={{color: '#082118'}}>
@@ -320,9 +320,7 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" style={{color: '#082118', borderColor: '#082118'}}>See All Features</Button>
-          </div>
+
         </div>
       </section>
 
@@ -330,7 +328,7 @@ export default function Landing() {
       <section className="px-4 py-16 bg-secondary/30 w-full">
         <div className="max-w-4xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center text-foreground mb-12 font-display">
-            How KudiScan's free trial works
+            How KudiScan works
           </h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
@@ -380,6 +378,150 @@ export default function Landing() {
               </div>
               <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#22262A'}}>
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-3xl font-bold text-center mb-4 font-display" style={{color: '#E1E7EF'}}>
+            Choose Your Plan
+          </h2>
+          <p className="text-center mb-12" style={{color: '#959AA0'}}>
+            Start free and upgrade when you're ready to scale your financial management
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Freemium Plan */}
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 relative">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2 font-display" style={{color: '#E1E7EF'}}>Freemium</h3>
+                <div className="text-4xl font-bold mb-2" style={{color: '#E1E7EF'}}>
+                  ₦0<span className="text-lg font-normal" style={{color: '#959AA0'}}>/month</span>
+                </div>
+                <p style={{color: '#959AA0'}}>Perfect for getting started with expense tracking</p>
+              </div>
+              
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Up to 10 receipt scans per month</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Basic expense categorization</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Simple spending reports</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Mobile app access</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Naira currency support</span>
+                </div>
+              </div>
+              
+              <Button size="lg" className="w-full" variant="outline" style={{borderColor: '#29A378', color: '#29A378'}}>
+                Get Started Free
+              </Button>
+            </div>
+
+            {/* Premium Plan */}
+            <div className="bg-card border-2 border-primary rounded-2xl p-6 md:p-8 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+              </div>
+              
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2 font-display" style={{color: '#E1E7EF'}}>Premium</h3>
+                <div className="text-4xl font-bold mb-2" style={{color: '#E1E7EF'}}>
+                  ₦2,500<span className="text-lg font-normal" style={{color: '#959AA0'}}>/month</span>
+                </div>
+                <p style={{color: '#959AA0'}}>Complete financial management for individuals and businesses</p>
+              </div>
+              
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Unlimited receipt scans</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Advanced AI-powered categorization</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Professional expense reports & analytics</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Budget tracking & alerts</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Tax-ready financial reports</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Business loan application support</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Priority email support</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <span style={{color: '#E1E7EF'}}>Multi-user access (up to 3 users)</span>
+                </div>
+              </div>
+              
+              <Button size="lg" className="w-full bg-primary hover:bg-primary/90">
+                Start Premium Trial
+              </Button>
+              <p className="text-center mt-2 text-sm" style={{color: '#959AA0'}}>
+                14-day free trial, then ₦2,500/month
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="mb-4" style={{color: '#959AA0'}}>
+              Need enterprise features? Custom pricing available for teams of 10+ users.
+            </p>
+            <Button variant="link" style={{color: '#29A378'}}>
+              Contact Sales
+            </Button>
           </div>
         </div>
       </section>
