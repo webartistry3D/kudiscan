@@ -23,6 +23,16 @@ User feedback (Jan 2025): Confirmed the app look and feel works well, particular
 - Implemented settings persistence using localStorage
 - Added toast notifications for all settings interactions
 
+## January 2025 - Profile & Theme Updates
+- Created dedicated user profile page with full editing capabilities
+- Fixed profile icon navigation to open profile page instead of settings
+- Fixed Monthly Budget icon to display proper Naira (₦) symbol
+- Resolved Category Budgets text overflow with proper responsive design
+- Implemented custom green metallic theme as alternative to standard dark mode
+- Enhanced theme switching system to support light, dark, and green-metallic modes
+- Applied green metallic styling across all components and pages
+- Updated dark mode toggle to activate green metallic theme instead of standard dark
+
 # System Architecture
 
 ## Frontend Architecture

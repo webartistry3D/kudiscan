@@ -12,6 +12,7 @@ import Dashboard from "@/pages/dashboard";
 import Transactions from "@/pages/transactions";
 import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
+import Profile from "@/pages/profile";
 import AdminDashboard from "@/pages/admin";
 
 function ProtectedRoute({ component: Component, adminOnly = false }: { component: any, adminOnly?: boolean }) {
@@ -68,6 +69,7 @@ function Router() {
       <Route path="/transactions" component={() => <ProtectedRoute component={Transactions} />} />
       <Route path="/reports" component={() => <ProtectedRoute component={Reports} />} />
       <Route path="/settings" component={() => <ProtectedRoute component={Settings} />} />
+      <Route path="/profile" component={() => <ProtectedRoute component={Profile} />} />
       <Route path="/admin" component={() => <ProtectedRoute component={AdminDashboard} adminOnly={true} />} />
       
       <Route component={NotFound} />

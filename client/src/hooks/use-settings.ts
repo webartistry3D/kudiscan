@@ -4,12 +4,14 @@ interface Settings {
   pushNotifications: boolean;
   darkMode: boolean;
   autoCapture: boolean;
+  theme: 'light' | 'dark' | 'green-metallic';
 }
 
 const DEFAULT_SETTINGS: Settings = {
   pushNotifications: false,
   darkMode: false,
   autoCapture: true,
+  theme: 'light',
 };
 
 export function useSettings() {
@@ -32,14 +34,18 @@ export function useSettings() {
     localStorage.setItem('kudiscan-settings', JSON.stringify(settings));
   }, [settings]);
 
-  // Apply dark mode class to document
+  // Apply theme classes to document
   useEffect(() => {
-    if (settings.darkMode) {
+    // Remove all theme classes
+    document.documentElement.classList.remove('dark', 'green-metallic');
+    
+    // Apply current theme
+    if (settings.theme === 'dark') {
       document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    } else if (settings.theme === 'green-metallic') {
+      document.documentElement.classList.add('green-metallic');
     }
-  }, [settings.darkMode]);
+  }, [settings.theme]);
 
   const updateSetting = <K extends keyof Settings>(key: K, value: Settings[K]) => {
     setSettings(prev => ({ ...prev, [key]: value }));
@@ -60,7 +66,15 @@ export function useSettings() {
   };
 
   const toggleDarkMode = () => {
-    updateSetting('darkMode', !settings.darkMode);
+    const newDarkMode = !settings.darkMode;
+    updateSetting('darkMode', newDarkMode);
+    
+    // Update theme based on dark mode preference
+    if (newDarkMode) {
+      updateSetting('theme', 'green-metallic');
+    } else {
+      updateSetting('theme', 'light');
+    }
   };
 
   const toggleAutoCapture = () => {

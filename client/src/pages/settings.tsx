@@ -87,7 +87,7 @@ export default function Settings() {
     : user?.email || "User";
 
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 min-h-screen">
+    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 green-metallic:bg-background min-h-screen">
       <Header title="Settings" />
       
       <main className="pb-20">
@@ -150,7 +150,7 @@ export default function Settings() {
                   <Moon className="w-5 h-5 text-gray-600" />
                   <div>
                     <p className="font-medium">Dark Mode</p>
-                    <p className="text-sm text-gray-500">Switch to dark theme</p>
+                    <p className="text-sm text-gray-500">Switch to green metallic theme</p>
                   </div>
                 </div>
                 <Switch 
@@ -191,7 +191,7 @@ export default function Settings() {
                 onClick={handleMonthlyBudget}
                 data-testid="button-monthly-budget"
               >
-                <IndianRupee className="w-5 h-5 mr-3 text-gray-600" />
+                <span className="w-5 h-5 mr-3 text-gray-600 flex items-center justify-center font-bold">₦</span>
                 <div className="text-left">
                   <p className="font-medium">Monthly Budget</p>
                   <p className="text-sm text-gray-500">₦150,000</p>
@@ -207,9 +207,9 @@ export default function Settings() {
                 <div className="w-5 h-5 mr-3 bg-primary rounded flex items-center justify-center">
                   <span className="text-white text-xs">%</span>
                 </div>
-                <div className="text-left">
+                <div className="text-left flex-1 min-w-0">
                   <p className="font-medium">Category Budgets</p>
-                  <p className="text-sm text-gray-500">Set spending limits per category</p>
+                  <p className="text-sm text-gray-500 truncate">Set spending limits per category</p>
                 </div>
               </Button>
             </CardContent>
