@@ -7,7 +7,7 @@ KudiScan is a mobile-first expense tracking application that leverages OCR techn
 Preferred communication style: Simple, everyday language.
 User feedback: Confirmed the app look and feel works well, particularly appreciates the Nigerian-focused design with Naira currency formatting.
 User color preference: Prefers dark theme with KudiScan's green color scheme and various shades of green throughout the interface.
-Typography preference: Selected Google Fonts + Glacial Indifference combination for modern minimalist aesthetic - Inter/Roboto for body text/UI elements, Glacial Indifference for headlines and branding.
+Typography preference: Official KudiScan font style using Montserrat for all text elements (body, UI, headlines, branding) for consistent brand identity.
 
 # System Architecture
 

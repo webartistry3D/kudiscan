@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -39,10 +37,10 @@
   --sidebar-accent-foreground: hsl(215 16% 47%);
   --sidebar-border: hsl(214 32% 91%);
   --sidebar-ring: hsl(159 60% 40%);
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-display: "Glacial Indifference", Roboto, Inter, system-ui, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
+  --font-sans: Montserrat, system-ui, sans-serif;
+  --font-display: Montserrat, system-ui, sans-serif;
+  --font-serif: Montserrat, system-ui, sans-serif;
+  --font-mono: Montserrat, system-ui, sans-serif;
   --radius: 0.75rem;
 
 }
