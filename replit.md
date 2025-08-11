@@ -31,8 +31,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Replaced opacity-based bg-primary/5 and bg-primary/10 classes with explicit dark-theme-friendly backgrounds
 - Removed navigation header from landing page for cleaner presentation
 - Updated hero headline to "Snap. Scan. Track. Report." for clearer value proposition
-- Enhanced hero description with bullet points emphasizing AI-powered finance assistant capabilities
-- Structured business value proposition in clear bullet format starting with "Simply..."
+- Enhanced hero description with process flow cards featuring icons and arrows
+- Created 4-step visual workflow: Snap → Track → Report → Scale with card-based styling
+- Used relatable icons (Camera, TrendingUp, FileText, Building) connected by arrows for clear process understanding
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates

@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building } from "lucide-react";
 
 export default function Landing() {
   return (
@@ -28,34 +28,77 @@ export default function Landing() {
             <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
           </div>
           
-          <div className="max-w-4xl mx-auto mb-8">
-            <p className="text-lg text-muted-foreground text-center mb-6">
+          <div className="max-w-5xl mx-auto mb-8">
+            <p className="text-lg text-muted-foreground text-center mb-8">
               KudiScan is your AI-powered finance assistant.
             </p>
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto w-full">
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Simply snap a receipt and scan your expenses automatically</p>
+            
+            {/* Process Flow */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+              {/* Step 1: Snap */}
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <Camera className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Snap</h3>
+                <p className="text-sm text-muted-foreground">Simply snap a receipt and scan your expenses automatically</p>
+              </div>
+              
+              {/* Arrow 1 */}
+              <div className="hidden md:block">
+                <ArrowRight className="w-6 h-6 text-primary" />
+              </div>
+              <div className="md:hidden">
+                <div className="w-6 h-6 rotate-90">
+                  <ArrowRight className="w-6 h-6 text-primary" />
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Track spending across categories with intelligent insights</p>
+              
+              {/* Step 2: Track */}
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <TrendingUp className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Track</h3>
+                <p className="text-sm text-muted-foreground">Track spending across categories with intelligent insights</p>
+              </div>
+              
+              {/* Arrow 2 */}
+              <div className="hidden md:block">
+                <ArrowRight className="w-6 h-6 text-primary" />
+              </div>
+              <div className="md:hidden">
+                <div className="w-6 h-6 rotate-90">
+                  <ArrowRight className="w-6 h-6 text-primary" />
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Generate professional expense reports for business use</p>
+              
+              {/* Step 3: Report */}
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <FileText className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Report</h3>
+                <p className="text-sm text-muted-foreground">Generate professional expense reports for business use</p>
+              </div>
+              
+              {/* Arrow 3 */}
+              <div className="hidden md:block">
+                <ArrowRight className="w-6 h-6 text-primary" />
+              </div>
+              <div className="md:hidden">
+                <div className="w-6 h-6 rotate-90">
+                  <ArrowRight className="w-6 h-6 text-primary" />
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Secure loans from banks and investors to scale your business</p>
+              
+              {/* Step 4: Scale */}
+              <div className="flex flex-col items-center text-center bg-card/60 border border-border rounded-xl p-6 max-w-xs">
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-3">
+                  <Building className="w-6 h-6 text-primary" />
                 </div>
+                <h3 className="font-semibold text-foreground mb-2">Scale</h3>
+                <p className="text-sm text-muted-foreground">Secure loans from banks and investors to scale your business</p>
               </div>
             </div>
           </div>
