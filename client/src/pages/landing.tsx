@@ -28,12 +28,36 @@ export default function Landing() {
             <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
           </div>
           
-          <div className="max-w-4xl mx-auto text-center mb-8">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              KudiScan is your AI-powered finance assistant. Snap a receipt, scan your expenses, 
-              track spending, and generate expense reports you can use to secure loans from banks 
-              and investors to scale up your business.
+          <div className="max-w-4xl mx-auto mb-8">
+            <p className="text-lg text-muted-foreground text-center mb-6">
+              KudiScan is your AI-powered finance assistant.
             </p>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto w-full">
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Simply snap a receipt and scan your expenses automatically</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Track spending across categories with intelligent insights</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Generate professional expense reports for business use</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Secure loans from banks and investors to scale your business</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* CTA Section */}
