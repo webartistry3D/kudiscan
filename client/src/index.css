@@ -49,7 +49,7 @@
 
 
 
-/* Apply KudiScan dark theme by default */
+/* Apply KudiScan dark theme by default with original dashboard green */
 :root {
   --background: hsl(210 11% 15%);
   --foreground: hsl(213 31% 91%);
@@ -57,7 +57,7 @@
   --card-foreground: hsl(213 31% 91%);
   --popover: hsl(210 12% 20%);
   --popover-foreground: hsl(213 31% 91%);
-  --primary: hsl(142 76% 36%);
+  --primary: hsl(159 60% 40%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(210 12% 16%);
   --secondary-foreground: hsl(213 31% 91%);
@@ -69,20 +69,20 @@
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(210 12% 26%);
   --input: hsl(210 12% 26%);
-  --ring: hsl(142 76% 36%);
-  --chart-1: hsl(142 76% 36%);
-  --chart-2: hsl(142 76% 46%);
-  --chart-3: hsl(142 76% 56%);
-  --chart-4: hsl(142 76% 26%);
-  --chart-5: hsl(142 76% 66%);
+  --ring: hsl(159 60% 40%);
+  --chart-1: hsl(159 60% 40%);
+  --chart-2: hsl(159 60% 50%);
+  --chart-3: hsl(159 60% 60%);
+  --chart-4: hsl(159 60% 30%);
+  --chart-5: hsl(159 60% 70%);
   --sidebar: hsl(210 12% 20%);
   --sidebar-foreground: hsl(213 31% 91%);
-  --sidebar-primary: hsl(142 76% 36%);
+  --sidebar-primary: hsl(159 60% 40%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(210 12% 16%);
   --sidebar-accent-foreground: hsl(215 20.2% 65.1%);
   --sidebar-border: hsl(210 12% 26%);
-  --sidebar-ring: hsl(142 76% 36%);
+  --sidebar-ring: hsl(159 60% 40%);
 }
 
 .dark {
@@ -92,7 +92,7 @@
   --card-foreground: hsl(213 31% 91%);
   --popover: hsl(210 12% 20%);
   --popover-foreground: hsl(213 31% 91%);
-  --primary: hsl(142 76% 36%);
+  --primary: hsl(159 60% 40%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(210 12% 16%);
   --secondary-foreground: hsl(213 31% 91%);
@@ -104,20 +104,20 @@
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(210 12% 26%);
   --input: hsl(210 12% 26%);
-  --ring: hsl(142 76% 36%);
-  --chart-1: hsl(142 76% 36%);
-  --chart-2: hsl(142 76% 46%);
-  --chart-3: hsl(142 76% 56%);
-  --chart-4: hsl(142 76% 26%);
-  --chart-5: hsl(142 76% 66%);
+  --ring: hsl(159 60% 40%);
+  --chart-1: hsl(159 60% 40%);
+  --chart-2: hsl(159 60% 50%);
+  --chart-3: hsl(159 60% 60%);
+  --chart-4: hsl(159 60% 30%);
+  --chart-5: hsl(159 60% 70%);
   --sidebar: hsl(210 12% 20%);
   --sidebar-foreground: hsl(213 31% 91%);
-  --sidebar-primary: hsl(142 76% 36%);
+  --sidebar-primary: hsl(159 60% 40%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(210 12% 16%);
   --sidebar-accent-foreground: hsl(215 20.2% 65.1%);
   --sidebar-border: hsl(210 12% 26%);
-  --sidebar-ring: hsl(142 76% 36%);
+  --sidebar-ring: hsl(159 60% 40%);
 }
 
 @layer base {

@@ -11,15 +11,17 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 
 # Recent Changes
 
-## January 2025 - Expensify-Inspired Landing Page Redesign
-- Completely redesigned landing page to match Expensify's modern, clean aesthetic and layout structure
-- Implemented hero section with bold headline, trust indicators (4.5-star rating), and multiple CTA options (personal/business/enterprise)
-- Added professional header with KudiScan branding and sign-in button
-- Created features section with 6 key capabilities using clean icons and "Learn More" links
-- Added "How it works" 3-step process section with visual workflow
-- Implemented testimonials section with 5-star reviews and customer profiles
+## January 2025 - Expensify-Inspired Dark Landing Page 
+- Completely redesigned landing page to match Expensify's modern, clean aesthetic with KudiScan's dark theme
+- Implemented dark theme using original dashboard green (hsl(159 60% 40%)) throughout the interface
+- Added professional header with KudiScan branding and sign-in button on dark background
+- Created hero section with bold headline, trust indicators (4.5-star rating), and multiple CTA options
+- Built features section with 6 key capabilities using consistent green icons and "Learn More" links
+- Added "How it works" 3-step process section with visual workflow and green accents
+- Implemented testimonials section with 5-star reviews and customer profiles on dark cards
 - Added company logos social proof section featuring Nigerian brands (Konga, Jumia, GTBank, Flutterwave)
-- Created prominent footer CTA section with call-to-action for user conversion
+- Created prominent footer CTA section with primary green background for user conversion
+- Applied semantic color classes (bg-background, text-foreground) for consistent dark theme
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
