@@ -320,39 +320,39 @@ export default function Landing() {
       </section>
 
       {/* How It Works */}
-      <section className="px-4 py-16 bg-secondary/30 w-full">
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-4xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12 font-display">
+          <h2 className="text-3xl font-bold text-center mb-12 font-display" style={{color: '#E1E7EF'}}>
             How KudiScan works
           </h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-8 h-8" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">1. Add Expense</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>1. Add Expense</h3>
+              <p className="text-sm" style={{color: '#959AA0'}}>
                 Upload your first receipt with the mobile app, drag-and-drop on the web, or forward it to receipts@kudiscan.com.
               </p>
             </div>
 
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Receipt className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-8 h-8" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">2. Create Report</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>2. Create Report</h3>
+              <p className="text-sm" style={{color: '#959AA0'}}>
                 Automatically generate expense reports for tracking or reimbursement. Add categories, tags, and comments, then submit.
               </p>
             </div>
 
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-8 h-8" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">3. Track & Analyze</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>3. Track & Analyze</h3>
+              <p className="text-sm" style={{color: '#959AA0'}}>
                 View detailed spending analytics, category breakdowns, and budget tracking to understand your financial patterns.
               </p>
             </div>
