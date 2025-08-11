@@ -2,168 +2,351 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car } from "lucide-react";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10">
-      {/* Hero Section */}
-      <section className="px-4 pt-8 pb-12">
-        <div className="max-w-md mx-auto text-center">
-          {/* Logo */}
-          <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg">
-            <span className="text-white text-3xl font-bold">K</span>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="px-4 py-4 border-b">
+        <div className="flex items-center justify-between max-w-6xl mx-auto">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <span className="text-white text-lg font-bold">K</span>
+            </div>
+            <span className="text-xl font-bold font-display">KudiScan</span>
           </div>
-          
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 font-display">
-            Kudi<span className="text-primary">Scan</span>
+          <Link href="/login">
+            <Button variant="outline" size="sm" data-testid="header-sign-in">
+              Sign In
+            </Button>
+          </Link>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="px-4 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 font-display">
+            The <em className="italic text-primary">fastest</em>
+            <Car className="inline-block w-8 h-8 mx-2 text-primary" />
+            way to do your expenses
           </h1>
           
-          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-            The smart way to track expenses in Nigeria. Scan receipts, track spending, and manage your finances effortlessly.
-          </p>
+          {/* Trust Badge */}
+          <div className="flex items-center justify-center space-x-2 mb-8">
+            <Badge variant="secondary" className="bg-gray-100 text-gray-700 px-3 py-1">
+              Trustpilot
+            </Badge>
+            <div className="flex items-center space-x-1">
+              {[1,2,3,4,5].map((star) => (
+                <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="text-sm font-semibold">4.5 (1,200+ reviews)</span>
+          </div>
           
-          {/* Action Buttons */}
-          <div className="space-y-3 mb-8">
-            <Link href="/register">
-              <Button size="lg" className="w-full text-lg py-6" data-testid="button-get-started">
-                Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            
-            <Link href="/login">
-              <Button variant="outline" size="lg" className="w-full text-lg py-6" data-testid="button-sign-in">
-                Sign In
-              </Button>
-            </Link>
+          <div className="grid md:grid-cols-3 gap-4 mb-8 text-left max-w-3xl mx-auto">
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <p className="font-semibold">All inclusive.</p>
+                <p className="text-sm text-gray-600">Scan receipts, track expenses, and manage your finances with AI.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <p className="font-semibold">Naira currency.</p>
+                <p className="text-sm text-gray-600">Built specifically for Nigerian users with local currency support.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <p className="font-semibold">Mobile-first.</p>
+                <p className="text-sm text-gray-600">Designed for smartphones with offline receipt storage.</p>
+              </div>
+            </div>
           </div>
 
-          <Badge variant="secondary" className="px-4 py-2 text-sm">
-            🇳🇬 Built for Nigerian users • Naira currency support
-          </Badge>
+          {/* CTA Section */}
+          <div className="bg-gray-50 rounded-2xl p-8 mb-8">
+            <h3 className="text-lg font-semibold mb-4 font-display">I want to:</h3>
+            
+            <div className="grid gap-4 max-w-2xl mx-auto">
+              <Link href="/register">
+                <Button size="lg" className="w-full justify-start text-left" data-testid="button-personal">
+                  Track my personal expenses
+                </Button>
+              </Link>
+              
+              <Link href="/register">
+                <Button variant="outline" size="lg" className="w-full justify-start text-left" data-testid="button-small-business">
+                  Manage expenses for my small business
+                </Button>
+              </Link>
+              
+              <Link href="/register">
+                <Button variant="outline" size="lg" className="w-full justify-start text-left" data-testid="button-enterprise">
+                  Enterprise expense management
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="mt-6">
+              <p className="text-sm text-gray-600 mb-2">Or get started with</p>
+              <Button variant="outline" className="bg-white">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjcxIDkuMjA0NTVDMTcuNzEgOC41NjY0IDE3LjY1NDUgNy45NzI3MyAxNy41NTQ1IDcuNDA5MDlIMTBWMTAuNzVIMTQuMzI3M0MxNC4xNTQ1IDExLjUzNjQgMTMuNjcyNyAxMi4yMDQ1IDEyLjk0NTUgMTIuNjE4MlYxNC42MzY0SDE1LjQwOTFDMTYuNzU0NSAxMy4zODY0IDE3LjcxIDEwLjkxIDEzLjcxIDkuMjA0NTVaIiBmaWxsPSIjNDA4MUVEIi8+CjxwYXRoIGQ9Ik0xMCA0SDEuNUMxLjIyMzg2IDEgMSAxLjIyMzg2IDEgMS41VjE2LjVDMSAxNi43NzYxIDEuMjIzODYgMTcgMS41IDE3SDE2LjVDMTYuNzc2MSAxNyAxNyAxNi43NzYxIDE3IDE2LjVWOC41IiBzdHJva2U9IiMzNDc0MkQiIHN0cm9rZS13aWR0aD0iLjUiLz4KPC9zdmc+" alt="Google" className="w-4 h-4 mr-2" />
+                Google
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Logos */}
+      <section className="px-4 py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-lg font-semibold mb-8 font-display">Join 100,000+ users who trust KudiScan</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60">
+            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+              Konga
+            </div>
+            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+              Jumia
+            </div>
+            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+              GTBank
+            </div>
+            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+              Flutterwave
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="px-4 pb-12">
-        <div className="max-w-md mx-auto">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8 font-display">
-            Everything you need to manage expenses
+      <section className="px-4 py-16">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4 font-display">Features</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            {/* Receipt Scanning */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">Receipt scanning</h3>
+              <p className="text-gray-600 text-sm">
+                Snap a photo, forward to receipts@kudiscan.com, or upload a file – we'll scan the details!
+              </p>
+              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+            </div>
+
+            {/* Expense Management */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">Expense management</h3>
+              <p className="text-gray-600 text-sm">
+                Automatically create, submit, approve, and track expenses. Reports sync automatically.
+              </p>
+              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+            </div>
+
+            {/* Analytics */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">Financial reporting</h3>
+              <p className="text-gray-600 text-sm">
+                Build tailored reports to analyze spend, identify trends, and support smarter decisions.
+              </p>
+              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+            </div>
+
+            {/* Mobile App */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">Mobile app</h3>
+              <p className="text-gray-600 text-sm">
+                Manage expenses and scan receipts on the go. All functionality included.
+              </p>
+              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+            </div>
+
+            {/* Security */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-red-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">Bank-level security</h3>
+              <p className="text-gray-600 text-sm">
+                Your financial data is protected with enterprise-grade encryption and security.
+              </p>
+              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+            </div>
+
+            {/* Local Currency */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">₦</span>
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">Naira currency</h3>
+              <p className="text-gray-600 text-sm">
+                Built specifically for Nigerian users with native Naira support and local preferences.
+              </p>
+              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button variant="outline" size="lg">See All Features</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="px-4 py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12 font-display">
+            How KudiScan's free trial works
           </h2>
           
-          <div className="grid gap-4">
-            <Card className="shadow-lg border-0 bg-gradient-to-r from-blue-50 to-blue-100">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Scan className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Smart Receipt Scanning</h3>
-                    <p className="text-gray-600 text-sm">
-                      Snap photos of receipts and let AI extract merchant, amount, and date automatically.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-lg border-0 bg-gradient-to-r from-green-50 to-green-100">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <PieChart className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Detailed Analytics</h3>
-                    <p className="text-gray-600 text-sm">
-                      View spending patterns by category, track monthly budgets, and get insights into your habits.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-lg border-0 bg-gradient-to-r from-purple-50 to-purple-100">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Receipt className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Expense Categories</h3>
-                    <p className="text-gray-600 text-sm">
-                      Organize expenses with smart categories including food, transport, utilities, and more.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-lg border-0 bg-gradient-to-r from-orange-50 to-orange-100">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Smartphone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Mobile-First Design</h3>
-                    <p className="text-gray-600 text-sm">
-                      Optimized for smartphones with intuitive navigation and offline receipt storage.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <section className="px-4 pb-12">
-        <div className="max-w-md mx-auto">
-          <Card className="shadow-xl border-0 bg-gradient-to-r from-gray-50 to-gray-100">
-            <CardContent className="p-8 text-center">
-              <div className="flex justify-center items-center space-x-8 mb-6">
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">1000+</div>
-                  <div className="text-sm text-gray-600">Users</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">50K+</div>
-                  <div className="text-sm text-gray-600">Receipts Scanned</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">₦2M+</div>
-                  <div className="text-sm text-gray-600">Tracked</div>
-                </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-8 h-8 text-primary" />
               </div>
-              <p className="text-gray-600 text-sm italic">
-                "KudiScan has revolutionized how I track my business expenses. The OCR is incredibly accurate!"
+              <h3 className="text-lg font-semibold mb-2 font-display">1. Add Expense</h3>
+              <p className="text-gray-600 text-sm">
+                Upload your first receipt with the mobile app, drag-and-drop on the web, or forward it to receipts@kudiscan.com.
               </p>
-              <p className="text-gray-500 text-xs mt-2">- Adebayo O., Lagos</p>
-            </CardContent>
-          </Card>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">2. Create Report</h3>
+              <p className="text-gray-600 text-sm">
+                Automatically generate expense reports for tracking or reimbursement. Add categories, tags, and comments, then submit.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display">3. Track & Analyze</h3>
+              <p className="text-gray-600 text-sm">
+                View detailed spending analytics, category breakdowns, and budget tracking to understand your financial patterns.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" className="px-8" data-testid="button-get-started-main">
+              Get Started
+            </Button>
+            <div className="flex items-center justify-center space-x-2 mt-4">
+              <Badge variant="secondary" className="bg-gray-100 text-gray-700 px-3 py-1">
+                Trustpilot
+              </Badge>
+              <div className="flex items-center space-x-1">
+                {[1,2,3,4,5].map((star) => (
+                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="text-sm font-semibold">4.5 (1,200+ reviews)</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="px-4 pb-8">
-        <div className="max-w-md mx-auto text-center">
-          <div className="flex justify-center space-x-6 mb-6">
-            <Shield className="w-5 h-5 text-gray-400" />
-            <Users className="w-5 h-5 text-gray-400" />
-            <Receipt className="w-5 h-5 text-gray-400" />
+      {/* Testimonials */}
+      <section className="px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* First Testimonial */}
+            <Card className="border-0 shadow-lg">
+              <CardContent className="p-8">
+                <div className="flex items-center space-x-1 mb-4">
+                  {[1,2,3,4,5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <h3 className="text-lg font-semibold mb-3 font-display">"Makes expense tracking easy!"</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  "KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
+                </p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                    <Users className="w-5 h-5 text-gray-500" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">Adebayo M.</p>
+                    <div className="flex items-center space-x-1">
+                      {[1,2,3,4,5].map((star) => (
+                        <Star key={star} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Second Testimonial */}
+            <Card className="border-0 shadow-lg">
+              <CardContent className="p-8">
+                <div className="flex items-center space-x-1 mb-4">
+                  {[1,2,3,4,5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <h3 className="text-lg font-semibold mb-3 font-display">"Perfect for small business"</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  "KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
+                </p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                    <Users className="w-5 h-5 text-gray-500" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">Kemi O.</p>
+                    <div className="flex items-center space-x-1">
+                      {[1,2,3,4,5].map((star) => (
+                        <Star key={star} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-          <p className="text-xs text-gray-500">
-            Secure • Private • Made in Nigeria
-          </p>
-          <p className="text-xs text-gray-400 mt-2">
-            © 2025 KudiScan. All rights reserved.
-          </p>
         </div>
-      </footer>
+      </section>
+
+      {/* Footer CTA */}
+      <section className="px-4 py-16 bg-primary text-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4 font-display">Start managing your expenses today</h2>
+          <p className="text-primary-foreground/80 mb-8">
+            Join thousands of Nigerian users who trust KudiScan for their expense tracking needs.
+          </p>
+          <Link href="/register">
+            <Button size="lg" variant="secondary" className="px-8" data-testid="button-footer-cta">
+              Get Started Free
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
