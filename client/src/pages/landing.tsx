@@ -151,12 +151,7 @@ export default function Landing() {
       <section className="py-16 bg-primary-light">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display text-foreground">
-              See KudiScan in action
-            </h2>
-            <p className="text-lg text-muted-foreground mb-12">
-              Get a complete view of your finances with our intuitive dashboard and mobile app
-            </p>
+
             
             {/* Dashboard and Mobile Preview */}
             <div className="relative flex items-center justify-center gap-8 max-w-5xl mx-auto">
@@ -245,9 +240,7 @@ export default function Landing() {
               </div>
             </div>
             
-            <p className="mt-8 text-sm text-muted-foreground max-w-2xl mx-auto">
-              Access your financial data anywhere with our responsive web dashboard and mobile-optimized interface
-            </p>
+
           </div>
         </div>
       </section>

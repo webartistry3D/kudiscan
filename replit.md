@@ -45,6 +45,7 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Removed Enterprise expense management option and Google sign-in section for cleaner CTA
 - Added dashboard preview section with SVG mockups of desktop and mobile interfaces
 - Created custom SVG illustrations showing KudiScan dashboard and mobile app interface
+- Removed descriptive text and positioned mockups directly before trust section for cleaner presentation
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
