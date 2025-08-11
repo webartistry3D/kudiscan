@@ -163,7 +163,7 @@ export default function Dashboard() {
       
       <main className="pb-20">
         {/* Dashboard Overview Section */}
-        <section className="px-4 py-6 bg-gradient-to-br from-primary to-secondary text-white">
+        <section className="px-4 py-6 bg-primary text-white">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-green-100 text-sm font-medium">Total Expenses</p>
@@ -177,9 +177,9 @@ export default function Dashboard() {
               <p className="text-lg font-semibold" data-testid="text-budget-left">
                 {formatNaira(Math.max(0, budgetLeft))}
               </p>
-              <div className="w-20 h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
+              <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
                 <div 
-                  className="h-full bg-white rounded-full transition-all" 
+                  className="h-full bg-green-300 rounded-full transition-all" 
                   style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
                 />
               </div>
@@ -188,7 +188,7 @@ export default function Dashboard() {
           
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-3 mt-6">
-            <Card className="bg-white/10 backdrop-blur border-0">
+            <Card className="bg-white/10 border-0">
               <CardContent className="p-3 text-center">
                 <i className="fas fa-receipt text-white/80 mb-1" />
                 <p className="text-xs text-green-100">Receipts</p>
@@ -197,7 +197,7 @@ export default function Dashboard() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur border-0">
+            <Card className="bg-white/10 border-0">
               <CardContent className="p-3 text-center">
                 <i className="fas fa-chart-line text-white/80 mb-1" />
                 <p className="text-xs text-green-100">Categories</p>
@@ -206,7 +206,7 @@ export default function Dashboard() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur border-0">
+            <Card className="bg-white/10 border-0">
               <CardContent className="p-3 text-center">
                 <i className="fas fa-calendar-day text-white/80 mb-1" />
                 <p className="text-xs text-green-100">This Week</p>
@@ -243,7 +243,7 @@ export default function Dashboard() {
         {/* Recent Transactions */}
         <section className="px-4 py-2">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Recent Transactions</h3>
+            <h3 className="text-lg font-semibold text-muted-foreground">Recent Transactions</h3>
             <Button 
               variant="link" 
               className="text-primary text-sm font-medium p-0"

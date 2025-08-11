@@ -50,12 +50,12 @@ export default function Transactions() {
 
   if (isLoading) {
     return (
-      <div className="max-w-md mx-auto bg-white min-h-screen">
+      <div className="max-w-md mx-auto bg-background min-h-screen">
         <Header title="Transactions" />
         <div className="p-4">
           <div className="animate-pulse space-y-4">
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-20 bg-gray-200 rounded-lg"></div>
+              <div key={i} className="h-20 bg-muted rounded-lg"></div>
             ))}
           </div>
         </div>
@@ -65,13 +65,13 @@ export default function Transactions() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen">
       <Header title="Transactions" />
       
       <main className="pb-20">
         {/* Summary Card */}
         <section className="p-4">
-          <Card className="bg-gradient-to-r from-primary to-secondary text-white border-0">
+          <Card className="bg-primary text-white border-0">
             <CardContent className="p-4">
               <div className="text-center">
                 <p className="text-green-100 text-sm">
@@ -94,7 +94,7 @@ export default function Transactions() {
         <section className="px-4 pb-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-muted-foreground mb-1">
                 Category
               </label>
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
@@ -113,7 +113,7 @@ export default function Transactions() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-muted-foreground mb-1">
                 Time Period
               </label>
               <Select value={dateFilter} onValueChange={setDateFilter}>
@@ -140,11 +140,11 @@ export default function Transactions() {
               ))}
             </div>
           ) : (
-            <Card className="border-dashed border-2 border-gray-200">
+            <Card className="border-dashed border-2 border-border">
               <CardContent className="p-8 text-center">
-                <i className="fas fa-receipt text-4xl text-gray-300 mb-4" />
-                <p className="text-gray-500 mb-2">No transactions found</p>
-                <p className="text-sm text-gray-400">
+                <i className="fas fa-receipt text-4xl text-muted-foreground mb-4" />
+                <p className="text-muted-foreground mb-2">No transactions found</p>
+                <p className="text-sm text-muted-foreground">
                   {selectedCategory !== "all" || dateFilter !== "all" 
                     ? "Try adjusting your filters" 
                     : "Scan your first receipt to get started"

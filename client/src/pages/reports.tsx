@@ -20,12 +20,12 @@ export default function Reports() {
 
   if (isLoading) {
     return (
-      <div className="max-w-md mx-auto bg-white min-h-screen">
+      <div className="max-w-md mx-auto bg-background min-h-screen">
         <Header title="Reports" />
         <div className="p-4">
           <div className="animate-pulse space-y-4">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-32 bg-gray-200 rounded-lg"></div>
+              <div key={i} className="h-32 bg-muted rounded-lg"></div>
             ))}
           </div>
         </div>
@@ -40,13 +40,13 @@ export default function Reports() {
   const avgDaily = (stats?.monthlyTotal || 0) / new Date().getDate();
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen">
       <Header title="Reports" />
       
       <main className="pb-20">
         {/* Monthly Overview */}
         <section className="p-4">
-          <Card className="bg-gradient-to-r from-primary to-secondary text-white border-0">
+          <Card className="bg-primary text-white border-0">
             <CardHeader>
               <CardTitle className="flex items-center text-lg">
                 <Calendar className="w-5 h-5 mr-2" />
@@ -84,26 +84,26 @@ export default function Reports() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Budget Limit:</span>
+                  <span className="text-muted-foreground">Budget Limit:</span>
                   <span className="font-semibold">{formatNaira(budgetLimit)}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Used:</span>
-                  <span className={`font-semibold ${budgetUsed > 80 ? 'text-red-600' : 'text-green-600'}`}>
+                  <span className="text-muted-foreground">Used:</span>
+                  <span className={`font-semibold ${budgetUsed > 80 ? 'text-red-600' : 'text-primary'}`}>
                     {budgetUsed.toFixed(1)}%
                   </span>
                 </div>
-                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-full h-3 bg-muted rounded-full overflow-hidden">
                   <div 
                     className={`h-full rounded-full transition-all ${
-                      budgetUsed > 80 ? 'bg-red-500' : budgetUsed > 60 ? 'bg-yellow-500' : 'bg-green-500'
+                      budgetUsed > 80 ? 'bg-red-500' : budgetUsed > 60 ? 'bg-yellow-500' : 'bg-primary'
                     }`}
                     style={{ width: `${Math.min(100, budgetUsed)}%` }}
                     data-testid="progress-budget-usage"
                   />
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Remaining:</span>
+                  <span className="text-muted-foreground">Remaining:</span>
                   <span className="font-semibold text-primary">
                     {formatNaira(Math.max(0, budgetLimit - (stats?.monthlyTotal || 0)))}
                   </span>
@@ -125,20 +125,20 @@ export default function Reports() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">This Week:</span>
+                  <span className="text-muted-foreground">This Week:</span>
                   <span className="font-semibold" data-testid="text-this-week">
                     {formatNaira(stats?.weeklyTotal || 0)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Last Week:</span>
-                  <span className="font-semibold text-gray-500">
+                  <span className="text-muted-foreground">Last Week:</span>
+                  <span className="font-semibold text-muted-foreground">
                     {formatNaira(0)} {/* Placeholder - would need historical data */}
                   </span>
                 </div>
-                <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg">
-                  <TrendingUp className="w-4 h-4 text-green-600 mr-1" />
-                  <span className="text-sm text-gray-600">
+                <div className="flex items-center justify-center p-3 bg-muted rounded-lg">
+                  <TrendingUp className="w-4 h-4 text-primary mr-1" />
+                  <span className="text-sm text-muted-foreground">
                     Tracking spending patterns
                   </span>
                 </div>

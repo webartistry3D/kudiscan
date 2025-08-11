@@ -36,6 +36,10 @@ User color preference (Jan 2025): Prefers dark theme colors matching Replit's co
 - Removed green metallic theme in favor of standard, professional dark mode
 - Updated all components to use theme variables (bg-background, text-foreground, etc.)
 - Ensured complete dark mode coverage without any white areas remaining
+- Removed all color gradients and backdrop blur effects
+- Changed Recent Transactions title to light color (text-muted-foreground)
+- Made budget bar occupy full width with lighter green shade (bg-green-300)
+- Applied Settings page dark mode formatting to Transactions and Reports pages
 
 # System Architecture
 
