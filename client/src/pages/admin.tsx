@@ -125,7 +125,7 @@ export default function Admin() {
         <div className="p-4">
           <div className="animate-pulse space-y-4">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-24 bg-muted rounded-lg"></div>
+              <div key={i} className="h-24 bg-card rounded-lg"></div>
             ))}
           </div>
         </div>
@@ -137,13 +137,6 @@ export default function Admin() {
   return (
     <div className="max-w-md mx-auto bg-background min-h-screen">
       <Header title="Admin Dashboard" />
-      
-      {/* Admin Navigation Explanation */}
-      <div className="px-4 py-2 bg-card border-b border-border">
-        <p className="text-sm text-muted-foreground">
-          <strong>Admin:</strong> Overview & stats • <strong>Dashboard:</strong> User dashboard • <strong>Transactions:</strong> All transactions • <strong>Settings:</strong> Profile & preferences
-        </p>
-      </div>
       
       <main className="pb-20">
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
