@@ -342,8 +342,7 @@ export default function Settings() {
         {/* Sign Out */}
         <section className="px-4">
           <Button 
-            variant="outline" 
-            className="w-full text-red-600 border-red-200 hover:bg-red-50"
+            className="w-full bg-red-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-700 shadow-lg"
             onClick={handleLogout}
             disabled={isLoggingOut}
             data-testid="button-sign-out"
