@@ -26,15 +26,15 @@ export function ResultsModal({ isOpen, onClose, onSave, ocrResult }: ResultsModa
   };
 
   return (
-    <div className="fixed inset-0 bg-white z-50">
+    <div className="fixed inset-0 bg-background z-50">
       <div className="flex flex-col h-full">
-        <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Review & Save</h2>
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <h2 className="text-lg font-semibold text-foreground">Review & Save</h2>
           <Button 
             variant="ghost" 
             size="icon" 
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-muted-foreground hover:text-foreground"
             data-testid="button-close-results"
           >
             <X className="w-5 h-5" />
@@ -49,19 +49,19 @@ export function ResultsModal({ isOpen, onClose, onSave, ocrResult }: ResultsModa
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-gray-600">Merchant:</span>
+                <span className="text-muted-foreground">Merchant:</span>
                 <span className="font-medium" data-testid="text-extracted-merchant">
                   {ocrResult.merchant}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Date:</span>
+                <span className="text-muted-foreground">Date:</span>
                 <span className="font-medium" data-testid="text-extracted-date">
                   {ocrResult.date}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Total Amount:</span>
+                <span className="text-muted-foreground">Total Amount:</span>
                 <span className="font-semibold text-lg text-primary" data-testid="text-extracted-amount">
                   {formatNaira(ocrResult.amount)}
                 </span>

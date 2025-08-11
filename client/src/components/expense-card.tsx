@@ -13,7 +13,7 @@ export function ExpenseCard({ expense }: ExpenseCardProps) {
   const icon = getCategoryIcon(expense.category);
   
   return (
-    <Card className="shadow-sm border-gray-100" data-testid={`expense-card-${expense.id}`}>
+    <Card className="shadow-sm" data-testid={`expense-card-${expense.id}`}>
       <CardContent className="p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -21,19 +21,19 @@ export function ExpenseCard({ expense }: ExpenseCardProps) {
               <i className={`${icon} ${color} text-sm`} />
             </div>
             <div>
-              <p className="font-medium text-gray-900" data-testid={`text-merchant-${expense.id}`}>
+              <p className="font-medium text-foreground" data-testid={`text-merchant-${expense.id}`}>
                 {expense.merchant}
               </p>
-              <p className="text-sm text-gray-500 capitalize" data-testid={`text-category-${expense.id}`}>
+              <p className="text-sm text-muted-foreground capitalize" data-testid={`text-category-${expense.id}`}>
                 {expense.category}
               </p>
-              <p className="text-xs text-gray-400" data-testid={`text-date-${expense.id}`}>
+              <p className="text-xs text-muted-foreground" data-testid={`text-date-${expense.id}`}>
                 {format(new Date(expense.date), 'MMM dd, yyyy')}
               </p>
             </div>
           </div>
           <div className="text-right">
-            <p className="font-semibold text-gray-900" data-testid={`text-amount-${expense.id}`}>
+            <p className="font-semibold text-foreground" data-testid={`text-amount-${expense.id}`}>
               {formatNaira(expense.amount)}
             </p>
             <span className="inline-block w-2 h-2 bg-green-500 rounded-full" />

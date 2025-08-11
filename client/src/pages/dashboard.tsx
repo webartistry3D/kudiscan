@@ -158,7 +158,7 @@ export default function Dashboard() {
   const budgetUsagePercent = ((stats?.monthlyTotal || 0) / budgetLimit) * 100;
 
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 green-metallic:bg-background min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen">
       <Header />
       
       <main className="pb-20">

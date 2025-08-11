@@ -13,15 +13,15 @@ export function ProcessingModal({ isOpen, onClose, progress, imageUrl }: Process
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-white z-50">
+    <div className="fixed inset-0 bg-background z-50">
       <div className="flex flex-col h-full">
-        <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Processing Receipt</h2>
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <h2 className="text-lg font-semibold text-foreground">Processing Receipt</h2>
           <Button 
             variant="ghost" 
             size="icon" 
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-muted-foreground hover:text-foreground"
             data-testid="button-cancel-processing"
           >
             <X className="w-5 h-5" />
@@ -49,7 +49,7 @@ export function ProcessingModal({ isOpen, onClose, progress, imageUrl }: Process
               <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                 <Check className="text-white w-3 h-3" />
               </div>
-              <span className="text-gray-900">Image captured successfully</span>
+              <span className="text-foreground">Image captured successfully</span>
             </div>
             
             <div className="flex items-center space-x-3">
@@ -60,7 +60,7 @@ export function ProcessingModal({ isOpen, onClose, progress, imageUrl }: Process
                   <Check className="text-white w-3 h-3" />
                 )}
               </div>
-              <span className="text-gray-900">
+              <span className="text-foreground">
                 {progress < 50 ? 'Extracting text with OCR...' : 
                  progress < 100 ? 'Processing receipt data...' :
                  'Text extraction complete'}
@@ -69,15 +69,15 @@ export function ProcessingModal({ isOpen, onClose, progress, imageUrl }: Process
             
             <div className="flex items-center space-x-3">
               <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                progress >= 100 ? 'bg-green-500' : 'bg-gray-300'
+                progress >= 100 ? 'bg-green-500' : 'bg-muted'
               }`}>
                 {progress >= 100 ? (
                   <Check className="text-white w-3 h-3" />
                 ) : (
-                  <div className="w-3 h-3 border-2 border-gray-400 rounded-full" />
+                  <div className="w-3 h-3 border-2 border-muted-foreground rounded-full" />
                 )}
               </div>
-              <span className={progress >= 100 ? 'text-gray-900' : 'text-gray-500'}>
+              <span className={progress >= 100 ? 'text-foreground' : 'text-muted-foreground'}>
                 Categorizing expenses
               </span>
             </div>
@@ -85,14 +85,14 @@ export function ProcessingModal({ isOpen, onClose, progress, imageUrl }: Process
 
           {/* Progress Bar */}
           <div className="mt-8">
-            <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
               <div 
                 className="h-full bg-primary rounded-full transition-all duration-1000"
                 style={{ width: `${progress}%` }}
                 data-testid="progress-processing"
               />
             </div>
-            <p className="text-sm text-gray-600 mt-2 text-center">
+            <p className="text-sm text-muted-foreground mt-2 text-center">
               Processing... {progress}% complete
             </p>
           </div>

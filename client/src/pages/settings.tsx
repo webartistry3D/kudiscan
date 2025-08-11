@@ -87,7 +87,7 @@ export default function Settings() {
     : user?.email || "User";
 
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 green-metallic:bg-background min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen">
       <Header title="Settings" />
       
       <main className="pb-20">
@@ -150,7 +150,7 @@ export default function Settings() {
                   <Moon className="w-5 h-5 text-gray-600" />
                   <div>
                     <p className="font-medium">Dark Mode</p>
-                    <p className="text-sm text-gray-500">Switch to green metallic theme</p>
+                    <p className="text-sm text-gray-500">Switch to dark theme</p>
                   </div>
                 </div>
                 <Switch 

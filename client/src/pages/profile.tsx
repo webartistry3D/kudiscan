@@ -74,9 +74,9 @@ export default function Profile() {
     : user?.email || "User";
 
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 green-metallic:bg-background min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-900 green-metallic:bg-background border-b border-gray-100 dark:border-gray-800 green-metallic:border-border sticky top-0 z-50">
+      <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center space-x-3">
             <Button 
@@ -85,9 +85,9 @@ export default function Profile() {
               onClick={() => setLocation("/settings")}
               data-testid="button-back"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-300 green-metallic:text-muted-foreground" />
+              <ArrowLeft className="w-5 h-5 text-muted-foreground" />
             </Button>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white green-metallic:text-foreground">
+            <h1 className="text-xl font-bold text-foreground">
               Profile
             </h1>
           </div>
@@ -98,9 +98,9 @@ export default function Profile() {
             data-testid="button-edit-profile"
           >
             {isEditing ? (
-              <X className="w-4 h-4 text-gray-600 dark:text-gray-300 green-metallic:text-muted-foreground" />
+              <X className="w-4 h-4 text-muted-foreground" />
             ) : (
-              <Edit className="w-4 h-4 text-gray-600 dark:text-gray-300 green-metallic:text-muted-foreground" />
+              <Edit className="w-4 h-4 text-muted-foreground" />
             )}
           </Button>
         </div>
@@ -133,10 +133,10 @@ export default function Profile() {
                 </Button>
               </div>
               <div className="text-center">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white green-metallic:text-foreground">
+                <h2 className="text-xl font-semibold text-foreground">
                   {userDisplayName}
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300 green-metallic:text-muted-foreground">{user?.email}</p>
+                <p className="text-muted-foreground">{user?.email}</p>
                 {isAdmin && (
                   <Badge variant="secondary" className="mt-2">
                     Administrator

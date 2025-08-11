@@ -10,9 +10,9 @@ export function CategoryChart({ categoryTotals }: CategoryChartProps) {
   const maxAmount = Math.max(...Object.values(categoryTotals));
   
   return (
-    <Card className="shadow-sm border-gray-100">
+    <Card className="shadow-sm">
       <CardHeader>
-        <CardTitle className="text-lg text-gray-900">Spending by Category</CardTitle>
+        <CardTitle className="text-lg text-foreground">Spending by Category</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {Object.entries(categoryTotals).map(([categoryId, amount]) => {
@@ -27,13 +27,13 @@ export function CategoryChart({ categoryTotals }: CategoryChartProps) {
                 <div className={`w-8 h-8 ${bgColor} rounded-lg flex items-center justify-center`}>
                   <i className={`${icon} ${color} text-sm`} />
                 </div>
-                <span className="font-medium text-gray-900">{category?.name || categoryId}</span>
+                <span className="font-medium text-foreground">{category?.name || categoryId}</span>
               </div>
               <div className="text-right">
-                <p className="font-semibold text-gray-900" data-testid={`amount-${categoryId}`}>
+                <p className="font-semibold text-foreground" data-testid={`amount-${categoryId}`}>
                   {formatNaira(amount)}
                 </p>
-                <div className="w-20 h-2 bg-gray-200 rounded-full mt-1">
+                <div className="w-20 h-2 bg-muted rounded-full mt-1">
                   <div 
                     className={`h-full ${color.replace('text-', 'bg-').replace('-600', '-500')} rounded-full transition-all`}
                     style={{ width: `${percentage}%` }}
