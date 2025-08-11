@@ -16,17 +16,7 @@ export default function Landing() {
           </h1>
           
           {/* Trust Badge */}
-          <div className="flex items-center justify-center space-x-2 mb-8 p-4 bg-primary-medium rounded-lg max-w-md mx-auto">
-            <Badge variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1">
-              Trustpilot
-            </Badge>
-            <div className="flex items-center space-x-1">
-              {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-              ))}
-            </div>
-            <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
-          </div>
+
           
           {/* Dashboard and Mobile Preview */}
           <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
