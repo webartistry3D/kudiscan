@@ -41,7 +41,7 @@ export default function Landing() {
                   <Camera className="w-6 h-6 text-white process-icon-1" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Snap</h3>
-                <p className="text-xs text-white/80 leading-tight">Snap / Upload a receipt to scan your expenses</p>
+                <p className="text-xs leading-tight" style={{color: '#082118'}}>Snap / Upload a receipt to scan your expenses</p>
               </div>
               
               {/* Arrow 1 */}
@@ -60,7 +60,7 @@ export default function Landing() {
                   <TrendingUp className="w-6 h-6 text-white process-icon-2" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Track</h3>
-                <p className="text-xs text-white/80 leading-tight">Track spending across categories with intelligent insights</p>
+                <p className="text-xs leading-tight" style={{color: '#082118'}}>Track spending across categories with intelligent insights</p>
               </div>
               
               {/* Arrow 2 */}
@@ -79,7 +79,7 @@ export default function Landing() {
                   <FileText className="w-6 h-6 text-white process-icon-3" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Report</h3>
-                <p className="text-xs text-white/80 leading-tight">Generate professional expense reports for business use</p>
+                <p className="text-xs leading-tight" style={{color: '#082118'}}>Generate professional expense reports for business use</p>
               </div>
               
               {/* Arrow 3 */}
@@ -98,7 +98,7 @@ export default function Landing() {
                   <Building className="w-6 h-6 text-white process-icon-4" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Scale</h3>
-                <p className="text-xs text-white/80 leading-tight">Secure loans from banks and investors to scale your business</p>
+                <p className="text-xs leading-tight" style={{color: '#082118'}}>Secure loans from banks and investors to scale your business</p>
               </div>
             </div>
           </div>
@@ -126,35 +126,12 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Company Logos */}
-      <section className="px-4 py-12 bg-secondary/30 w-full">
-        <div className="max-w-4xl mx-auto text-center w-full">
-          <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 opacity-60 w-full">
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              Konga
-            </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              Jumia
-            </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              GTBank
-            </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              Flutterwave
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Dashboard Preview Section */}
       <section className="py-16 bg-primary-light">
         <div className="container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-
-            
+          <div className="max-w-5xl mx-auto">
             {/* Dashboard and Mobile Preview */}
-            <div className="relative flex items-center justify-center gap-8 max-w-5xl mx-auto">
+            <div className="relative flex items-center justify-center gap-8 max-w-5xl mx-auto mb-16">
               {/* Desktop Dashboard */}
               <div className="hidden md:block relative">
                 <svg width="600" height="400" viewBox="0 0 600 400" className="drop-shadow-2xl">
@@ -239,93 +216,112 @@ export default function Landing() {
                 </svg>
               </div>
             </div>
-            
+          </div>
+        </div>
+      </section>
 
+      {/* Company Logos */}
+      <section className="px-4 py-12 bg-secondary/30 w-full">
+        <div className="max-w-4xl mx-auto text-center w-full">
+          <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 opacity-60 w-full">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              Konga
+            </div>
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              Jumia
+            </div>
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              GTBank
+            </div>
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              Flutterwave
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="px-4 py-16 w-full bg-primary-light">
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-4 font-display">Features</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 font-display" style={{color: '#082118'}}>Features</h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 w-full">
             {/* Receipt Scanning */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-8 h-8" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Receipt scanning</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Receipt scanning</h3>
+              <p className="text-sm" style={{color: '#082118'}}>
                 Snap a photo, forward to receipts@kudiscan.com, or upload a file – we'll scan the details!
               </p>
-              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
             {/* Expense Management */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Receipt className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-8 h-8" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Expense management</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Expense management</h3>
+              <p className="text-sm" style={{color: '#082118'}}>
                 Automatically create, submit, approve, and track expenses. Reports sync automatically.
               </p>
-              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
             {/* Analytics */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-8 h-8" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Financial reporting</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Financial reporting</h3>
+              <p className="text-sm" style={{color: '#082118'}}>
                 Build tailored reports to analyze spend, identify trends, and support smarter decisions.
               </p>
-              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
             {/* Mobile App */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="w-8 h-8" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Mobile app</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Mobile app</h3>
+              <p className="text-sm" style={{color: '#082118'}}>
                 Manage expenses and scan receipts on the go. All functionality included.
               </p>
-              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
             {/* Security */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8" style={{color: '#082118'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Bank-level security</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Bank-level security</h3>
+              <p className="text-sm" style={{color: '#082118'}}>
                 Your financial data is protected with enterprise-grade encryption and security.
               </p>
-              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
             {/* Local Currency */}
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl text-primary">₦</span>
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl" style={{color: '#082118'}}>₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Naira currency</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Naira currency</h3>
+              <p className="text-sm" style={{color: '#082118'}}>
                 Built specifically for Nigerian users with native Naira support and local preferences.
               </p>
-              <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
+              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">See All Features</Button>
+            <Button variant="outline" size="lg" style={{color: '#082118', borderColor: '#082118'}}>See All Features</Button>
           </div>
         </div>
       </section>

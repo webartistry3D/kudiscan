@@ -46,6 +46,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Added dashboard preview section with SVG mockups of desktop and mobile interfaces
 - Created custom SVG illustrations showing KudiScan dashboard and mobile app interface
 - Removed descriptive text and positioned mockups directly before trust section for cleaner presentation
+- Changed process flow card descriptions to use #082118 color for better contrast
+- Moved dashboard preview section above trust indicators section
+- Updated Features section background to #29A378 with #082118 text and icons
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
