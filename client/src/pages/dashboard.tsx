@@ -47,7 +47,7 @@ export default function Dashboard() {
 
   const createExpenseMutation = useMutation({
     mutationFn: async (expenseData: any) => {
-      const response = await apiRequest('POST', '/api/expenses', expenseData);
+      const response = await apiRequest('/api/expenses', 'POST', expenseData);
       return response.json();
     },
     onSuccess: () => {
