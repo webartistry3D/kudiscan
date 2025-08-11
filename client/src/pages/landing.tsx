@@ -117,7 +117,7 @@ export default function Landing() {
 
           <div className="max-w-5xl mx-auto mb-6">
             <p className="text-lg text-muted-foreground text-center mb-6">
-              KudiScan is your automated finance assistant.
+              Your automated finance assistant.
             </p>
             
             {/* Process Flow */}
@@ -362,16 +362,162 @@ export default function Landing() {
             <Button size="lg" className="px-8" data-testid="button-get-started-main">
               Get Started
             </Button>
-            <div className="flex items-center justify-center space-x-2 mt-4">
-              <Badge variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1">
-                Trustpilot
-              </Badge>
-              <div className="flex items-center space-x-1">
-                {[1,2,3,4,5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                ))}
+
+          </div>
+        </div>
+      </section>
+
+      {/* Integration Section */}
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#22262A'}}>
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-3xl font-bold text-center mb-4 font-display" style={{color: '#E1E7EF'}}>
+            Seamless Integration
+          </h2>
+          <p className="text-center mb-12" style={{color: '#959AA0'}}>
+            KudiScan works with your favorite tools and platforms
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">📧</span>
               </div>
-              <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
+              <h3 className="text-lg font-semibold mb-2" style={{color: '#E1E7EF'}}>Email Integration</h3>
+              <p className="text-sm" style={{color: '#959AA0'}}>
+                Forward receipts to receipts@kudiscan.com for automatic processing
+              </p>
+            </div>
+            
+            <div className="text-center p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🏦</span>
+              </div>
+              <h3 className="text-lg font-semibold mb-2" style={{color: '#E1E7EF'}}>Bank Integration</h3>
+              <p className="text-sm" style={{color: '#959AA0'}}>
+                Connect with major Nigerian banks for complete financial oversight
+              </p>
+            </div>
+            
+            <div className="text-center p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">📊</span>
+              </div>
+              <h3 className="text-lg font-semibold mb-2" style={{color: '#E1E7EF'}}>Export Options</h3>
+              <p className="text-sm" style={{color: '#959AA0'}}>
+                Export data to Excel, PDF, or your accounting software
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#0C3124'}}>
+        <div className="max-w-4xl mx-auto w-full">
+          <h2 className="text-3xl font-bold text-center mb-12 font-display" style={{color: '#E1E7EF'}}>
+            Frequently Asked Questions
+          </h2>
+          
+          <div className="space-y-6">
+            <div className="p-6 rounded-2xl" style={{backgroundColor: '#2D3339'}}>
+              <h3 className="text-lg font-semibold mb-3" style={{color: '#29A378'}}>
+                Is KudiScan free?
+              </h3>
+              <p style={{color: '#E1E7EF'}}>
+                Yes, we offer a free plan for personal use, plus affordable plans for SMEs.
+              </p>
+            </div>
+            
+            <div className="p-6 rounded-2xl" style={{backgroundColor: '#2D3339'}}>
+              <h3 className="text-lg font-semibold mb-3" style={{color: '#29A378'}}>
+                Will it work with Nigerian banks?
+              </h3>
+              <p style={{color: '#E1E7EF'}}>
+                Yes — we're built with Nigerian financial data in mind.
+              </p>
+            </div>
+            
+            <div className="p-6 rounded-2xl" style={{backgroundColor: '#2D3339'}}>
+              <h3 className="text-lg font-semibold mb-3" style={{color: '#29A378'}}>
+                Is my data secure?
+              </h3>
+              <p style={{color: '#E1E7EF'}}>
+                100%. We use bank-grade encryption to protect your information.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#22262A'}}>
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-3xl font-bold text-center mb-12 font-display" style={{color: '#E1E7EF'}}>
+            What Our Users Say
+          </h2>
+          
+          <div className="relative">
+            <div className="flex gap-6 animate-scroll">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+                  "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white font-bold">C</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold" style={{color: '#29A378'}}>Chidinma</p>
+                    <p className="text-sm" style={{color: '#959AA0'}}>Lagos entrepreneur</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+                  "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white font-bold">T</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold" style={{color: '#29A378'}}>Tunde</p>
+                    <p className="text-sm" style={{color: '#959AA0'}}>Freelancer</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Duplicate cards for seamless loop */}
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+                  "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white font-bold">C</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold" style={{color: '#29A378'}}>Chidinma</p>
+                    <p className="text-sm" style={{color: '#959AA0'}}>Lagos entrepreneur</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
+                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+                  "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-white font-bold">T</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold" style={{color: '#29A378'}}>Tunde</p>
+                    <p className="text-sm" style={{color: '#959AA0'}}>Freelancer</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

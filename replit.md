@@ -90,3 +90,8 @@ Typography preference: Selected Google Fonts + Glacial Indifference combination 
 - Doubled icon sizes in "How KudiScan works" section from w-8 h-8 to w-16 h-16, containers from w-16 h-16 to w-32 h-32
 - Simplified step descriptions: "Upload your receipt with the Scan button" and reordered flow to Track & Analyze before Generate Reports
 - Replaced Receipt icon with Naira symbol (₦) for Generate Reports step, emphasizing Nigerian market focus
+- Removed Trustpilot section and rating display for cleaner presentation
+- Updated hero text from "KudiScan is your automated finance assistant" to "Your automated finance assistant"
+- Added Integration section with #22262A background and #292E33 cards for Email, Bank, and Export integrations
+- Added FAQ section with #0C3124 background, #2D3339 cards, and #29A378 question text covering pricing, bank compatibility, and security
+- Added Testimonials section with sliding animation featuring Chidinma (Lagos entrepreneur) and Tunde (freelancer) testimonials
