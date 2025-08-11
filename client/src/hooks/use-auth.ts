@@ -19,10 +19,10 @@ export function useAuth() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
-  const { data: user, isLoading, error } = useQuery<{ user: User }>({
+  const { data: user, isLoading, error } = useQuery<{ user: User } | null>({
     queryKey: ['/api/auth/user'],
     retry: false,
-    queryFn: async () => {
+    queryFn: async (): Promise<{ user: User } | null> => {
       const response = await fetch('/api/auth/user', {
         credentials: 'include',
       });
@@ -33,13 +33,13 @@ export function useAuth() {
         throw new Error(`${response.status}: ${response.statusText}`);
       }
       const data = await response.json();
-      return { user: data };
+      return { user: data.user };
     },
   });
 
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest('POST', '/api/auth/logout');
+      const response = await apiRequest('/api/auth/logout', 'POST');
       return response.json();
     },
     onSuccess: () => {

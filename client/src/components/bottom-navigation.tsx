@@ -1,16 +1,27 @@
-import { Home, List, BarChart3, Settings } from "lucide-react";
+import { Home, List, BarChart3, Settings, Shield, Users } from "lucide-react";
 import { useLocation } from "wouter";
 import { Link } from "wouter";
+import { useAuth } from "@/hooks/use-auth";
 
-const navItems = [
+const userNavItems = [
   { path: "/", label: "Home", icon: Home },
   { path: "/transactions", label: "Transactions", icon: List },
   { path: "/reports", label: "Reports", icon: BarChart3 },
   { path: "/settings", label: "Settings", icon: Settings },
 ];
 
+const adminNavItems = [
+  { path: "/", label: "Admin", icon: Shield },
+  { path: "/dashboard", label: "Dashboard", icon: Home },
+  { path: "/transactions", label: "Transactions", icon: List },
+  { path: "/settings", label: "Settings", icon: Settings },
+];
+
 export function BottomNavigation() {
   const [location] = useLocation();
+  const { isAdmin } = useAuth();
+  
+  const navItems = isAdmin ? adminNavItems : userNavItems;
 
   return (
     <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-background border-t border-border px-4 py-2">

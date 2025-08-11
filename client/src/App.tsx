@@ -43,7 +43,7 @@ function ProtectedRoute({ component: Component, adminOnly = false }: { component
 }
 
 function Router() {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isAdmin, isLoading } = useAuth();
 
   if (isLoading) {
     return (
@@ -58,14 +58,21 @@ function Router() {
     );
   }
 
+  // Define the home component based on user role
+  const HomeComponent = () => {
+    if (!isAuthenticated) return <Landing />;
+    return isAdmin ? <AdminDashboard /> : <Dashboard />;
+  };
+
   return (
     <Switch>
       {/* Public routes */}
-      <Route path="/login" component={isAuthenticated ? Dashboard : Login} />
-      <Route path="/register" component={isAuthenticated ? Dashboard : Register} />
+      <Route path="/login" component={isAuthenticated ? HomeComponent : Login} />
+      <Route path="/register" component={isAuthenticated ? HomeComponent : Register} />
       
       {/* Protected routes */}
-      <Route path="/" component={() => <ProtectedRoute component={Dashboard} />} />
+      <Route path="/" component={HomeComponent} />
+      <Route path="/dashboard" component={() => <ProtectedRoute component={Dashboard} />} />
       <Route path="/transactions" component={() => <ProtectedRoute component={Transactions} />} />
       <Route path="/reports" component={() => <ProtectedRoute component={Reports} />} />
       <Route path="/settings" component={() => <ProtectedRoute component={Settings} />} />
