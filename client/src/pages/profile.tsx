@@ -263,11 +263,11 @@ export default function Profile() {
           <CardContent>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-primary/10 rounded-lg">
-                <p className="text-2xl font-bold text-primary">0</p>
+                <p className="text-2xl font-bold text-foreground">0</p>
                 <p className="text-sm text-muted-foreground">Total Expenses</p>
               </div>
               <div className="text-center p-3 bg-secondary/10 rounded-lg">
-                <p className="text-2xl font-bold text-secondary">0</p>
+                <p className="text-2xl font-bold text-foreground">0</p>
                 <p className="text-sm text-muted-foreground">Receipts Scanned</p>
               </div>
             </div>
