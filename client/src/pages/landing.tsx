@@ -71,32 +71,32 @@ export default function Landing() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-card/60 border border-border rounded-2xl p-8 mb-8">
-            <h3 className="text-lg font-semibold mb-4 font-display text-foreground">I want to:</h3>
+          <div className="bg-card/60 border border-border rounded-2xl p-6 md:p-8 mb-8 w-full max-w-3xl mx-auto">
+            <h3 className="text-lg font-semibold mb-4 font-display text-foreground text-center">I want to:</h3>
             
-            <div className="grid gap-4 max-w-2xl mx-auto w-full">
-              <Link href="/register">
-                <Button size="lg" className="w-full justify-start text-left" data-testid="button-personal">
+            <div className="flex flex-col gap-3 w-full max-w-2xl mx-auto">
+              <Link href="/register" className="w-full">
+                <Button size="lg" className="w-full justify-center text-center px-4" data-testid="button-personal">
                   Track my personal expenses
                 </Button>
               </Link>
               
-              <Link href="/register">
-                <Button variant="outline" size="lg" className="w-full justify-start text-left" data-testid="button-small-business">
+              <Link href="/register" className="w-full">
+                <Button variant="outline" size="lg" className="w-full justify-center text-center px-4" data-testid="button-small-business">
                   Manage expenses for my small business
                 </Button>
               </Link>
               
-              <Link href="/register">
-                <Button variant="outline" size="lg" className="w-full justify-start text-left" data-testid="button-enterprise">
+              <Link href="/register" className="w-full">
+                <Button variant="outline" size="lg" className="w-full justify-center text-center px-4" data-testid="button-enterprise">
                   Enterprise expense management
                 </Button>
               </Link>
             </div>
             
-            <div className="mt-6">
+            <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground mb-2">Or get started with</p>
-              <Button variant="outline" className="bg-background">
+              <Button variant="outline" className="bg-background mx-auto">
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjcxIDkuMjA0NTVDMTcuNzEgOC41NjY0IDE3LjY1NDUgNy45NzI3MyAxNy41NTQ1IDcuNDA5MDlIMTBWMTAuNzVIMTQuMzI3M0MxNC4xNTQ1IDExLjUzNjQgMTMuNjcyNyAxMi4yMDQ1IDEyLjk0NTUgMTIuNjE4MlYxNC42MzY0SDE1LjQwOTFDMTYuNzU0NSAxMy4zODY0IDE3LjcxIDEwLjkxIDEzLjcxIDkuMjA0NTVaIiBmaWxsPSIjNDA4MUVEIi8+CjxwYXRoIGQ9Ik0xMCA0SDEuNUMxLjIyMzg2IDEgMSAxLjIyMzg2IDEgMS41VjE2LjVDMSAxNi43NzYxIDEuMjIzODYgMTcgMS41IDE3SDE2LjVDMTYuNzc2MSAxNyAxNyAxNi43NzYxIDE3IDE2LjVWOC41IiBzdHJva2U9IiMzNDc0MkQiIHN0cm9rZS13aWR0aD0iLjUiLz4KPC9zdmc+" alt="Google" className="w-4 h-4 mr-2" />
                 Google
               </Button>
@@ -127,7 +127,7 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 py-16 w-full">
+      <section className="px-4 py-16 w-full bg-primary/5">
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center text-foreground mb-4 font-display">Features</h2>
           
@@ -270,7 +270,7 @@ export default function Landing() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-4 py-16 w-full">
+      <section className="px-4 py-16 w-full bg-primary/5">
         <div className="max-w-4xl mx-auto w-full">
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
             {/* First Testimonial */}

@@ -22,6 +22,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Added company logos social proof section featuring Nigerian brands (Konga, Jumia, GTBank, Flutterwave)
 - Created prominent footer CTA section with primary green background for user conversion
 - Applied semantic color classes (bg-background, text-foreground) for consistent dark theme
+- Fixed horizontal overlapping sections with proper responsive design and container constraints
+- Enhanced "I want to" CTA section with better layout and overflow prevention
+- Added subtle KudiScan green backgrounds (bg-primary/5) to Features and Testimonials sections for aesthetic appeal
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
