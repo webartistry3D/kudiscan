@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Camera, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -35,6 +35,11 @@ export default function Dashboard() {
   const [processingProgress, setProcessingProgress] = useState(0);
   const [currentImageUrl, setCurrentImageUrl] = useState<string>();
   const [ocrResult, setOcrResult] = useState<OCRResult | null>(null);
+
+  // Scroll to top when component mounts (after login)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const { data: stats, isLoading } = useQuery<DashboardStats>({
     queryKey: ['/api/dashboard/stats']
@@ -153,7 +158,7 @@ export default function Dashboard() {
   const budgetUsagePercent = ((stats?.monthlyTotal || 0) / budgetLimit) * 100;
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen">
+    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 min-h-screen">
       <Header />
       
       <main className="pb-20">

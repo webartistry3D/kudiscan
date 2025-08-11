@@ -7,6 +7,22 @@ KudiScan is a mobile-first expense tracking application that allows users to sca
 Preferred communication style: Simple, everyday language.
 User feedback (Jan 2025): Confirmed the app look and feel works well, particularly appreciates the Nigerian-focused design with Naira currency formatting.
 
+# Recent Changes
+
+## January 2025 - Settings & Authentication Improvements
+- Fixed authentication state management with proper query cache invalidation
+- Resolved DOM nesting warnings in login/register forms
+- Implemented fully functional settings page with working toggles:
+  * Push Notifications toggle with browser permission requests
+  * Dark Mode toggle with localStorage persistence and CSS class application
+  * Auto-Capture toggle for receipt scanning preferences
+- Added functionality to header notification and profile buttons
+- Changed Budget Settings icon from dollar sign to Naira symbol (₦)
+- Enhanced dashboard with scroll-to-top behavior after login
+- Added comprehensive dark mode support across all components
+- Implemented settings persistence using localStorage
+- Added toast notifications for all settings interactions
+
 # System Architecture
 
 ## Frontend Architecture

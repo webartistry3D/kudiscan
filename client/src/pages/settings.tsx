@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/use-auth";
+import { useSettings } from "@/hooks/use-settings";
+import { useToast } from "@/hooks/use-toast";
 import { 
   User, 
   Bell, 
@@ -13,15 +15,17 @@ import {
   Info, 
   LogOut,
   Camera,
-  DollarSign,
   Moon,
   Download,
   Crown,
-  Loader2
+  Loader2,
+  IndianRupee
 } from "lucide-react";
 
 export default function Settings() {
   const { user, isAdmin, logout, isLoggingOut } = useAuth();
+  const { settings, togglePushNotifications, toggleDarkMode, toggleAutoCapture } = useSettings();
+  const { toast } = useToast();
 
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to log out?")) {
@@ -29,12 +33,61 @@ export default function Settings() {
     }
   };
 
+  const handleExportData = () => {
+    toast({
+      title: "Export Data",
+      description: "Data export feature coming soon!",
+    });
+  };
+
+  const handlePrivacySettings = () => {
+    toast({
+      title: "Privacy Settings",
+      description: "Privacy settings page coming soon!",
+    });
+  };
+
+  const handleHelpCenter = () => {
+    toast({
+      title: "Help Center",
+      description: "Help center opening soon!",
+    });
+  };
+
+  const handleContactSupport = () => {
+    toast({
+      title: "Contact Support",
+      description: "Support contact page coming soon!",
+    });
+  };
+
+  const handleAbout = () => {
+    toast({
+      title: "About KudiScan",
+      description: "Version 1.0.0 - Your smart expense tracker for Nigeria",
+    });
+  };
+
+  const handleMonthlyBudget = () => {
+    toast({
+      title: "Monthly Budget",
+      description: "Budget configuration coming soon!",
+    });
+  };
+
+  const handleCategoryBudgets = () => {
+    toast({
+      title: "Category Budgets",
+      description: "Category budget settings coming soon!",
+    });
+  };
+
   const userDisplayName = user?.firstName && user?.lastName 
     ? `${user.firstName} ${user.lastName}` 
     : user?.email || "User";
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen">
+    <div className="max-w-md mx-auto bg-white dark:bg-gray-900 min-h-screen">
       <Header title="Settings" />
       
       <main className="pb-20">
@@ -85,7 +138,11 @@ export default function Settings() {
                     <p className="text-sm text-gray-500">Get notified about budget alerts</p>
                   </div>
                 </div>
-                <Switch data-testid="switch-notifications" />
+                <Switch 
+                  checked={settings.pushNotifications}
+                  onCheckedChange={togglePushNotifications}
+                  data-testid="switch-notifications" 
+                />
               </div>
               
               <div className="flex items-center justify-between">
@@ -96,7 +153,11 @@ export default function Settings() {
                     <p className="text-sm text-gray-500">Switch to dark theme</p>
                   </div>
                 </div>
-                <Switch data-testid="switch-dark-mode" />
+                <Switch 
+                  checked={settings.darkMode}
+                  onCheckedChange={toggleDarkMode}
+                  data-testid="switch-dark-mode" 
+                />
               </div>
 
               <div className="flex items-center justify-between">
@@ -107,7 +168,11 @@ export default function Settings() {
                     <p className="text-sm text-gray-500">Automatically detect receipts</p>
                   </div>
                 </div>
-                <Switch data-testid="switch-auto-capture" />
+                <Switch 
+                  checked={settings.autoCapture}
+                  onCheckedChange={toggleAutoCapture}
+                  data-testid="switch-auto-capture" 
+                />
               </div>
             </CardContent>
           </Card>
@@ -123,9 +188,10 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handleMonthlyBudget}
                 data-testid="button-monthly-budget"
               >
-                <DollarSign className="w-5 h-5 mr-3 text-gray-600" />
+                <IndianRupee className="w-5 h-5 mr-3 text-gray-600" />
                 <div className="text-left">
                   <p className="font-medium">Monthly Budget</p>
                   <p className="text-sm text-gray-500">₦150,000</p>
@@ -135,6 +201,7 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handleCategoryBudgets}
                 data-testid="button-category-budgets"
               >
                 <div className="w-5 h-5 mr-3 bg-primary rounded flex items-center justify-center">
@@ -159,6 +226,7 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handleExportData}
                 data-testid="button-export-data"
               >
                 <Download className="w-5 h-5 mr-3 text-gray-600" />
@@ -171,6 +239,7 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handlePrivacySettings}
                 data-testid="button-privacy-settings"
               >
                 <Shield className="w-5 h-5 mr-3 text-gray-600" />
@@ -193,6 +262,7 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handleHelpCenter}
                 data-testid="button-help-center"
               >
                 <HelpCircle className="w-5 h-5 mr-3 text-gray-600" />
@@ -205,6 +275,7 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handleContactSupport}
                 data-testid="button-contact-support"
               >
                 <div className="w-5 h-5 mr-3 bg-blue-100 rounded flex items-center justify-center">
@@ -219,6 +290,7 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
+                onClick={handleAbout}
                 data-testid="button-about"
               >
                 <Info className="w-5 h-5 mr-3 text-gray-600" />
