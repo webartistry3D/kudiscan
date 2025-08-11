@@ -7,30 +7,12 @@ import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, C
 export default function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Header */}
-      <header className="px-4 py-4 border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="flex items-center justify-between max-w-6xl mx-auto">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground text-lg font-bold">K</span>
-            </div>
-            <span className="text-xl font-bold font-display text-foreground">KudiScan</span>
-          </div>
-          <Link href="/login">
-            <Button variant="outline" size="sm" data-testid="header-sign-in">
-              Sign In
-            </Button>
-          </Link>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <section className="px-4 py-16 w-full bg-primary-light">
         <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display">
-            The <em className="italic text-primary">fastest</em>
-            <Car className="inline-block w-8 h-8 mx-2 text-primary" />
-            way to do your expenses
+            Snap. Scan. Track. Report.
           </h1>
           
           {/* Trust Badge */}
@@ -46,28 +28,12 @@ export default function Landing() {
             <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
           </div>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-left max-w-3xl mx-auto w-full">
-            <div className="flex items-start space-x-2">
-              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-              <div>
-                <p className="font-semibold">All inclusive.</p>
-                <p className="text-sm text-muted-foreground">Scan receipts, track expenses, and manage your finances with AI.</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-2">
-              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-              <div>
-                <p className="font-semibold">Naira currency.</p>
-                <p className="text-sm text-muted-foreground">Built specifically for Nigerian users with local currency support.</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-2">
-              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-              <div>
-                <p className="font-semibold">Mobile-first.</p>
-                <p className="text-sm text-muted-foreground">Designed for smartphones with offline receipt storage.</p>
-              </div>
-            </div>
+          <div className="max-w-4xl mx-auto text-center mb-8">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              KudiScan is your AI-powered finance assistant. Snap a receipt, scan your expenses, 
+              track spending, and generate expense reports you can use to secure loans from banks 
+              and investors to scale up your business.
+            </p>
           </div>
 
           {/* CTA Section */}
