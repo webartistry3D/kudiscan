@@ -6,7 +6,7 @@ import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, C
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Header */}
       <header className="px-4 py-4 border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="flex items-center justify-between max-w-6xl mx-auto">
@@ -25,8 +25,8 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section className="px-4 py-16">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="px-4 py-16 w-full">
+        <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display">
             The <em className="italic text-primary">fastest</em>
             <Car className="inline-block w-8 h-8 mx-2 text-primary" />
@@ -46,7 +46,7 @@ export default function Landing() {
             <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-4 mb-8 text-left max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-left max-w-3xl mx-auto w-full">
             <div className="flex items-start space-x-2">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <div>
@@ -74,7 +74,7 @@ export default function Landing() {
           <div className="bg-card/60 border border-border rounded-2xl p-8 mb-8">
             <h3 className="text-lg font-semibold mb-4 font-display text-foreground">I want to:</h3>
             
-            <div className="grid gap-4 max-w-2xl mx-auto">
+            <div className="grid gap-4 max-w-2xl mx-auto w-full">
               <Link href="/register">
                 <Button size="lg" className="w-full justify-start text-left" data-testid="button-personal">
                   Track my personal expenses
@@ -106,10 +106,10 @@ export default function Landing() {
       </section>
 
       {/* Company Logos */}
-      <section className="px-4 py-12 bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="px-4 py-12 bg-secondary/30 w-full">
+        <div className="max-w-4xl mx-auto text-center w-full">
           <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 opacity-60 w-full">
             <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Konga
             </div>
@@ -127,13 +127,13 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 py-16">
-        <div className="max-w-6xl mx-auto">
+      <section className="px-4 py-16 w-full">
+        <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center text-foreground mb-4 font-display">Features</h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 w-full">
             {/* Receipt Scanning */}
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Scan className="w-8 h-8 text-primary" />
               </div>
@@ -145,7 +145,7 @@ export default function Landing() {
             </div>
 
             {/* Expense Management */}
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Receipt className="w-8 h-8 text-primary" />
               </div>
@@ -157,7 +157,7 @@ export default function Landing() {
             </div>
 
             {/* Analytics */}
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <PieChart className="w-8 h-8 text-primary" />
               </div>
@@ -169,7 +169,7 @@ export default function Landing() {
             </div>
 
             {/* Mobile App */}
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Smartphone className="w-8 h-8 text-primary" />
               </div>
@@ -181,7 +181,7 @@ export default function Landing() {
             </div>
 
             {/* Security */}
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-primary" />
               </div>
@@ -193,7 +193,7 @@ export default function Landing() {
             </div>
 
             {/* Local Currency */}
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-primary">₦</span>
               </div>
@@ -212,14 +212,14 @@ export default function Landing() {
       </section>
 
       {/* How It Works */}
-      <section className="px-4 py-16 bg-secondary/30">
-        <div className="max-w-4xl mx-auto">
+      <section className="px-4 py-16 bg-secondary/30 w-full">
+        <div className="max-w-4xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center text-foreground mb-12 font-display">
             How KudiScan's free trial works
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Scan className="w-8 h-8 text-primary" />
               </div>
@@ -229,7 +229,7 @@ export default function Landing() {
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Receipt className="w-8 h-8 text-primary" />
               </div>
@@ -239,7 +239,7 @@ export default function Landing() {
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <PieChart className="w-8 h-8 text-primary" />
               </div>
@@ -270,9 +270,9 @@ export default function Landing() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
+      <section className="px-4 py-16 w-full">
+        <div className="max-w-4xl mx-auto w-full">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
             {/* First Testimonial */}
             <Card className="border-0 shadow-lg">
               <CardContent className="p-8">
@@ -333,8 +333,8 @@ export default function Landing() {
       </section>
 
       {/* Footer CTA */}
-      <section className="px-4 py-16 bg-primary text-white">
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="px-4 py-16 bg-primary text-white w-full">
+        <div className="max-w-2xl mx-auto text-center w-full">
           <h2 className="text-3xl font-bold mb-4 font-display text-primary-foreground">Start managing your expenses today</h2>
           <p className="text-primary-foreground/80 mb-8">
             Join thousands of Nigerian users who trust KudiScan for their expense tracking needs.
