@@ -158,23 +158,23 @@ export default function Dashboard() {
   const budgetUsagePercent = ((stats?.monthlyTotal || 0) / budgetLimit) * 100;
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen overflow-x-hidden">
       <Header />
       
-      <main className="pb-20">
+      <main className="pb-20 max-w-full">
         {/* Dashboard Overview Section */}
-        <section className="px-4 py-6 bg-primary text-white">
-          <div className="flex items-center justify-between mb-4">
-            <div>
+        <section className="px-4 py-6 bg-primary text-white max-w-full">
+          <div className="flex items-center justify-between mb-4 max-w-full">
+            <div className="flex-1 min-w-0 pr-3">
               <p className="text-green-100 text-sm font-medium">Total Expenses</p>
-              <h2 className="text-2xl font-bold" data-testid="text-total-expenses">
+              <h2 className="text-xl font-bold truncate" data-testid="text-total-expenses">
                 {formatNaira(stats?.monthlyTotal || 0)}
               </h2>
               <p className="text-green-100 text-xs mt-1">This month</p>
             </div>
-            <div className="text-right">
+            <div className="text-right flex-1 min-w-0">
               <p className="text-green-100 text-sm">Budget Left</p>
-              <p className="text-lg font-semibold" data-testid="text-budget-left">
+              <p className="text-lg font-semibold truncate" data-testid="text-budget-left">
                 {formatNaira(Math.max(0, budgetLeft))}
               </p>
               <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
@@ -187,30 +187,30 @@ export default function Dashboard() {
           </div>
           
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-3 mt-6">
-            <Card className="bg-white/10 border-0">
-              <CardContent className="p-3 text-center">
-                <i className="fas fa-receipt text-white/80 mb-1" />
+          <div className="grid grid-cols-3 gap-3 mt-6 max-w-full">
+            <Card className="bg-white/10 border-0 max-w-full">
+              <CardContent className="p-2 text-center">
+                <i className="fas fa-receipt text-white/80 mb-1 text-sm" />
                 <p className="text-xs text-green-100">Receipts</p>
-                <p className="font-semibold" data-testid="text-receipt-count">
+                <p className="font-semibold text-sm" data-testid="text-receipt-count">
                   {stats?.receiptCount || 0}
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 border-0">
-              <CardContent className="p-3 text-center">
-                <i className="fas fa-chart-line text-white/80 mb-1" />
+            <Card className="bg-white/10 border-0 max-w-full">
+              <CardContent className="p-2 text-center">
+                <i className="fas fa-chart-line text-white/80 mb-1 text-sm" />
                 <p className="text-xs text-green-100">Categories</p>
-                <p className="font-semibold" data-testid="text-category-count">
+                <p className="font-semibold text-sm" data-testid="text-category-count">
                   {stats?.categoryCount || 0}
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 border-0">
-              <CardContent className="p-3 text-center">
-                <i className="fas fa-calendar-day text-white/80 mb-1" />
+            <Card className="bg-white/10 border-0 max-w-full">
+              <CardContent className="p-2 text-center">
+                <i className="fas fa-calendar-day text-white/80 mb-1 text-sm" />
                 <p className="text-xs text-green-100">This Week</p>
-                <p className="font-semibold" data-testid="text-weekly-expenses">
+                <p className="font-semibold text-sm truncate" data-testid="text-weekly-expenses">
                   {formatNaira(stats?.weeklyTotal || 0)}
                 </p>
               </CardContent>
@@ -219,20 +219,20 @@ export default function Dashboard() {
         </section>
 
         {/* Quick Actions */}
-        <section className="px-4 py-4">
-          <div className="flex space-x-3">
+        <section className="px-4 py-4 max-w-full">
+          <div className="flex space-x-3 max-w-full">
             <Button 
               onClick={() => setShowCameraModal(true)}
-              className="flex-1 bg-primary text-white py-4 px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg"
+              className="flex-1 bg-primary text-white py-4 px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg min-w-0"
               data-testid="button-scan-receipt"
             >
-              <Camera className="w-5 h-5 mr-2" />
-              Scan Receipt
+              <Camera className="w-5 h-5 mr-2 flex-shrink-0" />
+              <span className="truncate">Scan Receipt</span>
             </Button>
             <Button 
               onClick={handleFileUpload}
               variant="outline"
-              className="p-4 rounded-xl hover:bg-gray-100"
+              className="p-4 rounded-xl hover:bg-gray-100 flex-shrink-0"
               data-testid="button-upload-file"
             >
               <Upload className="w-5 h-5" />
