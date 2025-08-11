@@ -58,6 +58,12 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Moved dashboard and mobile mockups before hero description text for better visual hierarchy
 - Reduced image sizes and spacing: desktop 480x320, mobile 160x320, gap reduced to 6
 - Decreased section padding from py-12 to py-8 for tighter layout between sections
+- Updated "How KudiScan works" section with #2D3339 background and proper contrast colors (#E1E7EF, #959AA0)
+
+## January 2025 - Authentication Pages Updates
+- Set address bar color to #22262A using meta theme-color tag for consistent branding
+- Removed welcome text from login and register pages for cleaner presentation
+- Updated KudiScan branding with #29A378 for "Kudi" and #E8F0FE for "Scan" on auth pages
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
