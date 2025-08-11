@@ -113,12 +113,12 @@ export default function Landing() {
             {/* Process Flow */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4">
               {/* Step 1: Snap */}
-              <div className="flex flex-col items-center text-center process-card process-card-1 rounded-xl p-4 w-48 h-36">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3">
+              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
                   <Camera className="w-6 h-6 text-white process-icon-1" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Snap</h3>
-                <p className="text-xs leading-tight" style={{color: '#082118'}}>Snap / Upload a receipt to scan your expenses</p>
+                <p className="text-xs leading-tight text-white">Snap / Upload a receipt to scan your expenses</p>
               </div>
               
               {/* Arrow 1 */}
@@ -132,12 +132,12 @@ export default function Landing() {
               </div>
               
               {/* Step 2: Track */}
-              <div className="flex flex-col items-center text-center process-card process-card-2 rounded-xl p-4 w-48 h-36">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3">
+              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
                   <TrendingUp className="w-6 h-6 text-white process-icon-2" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Track</h3>
-                <p className="text-xs leading-tight" style={{color: '#082118'}}>Track spending across categories with intelligent insights</p>
+                <p className="text-xs leading-tight text-white">Track spending across categories with intelligent insights</p>
               </div>
               
               {/* Arrow 2 */}
@@ -151,12 +151,12 @@ export default function Landing() {
               </div>
               
               {/* Step 3: Report */}
-              <div className="flex flex-col items-center text-center process-card process-card-3 rounded-xl p-4 w-48 h-36">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3">
+              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
                   <FileText className="w-6 h-6 text-white process-icon-3" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Report</h3>
-                <p className="text-xs leading-tight" style={{color: '#082118'}}>Generate professional expense reports for business use</p>
+                <p className="text-xs leading-tight text-white">Generate professional expense reports for business use</p>
               </div>
               
               {/* Arrow 3 */}
@@ -170,12 +170,12 @@ export default function Landing() {
               </div>
               
               {/* Step 4: Scale */}
-              <div className="flex flex-col items-center text-center process-card process-card-4 rounded-xl p-4 w-48 h-36">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3">
+              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
                   <Building className="w-6 h-6 text-white process-icon-4" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Scale</h3>
-                <p className="text-xs leading-tight" style={{color: '#082118'}}>Secure loans from banks and investors to scale your business</p>
+                <p className="text-xs leading-tight text-white">Secure loans from banks and investors to scale your business</p>
               </div>
             </div>
           </div>

@@ -159,32 +159,7 @@
     background-color: var(--process-card-bg);
   }
   
-  /* Process card flowing animations */
-  .process-card {
-    background: linear-gradient(135deg, rgba(41, 163, 120, 0.1) 0%, rgba(41, 163, 120, 0.2) 100%);
-    border: 1px solid rgba(41, 163, 120, 0.3);
-    backdrop-filter: blur(10px);
-  }
-  
-  .process-card-1 {
-    animation: card-pulse-flow 6s ease-in-out infinite;
-    animation-delay: 0s;
-  }
-  
-  .process-card-2 {
-    animation: card-pulse-flow 6s ease-in-out infinite;
-    animation-delay: 1.2s;
-  }
-  
-  .process-card-3 {
-    animation: card-pulse-flow 6s ease-in-out infinite;
-    animation-delay: 2.4s;
-  }
-  
-  .process-card-4 {
-    animation: card-pulse-flow 6s ease-in-out infinite;
-    animation-delay: 4.8s;
-  }
+  /* Process card flowing animations - removed since cards no longer have containers */
   
   /* Process icon flowing animations */
   .process-icon-1 {
@@ -207,18 +182,7 @@
     animation-delay: 4.8s;
   }
   
-  @keyframes card-pulse-flow {
-    0%, 80%, 100% {
-      transform: scale(1);
-      border-color: rgba(41, 163, 120, 0.3);
-      background: linear-gradient(135deg, rgba(41, 163, 120, 0.1) 0%, rgba(41, 163, 120, 0.2) 100%);
-    }
-    10%, 20% {
-      transform: scale(1.05);
-      border-color: rgba(41, 163, 120, 0.8);
-      background: linear-gradient(135deg, rgba(41, 163, 120, 0.25) 0%, rgba(41, 163, 120, 0.35) 100%);
-    }
-  }
+
   
   @keyframes icon-pulse-flow {
     0%, 80%, 100% {
