@@ -71,12 +71,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.post("/api/auth/logout", (req, res) => {
-    req.logout((err) => {
-      if (err) {
-        return res.status(500).json({ message: "Logout failed" });
-      }
-      res.json({ message: "Logged out successfully" });
-    });
+    try {
+      req.logout((err) => {
+        if (err) {
+          console.error("Logout error:", err);
+          return res.status(500).json({ message: "Logout failed" });
+        }
+        // Destroy the session
+        req.session.destroy((sessionErr) => {
+          if (sessionErr) {
+            console.error("Session destroy error:", sessionErr);
+          }
+          res.clearCookie('connect.sid'); // Clear session cookie
+          res.json({ message: "Logged out successfully" });
+        });
+      });
+    } catch (error) {
+      console.error("Logout error:", error);
+      res.status(500).json({ message: "Logout failed" });
+    }
   });
 
   app.get("/api/auth/user", isAuthenticated, async (req, res) => {
@@ -188,7 +201,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Upload receipt image
-  app.post("/api/upload-receipt", isAuthenticated, upload.single('receipt'), async (req, res) => {
+  app.post("/api/upload-receipt", isAuthenticated, upload.single('receipt'), async (req: any, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });

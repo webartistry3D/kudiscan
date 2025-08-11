@@ -135,10 +135,10 @@ export default function Admin() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen">
+    <div className="max-w-md mx-auto bg-background min-h-screen overflow-x-hidden">
       <Header title="Admin Dashboard" />
       
-      <main className="pb-20">
+      <main className="pb-20 px-0">
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3 mx-4 mb-4">
             <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -148,59 +148,59 @@ export default function Admin() {
 
           <TabsContent value="overview" className="px-4 space-y-4">
             {/* Key Metrics */}
-            <div className="grid grid-cols-2 gap-3 w-full">
+            <div className="grid grid-cols-2 gap-3 w-full max-w-full">
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="p-3">
                   <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Total Users</p>
-                      <p className="text-2xl font-bold" data-testid="text-total-users">
+                    <div className="flex-1 min-w-0 pr-2">
+                      <p className="text-xs text-muted-foreground">Total Users</p>
+                      <p className="text-lg font-bold" data-testid="text-total-users">
                         {adminStats?.totalUsers || 0}
                       </p>
                     </div>
-                    <Users className="w-8 h-8 text-primary" />
+                    <Users className="w-6 h-6 text-primary flex-shrink-0" />
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="p-3">
                   <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Active Users</p>
-                      <p className="text-2xl font-bold text-green-600" data-testid="text-active-users">
+                    <div className="flex-1 min-w-0 pr-2">
+                      <p className="text-xs text-muted-foreground">Active Users</p>
+                      <p className="text-lg font-bold text-green-600" data-testid="text-active-users">
                         {adminStats?.activeUsers || 0}
                       </p>
                     </div>
-                    <UserCheck className="w-8 h-8 text-green-600" />
+                    <UserCheck className="w-6 h-6 text-green-600 flex-shrink-0" />
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="p-3">
                   <div className="flex items-center justify-between">
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-muted-foreground">Total Expenses</p>
-                      <p className="text-lg font-bold truncate" data-testid="text-total-platform-expenses">
+                    <div className="flex-1 min-w-0 pr-2">
+                      <p className="text-xs text-muted-foreground">Total Expenses</p>
+                      <p className="text-sm font-bold truncate" data-testid="text-total-platform-expenses">
                         {formatNaira(adminStats?.totalExpenses || 0)}
                       </p>
                     </div>
-                    <Banknote className="w-8 h-8 text-primary flex-shrink-0" />
+                    <Banknote className="w-6 h-6 text-primary flex-shrink-0" />
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="p-3">
                   <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Avg Spending</p>
-                      <p className="text-lg font-bold" data-testid="text-average-spending">
+                    <div className="flex-1 min-w-0 pr-2">
+                      <p className="text-xs text-muted-foreground">Avg Spending</p>
+                      <p className="text-sm font-bold truncate" data-testid="text-average-spending">
                         {formatNaira(adminStats?.averageSpending || 0)}
                       </p>
                     </div>
-                    <TrendingUp className="w-8 h-8 text-blue-600" />
+                    <TrendingUp className="w-6 h-6 text-blue-600 flex-shrink-0" />
                   </div>
                 </CardContent>
               </Card>

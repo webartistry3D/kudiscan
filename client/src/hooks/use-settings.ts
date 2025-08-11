@@ -8,7 +8,7 @@ interface Settings {
 
 const DEFAULT_SETTINGS: Settings = {
   pushNotifications: false,
-  darkMode: false,
+  darkMode: true,
   autoCapture: true,
 };
 
