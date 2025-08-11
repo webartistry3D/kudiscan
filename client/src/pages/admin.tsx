@@ -138,13 +138,15 @@ export default function Admin() {
     <div className="max-w-md mx-auto bg-background min-h-screen overflow-x-hidden">
       <Header title="Admin Dashboard" />
       
-      <main className="pb-20 px-0">
-        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mx-4 mb-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="users">Users</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
-          </TabsList>
+      {/* Margin separation from header */}
+      <div className="pt-4">
+        <main className="pb-20">
+          <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mx-4 mb-6 bg-card border border-border">
+              <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Overview</TabsTrigger>
+              <TabsTrigger value="users" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Users</TabsTrigger>
+              <TabsTrigger value="reports" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Reports</TabsTrigger>
+            </TabsList>
 
           <TabsContent value="overview" className="px-4 space-y-4">
             {/* Key Metrics */}
@@ -425,8 +427,9 @@ export default function Admin() {
               </CardContent>
             </Card>
           </TabsContent>
-        </Tabs>
-      </main>
+          </Tabs>
+        </main>
+      </div>
 
       <BottomNavigation />
     </div>

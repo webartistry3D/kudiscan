@@ -96,6 +96,7 @@ export default function Register() {
                             placeholder="John"
                             data-testid="input-firstname"
                             {...field}
+                            value={field.value || ""}
                           />
                         </FormControl>
                         <FormMessage />
@@ -114,6 +115,7 @@ export default function Register() {
                             placeholder="Doe"
                             data-testid="input-lastname"
                             {...field}
+                            value={field.value || ""}
                           />
                         </FormControl>
                         <FormMessage />
