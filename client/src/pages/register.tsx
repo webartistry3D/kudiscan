@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useLocation } from "wouter";
@@ -17,6 +17,7 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { toast } = useToast();
+  const queryClient = useQueryClient();
 
   const form = useForm<RegisterData>({
     resolver: zodResolver(registerSchema),
@@ -37,11 +38,16 @@ export default function Register() {
       return response.json();
     },
     onSuccess: (data) => {
+      // Invalidate and refetch user data
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
       toast({
         title: "Account Created!",
         description: "Welcome to KudiScan. You have been logged in automatically."
       });
-      setLocation("/");
+      // Small delay to ensure auth state is updated
+      setTimeout(() => {
+        setLocation("/");
+      }, 100);
     },
     onError: (error: any) => {
       toast({
@@ -218,10 +224,8 @@ export default function Register() {
             <div className="text-center mt-6">
               <p className="text-sm text-gray-600">
                 Already have an account?{" "}
-                <Link href="/login">
-                  <a className="text-primary hover:underline font-medium" data-testid="link-login">
-                    Sign In
-                  </a>
+                <Link href="/login" className="text-primary hover:underline font-medium" data-testid="link-login">
+                  Sign In
                 </Link>
               </p>
             </div>

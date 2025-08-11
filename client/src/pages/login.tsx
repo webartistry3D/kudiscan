@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useLocation } from "wouter";
@@ -16,6 +16,7 @@ export default function Login() {
   const [, setLocation] = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
+  const queryClient = useQueryClient();
 
   const form = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
@@ -31,11 +32,16 @@ export default function Login() {
       return response.json();
     },
     onSuccess: (data) => {
+      // Invalidate and refetch user data
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
       toast({
         title: "Welcome back!",
         description: "You have been logged in successfully."
       });
-      setLocation("/");
+      // Small delay to ensure auth state is updated
+      setTimeout(() => {
+        setLocation("/");
+      }, 100);
     },
     onError: (error: any) => {
       toast({
@@ -143,10 +149,8 @@ export default function Login() {
             <div className="text-center mt-6">
               <p className="text-sm text-gray-600">
                 Don't have an account?{" "}
-                <Link href="/register">
-                  <a className="text-primary hover:underline font-medium" data-testid="link-register">
-                    Create Account
-                  </a>
+                <Link href="/register" className="text-primary hover:underline font-medium" data-testid="link-register">
+                  Create Account
                 </Link>
               </p>
             </div>
