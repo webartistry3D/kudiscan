@@ -42,6 +42,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Added sequential icon animations to create visual flow: icon-pulse for Snap→Track→Report, icon-glow for Scale
 - Optimized card height (h-36) with proper padding for balanced design
 - Enhanced Scale step with dramatic glow effects and drop-shadow animations on icon only
+- Removed Enterprise expense management option and Google sign-in section for cleaner CTA
+- Added dashboard preview section with SVG mockups of desktop and mobile interfaces
+- Created custom SVG illustrations showing KudiScan dashboard and mobile app interface
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates

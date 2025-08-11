@@ -120,19 +120,7 @@ export default function Landing() {
                 </Button>
               </Link>
               
-              <Link href="/register" className="w-full">
-                <Button variant="outline" size="lg" className="w-full justify-center text-center px-4" data-testid="button-enterprise">
-                  Enterprise expense management
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground mb-2">Or get started with</p>
-              <Button variant="outline" className="bg-background mx-auto">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjcxIDkuMjA0NTVDMTcuNzEgOC41NjY0IDE3LjY1NDUgNy45NzI3MyAxNy41NTQ1IDcuNDA5MDlIMTBWMTAuNzVIMTQuMzI3M0MxNC4xNTQ1IDExLjUzNjQgMTMuNjcyNyAxMi4yMDQ1IDEyLjk0NTUgMTIuNjE4MlYxNC42MzY0SDE1LjQwOTFDMTYuNzU0NSAxMy4zODY0IDE3LjcxIDEwLjkxIDEzLjcxIDkuMjA0NTVaIiBmaWxsPSIjNDA4MUVEIi8+CjxwYXRoIGQ9Ik0xMCA0SDEuNUMxLjIyMzg2IDEgMSAxLjIyMzg2IDEgMS41VjE2LjVDMSAxNi43NzYxIDEuMjIzODYgMTcgMS41IDE3SDE2LjVDMTYuNzc2MSAxNyAxNyAxNi43NzYxIDE3IDE2LjVWOC41IiBzdHJva2U9IiMzNDc0MkQiIHN0cm9rZS13aWR0aD0iLjUiLz4KPC9zdmc+" alt="Google" className="w-4 h-4 mr-2" />
-                Google
-              </Button>
+
             </div>
           </div>
         </div>
@@ -155,6 +143,111 @@ export default function Landing() {
             <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Flutterwave
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard Preview Section */}
+      <section className="py-16 bg-primary-light">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display text-foreground">
+              See KudiScan in action
+            </h2>
+            <p className="text-lg text-muted-foreground mb-12">
+              Get a complete view of your finances with our intuitive dashboard and mobile app
+            </p>
+            
+            {/* Dashboard and Mobile Preview */}
+            <div className="relative flex items-center justify-center gap-8 max-w-5xl mx-auto">
+              {/* Desktop Dashboard */}
+              <div className="hidden md:block relative">
+                <svg width="600" height="400" viewBox="0 0 600 400" className="drop-shadow-2xl">
+                  {/* Monitor Frame */}
+                  <rect x="20" y="30" width="560" height="320" rx="8" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
+                  <rect x="30" y="40" width="540" height="300" rx="4" fill="#111827"/>
+                  
+                  {/* Screen Content - Dashboard */}
+                  <rect x="40" y="50" width="520" height="60" rx="6" fill="#29A378"/>
+                  <text x="60" y="75" fill="white" fontSize="16" fontWeight="bold">KudiScan Dashboard</text>
+                  <text x="60" y="95" fill="white" fontSize="12" opacity="0.8">Welcome back, User</text>
+                  
+                  {/* Cards */}
+                  <rect x="50" y="130" width="150" height="80" rx="8" fill="#374151"/>
+                  <text x="60" y="150" fill="#9ca3af" fontSize="10">Total Expenses</text>
+                  <text x="60" y="170" fill="white" fontSize="16" fontWeight="bold">₦125,450</text>
+                  <text x="60" y="190" fill="#22c55e" fontSize="10">↗ 12% this month</text>
+                  
+                  <rect x="220" y="130" width="150" height="80" rx="8" fill="#374151"/>
+                  <text x="230" y="150" fill="#9ca3af" fontSize="10">Categories</text>
+                  <text x="230" y="170" fill="white" fontSize="16" fontWeight="bold">8 Active</text>
+                  <text x="230" y="190" fill="#29A378" fontSize="10">Food • Transport • Bills</text>
+                  
+                  <rect x="390" y="130" width="150" height="80" rx="8" fill="#374151"/>
+                  <text x="400" y="150" fill="#9ca3af" fontSize="10">Recent Scans</text>
+                  <text x="400" y="170" fill="white" fontSize="16" fontWeight="bold">23 Receipts</text>
+                  <text x="400" y="190" fill="#29A378" fontSize="10">✓ All processed</text>
+                  
+                  {/* Chart Area */}
+                  <rect x="50" y="230" width="490" height="100" rx="8" fill="#374151"/>
+                  <text x="60" y="250" fill="white" fontSize="12" fontWeight="bold">Spending Trends</text>
+                  
+                  {/* Simple Chart Lines */}
+                  <polyline points="70,310 120,290 170,280 220,295 270,275 320,285 370,270 420,280 470,265 520,270" 
+                            stroke="#29A378" strokeWidth="3" fill="none"/>
+                  <polyline points="70,320 120,315 170,305 220,310 270,300 320,308 370,295 420,305 470,290 520,295" 
+                            stroke="#60a5fa" strokeWidth="2" fill="none"/>
+                  
+                  {/* Monitor Stand */}
+                  <rect x="280" y="350" width="40" height="20" rx="4" fill="#374151"/>
+                  <rect x="250" y="370" width="100" height="8" rx="4" fill="#4b5563"/>
+                </svg>
+              </div>
+
+              {/* Mobile Phone */}
+              <div className="relative">
+                <svg width="200" height="400" viewBox="0 0 200 400" className="drop-shadow-2xl">
+                  {/* Phone Frame */}
+                  <rect x="10" y="10" width="180" height="380" rx="25" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
+                  <rect x="20" y="40" width="160" height="320" rx="15" fill="#111827"/>
+                  
+                  {/* Status Bar */}
+                  <rect x="25" y="45" width="150" height="20" fill="#111827"/>
+                  <text x="30" y="57" fill="white" fontSize="8">9:41</text>
+                  <text x="150" y="57" fill="white" fontSize="8">100%</text>
+                  
+                  {/* Header */}
+                  <rect x="25" y="70" width="150" height="40" rx="6" fill="#29A378"/>
+                  <text x="35" y="85" fill="white" fontSize="10" fontWeight="bold">KudiScan</text>
+                  <text x="35" y="100" fill="white" fontSize="8" opacity="0.8">Tap to scan receipt</text>
+                  
+                  {/* Camera Button */}
+                  <circle cx="100" cy="160" r="30" fill="#29A378"/>
+                  <circle cx="100" cy="160" r="20" fill="white" fillOpacity="0.2"/>
+                  <text x="95" y="165" fill="white" fontSize="12">📷</text>
+                  
+                  {/* Recent Transactions */}
+                  <rect x="30" y="220" width="140" height="30" rx="4" fill="#374151"/>
+                  <text x="35" y="235" fill="white" fontSize="8">Shoprite - ₦3,450</text>
+                  <text x="35" y="245" fill="#9ca3af" fontSize="6">Food & Groceries</text>
+                  
+                  <rect x="30" y="260" width="140" height="30" rx="4" fill="#374151"/>
+                  <text x="35" y="275" fill="white" fontSize="8">Uber - ₦1,200</text>
+                  <text x="35" y="285" fill="#9ca3af" fontSize="6">Transportation</text>
+                  
+                  <rect x="30" y="300" width="140" height="30" rx="4" fill="#374151"/>
+                  <text x="35" y="315" fill="white" fontSize="8">NEPA Bill - ₦8,500</text>
+                  <text x="35" y="325" fill="#9ca3af" fontSize="6">Utilities</text>
+                  
+                  {/* Home Indicator */}
+                  <rect x="85" y="375" width="30" height="4" rx="2" fill="#4b5563"/>
+                </svg>
+              </div>
+            </div>
+            
+            <p className="mt-8 text-sm text-muted-foreground max-w-2xl mx-auto">
+              Access your financial data anywhere with our responsive web dashboard and mobile-optimized interface
+            </p>
           </div>
         </div>
       </section>
