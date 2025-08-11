@@ -138,7 +138,7 @@ export default function Profile() {
                 </Button>
               </div>
               <div className="text-center">
-                <h2 className="text-xl font-semibold text-foreground">
+                <h2 className="text-xl font-semibold text-foreground font-display">
                   {userDisplayName}
                 </h2>
                 <p className="text-muted-foreground">{user?.email}</p>
@@ -155,7 +155,7 @@ export default function Profile() {
         {/* Profile Information */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Personal Information</CardTitle>
+            <CardTitle className="text-lg font-display">Personal Information</CardTitle>
           </CardHeader>
           <CardContent>
             {isEditing ? (
@@ -258,7 +258,7 @@ export default function Profile() {
         {/* Account Statistics */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Account Statistics</CardTitle>
+            <CardTitle className="text-lg font-display">Account Statistics</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-4">

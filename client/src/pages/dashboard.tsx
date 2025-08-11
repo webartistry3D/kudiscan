@@ -247,7 +247,7 @@ export default function Dashboard() {
         {/* Recent Transactions */}
         <section className="px-4 py-2 max-w-full">
           <div className="flex items-center justify-between mb-4 max-w-full">
-            <h3 className="text-lg font-semibold text-muted-foreground">Recent Transactions</h3>
+            <h3 className="text-lg font-semibold text-muted-foreground font-display">Recent Transactions</h3>
             <Button 
               variant="link" 
               className="text-primary text-sm font-medium p-0 flex-shrink-0"

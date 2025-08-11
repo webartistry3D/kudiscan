@@ -15,7 +15,7 @@ export default function Landing() {
             <span className="text-white text-3xl font-bold">K</span>
           </div>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 font-display">
             Kudi<span className="text-primary">Scan</span>
           </h1>
           
@@ -48,7 +48,7 @@ export default function Landing() {
       {/* Features Section */}
       <section className="px-4 pb-12">
         <div className="max-w-md mx-auto">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8 font-display">
             Everything you need to manage expenses
           </h2>
           
@@ -60,7 +60,7 @@ export default function Landing() {
                     <Scan className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Smart Receipt Scanning</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Smart Receipt Scanning</h3>
                     <p className="text-gray-600 text-sm">
                       Snap photos of receipts and let AI extract merchant, amount, and date automatically.
                     </p>
@@ -76,7 +76,7 @@ export default function Landing() {
                     <PieChart className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Detailed Analytics</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Detailed Analytics</h3>
                     <p className="text-gray-600 text-sm">
                       View spending patterns by category, track monthly budgets, and get insights into your habits.
                     </p>
@@ -92,7 +92,7 @@ export default function Landing() {
                     <Receipt className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Expense Categories</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Expense Categories</h3>
                     <p className="text-gray-600 text-sm">
                       Organize expenses with smart categories including food, transport, utilities, and more.
                     </p>
@@ -108,7 +108,7 @@ export default function Landing() {
                     <Smartphone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Mobile-First Design</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-display">Mobile-First Design</h3>
                     <p className="text-gray-600 text-sm">
                       Optimized for smartphones with intuitive navigation and offline receipt storage.
                     </p>

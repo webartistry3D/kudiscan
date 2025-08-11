@@ -29,7 +29,7 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             <Search className="text-white w-4 h-4" />
           </div>
-          <h1 className="text-xl font-bold text-foreground" data-testid="header-title">
+          <h1 className="text-xl font-bold text-foreground font-display" data-testid="header-title">
             {title}
           </h1>
         </div>

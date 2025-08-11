@@ -70,7 +70,7 @@ export default function Register() {
           <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-2xl mx-auto mb-4 flex items-center justify-center">
             <span className="text-white text-2xl font-bold">K</span>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">KudiScan</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 font-display">KudiScan</h1>
           <p className="text-gray-600">Start tracking your expenses today</p>
         </div>
 

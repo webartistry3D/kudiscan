@@ -216,7 +216,7 @@ export default function Admin() {
             {/* Recent Activity */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center text-lg">
+                <CardTitle className="flex items-center text-lg font-display">
                   <Activity className="w-5 h-5 mr-2" />
                   Recent Activity
                 </CardTitle>
@@ -362,7 +362,7 @@ export default function Admin() {
           <TabsContent value="reports" className="px-4 space-y-4 max-w-full">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center text-lg">
+                <CardTitle className="flex items-center text-lg font-display">
                   <BarChart3 className="w-5 h-5 mr-2" />
                   System Reports
                 </CardTitle>
@@ -409,7 +409,7 @@ export default function Admin() {
             {/* Quick System Info */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center text-lg">
+                <CardTitle className="flex items-center text-lg font-display">
                   <Settings className="w-5 h-5 mr-2" />
                   System Information
                 </CardTitle>
