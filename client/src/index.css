@@ -118,6 +118,10 @@
   --sidebar-accent-foreground: hsl(215 20.2% 65.1%);
   --sidebar-border: hsl(210 12% 26%);
   --sidebar-ring: hsl(159 60% 40%);
+  
+  /* Custom KudiScan green backgrounds for dark theme */
+  --primary-light: hsl(159 60% 8%);
+  --primary-medium: hsl(159 60% 12%);
 }
 
 @layer base {
@@ -137,5 +141,14 @@
 @layer utilities {
   .gradient-primary {
     background: var(--gradient-primary);
+  }
+  
+  /* Custom KudiScan green background utilities */
+  .bg-primary-light {
+    background-color: var(--primary-light);
+  }
+  
+  .bg-primary-medium {
+    background-color: var(--primary-medium);
   }
 }
