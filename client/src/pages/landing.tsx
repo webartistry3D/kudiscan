@@ -254,14 +254,14 @@ export default function Landing() {
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
 
-            {/* Expense Management */}
+            {/* OCR-Powered Scanning */}
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Receipt className="w-12 h-12" style={{color: '#082118'}} />
+                <span className="text-3xl" style={{color: '#082118'}}>🧠</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Expense management</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>OCR + AI Recognition</h3>
               <p className="text-sm" style={{color: '#082118'}}>
-                Automatically create, submit, approve, and track expenses. Reports sync automatically.
+                Advanced OCR technology combined with AI automatically extracts merchant, amount, and item details from any receipt.
               </p>
               <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
             </div>
@@ -328,32 +328,32 @@ export default function Landing() {
           
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-8 h-8" style={{color: '#29A378'}} />
+              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>1. Add Expense</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
-                Upload your first receipt with the mobile app, drag-and-drop on the web, or forward it to receipts@kudiscan.com.
+                Upload your receipt with the Scan button.
               </p>
             </div>
 
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Receipt className="w-8 h-8" style={{color: '#29A378'}} />
+              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>2. Create Report</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>2. Track & Analyze</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
-                Automatically generate expense reports for tracking or reimbursement. Add categories, tags, and comments, then submit.
+                View spending analytics, category breakdowns, and budget tracking to understand your spending patterns.
               </p>
             </div>
 
             <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-8 h-8" style={{color: '#29A378'}} />
+              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-5xl" style={{color: '#29A378'}}>₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>3. Track & Analyze</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>3. Generate Reports</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
-                View detailed spending analytics, category breakdowns, and budget tracking to understand your financial patterns.
+                Generate expense reports for tracking or reimbursement.
               </p>
             </div>
           </div>
@@ -445,7 +445,7 @@ export default function Landing() {
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold mb-2 font-display" style={{color: '#E1E7EF'}}>Premium</h3>
                 <div className="text-4xl font-bold mb-2" style={{color: '#E1E7EF'}}>
-                  ₦2,500<span className="text-lg font-normal" style={{color: '#959AA0'}}>/month</span>
+                  ₦3,000<span className="text-lg font-normal" style={{color: '#959AA0'}}>/month</span>
                 </div>
                 <p style={{color: '#959AA0'}}>Complete financial management for individuals and businesses</p>
               </div>
@@ -505,7 +505,7 @@ export default function Landing() {
                 Start Premium Trial
               </Button>
               <p className="text-center mt-2 text-sm" style={{color: '#959AA0'}}>
-                14-day free trial, then ₦2,500/month
+                14-day free trial, then ₦3,000/month
               </p>
             </div>
           </div>

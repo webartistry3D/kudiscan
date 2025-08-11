@@ -78,3 +78,15 @@ Typography preference: Selected Google Fonts + Glacial Indifference combination 
 ## Database Configuration
 - **Drizzle Kit**.
 - **PostgreSQL**.
+
+# Recent Changes Log
+
+## January 2025 - Authentication Pages & Features Updates
+- Set address bar color to #22262A using meta theme-color tag for consistent branding
+- Removed welcome text from login and register pages for cleaner presentation
+- Updated KudiScan branding with #29A378 for "Kudi" and #E8F0FE for "Scan" on auth pages
+- Replaced Features "Expense Management" with "OCR + AI Recognition" using brain emoji, emphasizing advanced OCR+AI technology
+- Updated Premium pricing from ₦2,500 to ₦3,000 per month across pricing section
+- Doubled icon sizes in "How KudiScan works" section from w-8 h-8 to w-16 h-16, containers from w-16 h-16 to w-32 h-32
+- Simplified step descriptions: "Upload your receipt with the Scan button" and reordered flow to Track & Analyze before Generate Reports
+- Replaced Receipt icon with Naira symbol (₦) for Generate Reports step, emphasizing Nigerian market focus
