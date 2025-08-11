@@ -38,9 +38,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Optimized card sizing with fixed width (w-48) and larger icons (w-8 h-8) in bigger containers (w-16 h-16)
 - Updated process flow cards to use #29A378 background color with white text and icons for better contrast
 - Applied white/20 opacity for icon containers and white/80 for description text on green background
-- Added sequential animations to create visual flow: pulse-grow for Snap→Track→Report, pulse-glow for Scale
-- Reduced card height (h-32) and optimized padding for more compact design
-- Enhanced Scale step with glow effects and stronger animation emphasis
+- Added sequential icon animations to create visual flow: icon-pulse for Snap→Track→Report, icon-glow for Scale
+- Optimized card height (h-36) with proper padding for balanced design
+- Enhanced Scale step with dramatic glow effects and drop-shadow animations on icon only
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
