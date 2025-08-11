@@ -14,7 +14,7 @@ import { formatNaira } from "@/lib/currency";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { 
   Users, 
-  DollarSign, 
+  Banknote, 
   TrendingUp, 
   Activity, 
   Search,
@@ -138,6 +138,13 @@ export default function Admin() {
     <div className="max-w-md mx-auto bg-background min-h-screen">
       <Header title="Admin Dashboard" />
       
+      {/* Admin Navigation Explanation */}
+      <div className="px-4 py-2 bg-card border-b border-border">
+        <p className="text-sm text-muted-foreground">
+          <strong>Admin:</strong> Overview & stats • <strong>Dashboard:</strong> User dashboard • <strong>Transactions:</strong> All transactions • <strong>Settings:</strong> Profile & preferences
+        </p>
+      </div>
+      
       <main className="pb-20">
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3 mx-4 mb-4">
@@ -148,7 +155,7 @@ export default function Admin() {
 
           <TabsContent value="overview" className="px-4 space-y-4">
             {/* Key Metrics */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 w-full">
               <Card>
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
@@ -180,13 +187,13 @@ export default function Admin() {
               <Card>
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm text-muted-foreground">Total Expenses</p>
-                      <p className="text-lg font-bold" data-testid="text-total-platform-expenses">
+                      <p className="text-lg font-bold truncate" data-testid="text-total-platform-expenses">
                         {formatNaira(adminStats?.totalExpenses || 0)}
                       </p>
                     </div>
-                    <DollarSign className="w-8 h-8 text-primary" />
+                    <Banknote className="w-8 h-8 text-primary flex-shrink-0" />
                   </div>
                 </CardContent>
               </Card>
@@ -381,7 +388,7 @@ export default function Admin() {
                     description: "Financial summary report coming soon!",
                   })}
                 >
-                  <DollarSign className="w-4 h-4 mr-2" />
+                  <Banknote className="w-4 h-4 mr-2" />
                   Generate Financial Report
                 </Button>
 

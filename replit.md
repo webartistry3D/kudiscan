@@ -19,6 +19,12 @@ User color preference (Jan 2025): Prefers dark theme colors matching Replit's co
 - Added admin middleware and backend routes for user management operations
 - Enhanced settings page to show admin panel access for admin users
 - Implemented proper error handling and toast notifications for admin actions
+- Configured app to load in dark mode by default with CSS @apply directive
+- Replaced dollar sign icons with Banknote icons for proper Naira currency representation
+- Added admin navigation explanation banner with tab descriptions
+- Fixed alignment issues to prevent horizontal scrolling on admin pages
+- Implemented role-based routing so admin users go directly to admin dashboard after login
+- Updated bottom navigation to show admin-specific options for admin users
 
 ## January 2025 - Settings & Authentication Improvements
 - Fixed authentication state management with proper query cache invalidation
