@@ -32,6 +32,7 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Removed navigation header from landing page for cleaner presentation
 - Updated hero headline to "Snap. Scan. Track. Report." for clearer value proposition
 - Enhanced hero description with process flow cards featuring icons and arrows
+- Updated AI-powered to "automated finance assistant" for clearer messaging
 - Created 4-step visual workflow: Snap → Track → Report → Scale with card-based styling
 - Used relatable icons (Camera, TrendingUp, FileText, Building) connected by arrows for clear process understanding
 - Updated first step text to "Snap / Upload a receipt to scan your expenses" for clarity

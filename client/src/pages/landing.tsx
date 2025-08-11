@@ -30,7 +30,7 @@ export default function Landing() {
           
           <div className="max-w-5xl mx-auto mb-8">
             <p className="text-lg text-muted-foreground text-center mb-8">
-              KudiScan is your AI-powered finance assistant.
+              KudiScan is your automated finance assistant.
             </p>
             
             {/* Process Flow */}
