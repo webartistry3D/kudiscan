@@ -7,16 +7,16 @@ KudiScan is a mobile-first expense tracking application that allows users to sca
 Preferred communication style: Simple, everyday language.
 User feedback (Jan 2025): Confirmed the app look and feel works well, particularly appreciates the Nigerian-focused design with Naira currency formatting.
 User color preference (Jan 2025): Prefers dark theme colors matching Replit's conversation environment - main background #292C33, cards/panels #383B42.
-Typography preference (Jan 2025): Selected Inter + Poppins font combination for modern minimalist aesthetic - Inter for body text/UI elements, Poppins for headlines and branding.
+Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference combination for modern minimalist aesthetic - Inter/Roboto for body text/UI elements, Glacial Indifference for headlines and branding.
 
 # Recent Changes
 
 ## January 2025 - Typography & Layout Updates
-- Implemented Inter + Poppins font system: Inter for body text and UI elements, Poppins for headlines and branding
-- Updated Google Fonts import to include both Inter (300-700 weights) and Poppins (400-700 weights)
-- Applied font-display class (Poppins) to all main headings: page titles, CardTitles, section headers, and branding elements
-- Enhanced typography hierarchy across Landing, Dashboard, Admin, Profile, Login, and Register pages
-- Maintained Inter as primary font for body text, forms, and UI components for optimal readability
+- Implemented Google Fonts + Glacial Indifference font system: Inter/Roboto for body text and UI elements, Glacial Indifference for headlines and branding
+- Updated font imports to include Inter (300-700 weights), Roboto (300-700 weights), and Glacial Indifference from CDNFonts
+- Applied font-display class (Glacial Indifference) to all main headings: page titles, CardTitles, section headers, and branding elements
+- Enhanced typography hierarchy with geometric sans-serif aesthetic across Landing, Dashboard, Admin, Profile, Login, and Register pages
+- Maintained Google Fonts (Inter/Roboto) as primary fonts for body text, forms, and UI components for optimal readability and performance
 
 ## January 2025 - Layout Containment & Boundary Fixes
 - Fixed Dashboard overview section to use Card-based containment instead of full-width sections
