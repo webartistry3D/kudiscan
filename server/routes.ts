@@ -204,14 +204,60 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Admin routes
+  app.get("/api/admin/stats", isAdmin, async (req, res) => {
+    try {
+      const allUsers = await storage.getAllUsers();
+      const allExpenses = await storage.getAllExpenses();
+      
+      const now = new Date();
+      const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+
+      const activeUsers = allUsers.filter(u => u.isActive).length;
+      const newUsersThisMonth = allUsers.filter(u => 
+        u.createdAt && new Date(u.createdAt) >= startOfMonth
+      ).length;
+      
+      const totalExpenses = allExpenses.reduce((sum, e) => sum + parseFloat(e.amount), 0);
+      const averageSpending = allUsers.length > 0 ? totalExpenses / allUsers.length : 0;
+
+      res.json({
+        totalUsers: allUsers.length,
+        activeUsers,
+        totalExpenses,
+        monthlyRevenue: 0, // Placeholder for actual revenue calculation
+        newUsersThisMonth,
+        averageSpending,
+      });
+    } catch (error) {
+      console.error("Error getting admin stats:", error);
+      res.status(500).json({ message: "Failed to get admin stats" });
+    }
+  });
+
   app.get("/api/admin/users", isAdmin, async (req, res) => {
     try {
-      const users = await storage.getAllUsers();
-      // Remove passwords from response
-      const usersWithoutPasswords = users.map(({ password: _, ...user }) => user);
-      res.json(usersWithoutPasswords);
+      const allUsers = await storage.getAllUsers();
+      const allExpenses = await storage.getAllExpenses();
+
+      const usersWithStats = allUsers.map(user => {
+        const userExpenses = allExpenses.filter(e => e.userId === user.id);
+        const totalExpenses = userExpenses.reduce((sum, e) => sum + parseFloat(e.amount), 0);
+        
+        const { password: _, ...userWithoutPassword } = user;
+        
+        return {
+          ...userWithoutPassword,
+          totalExpenses,
+          lastActivity: userExpenses.length > 0 
+            ? new Date(Math.max(...userExpenses.map(e => new Date(e.date).getTime()))).toISOString()
+            : null,
+        };
+      });
+
+      res.json(usersWithStats);
     } catch (error) {
-      res.status(500).json({ message: "Failed to fetch users" });
+      console.error("Error getting admin users:", error);
+      res.status(500).json({ message: "Failed to get users" });
     }
   });
 
@@ -221,6 +267,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(expenses);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch all expenses" });
+    }
+  });
+
+  app.patch("/api/admin/users/:id/status", isAdmin, async (req, res) => {
+    try {
+      const { isActive } = req.body;
+      const user = await storage.updateUser(req.params.id, { isActive });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res.json({ message: "User status updated successfully" });
+    } catch (error) {
+      console.error("Error updating user status:", error);
+      res.status(500).json({ message: "Failed to update user status" });
+    }
+  });
+
+  app.patch("/api/admin/users/:id/admin", isAdmin, async (req, res) => {
+    try {
+      const { isAdmin: makeAdmin } = req.body;
+      const user = await storage.updateUser(req.params.id, { isAdmin: makeAdmin });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res.json({ message: "Admin status updated successfully" });
+    } catch (error) {
+      console.error("Error updating admin status:", error);
+      res.status(500).json({ message: "Failed to update admin status" });
     }
   });
 

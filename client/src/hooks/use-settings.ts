@@ -45,17 +45,33 @@ export function useSettings() {
     setSettings(prev => ({ ...prev, [key]: value }));
   };
 
-  const togglePushNotifications = () => {
+  const togglePushNotifications = async () => {
     const newValue = !settings.pushNotifications;
-    updateSetting('pushNotifications', newValue);
     
-    // Request notification permission if enabling
+    // If enabling notifications, check for browser support and request permission
     if (newValue && 'Notification' in window) {
-      Notification.requestPermission().then(permission => {
-        if (permission !== 'granted') {
+      try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          updateSetting('pushNotifications', true);
+          return true;
+        } else {
           updateSetting('pushNotifications', false);
+          return false;
         }
-      });
+      } catch (error) {
+        console.error('Error requesting notification permission:', error);
+        updateSetting('pushNotifications', false);
+        return false;
+      }
+    } else if (!newValue) {
+      // Disabling notifications
+      updateSetting('pushNotifications', false);
+      return true;
+    } else {
+      // Browser doesn't support notifications
+      updateSetting('pushNotifications', false);
+      return false;
     }
   };
 

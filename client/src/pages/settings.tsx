@@ -27,6 +27,17 @@ export default function Settings() {
   const { settings, togglePushNotifications, toggleDarkMode, toggleAutoCapture } = useSettings();
   const { toast } = useToast();
 
+  const handlePushNotificationToggle = async () => {
+    const result = await togglePushNotifications();
+    if (!result && !settings.pushNotifications) {
+      toast({
+        title: "Notification Permission",
+        description: "Please allow notifications in your browser settings to enable push notifications.",
+        variant: "destructive",
+      });
+    }
+  };
+
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to log out?")) {
       logout();
@@ -140,7 +151,7 @@ export default function Settings() {
                 </div>
                 <Switch 
                   checked={settings.pushNotifications}
-                  onCheckedChange={togglePushNotifications}
+                  onCheckedChange={handlePushNotificationToggle}
                   data-testid="switch-notifications" 
                 />
               </div>

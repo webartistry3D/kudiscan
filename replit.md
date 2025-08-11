@@ -10,6 +10,16 @@ User color preference (Jan 2025): Prefers dark theme colors matching Replit's co
 
 # Recent Changes
 
+## January 2025 - Push Notifications & Admin Dashboard
+- Fixed push notification toggle functionality with proper async handling and browser permission requests
+- Created comprehensive admin dashboard with three main tabs:
+  * Overview: System metrics, user stats, and recent activity monitoring
+  * Users: Complete user management with search, filtering, and status controls
+  * Reports: System information and report generation placeholders
+- Added admin middleware and backend routes for user management operations
+- Enhanced settings page to show admin panel access for admin users
+- Implemented proper error handling and toast notifications for admin actions
+
 ## January 2025 - Settings & Authentication Improvements
 - Fixed authentication state management with proper query cache invalidation
 - Resolved DOM nesting warnings in login/register forms
