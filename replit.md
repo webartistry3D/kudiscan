@@ -55,6 +55,9 @@ Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference c
 - Changed "How KudiScan's free trial works" to "How KudiScan works"
 - Added comprehensive Pricing section with Freemium (10 receipts/month) and Premium (₦2,500/month) plans
 - Applied #22262A background with #E1E7EF primary text and #959AA0 secondary text colors to pricing section
+- Moved dashboard and mobile mockups before hero description text for better visual hierarchy
+- Reduced image sizes and spacing: desktop 480x320, mobile 160x320, gap reduced to 6
+- Decreased section padding from py-12 to py-8 for tighter layout between sections
 - Maintained Nigerian focus with Naira currency highlighting and local user testimonials
 
 ## January 2025 - Typography & Layout Updates
