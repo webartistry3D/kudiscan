@@ -6,15 +6,15 @@ import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, C
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="px-4 py-4 border-b">
+      <header className="px-4 py-4 border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="flex items-center justify-between max-w-6xl mx-auto">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white text-lg font-bold">K</span>
+              <span className="text-primary-foreground text-lg font-bold">K</span>
             </div>
-            <span className="text-xl font-bold font-display">KudiScan</span>
+            <span className="text-xl font-bold font-display text-foreground">KudiScan</span>
           </div>
           <Link href="/login">
             <Button variant="outline" size="sm" data-testid="header-sign-in">
@@ -27,7 +27,7 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="px-4 py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 font-display">
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display">
             The <em className="italic text-primary">fastest</em>
             <Car className="inline-block w-8 h-8 mx-2 text-primary" />
             way to do your expenses
@@ -35,15 +35,15 @@ export default function Landing() {
           
           {/* Trust Badge */}
           <div className="flex items-center justify-center space-x-2 mb-8">
-            <Badge variant="secondary" className="bg-gray-100 text-gray-700 px-3 py-1">
+            <Badge variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1">
               Trustpilot
             </Badge>
             <div className="flex items-center space-x-1">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <Star key={star} className="w-4 h-4 fill-primary text-primary" />
               ))}
             </div>
-            <span className="text-sm font-semibold">4.5 (1,200+ reviews)</span>
+            <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
           </div>
           
           <div className="grid md:grid-cols-3 gap-4 mb-8 text-left max-w-3xl mx-auto">
@@ -51,28 +51,28 @@ export default function Landing() {
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <p className="font-semibold">All inclusive.</p>
-                <p className="text-sm text-gray-600">Scan receipts, track expenses, and manage your finances with AI.</p>
+                <p className="text-sm text-muted-foreground">Scan receipts, track expenses, and manage your finances with AI.</p>
               </div>
             </div>
             <div className="flex items-start space-x-2">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <p className="font-semibold">Naira currency.</p>
-                <p className="text-sm text-gray-600">Built specifically for Nigerian users with local currency support.</p>
+                <p className="text-sm text-muted-foreground">Built specifically for Nigerian users with local currency support.</p>
               </div>
             </div>
             <div className="flex items-start space-x-2">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <p className="font-semibold">Mobile-first.</p>
-                <p className="text-sm text-gray-600">Designed for smartphones with offline receipt storage.</p>
+                <p className="text-sm text-muted-foreground">Designed for smartphones with offline receipt storage.</p>
               </div>
             </div>
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gray-50 rounded-2xl p-8 mb-8">
-            <h3 className="text-lg font-semibold mb-4 font-display">I want to:</h3>
+          <div className="bg-card/60 border border-border rounded-2xl p-8 mb-8">
+            <h3 className="text-lg font-semibold mb-4 font-display text-foreground">I want to:</h3>
             
             <div className="grid gap-4 max-w-2xl mx-auto">
               <Link href="/register">
@@ -95,8 +95,8 @@ export default function Landing() {
             </div>
             
             <div className="mt-6">
-              <p className="text-sm text-gray-600 mb-2">Or get started with</p>
-              <Button variant="outline" className="bg-white">
+              <p className="text-sm text-muted-foreground mb-2">Or get started with</p>
+              <Button variant="outline" className="bg-background">
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjcxIDkuMjA0NTVDMTcuNzEgOC41NjY0IDE3LjY1NDUgNy45NzI3MyAxNy41NTQ1IDcuNDA5MDlIMTBWMTAuNzVIMTQuMzI3M0MxNC4xNTQ1IDExLjUzNjQgMTMuNjcyNyAxMi4yMDQ1IDEyLjk0NTUgMTIuNjE4MlYxNC42MzY0SDE1LjQwOTFDMTYuNzU0NSAxMy4zODY0IDE3LjcxIDEwLjkxIDEzLjcxIDkuMjA0NTVaIiBmaWxsPSIjNDA4MUVEIi8+CjxwYXRoIGQ9Ik0xMCA0SDEuNUMxLjIyMzg2IDEgMSAxLjIyMzg2IDEgMS41VjE2LjVDMSAxNi43NzYxIDEuMjIzODYgMTcgMS41IDE3SDE2LjVDMTYuNzc2MSAxNyAxNyAxNi43NzYxIDE3IDE2LjVWOC41IiBzdHJva2U9IiMzNDc0MkQiIHN0cm9rZS13aWR0aD0iLjUiLz4KPC9zdmc+" alt="Google" className="w-4 h-4 mr-2" />
                 Google
               </Button>
@@ -106,20 +106,20 @@ export default function Landing() {
       </section>
 
       {/* Company Logos */}
-      <section className="px-4 py-12 bg-gray-50">
+      <section className="px-4 py-12 bg-secondary/30">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-lg font-semibold mb-8 font-display">Join 100,000+ users who trust KudiScan</h3>
+          <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60">
-            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 bg-gray-200 rounded text-sm font-semibold">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Flutterwave
             </div>
           </div>
@@ -129,16 +129,16 @@ export default function Landing() {
       {/* Features Section */}
       <section className="px-4 py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4 font-display">Features</h2>
+          <h2 className="text-3xl font-bold text-center text-foreground mb-4 font-display">Features</h2>
           
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {/* Receipt Scanning */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-8 h-8 text-blue-600" />
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">Receipt scanning</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Receipt scanning</h3>
+              <p className="text-muted-foreground text-sm">
                 Snap a photo, forward to receipts@kudiscan.com, or upload a file – we'll scan the details!
               </p>
               <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
@@ -146,11 +146,11 @@ export default function Landing() {
 
             {/* Expense Management */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Receipt className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">Expense management</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Expense management</h3>
+              <p className="text-muted-foreground text-sm">
                 Automatically create, submit, approve, and track expenses. Reports sync automatically.
               </p>
               <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
@@ -158,11 +158,11 @@ export default function Landing() {
 
             {/* Analytics */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-8 h-8 text-purple-600" />
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">Financial reporting</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Financial reporting</h3>
+              <p className="text-muted-foreground text-sm">
                 Build tailored reports to analyze spend, identify trends, and support smarter decisions.
               </p>
               <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
@@ -170,11 +170,11 @@ export default function Landing() {
 
             {/* Mobile App */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-8 h-8 text-orange-600" />
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">Mobile app</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Mobile app</h3>
+              <p className="text-muted-foreground text-sm">
                 Manage expenses and scan receipts on the go. All functionality included.
               </p>
               <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
@@ -182,11 +182,11 @@ export default function Landing() {
 
             {/* Security */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-red-600" />
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">Bank-level security</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Bank-level security</h3>
+              <p className="text-muted-foreground text-sm">
                 Your financial data is protected with enterprise-grade encryption and security.
               </p>
               <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
@@ -194,11 +194,11 @@ export default function Landing() {
 
             {/* Local Currency */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">₦</span>
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl text-primary">₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">Naira currency</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Naira currency</h3>
+              <p className="text-muted-foreground text-sm">
                 Built specifically for Nigerian users with native Naira support and local preferences.
               </p>
               <Button variant="link" className="text-primary text-sm mt-2 p-0">Learn More</Button>
@@ -212,9 +212,9 @@ export default function Landing() {
       </section>
 
       {/* How It Works */}
-      <section className="px-4 py-16 bg-gray-50">
+      <section className="px-4 py-16 bg-secondary/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12 font-display">
+          <h2 className="text-3xl font-bold text-center text-foreground mb-12 font-display">
             How KudiScan's free trial works
           </h2>
           
@@ -223,8 +223,8 @@ export default function Landing() {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Scan className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">1. Add Expense</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">1. Add Expense</h3>
+              <p className="text-muted-foreground text-sm">
                 Upload your first receipt with the mobile app, drag-and-drop on the web, or forward it to receipts@kudiscan.com.
               </p>
             </div>
@@ -233,8 +233,8 @@ export default function Landing() {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Receipt className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">2. Create Report</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">2. Create Report</h3>
+              <p className="text-muted-foreground text-sm">
                 Automatically generate expense reports for tracking or reimbursement. Add categories, tags, and comments, then submit.
               </p>
             </div>
@@ -243,8 +243,8 @@ export default function Landing() {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <PieChart className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display">3. Track & Analyze</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">3. Track & Analyze</h3>
+              <p className="text-muted-foreground text-sm">
                 View detailed spending analytics, category breakdowns, and budget tracking to understand your financial patterns.
               </p>
             </div>
@@ -255,15 +255,15 @@ export default function Landing() {
               Get Started
             </Button>
             <div className="flex items-center justify-center space-x-2 mt-4">
-              <Badge variant="secondary" className="bg-gray-100 text-gray-700 px-3 py-1">
+              <Badge variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1">
                 Trustpilot
               </Badge>
               <div className="flex items-center space-x-1">
                 {[1,2,3,4,5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star key={star} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <span className="text-sm font-semibold">4.5 (1,200+ reviews)</span>
+              <span className="text-sm font-semibold text-foreground">4.5 (1,200+ reviews)</span>
             </div>
           </div>
         </div>
@@ -278,22 +278,22 @@ export default function Landing() {
               <CardContent className="p-8">
                 <div className="flex items-center space-x-1 mb-4">
                   {[1,2,3,4,5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <h3 className="text-lg font-semibold mb-3 font-display">"Makes expense tracking easy!"</h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <h3 className="text-lg font-semibold mb-3 font-display text-foreground">"Makes expense tracking easy!"</h3>
+                <p className="text-muted-foreground text-sm mb-4">
                   "KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
                 </p>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                    <Users className="w-5 h-5 text-gray-500" />
+                  <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
+                    <Users className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
-                    <p className="font-semibold text-sm">Adebayo M.</p>
+                    <p className="font-semibold text-sm text-foreground">Adebayo M.</p>
                     <div className="flex items-center space-x-1">
                       {[1,2,3,4,5].map((star) => (
-                        <Star key={star} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                        <Star key={star} className="w-3 h-3 fill-primary text-primary" />
                       ))}
                     </div>
                   </div>
@@ -306,22 +306,22 @@ export default function Landing() {
               <CardContent className="p-8">
                 <div className="flex items-center space-x-1 mb-4">
                   {[1,2,3,4,5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <h3 className="text-lg font-semibold mb-3 font-display">"Perfect for small business"</h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <h3 className="text-lg font-semibold mb-3 font-display text-foreground">"Perfect for small business"</h3>
+                <p className="text-muted-foreground text-sm mb-4">
                   "KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
                 </p>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                    <Users className="w-5 h-5 text-gray-500" />
+                  <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
+                    <Users className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
-                    <p className="font-semibold text-sm">Kemi O.</p>
+                    <p className="font-semibold text-sm text-foreground">Kemi O.</p>
                     <div className="flex items-center space-x-1">
                       {[1,2,3,4,5].map((star) => (
-                        <Star key={star} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                        <Star key={star} className="w-3 h-3 fill-primary text-primary" />
                       ))}
                     </div>
                   </div>
@@ -335,7 +335,7 @@ export default function Landing() {
       {/* Footer CTA */}
       <section className="px-4 py-16 bg-primary text-white">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4 font-display">Start managing your expenses today</h2>
+          <h2 className="text-3xl font-bold mb-4 font-display text-primary-foreground">Start managing your expenses today</h2>
           <p className="text-primary-foreground/80 mb-8">
             Join thousands of Nigerian users who trust KudiScan for their expense tracking needs.
           </p>

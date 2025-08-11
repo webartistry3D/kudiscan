@@ -6,7 +6,7 @@ KudiScan is a mobile-first expense tracking application that allows users to sca
 
 Preferred communication style: Simple, everyday language.
 User feedback (Jan 2025): Confirmed the app look and feel works well, particularly appreciates the Nigerian-focused design with Naira currency formatting.
-User color preference (Jan 2025): Prefers dark theme colors matching Replit's conversation environment - main background #292C33, cards/panels #383B42.
+User color preference (Jan 2025): Prefers dark theme with KudiScan's green color scheme and various shades of green throughout the interface.
 Typography preference (Jan 2025): Selected Google Fonts + Glacial Indifference combination for modern minimalist aesthetic - Inter/Roboto for body text/UI elements, Glacial Indifference for headlines and branding.
 
 # Recent Changes

@@ -49,39 +49,75 @@
 
 
 
-.dark {
-  --background: hsl(220 8% 16%);
+/* Apply KudiScan dark theme by default */
+:root {
+  --background: hsl(210 11% 15%);
   --foreground: hsl(213 31% 91%);
-  --card: hsl(215 8% 23%);
+  --card: hsl(210 12% 20%);
   --card-foreground: hsl(213 31% 91%);
-  --popover: hsl(215 8% 23%);
+  --popover: hsl(210 12% 20%);
   --popover-foreground: hsl(213 31% 91%);
-  --primary: hsl(159 60% 40%);
+  --primary: hsl(142 76% 36%);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(215 8% 23%);
+  --secondary: hsl(210 12% 16%);
   --secondary-foreground: hsl(213 31% 91%);
-  --muted: hsl(215 8% 23%);
-  --muted-foreground: hsl(213 18% 59%);
-  --accent: hsl(215 8% 28%);
+  --muted: hsl(210 12% 16%);
+  --muted-foreground: hsl(215 20.2% 65.1%);
+  --accent: hsl(210 12% 16%);
   --accent-foreground: hsl(213 31% 91%);
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(215 8% 28%);
-  --input: hsl(215 8% 23%);
-  --ring: hsl(159 60% 40%);
-  --chart-1: hsl(159 60% 40%);
-  --chart-2: hsl(220 70% 50%);
-  --chart-3: hsl(262 83% 58%);
-  --chart-4: hsl(142 76% 36%);
-  --chart-5: hsl(343 75% 51%);
-  --sidebar: hsl(215 8% 23%);
+  --border: hsl(210 12% 26%);
+  --input: hsl(210 12% 26%);
+  --ring: hsl(142 76% 36%);
+  --chart-1: hsl(142 76% 36%);
+  --chart-2: hsl(142 76% 46%);
+  --chart-3: hsl(142 76% 56%);
+  --chart-4: hsl(142 76% 26%);
+  --chart-5: hsl(142 76% 66%);
+  --sidebar: hsl(210 12% 20%);
   --sidebar-foreground: hsl(213 31% 91%);
-  --sidebar-primary: hsl(159 60% 40%);
+  --sidebar-primary: hsl(142 76% 36%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(215 8% 28%);
-  --sidebar-accent-foreground: hsl(213 18% 59%);
-  --sidebar-border: hsl(215 8% 28%);
-  --sidebar-ring: hsl(159 60% 40%);
+  --sidebar-accent: hsl(210 12% 16%);
+  --sidebar-accent-foreground: hsl(215 20.2% 65.1%);
+  --sidebar-border: hsl(210 12% 26%);
+  --sidebar-ring: hsl(142 76% 36%);
+}
+
+.dark {
+  --background: hsl(210 11% 15%);
+  --foreground: hsl(213 31% 91%);
+  --card: hsl(210 12% 20%);
+  --card-foreground: hsl(213 31% 91%);
+  --popover: hsl(210 12% 20%);
+  --popover-foreground: hsl(213 31% 91%);
+  --primary: hsl(142 76% 36%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(210 12% 16%);
+  --secondary-foreground: hsl(213 31% 91%);
+  --muted: hsl(210 12% 16%);
+  --muted-foreground: hsl(215 20.2% 65.1%);
+  --accent: hsl(210 12% 16%);
+  --accent-foreground: hsl(213 31% 91%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(210 12% 26%);
+  --input: hsl(210 12% 26%);
+  --ring: hsl(142 76% 36%);
+  --chart-1: hsl(142 76% 36%);
+  --chart-2: hsl(142 76% 46%);
+  --chart-3: hsl(142 76% 56%);
+  --chart-4: hsl(142 76% 26%);
+  --chart-5: hsl(142 76% 66%);
+  --sidebar: hsl(210 12% 20%);
+  --sidebar-foreground: hsl(213 31% 91%);
+  --sidebar-primary: hsl(142 76% 36%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(210 12% 16%);
+  --sidebar-accent-foreground: hsl(215 20.2% 65.1%);
+  --sidebar-border: hsl(210 12% 26%);
+  --sidebar-ring: hsl(142 76% 36%);
 }
 
 @layer base {
