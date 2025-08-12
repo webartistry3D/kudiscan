@@ -23,8 +23,18 @@ export default function BudgetSettings() {
     shopping: "10000"
   });
 
+  // Calculate spent amounts for budget remaining (mock data for now)
+  const spentAmounts = {
+    food: 15000,
+    transport: 8000,
+    utilities: 12000,
+    entertainment: 5000,
+    healthcare: 3000,
+    shopping: 7000
+  };
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   const handleSave = () => {
@@ -130,6 +140,9 @@ export default function BudgetSettings() {
                   </div>
                   <p className="text-xs text-muted-foreground">
                     {formatNaira(parseInt(amount) || 0)}
+                  </p>
+                  <p className="text-xs text-primary font-medium">
+                    Budget Remaining: {formatNaira(Math.max(0, (parseInt(amount) || 0) - (spentAmounts[category as keyof typeof spentAmounts] || 0)))}
                   </p>
                 </div>
               </CardContent>

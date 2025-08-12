@@ -21,7 +21,7 @@ export default function PrivacySettings() {
   });
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   const handleToggle = (key: keyof typeof settings) => {
@@ -50,7 +50,7 @@ export default function PrivacySettings() {
   };
 
   return (
-    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
       <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
           <div className="flex items-center space-x-3">
@@ -174,30 +174,17 @@ export default function PrivacySettings() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex justify-center">
                 <Button 
                   variant="outline"
                   onClick={handleExportData}
-                  className="justify-start h-auto p-4"
+                  className="justify-start h-auto p-4 max-w-sm"
                   data-testid="button-export-data"
                 >
                   <Download className="w-5 h-5 mr-3" />
                   <div className="text-left">
-                    <p className="font-medium">Export Your Data</p>
-                    <p className="text-sm text-muted-foreground">Download all your account data</p>
-                  </div>
-                </Button>
-
-                <Button 
-                  variant="outline"
-                  onClick={handleDeleteData}
-                  className="justify-start h-auto p-4 border-red-200 text-red-600 hover:bg-red-50"
-                  data-testid="button-delete-data"
-                >
-                  <Trash2 className="w-5 h-5 mr-3" />
-                  <div className="text-left">
-                    <p className="font-medium">Delete All Data</p>
-                    <p className="text-sm text-red-500">Permanently remove your account and data</p>
+                    <p className="font-medium">Download all data</p>
+                    <p className="text-sm text-muted-foreground">Export your complete account data</p>
                   </div>
                 </Button>
               </div>

@@ -126,7 +126,13 @@ export default function Admin() {
   if (statsLoading) {
     return (
       <div className="max-w-md mx-auto bg-background min-h-screen">
-        <Header title="Admin Dashboard" />
+        <header className="bg-background border-b border-border sticky top-0 z-50">
+          <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
+            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
+              Admin Dashboard
+            </h1>
+          </div>
+        </header>
         <div className="p-4">
           <div className="animate-pulse space-y-4">
             {[...Array(4)].map((_, i) => (
@@ -141,7 +147,13 @@ export default function Admin() {
 
   return (
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
-      <Header title="Admin Dashboard" />
+      <header className="bg-background border-b border-border sticky top-0 z-50">
+        <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
+          <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
+            Admin Dashboard
+          </h1>
+        </div>
+      </header>
       
       <main className="pb-20 pt-4">
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full mx-auto">

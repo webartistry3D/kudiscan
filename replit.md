@@ -81,6 +81,18 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 
 # Recent Changes Log
 
+## January 2025 - Page Navigation & Functionality Enhancements
+- Made all submenu pages (Budget Settings, Privacy Settings, Help Center, Contact Support, Expense Categories) load instantly like Dashboard using 'instant' scroll behavior
+- Fixed navbar consistency across Dashboard and Admin pages by replacing Header component with fixed header structure
+- Enhanced Budget Settings page with Budget Remaining display under each category amount, showing real-time remaining budget calculations
+- Renamed "Category Budgets" to "Expense Categories" and created comprehensive category management page with add/edit/delete functionality
+- Improved Privacy Settings page by removing "Delete all data" section and streamlining Data Management to focus on data export
+- Enhanced About KudiScan popup with detailed mission, vision, and goals information for comprehensive company overview
+- Created fully functional Expense Categories page with icon and color customization, default Nigerian expense categories
+- Added proper routing for all new pages with protected route authentication and instant page transitions
+- Fixed horizontal scrolling issues in Privacy Settings page with overflow-x-hidden styling
+- All pages now provide book-like instant page flipping experience with no loading delays
+
 ## January 2025 - Authentication Pages & Features Updates
 - Set address bar color to #22262A using meta theme-color tag for consistent branding
 - Removed welcome text from login and register pages for cleaner presentation

@@ -72,7 +72,7 @@ export default function Settings() {
   const handleAbout = () => {
     toast({
       title: "About KudiScan",
-      description: "Version 1.0.0 - Your smart expense tracker for Nigeria",
+      description: "Version 1.0.0 - Your smart expense tracker for Nigeria\n\nMission: To simplify expense tracking for Nigerians through AI-powered OCR technology.\n\nVision: To become Nigeria's leading financial management platform.\n\nGoals: Democratize financial literacy and provide insights for better spending decisions.",
     });
   };
 
@@ -81,7 +81,7 @@ export default function Settings() {
   };
 
   const handleCategoryBudgets = () => {
-    window.location.href = "/budget-settings";
+    window.location.href = "/expense-categories";
   };
 
   const userDisplayName = user?.firstName && user?.lastName 

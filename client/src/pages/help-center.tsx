@@ -49,7 +49,7 @@ export default function HelpCenter() {
   const [openItems, setOpenItems] = useState<string[]>([]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   const filteredFaqs = faqs.filter(faq =>

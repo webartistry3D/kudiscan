@@ -136,7 +136,13 @@ export default function Dashboard() {
   if (isLoading) {
     return (
       <div className="max-w-md mx-auto bg-white min-h-screen">
-        <Header />
+        <header className="bg-background border-b border-border sticky top-0 z-50">
+          <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
+            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
+              Dashboard
+            </h1>
+          </div>
+        </header>
         <div className="p-4">
           <div className="animate-pulse space-y-4">
             <div className="h-32 bg-gray-200 rounded-lg"></div>
@@ -159,7 +165,13 @@ export default function Dashboard() {
 
   return (
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
-      <Header />
+      <header className="bg-background border-b border-border sticky top-0 z-50">
+        <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
+          <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
+            Dashboard
+          </h1>
+        </div>
+      </header>
       
       <main className="pb-20 max-w-full">
         {/* Dashboard Overview Section */}
