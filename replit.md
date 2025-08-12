@@ -83,6 +83,8 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 
 ## January 2025 - Page Navigation & Loading Performance Optimization
 - **SELECTIVE LOADING STRATEGY**: Maintained loading screens for main app pages (Dashboard, Admin, Transactions, Reports) while making Settings submenu items load instantly like UI components
+- **Fixed Settings Navigation Issue**: Replaced window.location.href with wouter Link components for Budget Settings, Expense Categories, Privacy Settings, Help Center, and Contact Support to eliminate loading delays and logo screens
+- **KudiScan Brand Color Consistency**: Updated primary color to exact #29A378 (hsl(150 48% 46%)) across all CSS variables for consistent KudiScan green branding
 - **Fixed Budget Remaining Calculation**: Budget Remaining now correctly shows remaining amount from total monthly budget instead of individual category budgets
 - **Enhanced Budget Settings**: Shows real-time budget remaining calculations based on monthly budget totals
 - **Comprehensive Expense Categories Page**: Created full-featured category management with add/edit/delete, icon selection, and color customization
@@ -91,7 +93,7 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Enhanced About KudiScan**: Added detailed mission, vision, and goals information in popup notification
 - **Instant Scroll Behavior**: Changed all page scroll behavior from 'smooth' to 'instant' for book-like page flipping experience
 - **Two-Tier Loading Strategy**: Main pages keep loading screens for proper UX, Settings items behave like integrated UI dashboard elements
-- **Settings Menu Distinction**: Settings submenu items (Budget Settings, Privacy Settings, Help Center, Contact Support, Expense Categories) use instant navigation as UI components
+- **Settings Menu Distinction**: Settings submenu items now use instant wouter Link navigation instead of full page reloads
 
 ## January 2025 - Authentication Pages & Features Updates
 - Set address bar color to #22262A using meta theme-color tag for consistent branding

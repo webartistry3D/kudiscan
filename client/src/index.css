@@ -11,7 +11,7 @@
   --card-foreground: hsl(210 25% 7.8431%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(210 25% 7.8431%);
-  --primary: hsl(159 60% 40%);
+  --primary: hsl(150 48% 46%);  /* #29A378 KudiScan Green */
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(158 64% 24%);
   --secondary-foreground: hsl(0 0% 100%);
@@ -23,20 +23,20 @@
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(214 32% 91%);
   --input: hsl(214 32% 91%);
-  --ring: hsl(159 60% 40%);
-  --chart-1: hsl(159 60% 40%);
+  --ring: hsl(150 48% 46%);  /* #29A378 KudiScan Green */
+  --chart-1: hsl(150 48% 46%);  /* #29A378 KudiScan Green */
   --chart-2: hsl(220 70% 50%);
   --chart-3: hsl(262 83% 58%);
   --chart-4: hsl(142 76% 36%);
   --chart-5: hsl(343 75% 51%);
   --sidebar: hsl(0 0% 100%);
   --sidebar-foreground: hsl(210 25% 7.8431%);
-  --sidebar-primary: hsl(159 60% 40%);
+  --sidebar-primary: hsl(150 48% 46%);  /* #29A378 KudiScan Green */
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(210 40% 96%);
   --sidebar-accent-foreground: hsl(215 16% 47%);
   --sidebar-border: hsl(214 32% 91%);
-  --sidebar-ring: hsl(159 60% 40%);
+  --sidebar-ring: hsl(150 48% 46%);  /* #29A378 KudiScan Green */
   --font-sans: Montserrat, system-ui, sans-serif;
   --font-display: Montserrat, system-ui, sans-serif;
   --font-serif: Montserrat, system-ui, sans-serif;

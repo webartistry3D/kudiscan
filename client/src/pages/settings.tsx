@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Header } from "@/components/header";
 import { BottomNavigation } from "@/components/bottom-navigation";
+import { Link } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -57,25 +58,7 @@ export default function Settings() {
     });
   };
 
-  const handleBudgetSettings = () => {
-    window.location.href = "/budget-settings";
-  };
 
-  const handleExpenseCategories = () => {
-    window.location.href = "/expense-categories";
-  };
-
-  const handlePrivacySettings = () => {
-    window.location.href = "/privacy-settings";
-  };
-
-  const handleHelpCenter = () => {
-    window.location.href = "/help-center";
-  };
-
-  const handleContactSupport = () => {
-    window.location.href = "/contact-support";
-  };
 
   const handleAbout = () => {
     toast({
@@ -190,31 +173,33 @@ export default function Settings() {
               <CardTitle className="text-lg">Budget Settings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start"
-                onClick={handleBudgetSettings}
-                data-testid="button-budget-settings"
-              >
-                <IndianRupee className="w-5 h-5 mr-3 text-gray-600" />
-                <div className="text-left">
-                  <p className="font-medium">Budget Settings</p>
-                  <p className="text-sm text-gray-500">Set monthly budgets</p>
-                </div>
-              </Button>
+              <Link href="/budget-settings">
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  data-testid="button-budget-settings"
+                >
+                  <IndianRupee className="w-5 h-5 mr-3 text-gray-600" />
+                  <div className="text-left">
+                    <p className="font-medium">Budget Settings</p>
+                    <p className="text-sm text-gray-500">Set monthly budgets</p>
+                  </div>
+                </Button>
+              </Link>
               
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start"
-                onClick={handleExpenseCategories}
-                data-testid="button-expense-categories"
-              >
-                <Crown className="w-5 h-5 mr-3 text-gray-600" />
-                <div className="text-left">
-                  <p className="font-medium">Expense Categories</p>
-                  <p className="text-sm text-gray-500">Manage expense categories</p>
-                </div>
-              </Button>
+              <Link href="/expense-categories">
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  data-testid="button-expense-categories"
+                >
+                  <Crown className="w-5 h-5 mr-3 text-gray-600" />
+                  <div className="text-left">
+                    <p className="font-medium">Expense Categories</p>
+                    <p className="text-sm text-gray-500">Manage expense categories</p>
+                  </div>
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </section>
@@ -239,18 +224,19 @@ export default function Settings() {
                 </div>
               </Button>
               
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start"
-                onClick={handlePrivacySettings}
-                data-testid="button-privacy-settings"
-              >
-                <Shield className="w-5 h-5 mr-3 text-gray-600" />
-                <div className="text-left">
-                  <p className="font-medium">Privacy Settings</p>
-                  <p className="text-sm text-gray-500">Control your data usage</p>
-                </div>
-              </Button>
+              <Link href="/privacy-settings">
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  data-testid="button-privacy-settings"
+                >
+                  <Shield className="w-5 h-5 mr-3 text-gray-600" />
+                  <div className="text-left">
+                    <p className="font-medium">Privacy Settings</p>
+                    <p className="text-sm text-gray-500">Control your data usage</p>
+                  </div>
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </section>
@@ -262,33 +248,35 @@ export default function Settings() {
               <CardTitle className="text-lg">Support & Help</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start"
-                onClick={handleHelpCenter}
-                data-testid="button-help-center"
-              >
-                <HelpCircle className="w-5 h-5 mr-3 text-gray-600" />
-                <div className="text-left">
-                  <p className="font-medium">Help Center</p>
-                  <p className="text-sm text-gray-500">FAQs and tutorials</p>
-                </div>
-              </Button>
+              <Link href="/help-center">
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  data-testid="button-help-center"
+                >
+                  <HelpCircle className="w-5 h-5 mr-3 text-gray-600" />
+                  <div className="text-left">
+                    <p className="font-medium">Help Center</p>
+                    <p className="text-sm text-gray-500">FAQs and tutorials</p>
+                  </div>
+                </Button>
+              </Link>
               
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start"
-                onClick={handleContactSupport}
-                data-testid="button-contact-support"
-              >
-                <div className="w-5 h-5 mr-3 bg-blue-100 rounded flex items-center justify-center">
-                  <span className="text-blue-600 text-xs">@</span>
-                </div>
-                <div className="text-left">
-                  <p className="font-medium">Contact Support</p>
-                  <p className="text-sm text-gray-500">Get help from our team</p>
-                </div>
-              </Button>
+              <Link href="/contact-support">
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  data-testid="button-contact-support"
+                >
+                  <div className="w-5 h-5 mr-3 bg-blue-100 rounded flex items-center justify-center">
+                    <span className="text-blue-600 text-xs">@</span>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-medium">Contact Support</p>
+                    <p className="text-sm text-gray-500">Get help from our team</p>
+                  </div>
+                </Button>
+              </Link>
               
               <Button 
                 variant="ghost" 
