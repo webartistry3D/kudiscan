@@ -57,12 +57,10 @@ export default function Landing() {
       <section className="px-4 py-16 w-full bg-primary-light">
         <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-display h-[3rem] sm:h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-center justify-center">
-            <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center w-full">
-              <span className="typing-text inline-block text-center w-full max-w-sm">
-                {displayText}
-                {isTyping && <span className="animate-pulse">|</span>}
-              </span>
-            </div>
+            <span className="typing-text inline-block text-center">
+              {displayText}
+              {isTyping && <span className="animate-pulse">|</span>}
+            </span>
           </h1>
           
           {/* Trust Badge */}
