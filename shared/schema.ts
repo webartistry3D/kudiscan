@@ -24,6 +24,13 @@ export const users = pgTable("users", {
   lastName: varchar("last_name", { length: 100 }),
   isAdmin: boolean("is_admin").default(false).notNull(),
   isActive: boolean("is_active").default(true).notNull(),
+  subscriptionPlan: text("subscription_plan").default("freemium").notNull(), // 'freemium' or 'premium'
+  subscriptionStatus: text("subscription_status").default("active").notNull(), // 'active', 'canceled', 'past_due'
+  subscriptionEndDate: timestamp("subscription_end_date"),
+  monthlyScansUsed: text("monthly_scans_used").default("0").notNull(), // Reset monthly
+  lastScanResetDate: timestamp("last_scan_reset_date").defaultNow().notNull(),
+  stripeCustomerId: text("stripe_customer_id"),
+  stripeSubscriptionId: text("stripe_subscription_id"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
