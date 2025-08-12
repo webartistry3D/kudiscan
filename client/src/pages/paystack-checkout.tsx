@@ -94,7 +94,6 @@ export default function PaystackCheckout() {
                   "Budget tracking & alerts",
                   "Business loan application support",
                   "Priority email support",
-                  "Multi-user access (up to 3 users)",
                   "Export to Excel/PDF",
                   "Tax-ready financial reports"
                 ].map((feature, index) => (

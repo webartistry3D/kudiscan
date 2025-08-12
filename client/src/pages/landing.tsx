@@ -822,12 +822,7 @@ export default function Landing() {
                   </div>
                   <span style={{color: '#E1E7EF'}}>Priority email support</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-white text-xs">✓</span>
-                  </div>
-                  <span style={{color: '#E1E7EF'}}>Multi-user access (up to 3 users)</span>
-                </div>
+
               </div>
               
               <div className="text-center">

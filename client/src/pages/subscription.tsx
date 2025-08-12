@@ -19,6 +19,8 @@ export default function Subscription() {
 
   useEffect(() => {
     fetchSubscriptionInfo();
+    // Scroll to top when page loads
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   const fetchSubscriptionInfo = async () => {
@@ -31,10 +33,10 @@ export default function Subscription() {
     }
   };
 
-  const handleUpgrade = async () => {
+  const handleUpgrade = async (planType: 'monthly' | 'yearly' = 'yearly') => {
     setLoading(true);
     try {
-      const response = await apiRequest("POST", "/api/subscription/create");
+      const response = await apiRequest("POST", "/api/subscription/create", { planType });
       const data = await response.json();
       
       if (data.checkoutUrl) {
@@ -236,14 +238,27 @@ export default function Subscription() {
                 <span className="text-sm">Priority email support</span>
               </div>
               {!isPremium && (
-                <Button 
-                  className="w-full bg-primary hover:bg-primary/90"
-                  onClick={() => setLocation("/checkout")}
-                  data-testid="button-upgrade-premium"
-                >
-                  <Crown className="w-4 h-4 mr-2" />
-                  Upgrade to Premium
-                </Button>
+                <div className="space-y-2">
+                  <Button 
+                    className="w-full bg-primary hover:bg-primary/90"
+                    onClick={() => handleUpgrade('monthly')}
+                    disabled={loading}
+                    data-testid="button-upgrade-monthly"
+                  >
+                    <Crown className="w-4 h-4 mr-2" />
+                    Get Monthly - {formatNaira(3000)}/month
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="w-full border-primary text-primary hover:bg-primary/10"
+                    onClick={() => handleUpgrade('yearly')}
+                    disabled={loading}
+                    data-testid="button-upgrade-yearly"
+                  >
+                    <Crown className="w-4 h-4 mr-2" />
+                    Get Yearly - {formatNaira(28800)}/year (Save 20%)
+                  </Button>
+                </div>
               )}
             </CardContent>
           </Card>

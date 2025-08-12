@@ -379,6 +379,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(500).json({ message: "Payment system not configured" });
       }
 
+      const { planType = 'yearly' } = req.body;
+      
+      // Set amount based on plan type
+      const amount = planType === 'monthly' ? 300000 : 2880000; // ₦3,000 or ₦28,800 in kobo
+      const planName = planType === 'monthly' ? 'premium-monthly' : 'premium-yearly';
+
       // Initialize Paystack transaction
       const paystackResponse = await fetch('https://api.paystack.co/transaction/initialize', {
         method: 'POST',
@@ -388,22 +394,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
         },
         body: JSON.stringify({
           email: user.email,
-          amount: 2880000, // ₦28,800 in kobo (Paystack uses kobo)
+          amount: amount,
           currency: 'NGN',
           reference: `kudiscan-${user.id}-${Date.now()}`,
           callback_url: `${req.protocol}://${req.get('host')}/subscription`,
           metadata: {
             user_id: user.id,
             plan: 'premium',
+            plan_type: planType,
             custom_fields: [
               {
                 display_name: "User ID",
                 variable_name: "user_id", 
                 value: user.id
+              },
+              {
+                display_name: "Plan Type",
+                variable_name: "plan_type", 
+                value: planType
               }
             ]
           },
-          plan: 'premium-yearly' // You can create this plan in Paystack dashboard
+          plan: planName
         })
       });
 
