@@ -35,7 +35,7 @@ export default function Landing() {
               setCurrentWordIndex(prev => prev + 1);
             }, 500);
           }
-        }, 100);
+        }, 200);
       }
     };
     
@@ -860,147 +860,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="px-4 py-16 w-full bg-background border-t border-border">
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="md:col-span-1">
-              <h3 className="text-lg font-bold mb-4 font-display text-foreground">KudiScan</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
-              </p>
-              <div className="flex space-x-4">
-                <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">Privacy</Link>
-                <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">Terms</Link>
-              </div>
-            </div>
 
-            {/* Product Links */}
-            <div>
-              <h4 className="text-sm font-semibold mb-4 text-foreground">Product</h4>
-              <div className="space-y-3">
-                <Link href="/features" className="block text-sm text-muted-foreground hover:text-primary">Features</Link>
-                <Link href="/pricing" className="block text-sm text-muted-foreground hover:text-primary">Pricing</Link>
-                <Link href="/security" className="block text-sm text-muted-foreground hover:text-primary">Security</Link>
-                <Link href="/mobile" className="block text-sm text-muted-foreground hover:text-primary">Mobile App</Link>
-              </div>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="text-sm font-semibold mb-4 text-foreground">Resources</h4>
-              <div className="space-y-3">
-                <Link href="/help" className="block text-sm text-muted-foreground hover:text-primary">Help Center</Link>
-                <Link href="/blog" className="block text-sm text-muted-foreground hover:text-primary">Blog</Link>
-                <Link href="/api" className="block text-sm text-muted-foreground hover:text-primary">API Docs</Link>
-                <Link href="/status" className="block text-sm text-muted-foreground hover:text-primary">System Status</Link>
-              </div>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="text-sm font-semibold mb-4 text-foreground">Company</h4>
-              <div className="space-y-3">
-                <Link href="/about" className="block text-sm text-muted-foreground hover:text-primary">About Us</Link>
-                <Link href="/careers" className="block text-sm text-muted-foreground hover:text-primary">Careers</Link>
-                <Link href="/contact" className="block text-sm text-muted-foreground hover:text-primary">Contact</Link>
-                <Link href="/press" className="block text-sm text-muted-foreground hover:text-primary">Press Kit</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Section with Stylized Logo and Scroll to Top */}
-          <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-sm text-muted-foreground">
-                © 2025 KudiScan. All rights reserved. Built for Nigeria 🇳🇬
-              </p>
-            </div>
-            
-            {/* Stylized KudiScan Logo and Scroll Arrow */}
-            <div className="flex items-center space-x-4">
-              <div className="transform rotate-12">
-                <span className="text-2xl font-bold font-display">
-                  <span style={{color: '#29A378'}}>Kudi</span>
-                  <span className="text-muted-foreground">Scan</span>
-                </span>
-              </div>
-              
-              <button 
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
-                aria-label="Scroll to top"
-              >
-                <ChevronUp className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* Testimonials */}
-      <section className="px-4 py-16 w-full bg-primary-medium">
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
-            {/* First Testimonial */}
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[1,2,3,4,5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <h3 className="text-lg font-semibold mb-3 font-display text-foreground">"Makes expense tracking easy!"</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  "KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
-                    <Users className="w-5 h-5 text-foreground" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm text-foreground">Adebayo M.</p>
-                    <div className="flex items-center space-x-1">
-                      {[1,2,3,4,5].map((star) => (
-                        <Star key={star} className="w-3 h-3 fill-primary text-primary" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Second Testimonial */}
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[1,2,3,4,5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <h3 className="text-lg font-semibold mb-3 font-display text-foreground">"Perfect for small business"</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  "KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
-                    <Users className="w-5 h-5 text-foreground" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm text-foreground">Kemi O.</p>
-                    <div className="flex items-center space-x-1">
-                      {[1,2,3,4,5].map((star) => (
-                        <Star key={star} className="w-3 h-3 fill-primary text-primary" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* Footer CTA */}
       <section className="px-4 py-16 bg-primary text-white w-full">
@@ -1017,6 +877,85 @@ export default function Landing() {
           </Link>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="px-4 py-12 md:py-16 w-full bg-background border-t border-border">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {/* Company Info */}
+            <div className="col-span-2 md:col-span-1">
+              <h3 className="text-lg font-bold mb-4 font-display text-foreground">KudiScan</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
+              </p>
+              <div className="flex space-x-4">
+                <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">Privacy</Link>
+                <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">Terms</Link>
+              </div>
+            </div>
+
+            {/* Product Links */}
+            <div>
+              <h4 className="text-sm font-semibold mb-4 text-foreground">Product</h4>
+              <div className="space-y-2">
+                <Link href="/features" className="block text-sm text-muted-foreground hover:text-primary">Features</Link>
+                <Link href="/pricing" className="block text-sm text-muted-foreground hover:text-primary">Pricing</Link>
+                <Link href="/security" className="block text-sm text-muted-foreground hover:text-primary">Security</Link>
+                <Link href="/mobile" className="block text-sm text-muted-foreground hover:text-primary">Mobile App</Link>
+              </div>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h4 className="text-sm font-semibold mb-4 text-foreground">Resources</h4>
+              <div className="space-y-2">
+                <Link href="/help" className="block text-sm text-muted-foreground hover:text-primary">Help Center</Link>
+                <Link href="/blog" className="block text-sm text-muted-foreground hover:text-primary">Blog</Link>
+                <Link href="/api" className="block text-sm text-muted-foreground hover:text-primary">API Docs</Link>
+                <Link href="/status" className="block text-sm text-muted-foreground hover:text-primary">System Status</Link>
+              </div>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="text-sm font-semibold mb-4 text-foreground">Company</h4>
+              <div className="space-y-2">
+                <Link href="/about" className="block text-sm text-muted-foreground hover:text-primary">About Us</Link>
+                <Link href="/careers" className="block text-sm text-muted-foreground hover:text-primary">Careers</Link>
+                <Link href="/contact" className="block text-sm text-muted-foreground hover:text-primary">Contact</Link>
+                <Link href="/press" className="block text-sm text-muted-foreground hover:text-primary">Press Kit</Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section with Stylized Logo and Scroll to Top */}
+          <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
+              <p className="text-sm text-muted-foreground">
+                © 2025 KudiScan. All rights reserved. Built for Nigeria 🇳🇬
+              </p>
+            </div>
+            
+            {/* Stylized KudiScan Logo and Scroll Arrow */}
+            <div className="flex items-center space-x-4">
+              <div className="transform rotate-12">
+                <span className="text-xl md:text-2xl font-bold font-display">
+                  <span style={{color: '#29A378'}}>Kudi</span>
+                  <span className="text-muted-foreground">Scan</span>
+                </span>
+              </div>
+              
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
+                aria-label="Scroll to top"
+              >
+                <ChevronUp className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
