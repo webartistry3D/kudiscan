@@ -50,8 +50,14 @@ export default function Subscription() {
         description: data.message || "Your subscription has been activated",
       });
       
-      // Refresh subscription info
-      fetchSubscriptionInfo();
+      // Wait a moment then refresh subscription info multiple times to ensure update
+      setTimeout(() => {
+        fetchSubscriptionInfo();
+      }, 1000);
+      
+      setTimeout(() => {
+        fetchSubscriptionInfo();
+      }, 2000);
       
       // Clean up URL
       window.history.replaceState({}, '', '/subscription');

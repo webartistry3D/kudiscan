@@ -354,11 +354,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "User not found" });
       }
       
+      // For canceled subscriptions, show freemium plan details
+      const displayPlan = user.subscriptionStatus === "canceled" ? "freemium" : user.subscriptionPlan;
+      const displayEndDate = user.subscriptionStatus === "canceled" ? null : user.subscriptionEndDate;
+      const scansLimit = displayPlan === "premium" ? -1 : 10;
+      
       res.json({
-        subscriptionPlan: user.subscriptionPlan,
+        subscriptionPlan: displayPlan,
         subscriptionStatus: user.subscriptionStatus,
-        subscriptionEndDate: user.subscriptionEndDate,
+        subscriptionEndDate: displayEndDate,
         monthlyScansUsed: parseInt(user.monthlyScansUsed),
+        scansLimit: scansLimit,
         lastScanResetDate: user.lastScanResetDate,
         paymentMethod: user.paystackCustomerCode ? { last4: "1234" } : null
       });
@@ -442,8 +448,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       await storage.updateUser(getCurrentUser(req).id, {
+        subscriptionPlan: "freemium",
         subscriptionStatus: "canceled",
-        subscriptionEndDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+        subscriptionEndDate: null,
+        monthlyScansUsed: "0"
       });
 
       res.json({ message: "Subscription cancelled successfully" });

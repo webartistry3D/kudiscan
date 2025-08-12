@@ -81,6 +81,14 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 
 # Recent Changes Log
 
+## January 2025 - Subscription System Fixes & UI Improvements
+- **Dashboard Budget Line Enhancement**: Extended green budget line to 2x length (max-w-[200px]) and aligned to stretch right (ml-auto)
+- **Payment Verification Fix**: Added automatic payment verification when users return from Paystack with reference parameter
+- **Subscription Status Display Fix**: Properly handles cancelled subscriptions - shows freemium plan, removes end date, and resets scans
+- **Database State Consistency**: Enhanced subscription cancellation to immediately reset plan to freemium and clear billing dates
+- **Payment Flow Optimization**: Added delay mechanisms and multiple refresh calls to ensure UI updates reflect database changes
+- **Real-time Status Updates**: Subscription page now auto-verifies payments and updates status without manual refresh
+
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing
 - **Cost Savings**: Achieved ~50% cost reduction (Paystack 1.5% + ₦100 vs Stripe 3.9% + forex = ₦591 savings per ₦28,800 subscription)
