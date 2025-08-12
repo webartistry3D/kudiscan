@@ -29,8 +29,9 @@ export const users = pgTable("users", {
   subscriptionEndDate: timestamp("subscription_end_date"),
   monthlyScansUsed: text("monthly_scans_used").default("0").notNull(), // Reset monthly
   lastScanResetDate: timestamp("last_scan_reset_date").defaultNow().notNull(),
-  stripeCustomerId: text("stripe_customer_id"),
-  stripeSubscriptionId: text("stripe_subscription_id"),
+  paystackCustomerCode: text("paystack_customer_code"),
+  paystackSubscriptionCode: text("paystack_subscription_code"),
+  paystackSubscriptionToken: text("paystack_subscription_token"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

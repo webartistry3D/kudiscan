@@ -238,10 +238,11 @@ export default function Subscription() {
               {!isPremium && (
                 <Button 
                   className="w-full bg-primary hover:bg-primary/90"
-                  onClick={handleUpgrade}
-                  disabled={loading}
+                  onClick={() => setLocation("/checkout")}
+                  data-testid="button-upgrade-premium"
                 >
-                  {loading ? "Processing..." : "Upgrade to Premium"}
+                  <Crown className="w-4 h-4 mr-2" />
+                  Upgrade to Premium
                 </Button>
               )}
             </CardContent>

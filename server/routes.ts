@@ -7,6 +7,9 @@ import multer from "multer";
 import passport from "passport";
 import { setupAuth, isAuthenticated, isAdmin, getCurrentUser } from "./auth";
 
+// Paystack configuration
+const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -357,7 +360,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         subscriptionEndDate: user.subscriptionEndDate,
         monthlyScansUsed: parseInt(user.monthlyScansUsed),
         lastScanResetDate: user.lastScanResetDate,
-        paymentMethod: user.stripeCustomerId ? { last4: "1234" } : null
+        paymentMethod: user.paystackCustomerCode ? { last4: "1234" } : null
       });
     } catch (error) {
       console.error("Error fetching subscription info:", error);
@@ -372,13 +375,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "User not found" });
       }
 
-      // In a real implementation, integrate with Stripe here
-      const mockCheckoutUrl = `https://buy.stripe.com/test_28o5kA0GKdWKgWQ288?client_reference_id=${user.id}`;
-      
-      res.json({ 
-        checkoutUrl: mockCheckoutUrl,
-        message: "Redirecting to payment..."
+      if (!PAYSTACK_SECRET_KEY) {
+        return res.status(500).json({ message: "Payment system not configured" });
+      }
+
+      // Initialize Paystack transaction
+      const paystackResponse = await fetch('https://api.paystack.co/transaction/initialize', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${PAYSTACK_SECRET_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: user.email,
+          amount: 2880000, // ₦28,800 in kobo (Paystack uses kobo)
+          currency: 'NGN',
+          reference: `kudiscan-${user.id}-${Date.now()}`,
+          callback_url: `${req.protocol}://${req.get('host')}/subscription`,
+          metadata: {
+            user_id: user.id,
+            plan: 'premium',
+            custom_fields: [
+              {
+                display_name: "User ID",
+                variable_name: "user_id", 
+                value: user.id
+              }
+            ]
+          },
+          plan: 'premium-yearly' // You can create this plan in Paystack dashboard
+        })
       });
+
+      const paystackData = await paystackResponse.json();
+
+      if (paystackData.status) {
+        res.json({ 
+          checkoutUrl: paystackData.data.authorization_url,
+          reference: paystackData.data.reference,
+          message: "Redirecting to Paystack payment..."
+        });
+      } else {
+        throw new Error(paystackData.message || 'Paystack initialization failed');
+      }
     } catch (error) {
       console.error("Error creating subscription:", error);
       res.status(500).json({ message: "Failed to create subscription" });
@@ -470,6 +509,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error incrementing scan count:", error);
       res.status(500).json({ message: "Failed to increment scan count" });
+    }
+  });
+
+  // Paystack webhook handler for payment verification
+  app.post("/api/paystack/webhook", async (req, res) => {
+    try {
+      const event = req.body;
+      
+      if (event.event === "charge.success") {
+        const { reference, customer, amount } = event.data;
+        
+        // Extract user ID from reference
+        const userIdMatch = reference.match(/kudiscan-(.+?)-\d+/);
+        if (!userIdMatch) {
+          console.error("Invalid reference format:", reference);
+          return res.status(400).json({ message: "Invalid reference" });
+        }
+        
+        const userId = userIdMatch[1];
+        const user = await storage.getUserById(userId);
+        
+        if (!user) {
+          console.error("User not found for reference:", reference);
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        // Verify amount (₦28,800 = 2,880,000 kobo)
+        if (amount !== 2880000) {
+          console.error("Invalid amount:", amount);
+          return res.status(400).json({ message: "Invalid amount" });
+        }
+
+        // Update user subscription
+        await storage.updateUser(userId, {
+          subscriptionPlan: "premium",
+          subscriptionStatus: "active",
+          subscriptionEndDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year
+          paystackCustomerCode: customer.customer_code,
+          monthlyScansUsed: "0" // Reset scans for premium user
+        });
+
+        console.log(`Successfully upgraded user ${userId} to Premium`);
+        res.status(200).json({ message: "Webhook processed successfully" });
+      } else {
+        res.status(200).json({ message: "Event not handled" });
+      }
+    } catch (error) {
+      console.error("Error processing Paystack webhook:", error);
+      res.status(500).json({ message: "Webhook processing failed" });
     }
   });
 

@@ -20,6 +20,7 @@ import HelpCenter from "@/pages/help-center";
 import ContactSupport from "@/pages/contact-support";
 import ExpenseCategories from "@/pages/expense-categories";
 import Subscription from "@/pages/subscription";
+import PaystackCheckout from "@/pages/paystack-checkout";
 
 function ProtectedRoute({ component: Component, adminOnly = false }: { component: any, adminOnly?: boolean }) {
   const { isAuthenticated, isLoading, isAdmin } = useAuth();
@@ -89,6 +90,7 @@ function Router() {
       <Route path="/contact-support" component={() => <ProtectedRoute component={ContactSupport} />} />
       <Route path="/expense-categories" component={() => <ProtectedRoute component={ExpenseCategories} />} />
       <Route path="/subscription" component={() => <ProtectedRoute component={Subscription} />} />
+      <Route path="/checkout" component={() => <ProtectedRoute component={PaystackCheckout} />} />
       <Route path="/admin" component={() => <ProtectedRoute component={AdminDashboard} adminOnly={true} />} />
       
       <Route component={NotFound} />
