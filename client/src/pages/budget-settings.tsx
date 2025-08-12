@@ -142,7 +142,7 @@ export default function BudgetSettings() {
                     {formatNaira(parseInt(amount) || 0)}
                   </p>
                   <p className="text-xs text-primary font-medium">
-                    Budget Remaining: {formatNaira(Math.max(0, (parseInt(amount) || 0) - (spentAmounts[category as keyof typeof spentAmounts] || 0)))}
+                    Budget Remaining: {formatNaira(Math.max(0, parseInt(monthlyBudget) - (spentAmounts[category as keyof typeof spentAmounts] || 0)))}
                   </p>
                 </div>
               </CardContent>

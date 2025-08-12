@@ -23,18 +23,7 @@ import ExpenseCategories from "@/pages/expense-categories";
 function ProtectedRoute({ component: Component, adminOnly = false }: { component: any, adminOnly?: boolean }) {
   const { isAuthenticated, isLoading, isAdmin } = useAuth();
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center animate-pulse">
-            <span className="text-primary-foreground text-2xl font-bold">K</span>
-          </div>
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  // Remove loading screen - show component immediately
 
   if (!isAuthenticated) {
     return <Landing />;
@@ -50,18 +39,7 @@ function ProtectedRoute({ component: Component, adminOnly = false }: { component
 function Router() {
   const { isAuthenticated, isAdmin, isLoading } = useAuth();
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center animate-pulse">
-            <span className="text-primary-foreground text-2xl font-bold">K</span>
-          </div>
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  // Remove loading screen - show router immediately
 
   // Define the home component based on user role
   const HomeComponent = () => {

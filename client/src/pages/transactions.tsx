@@ -16,7 +16,7 @@ export default function Transactions() {
 
   // Scroll to top when component mounts
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   const { data: expenses = [], isLoading } = useQuery<Expense[]>({
@@ -53,21 +53,7 @@ export default function Transactions() {
     sum + parseFloat(expense.amount), 0
   );
 
-  if (isLoading) {
-    return (
-      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
-        <Header title="Transactions" />
-        <div className="p-4">
-          <div className="animate-pulse space-y-4">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-20 bg-muted rounded-lg"></div>
-            ))}
-          </div>
-        </div>
-        <BottomNavigation />
-      </div>
-    );
-  }
+  // Remove loading screen - show transactions immediately
 
   return (
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">

@@ -133,31 +133,7 @@ export default function Dashboard() {
     setOcrResult(null);
   };
 
-  if (isLoading) {
-    return (
-      <div className="max-w-md mx-auto bg-white min-h-screen">
-        <header className="bg-background border-b border-border sticky top-0 z-50">
-          <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
-            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
-              Dashboard
-            </h1>
-          </div>
-        </header>
-        <div className="p-4">
-          <div className="animate-pulse space-y-4">
-            <div className="h-32 bg-gray-200 rounded-lg"></div>
-            <div className="h-20 bg-gray-200 rounded-lg"></div>
-            <div className="space-y-3">
-              <div className="h-16 bg-gray-200 rounded-lg"></div>
-              <div className="h-16 bg-gray-200 rounded-lg"></div>
-              <div className="h-16 bg-gray-200 rounded-lg"></div>
-            </div>
-          </div>
-        </div>
-        <BottomNavigation />
-      </div>
-    );
-  }
+  // Remove loading screen - show dashboard immediately
 
   const budgetLimit = 150000; // Default budget of ₦150,000
   const budgetLeft = budgetLimit - (stats?.monthlyTotal || 0);
