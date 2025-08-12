@@ -292,6 +292,28 @@ export default function Settings() {
               </Button>
             </CardContent>
           </Card>
+
+          {/* Subscription Management */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Subscription</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 p-4">
+              <Link href="/subscription">
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start px-4 py-3 h-auto"
+                  data-testid="button-subscription"
+                >
+                  <Crown className="w-6 h-6 mr-3 text-primary" />
+                  <div className="text-left">
+                    <p className="font-medium text-primary">Manage Subscription</p>
+                    <p className="text-sm text-primary/70">Billing & plan details</p>
+                  </div>
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
         </section>
 
         {/* Admin Section */}

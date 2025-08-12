@@ -3,12 +3,12 @@ import { useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { formatNaira } from "@/lib/currency";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 import { apiRequest } from "@/lib/queryClient";
 import { ArrowLeft, Check, Crown, CreditCard, Calendar, AlertCircle } from "lucide-react";
-import { formatNaira } from "@/lib/currency";
 
 export default function Subscription() {
   const [, setLocation] = useLocation();
@@ -81,8 +81,8 @@ export default function Subscription() {
     }
   };
 
-  const isPremium = user?.subscriptionPlan === "premium";
-  const scansUsed = parseInt(user?.monthlyScansUsed || "0");
+  const isPremium = (user as any)?.subscriptionPlan === "premium";
+  const scansUsed = parseInt((user as any)?.monthlyScansUsed || "0");
   const scansLimit = isPremium ? Infinity : 10;
 
   return (
@@ -127,8 +127,8 @@ export default function Subscription() {
             
             <div className="flex items-center justify-between">
               <span className="font-medium">Status</span>
-              <Badge variant={user?.subscriptionStatus === "active" ? "default" : "destructive"}>
-                {user?.subscriptionStatus || "Active"}
+              <Badge variant={(user as any)?.subscriptionStatus === "active" ? "default" : "destructive"}>
+                {(user as any)?.subscriptionStatus || "Active"}
               </Badge>
             </div>
 
