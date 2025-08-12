@@ -11,48 +11,26 @@ import { useState, useEffect } from "react";
 
 export default function Landing() {
   const { settings, toggleDarkMode } = useSettings();
-  const [typedText, setTypedText] = useState("");
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const words = ["Scan.", "Track.", "Report."];
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const fullText = "Scan. Track. Report.";
   
   useEffect(() => {
-    const typeText = () => {
-      if (currentWordIndex < words.length) {
-        const word = words[currentWordIndex];
-        let charIndex = 0;
-        
-        const typeInterval = setInterval(() => {
-          if (charIndex <= word.length) {
-            setTypedText(prev => {
-              const wordsCompleted = words.slice(0, currentWordIndex).join(' ');
-              const currentPart = word.slice(0, charIndex);
-              return wordsCompleted + (wordsCompleted ? ' ' : '') + currentPart;
-            });
-            
-            if (charIndex === word.length) {
-              clearInterval(typeInterval);
-              setTimeout(() => {
-                setCurrentWordIndex(prev => prev + 1);
-              }, 600);
-            }
-            charIndex++;
-          }
-        }, 180);
-        
-        return () => clearInterval(typeInterval);
-      }
-    };
+    let currentIndex = 0;
+    setDisplayText("");
+    setIsTyping(true);
     
-    if (currentWordIndex < words.length) {
-      const cleanup = typeText();
-      return cleanup;
-    }
-  }, [currentWordIndex, words]);
-
-  // Reset animation on page load
-  useEffect(() => {
-    setTypedText("");
-    setCurrentWordIndex(0);
+    const typeTimer = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typeTimer);
+        setIsTyping(false);
+      }
+    }, 150);
+    
+    return () => clearInterval(typeTimer);
   }, []);
 
   return (
@@ -80,12 +58,9 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-display h-[3rem] sm:h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-center justify-center">
             <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center w-full">
-              <span className="typing-text inline-block text-center" style={{minWidth: '15ch'}}>
-                <span className="invisible absolute">{words.join(' ')}</span>
-                <span className="relative">
-                  {currentWordIndex >= words.length ? words.join(' ') : typedText}
-                  {currentWordIndex < words.length && <span className="animate-pulse">|</span>}
-                </span>
+              <span className="typing-text inline-block text-center w-full max-w-sm">
+                {displayText}
+                {isTyping && <span className="animate-pulse">|</span>}
               </span>
             </div>
           </h1>
