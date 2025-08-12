@@ -95,6 +95,8 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **UI Alignment Fixes**: Fixed Budget Settings and Help Center page margins/padding to match Privacy Settings layout consistency
 - **Sign Out Button Positioning**: Moved Sign Out button to right side of settings page using lg:col-span-2 and justify-end alignment
 - **Full-Screen Skeleton Enhancement**: Updated skeleton loading component to be truly full-screen on desktop with proper max-width constraints
+- **Settings Menu Alignment Fix**: Standardized all settings menu icons with consistent div containers for perfect left alignment
+- **Dashboard Skeleton Full-Screen Fix**: Replaced mobile-only max-w-md with responsive full-width layout for dashboard, admin, and reports pages
 
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing

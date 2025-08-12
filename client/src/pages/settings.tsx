@@ -179,7 +179,7 @@ export default function Settings() {
                   className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-budget-settings"
                 >
-                  <span className="w-6 h-6 mr-3 text-primary flex items-center justify-center font-bold text-lg">₦</span>
+                  <div className="w-6 h-6 mr-3 text-primary flex items-center justify-center font-bold text-lg">₦</div>
                   <div className="text-left">
                     <p className="font-medium text-primary">Budget Settings</p>
                     <p className="text-sm text-primary/70">Set monthly budgets</p>
@@ -193,7 +193,9 @@ export default function Settings() {
                   className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-expense-categories"
                 >
-                  <Crown className="w-6 h-6 mr-3 text-primary" />
+                  <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                    <Crown className="w-6 h-6 text-primary" />
+                  </div>
                   <div className="text-left">
                     <p className="font-medium text-primary">Expense Categories</p>
                     <p className="text-sm text-primary/70">Manage expense categories</p>
@@ -217,7 +219,9 @@ export default function Settings() {
                 onClick={handleExportData}
                 data-testid="button-export-data"
               >
-                <Download className="w-6 h-6 mr-3 text-primary" />
+                <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                  <Download className="w-6 h-6 text-primary" />
+                </div>
                 <div className="text-left">
                   <p className="font-medium text-primary">Export Data</p>
                   <p className="text-sm text-primary/70">Download your expense data</p>
@@ -230,7 +234,9 @@ export default function Settings() {
                   className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-privacy-settings"
                 >
-                  <Shield className="w-6 h-6 mr-3 text-primary" />
+                  <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-primary" />
+                  </div>
                   <div className="text-left">
                     <p className="font-medium text-primary">Privacy Settings</p>
                     <p className="text-sm text-primary/70">Control your data usage</p>
@@ -254,7 +260,9 @@ export default function Settings() {
                   className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-help-center"
                 >
-                  <HelpCircle className="w-6 h-6 mr-3 text-primary" />
+                  <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                    <HelpCircle className="w-6 h-6 text-primary" />
+                  </div>
                   <div className="text-left">
                     <p className="font-medium text-primary">Help Center</p>
                     <p className="text-sm text-primary/70">FAQs and tutorials</p>
@@ -284,7 +292,9 @@ export default function Settings() {
                 onClick={handleAbout}
                 data-testid="button-about"
               >
-                <Info className="w-6 h-6 mr-3 text-primary" />
+                <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                  <Info className="w-6 h-6 text-primary" />
+                </div>
                 <div className="text-left">
                   <p className="font-medium text-primary">About KudiScan</p>
                   <p className="text-sm text-primary/70">Version 1.0.0</p>
@@ -305,7 +315,9 @@ export default function Settings() {
                   className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-subscription"
                 >
-                  <Crown className="w-6 h-6 mr-3 text-primary" />
+                  <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                    <Crown className="w-6 h-6 text-primary" />
+                  </div>
                   <div className="text-left">
                     <p className="font-medium text-primary">Manage Subscription</p>
                     <p className="text-sm text-primary/70">Billing & plan details</p>
