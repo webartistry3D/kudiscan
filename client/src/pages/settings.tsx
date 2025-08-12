@@ -58,24 +58,15 @@ export default function Settings() {
   };
 
   const handlePrivacySettings = () => {
-    toast({
-      title: "Privacy Settings",
-      description: "Privacy settings page coming soon!",
-    });
+    window.location.href = "/privacy-settings";
   };
 
   const handleHelpCenter = () => {
-    toast({
-      title: "Help Center",
-      description: "Help center opening soon!",
-    });
+    window.location.href = "/help-center";
   };
 
   const handleContactSupport = () => {
-    toast({
-      title: "Contact Support",
-      description: "Support contact page coming soon!",
-    });
+    window.location.href = "/contact-support";
   };
 
   const handleAbout = () => {
@@ -86,17 +77,11 @@ export default function Settings() {
   };
 
   const handleMonthlyBudget = () => {
-    toast({
-      title: "Monthly Budget",
-      description: "Budget configuration coming soon!",
-    });
+    window.location.href = "/budget-settings";
   };
 
   const handleCategoryBudgets = () => {
-    toast({
-      title: "Category Budgets",
-      description: "Category budget settings coming soon!",
-    });
+    window.location.href = "/budget-settings";
   };
 
   const userDisplayName = user?.firstName && user?.lastName 

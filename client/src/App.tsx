@@ -14,6 +14,10 @@ import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
 import Profile from "@/pages/profile";
 import AdminDashboard from "@/pages/admin";
+import BudgetSettings from "@/pages/budget-settings";
+import PrivacySettings from "@/pages/privacy-settings";
+import HelpCenter from "@/pages/help-center";
+import ContactSupport from "@/pages/contact-support";
 
 function ProtectedRoute({ component: Component, adminOnly = false }: { component: any, adminOnly?: boolean }) {
   const { isAuthenticated, isLoading, isAdmin } = useAuth();
@@ -77,6 +81,10 @@ function Router() {
       <Route path="/reports" component={() => <ProtectedRoute component={Reports} />} />
       <Route path="/settings" component={() => <ProtectedRoute component={Settings} />} />
       <Route path="/profile" component={() => <ProtectedRoute component={Profile} />} />
+      <Route path="/budget-settings" component={() => <ProtectedRoute component={BudgetSettings} />} />
+      <Route path="/privacy-settings" component={() => <ProtectedRoute component={PrivacySettings} />} />
+      <Route path="/help-center" component={() => <ProtectedRoute component={HelpCenter} />} />
+      <Route path="/contact-support" component={() => <ProtectedRoute component={ContactSupport} />} />
       <Route path="/admin" component={() => <ProtectedRoute component={AdminDashboard} adminOnly={true} />} />
       
       <Route component={NotFound} />
