@@ -75,7 +75,7 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display h-[4rem] md:h-[5rem] flex items-center justify-center">
             <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center">
-              <span className="typing-text">
+              <span className="typing-text inline-block" style={{width: '20ch', textAlign: 'center'}}>
                 {currentWordIndex >= words.length ? words.join(' ') : typedText}
                 {currentWordIndex < words.length && <span className="animate-pulse">|</span>}
               </span>
