@@ -179,7 +179,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 gap-6">
             <Card className="bg-primary text-white border-0">
               <CardContent className="p-4 lg:p-6">
-                <div className="flex items-center justify-between mb-4 max-w-full">
+                <div className="flex items-start justify-between mb-4 max-w-full">
                   <div className="flex-1 min-w-0 pr-3">
                     <p className="text-green-100 text-sm font-medium">Total Expenses</p>
                     <h2 className="text-xl lg:text-2xl font-bold truncate" data-testid="text-total-expenses">
@@ -192,7 +192,7 @@ export default function Dashboard() {
                     <p className="text-lg lg:text-xl font-semibold truncate" data-testid="text-budget-left">
                       {formatNaira(Math.max(0, budgetLeft))}
                     </p>
-                    <div className="h-2 bg-green-800 rounded-full mt-2 overflow-hidden w-full max-w-[120px]">
+                    <div className="h-1 bg-green-800 rounded-full mt-1 mb-1 w-full max-w-[100px] mx-auto">
                       <div 
                         className="h-full bg-green-300 rounded-full transition-all" 
                         style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}

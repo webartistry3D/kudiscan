@@ -21,6 +21,13 @@ export default function Subscription() {
     fetchSubscriptionInfo();
     // Scroll to top when page loads
     window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    // Check if returning from Paystack payment
+    const urlParams = new URLSearchParams(window.location.search);
+    const reference = urlParams.get('reference');
+    if (reference) {
+      verifyPayment(reference);
+    }
   }, []);
 
   const fetchSubscriptionInfo = async () => {
@@ -30,6 +37,30 @@ export default function Subscription() {
       setSubscriptionInfo(data);
     } catch (error) {
       console.error("Failed to fetch subscription info:", error);
+    }
+  };
+
+  const verifyPayment = async (reference: string) => {
+    try {
+      const response = await apiRequest("/api/subscription/activate", "POST", { reference });
+      const data = await response.json();
+      
+      toast({
+        title: "Payment Successful!",
+        description: data.message || "Your subscription has been activated",
+      });
+      
+      // Refresh subscription info
+      fetchSubscriptionInfo();
+      
+      // Clean up URL
+      window.history.replaceState({}, '', '/subscription');
+    } catch (error) {
+      toast({
+        title: "Payment Verification Failed",
+        description: "Please contact support if payment was deducted",
+        variant: "destructive",
+      });
     }
   };
 

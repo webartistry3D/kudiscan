@@ -522,6 +522,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Manual subscription activation endpoint for testing
+  app.post("/api/subscription/activate", isAuthenticated, async (req, res) => {
+    try {
+      const { reference } = req.body;
+      const userId = getCurrentUser(req).id;
+      
+      if (!reference) {
+        return res.status(400).json({ message: "Reference required" });
+      }
+
+      // Verify payment with Paystack API
+      const verifyResponse = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
+        headers: {
+          'Authorization': `Bearer ${PAYSTACK_SECRET_KEY}`,
+        },
+      });
+
+      const verifyData = await verifyResponse.json();
+
+      if (verifyData.status && verifyData.data.status === 'success') {
+        const { amount } = verifyData.data;
+        
+        // Determine plan type based on amount
+        let planType, endDate;
+        if (amount === 300000) { // ₦3,000 monthly
+          planType = "monthly";
+          endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 1 month
+        } else if (amount === 2880000) { // ₦28,800 yearly
+          planType = "yearly";
+          endDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000); // 1 year
+        } else {
+          return res.status(400).json({ message: "Invalid payment amount" });
+        }
+
+        // Update user subscription
+        await storage.updateUser(userId, {
+          subscriptionPlan: "premium",
+          subscriptionStatus: "active",
+          subscriptionEndDate: endDate,
+          monthlyScansUsed: "0" // Reset scans for premium user
+        });
+
+        res.json({ message: `Successfully activated ${planType} premium subscription` });
+      } else {
+        res.status(400).json({ message: "Payment verification failed" });
+      }
+    } catch (error) {
+      console.error("Error activating subscription:", error);
+      res.status(500).json({ message: "Failed to activate subscription" });
+    }
+  });
+
   // Paystack webhook handler for payment verification
   app.post("/api/paystack/webhook", async (req, res) => {
     try {
@@ -545,20 +597,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
           return res.status(404).json({ message: "User not found" });
         }
 
-        // Verify amount (₦28,800 = 2,880,000 kobo)
-        if (amount !== 2880000) {
-          console.error("Invalid amount:", amount);
-          return res.status(400).json({ message: "Invalid amount" });
+        // Determine plan type based on amount
+        let planType, endDate;
+        if (amount === 300000) { // ₦3,000 monthly
+          planType = "monthly";
+          endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 1 month
+        } else if (amount === 2880000) { // ₦28,800 yearly
+          planType = "yearly";
+          endDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000); // 1 year
+        } else {
+          console.error("Invalid payment amount:", amount);
+          return res.status(400).json({ message: "Invalid payment amount" });
         }
 
         // Update user subscription
         await storage.updateUser(userId, {
           subscriptionPlan: "premium",
           subscriptionStatus: "active",
-          subscriptionEndDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year
+          subscriptionEndDate: endDate,
           paystackCustomerCode: customer.customer_code,
           monthlyScansUsed: "0" // Reset scans for premium user
         });
+
+        console.log(`Successfully upgraded user ${userId} to Premium (${planType} plan)`);
 
         console.log(`Successfully upgraded user ${userId} to Premium`);
         res.status(200).json({ message: "Webhook processed successfully" });
