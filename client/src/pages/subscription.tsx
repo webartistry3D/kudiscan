@@ -36,7 +36,7 @@ export default function Subscription() {
   const handleUpgrade = async (planType: 'monthly' | 'yearly' = 'yearly') => {
     setLoading(true);
     try {
-      const response = await apiRequest("POST", "/api/subscription/create", { planType });
+      const response = await apiRequest("/api/subscription/create", "POST", { planType });
       const data = await response.json();
       
       if (data.checkoutUrl) {
@@ -66,7 +66,7 @@ export default function Subscription() {
 
     setLoading(true);
     try {
-      await apiRequest("POST", "/api/subscription/cancel");
+      await apiRequest("/api/subscription/cancel", "POST");
       toast({
         title: "Subscription Cancelled",
         description: "Your subscription has been cancelled. You'll retain access until your current period ends.",
@@ -256,7 +256,7 @@ export default function Subscription() {
                     data-testid="button-upgrade-yearly"
                   >
                     <Crown className="w-4 h-4 mr-2" />
-                    Get Yearly - {formatNaira(28800)}/year (Save 20%)
+                    Get Yearly - {formatNaira(28800)}/year
                   </Button>
                 </div>
               )}
