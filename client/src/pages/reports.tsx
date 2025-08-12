@@ -24,7 +24,21 @@ export default function Reports() {
     queryKey: ['/api/dashboard/stats']
   });
 
-  // Remove loading screen - show reports immediately
+  if (isLoading) {
+    return (
+      <div className="max-w-md mx-auto bg-background min-h-screen">
+        <Header title="Reports" />
+        <div className="p-4">
+          <div className="animate-pulse space-y-4">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-32 bg-muted rounded-lg"></div>
+            ))}
+          </div>
+        </div>
+        <BottomNavigation />
+      </div>
+    );
+  }
 
   const currentMonth = new Date().toLocaleString('default', { month: 'long' });
   const budgetLimit = 150000;

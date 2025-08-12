@@ -53,7 +53,21 @@ export default function Transactions() {
     sum + parseFloat(expense.amount), 0
   );
 
-  // Remove loading screen - show transactions immediately
+  if (isLoading) {
+    return (
+      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
+        <Header title="Transactions" />
+        <div className="p-4">
+          <div className="animate-pulse space-y-4">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="h-20 bg-muted rounded-lg"></div>
+            ))}
+          </div>
+        </div>
+        <BottomNavigation />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">

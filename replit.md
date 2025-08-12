@@ -82,8 +82,7 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 # Recent Changes Log
 
 ## January 2025 - Page Navigation & Loading Performance Optimization
-- **COMPLETE LOADING SCREEN REMOVAL**: Eliminated all brand logo loading screens across the entire application for instant page access
-- **Instant Page Loading**: All pages (Dashboard, Admin, Transactions, Reports, Settings, and all submenus) now load immediately without any loading delays
+- **SELECTIVE LOADING STRATEGY**: Maintained loading screens for main app pages (Dashboard, Admin, Transactions, Reports) while making Settings submenu items load instantly like UI components
 - **Fixed Budget Remaining Calculation**: Budget Remaining now correctly shows remaining amount from total monthly budget instead of individual category budgets
 - **Enhanced Budget Settings**: Shows real-time budget remaining calculations based on monthly budget totals
 - **Comprehensive Expense Categories Page**: Created full-featured category management with add/edit/delete, icon selection, and color customization
@@ -91,8 +90,8 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Privacy Settings Optimization**: Removed "Delete all data" section, prevented horizontal scrolling, and streamlined data management
 - **Enhanced About KudiScan**: Added detailed mission, vision, and goals information in popup notification
 - **Instant Scroll Behavior**: Changed all page scroll behavior from 'smooth' to 'instant' for book-like page flipping experience
-- **Protected Route Authentication**: All new pages have proper routing with instant authentication and no loading screens
-- **Performance Achievement**: Zero loading delays across entire application - every page loads and functions instantly
+- **Two-Tier Loading Strategy**: Main pages keep loading screens for proper UX, Settings items behave like integrated UI dashboard elements
+- **Settings Menu Distinction**: Settings submenu items (Budget Settings, Privacy Settings, Help Center, Contact Support, Expense Categories) use instant navigation as UI components
 
 ## January 2025 - Authentication Pages & Features Updates
 - Set address bar color to #22262A using meta theme-color tag for consistent branding

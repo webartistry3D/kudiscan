@@ -57,6 +57,14 @@ export default function Settings() {
     });
   };
 
+  const handleBudgetSettings = () => {
+    window.location.href = "/budget-settings";
+  };
+
+  const handleExpenseCategories = () => {
+    window.location.href = "/expense-categories";
+  };
+
   const handlePrivacySettings = () => {
     window.location.href = "/privacy-settings";
   };
@@ -76,13 +84,7 @@ export default function Settings() {
     });
   };
 
-  const handleMonthlyBudget = () => {
-    window.location.href = "/budget-settings";
-  };
 
-  const handleCategoryBudgets = () => {
-    window.location.href = "/expense-categories";
-  };
 
   const userDisplayName = user?.firstName && user?.lastName 
     ? `${user.firstName} ${user.lastName}` 
@@ -191,28 +193,26 @@ export default function Settings() {
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
-                onClick={handleMonthlyBudget}
-                data-testid="button-monthly-budget"
+                onClick={handleBudgetSettings}
+                data-testid="button-budget-settings"
               >
-                <span className="w-5 h-5 mr-3 text-gray-600 flex items-center justify-center font-bold">₦</span>
+                <IndianRupee className="w-5 h-5 mr-3 text-gray-600" />
                 <div className="text-left">
-                  <p className="font-medium">Monthly Budget</p>
-                  <p className="text-sm text-gray-500">₦150,000</p>
+                  <p className="font-medium">Budget Settings</p>
+                  <p className="text-sm text-gray-500">Set monthly budgets</p>
                 </div>
               </Button>
               
               <Button 
                 variant="ghost" 
                 className="w-full justify-start"
-                onClick={handleCategoryBudgets}
-                data-testid="button-category-budgets"
+                onClick={handleExpenseCategories}
+                data-testid="button-expense-categories"
               >
-                <div className="w-5 h-5 mr-3 bg-primary rounded flex items-center justify-center">
-                  <span className="text-white text-xs">%</span>
-                </div>
-                <div className="text-left flex-1 min-w-0">
-                  <p className="font-medium">Category Budgets</p>
-                  <p className="text-sm text-gray-500 truncate">Set spending limits per category</p>
+                <Crown className="w-5 h-5 mr-3 text-gray-600" />
+                <div className="text-left">
+                  <p className="font-medium">Expense Categories</p>
+                  <p className="text-sm text-gray-500">Manage expense categories</p>
                 </div>
               </Button>
             </CardContent>
