@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Save, DollarSign, Target } from "lucide-react";
+import { ArrowLeft, Save, Target } from "lucide-react";
 import { formatNaira } from "@/lib/currency";
 
 export default function BudgetSettings() {
@@ -42,6 +42,19 @@ export default function BudgetSettings() {
       title: "Budget Saved",
       description: "Your budget settings have been updated successfully.",
     });
+  };
+
+  // Calculate cumulative remaining budget
+  const calculateCumulativeRemaining = (currentCategory: string) => {
+    const totalMonthly = parseInt(monthlyBudget) || 0;
+    let totalAllocated = 0;
+    
+    // Sum all category budgets including the current one being displayed
+    Object.entries(categoryBudgets).forEach(([category, amount]) => {
+      totalAllocated += parseInt(amount) || 0;
+    });
+    
+    return Math.max(0, totalMonthly - totalAllocated);
   };
 
   const handleReset = () => {
@@ -108,6 +121,9 @@ export default function BudgetSettings() {
                   <p className="text-sm text-muted-foreground mt-2">
                     Current limit: {formatNaira(parseInt(monthlyBudget) || 0)}
                   </p>
+                  <p className="text-sm text-primary font-medium mt-1">
+                    Total Remaining: {formatNaira(calculateCumulativeRemaining(''))}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -118,7 +134,7 @@ export default function BudgetSettings() {
             <Card key={category}>
               <CardHeader>
                 <CardTitle className="capitalize flex items-center">
-                  <DollarSign className="w-4 h-4 mr-2 text-primary" />
+                  <span className="w-4 h-4 mr-2 text-primary font-bold">₦</span>
                   {category}
                 </CardTitle>
               </CardHeader>
@@ -142,7 +158,7 @@ export default function BudgetSettings() {
                     {formatNaira(parseInt(amount) || 0)}
                   </p>
                   <p className="text-xs text-primary font-medium">
-                    Budget Remaining: {formatNaira(Math.max(0, parseInt(monthlyBudget) - (spentAmounts[category as keyof typeof spentAmounts] || 0)))}
+                    Budget Remaining: {formatNaira(calculateCumulativeRemaining(category))}
                   </p>
                 </div>
               </CardContent>
@@ -154,6 +170,7 @@ export default function BudgetSettings() {
         <div className="grid grid-cols-2 gap-4 mt-6">
           <Button 
             variant="outline" 
+            className="w-auto"
             onClick={handleReset}
             data-testid="button-reset-budget"
           >
@@ -161,7 +178,7 @@ export default function BudgetSettings() {
           </Button>
           <Button 
             onClick={handleSave}
-            className="bg-primary hover:bg-primary/90"
+            className="w-auto bg-primary hover:bg-primary/90"
             data-testid="button-save-budget"
           >
             <Save className="w-4 h-4 mr-2" />
