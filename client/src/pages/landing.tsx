@@ -257,7 +257,7 @@ export default function Landing() {
       <section className="px-4 py-8 w-full overflow-hidden" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
           <h3 className="text-lg font-semibold mb-8 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
-          <div className="flex animate-trust-scroll gap-8 whitespace-nowrap">
+          <div className="flex animate-trust-scroll gap-8">
             {/* First set */}
             <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Konga
@@ -579,9 +579,9 @@ export default function Landing() {
           </h2>
           
           <div className="relative">
-            <div className="flex gap-6 animate-testimonials-scroll whitespace-nowrap">
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
+            <div className="flex gap-6 animate-testimonials-scroll">
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
                 <div className="flex items-center gap-3">
@@ -595,8 +595,8 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
                 <div className="flex items-center gap-3">
@@ -610,9 +610,9 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
-                  "Makes expense tracking easy! KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
+                  "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding - saves me hours every month."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
@@ -625,9 +625,9 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
-                  "Perfect for small business. KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
+                  "Perfect for small businesses. KudiScan helps our company ensure compliance and accountability. The automated reporting works brilliantly."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
@@ -641,8 +641,8 @@ export default function Landing() {
               </div>
               
               {/* Duplicate cards for seamless loop */}
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
                 <div className="flex items-center gap-3">
@@ -656,8 +656,8 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
                 <div className="flex items-center gap-3">
@@ -671,9 +671,9 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
-                  "Makes expense tracking easy! KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
+                  "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding - saves me hours every month."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
@@ -686,9 +686,9 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <p className="text-lg mb-4 text-white">
-                  "Perfect for small business. KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
+              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <p className="text-lg mb-4 text-white break-words">
+                  "Perfect for small businesses. KudiScan helps our company ensure compliance and accountability. The automated reporting works brilliantly."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
