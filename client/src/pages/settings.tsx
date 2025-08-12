@@ -63,7 +63,7 @@ export default function Settings() {
   const handleAbout = () => {
     toast({
       title: "About KudiScan v1.0.0",
-      description: "Your smart expense tracker.\n\nMission: To simplify expense tracking for SMEs in Nigeria through AI-powered OCR technology.\n\nVision: To become Nigeria's leading finance management platform.\n\nGoals: Democratize financial literacy, provide insights for better spending decisions and position SMEs for loans to finance business expansion.",
+      description: "Your smart expense tracker designed for Nigerian SMEs.\n\nMission:\nAutomate expense tracking to save business owners time and improve financial decisions.\n\nVision:\nTo be the leading financial management platform for African businesses.\n\nGoals:\n• Help SMEs achieve 70% reduction in bookkeeping time\n• Support 10,000+ businesses in securing loans through better financial records\n• Expand across West Africa by 2026",
     });
   };
 

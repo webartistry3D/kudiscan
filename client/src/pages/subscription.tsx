@@ -23,7 +23,7 @@ export default function Subscription() {
 
   const fetchSubscriptionInfo = async () => {
     try {
-      const response = await apiRequest("GET", "/api/subscription/info");
+      const response = await fetch("/api/subscription/info");
       const data = await response.json();
       setSubscriptionInfo(data);
     } catch (error) {
