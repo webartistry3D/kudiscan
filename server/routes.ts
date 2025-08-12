@@ -383,9 +383,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Set amount based on plan type
       const amount = planType === 'monthly' ? 300000 : 2880000; // ₦3,000 or ₦28,800 in kobo
-      const planName = planType === 'monthly' ? 'premium-monthly' : 'premium-yearly';
 
-      // Initialize Paystack transaction
+      // Initialize Paystack transaction (without plan field since we don't have pre-created plans)
       const paystackResponse = await fetch('https://api.paystack.co/transaction/initialize', {
         method: 'POST',
         headers: {
@@ -414,8 +413,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
                 value: planType
               }
             ]
-          },
-          plan: planName
+          }
         })
       });
 

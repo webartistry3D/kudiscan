@@ -192,7 +192,7 @@ export default function Dashboard() {
                     <p className="text-lg lg:text-xl font-semibold truncate" data-testid="text-budget-left">
                       {formatNaira(Math.max(0, budgetLeft))}
                     </p>
-                    <div className="h-2 bg-green-800 rounded-full mt-2 overflow-hidden" style={{ width: `${formatNaira(Math.max(0, budgetLeft)).length * 8}px` }}>
+                    <div className="h-2 bg-green-800 rounded-full mt-2 overflow-hidden w-full max-w-[120px]">
                       <div 
                         className="h-full bg-green-300 rounded-full transition-all" 
                         style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
