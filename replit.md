@@ -97,6 +97,8 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Full-Screen Skeleton Enhancement**: Updated skeleton loading component to be truly full-screen on desktop with proper max-width constraints
 - **Settings Menu Alignment Fix**: Standardized all settings menu icons with consistent div containers for perfect left alignment
 - **Dashboard Skeleton Full-Screen Fix**: Replaced mobile-only max-w-md with responsive full-width layout for dashboard, admin, and reports pages
+- **Visit Home Page Button**: Added top-right corner button on both Sign In and Register pages linking to landing page with KudiScan green styling
+- **Email Autocomplete Styling**: Enhanced existing CSS to prevent white highlighting when selecting from email autocomplete dropdown
 
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing

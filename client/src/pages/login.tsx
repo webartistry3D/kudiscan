@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useLocation } from "wouter";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -57,7 +57,22 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center justify-center p-4 relative">
+      {/* Visit Home Page Button */}
+      <div className="absolute top-4 right-4">
+        <Link href="/">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="bg-white/80 backdrop-blur-sm hover:bg-white border-primary/20 hover:border-primary/40"
+            data-testid="button-visit-home"
+          >
+            <Home className="w-4 h-4 mr-2" />
+            Visit Home Page
+          </Button>
+        </Link>
+      </div>
+      
       <div className="max-w-md w-full">
         {/* Logo Section */}
         <div className="text-center mb-8">
@@ -88,6 +103,8 @@ export default function Login() {
                           type="email"
                           placeholder="Enter your email"
                           data-testid="input-email"
+                          autoComplete="email"
+                          className="focus:ring-0 focus:ring-offset-0"
                           {...field}
                         />
                       </FormControl>
