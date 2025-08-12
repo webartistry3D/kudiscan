@@ -195,7 +195,10 @@ export default function Dashboard() {
                     <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
                       <div 
                         className="h-full bg-green-300 rounded-full transition-all" 
-                        style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
+                        style={{ 
+                          width: `${Math.min(100, budgetUsagePercent)}%`,
+                          maxWidth: `${formatNaira(Math.max(0, budgetLeft)).length * 6}px`
+                        }}
                       />
                     </div>
                   </div>
@@ -241,16 +244,16 @@ export default function Dashboard() {
           <div className="flex space-x-3 max-w-full">
             <Button 
               onClick={() => setShowCameraModal(true)}
-              className="flex-1 bg-primary text-white py-4 px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg min-w-0"
+              className="w-auto bg-primary text-white py-4 px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg"
               data-testid="button-scan-receipt"
             >
-              <Camera className="w-5 h-5 mr-2 flex-shrink-0" />
-              <span className="truncate">Scan Receipt</span>
+              <Camera className="w-5 h-5 mr-2" />
+              <span>Scan Receipt</span>
             </Button>
             <Button 
               onClick={handleFileUpload}
               variant="outline"
-              className="p-4 rounded-xl hover:bg-gray-100 flex-shrink-0"
+              className="w-auto p-4 rounded-xl hover:bg-gray-100"
               data-testid="button-upload-file"
             >
               <Upload className="w-5 h-5" />

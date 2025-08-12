@@ -62,8 +62,8 @@ export default function Settings() {
 
   const handleAbout = () => {
     toast({
-      title: "About KudiScan",
-      description: "Version 1.0.0 - Your smart expense tracker for Nigeria\n\nMission: To simplify expense tracking for Nigerians through AI-powered OCR technology.\n\nVision: To become Nigeria's leading financial management platform.\n\nGoals: Democratize financial literacy and provide insights for better spending decisions.",
+      title: "About KudiScan v1.0.0",
+      description: "Your smart expense tracker.\n\nMission: To simplify expense tracking for SMEs in Nigeria through AI-powered OCR technology.\n\nVision: To become Nigeria's leading finance management platform.\n\nGoals: Democratize financial literacy, provide insights for better spending decisions and position SMEs for loans to finance business expansion.",
     });
   };
 
@@ -117,13 +117,13 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">App Settings</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6 p-6">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Bell className="w-5 h-5 text-gray-600" />
+                <div className="flex items-center space-x-4">
+                  <Bell className="w-6 h-6 text-primary" />
                   <div>
-                    <p className="font-medium">Push Notifications</p>
-                    <p className="text-sm text-gray-500">Get notified about budget alerts</p>
+                    <p className="font-medium text-primary">Push Notifications</p>
+                    <p className="text-sm text-primary/70">Get notified about budget alerts</p>
                   </div>
                 </div>
                 <Switch 
@@ -134,11 +134,11 @@ export default function Settings() {
               </div>
               
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Moon className="w-5 h-5 text-gray-600" />
+                <div className="flex items-center space-x-4">
+                  <Moon className="w-6 h-6 text-primary" />
                   <div>
-                    <p className="font-medium">Dark Mode</p>
-                    <p className="text-sm text-gray-500">Switch to dark theme</p>
+                    <p className="font-medium text-primary">Dark Mode</p>
+                    <p className="text-sm text-primary/70">Switch to dark theme</p>
                   </div>
                 </div>
                 <Switch 
@@ -149,11 +149,11 @@ export default function Settings() {
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Camera className="w-5 h-5 text-gray-600" />
+                <div className="flex items-center space-x-4">
+                  <Camera className="w-6 h-6 text-primary" />
                   <div>
-                    <p className="font-medium">Auto-Capture</p>
-                    <p className="text-sm text-gray-500">Automatically detect receipts</p>
+                    <p className="font-medium text-primary">Auto-Capture</p>
+                    <p className="text-sm text-primary/70">Automatically detect receipts</p>
                   </div>
                 </div>
                 <Switch 
@@ -172,17 +172,17 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">Budget Settings</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6 p-6">
               <Link href="/budget-settings">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-start"
+                  className="w-auto justify-start px-4 py-6 h-auto"
                   data-testid="button-budget-settings"
                 >
-                  <IndianRupee className="w-5 h-5 mr-3 text-gray-600" />
+                  <span className="w-6 h-6 mr-4 text-primary flex items-center justify-center font-bold text-lg">₦</span>
                   <div className="text-left">
-                    <p className="font-medium">Budget Settings</p>
-                    <p className="text-sm text-gray-500">Set monthly budgets</p>
+                    <p className="font-medium text-primary">Budget Settings</p>
+                    <p className="text-sm text-primary/70">Set monthly budgets</p>
                   </div>
                 </Button>
               </Link>
@@ -190,13 +190,13 @@ export default function Settings() {
               <Link href="/expense-categories">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-start"
+                  className="w-auto justify-start px-4 py-6 h-auto"
                   data-testid="button-expense-categories"
                 >
-                  <Crown className="w-5 h-5 mr-3 text-gray-600" />
+                  <Crown className="w-6 h-6 mr-4 text-primary" />
                   <div className="text-left">
-                    <p className="font-medium">Expense Categories</p>
-                    <p className="text-sm text-gray-500">Manage expense categories</p>
+                    <p className="font-medium text-primary">Expense Categories</p>
+                    <p className="text-sm text-primary/70">Manage expense categories</p>
                   </div>
                 </Button>
               </Link>
@@ -210,30 +210,30 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">Data & Privacy</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6 p-6">
               <Button 
                 variant="ghost" 
-                className="w-full justify-start"
+                className="w-auto justify-start px-4 py-6 h-auto"
                 onClick={handleExportData}
                 data-testid="button-export-data"
               >
-                <Download className="w-5 h-5 mr-3 text-gray-600" />
+                <Download className="w-6 h-6 mr-4 text-primary" />
                 <div className="text-left">
-                  <p className="font-medium">Export Data</p>
-                  <p className="text-sm text-gray-500">Download your expense data</p>
+                  <p className="font-medium text-primary">Export Data</p>
+                  <p className="text-sm text-primary/70">Download your expense data</p>
                 </div>
               </Button>
               
               <Link href="/privacy-settings">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-start"
+                  className="w-auto justify-start px-4 py-6 h-auto"
                   data-testid="button-privacy-settings"
                 >
-                  <Shield className="w-5 h-5 mr-3 text-gray-600" />
+                  <Shield className="w-6 h-6 mr-4 text-primary" />
                   <div className="text-left">
-                    <p className="font-medium">Privacy Settings</p>
-                    <p className="text-sm text-gray-500">Control your data usage</p>
+                    <p className="font-medium text-primary">Privacy Settings</p>
+                    <p className="text-sm text-primary/70">Control your data usage</p>
                   </div>
                 </Button>
               </Link>
@@ -247,17 +247,17 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">Support & Help</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6 p-6">
               <Link href="/help-center">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-start"
+                  className="w-auto justify-start px-4 py-6 h-auto"
                   data-testid="button-help-center"
                 >
-                  <HelpCircle className="w-5 h-5 mr-3 text-gray-600" />
+                  <HelpCircle className="w-6 h-6 mr-4 text-primary" />
                   <div className="text-left">
-                    <p className="font-medium">Help Center</p>
-                    <p className="text-sm text-gray-500">FAQs and tutorials</p>
+                    <p className="font-medium text-primary">Help Center</p>
+                    <p className="text-sm text-primary/70">FAQs and tutorials</p>
                   </div>
                 </Button>
               </Link>
@@ -265,29 +265,29 @@ export default function Settings() {
               <Link href="/contact-support">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-start"
+                  className="w-auto justify-start px-4 py-6 h-auto"
                   data-testid="button-contact-support"
                 >
-                  <div className="w-5 h-5 mr-3 bg-blue-100 rounded flex items-center justify-center">
-                    <span className="text-blue-600 text-xs">@</span>
+                  <div className="w-6 h-6 mr-4 bg-primary/10 rounded flex items-center justify-center">
+                    <span className="text-primary text-sm font-bold">@</span>
                   </div>
                   <div className="text-left">
-                    <p className="font-medium">Contact Support</p>
-                    <p className="text-sm text-gray-500">Get help from our team</p>
+                    <p className="font-medium text-primary">Contact Support</p>
+                    <p className="text-sm text-primary/70">Get help from our team</p>
                   </div>
                 </Button>
               </Link>
               
               <Button 
                 variant="ghost" 
-                className="w-full justify-start"
+                className="w-auto justify-start px-4 py-6 h-auto"
                 onClick={handleAbout}
                 data-testid="button-about"
               >
-                <Info className="w-5 h-5 mr-3 text-gray-600" />
+                <Info className="w-6 h-6 mr-4 text-primary" />
                 <div className="text-left">
-                  <p className="font-medium">About KudiScan</p>
-                  <p className="text-sm text-gray-500">Version 1.0.0</p>
+                  <p className="font-medium text-primary">About KudiScan</p>
+                  <p className="text-sm text-primary/70">Version 1.0.0</p>
                 </div>
               </Button>
             </CardContent>
@@ -301,7 +301,7 @@ export default function Settings() {
         {/* Sign Out */}
         <section className="px-4">
           <Button 
-            className="w-full bg-red-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-600 shadow-lg"
+            className="w-auto bg-red-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-600 shadow-lg mx-auto"
             onClick={handleLogout}
             disabled={isLoggingOut}
             data-testid="button-sign-out"
