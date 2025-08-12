@@ -55,7 +55,7 @@ export default function Transactions() {
 
   if (isLoading) {
     return (
-      <div className="max-w-md mx-auto bg-background min-h-screen">
+      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
         <Header title="Transactions" />
         <div className="p-4">
           <div className="animate-pulse space-y-4">
@@ -70,7 +70,7 @@ export default function Transactions() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
       <Header title="Transactions" />
       
       <main className="pb-20">
@@ -97,7 +97,7 @@ export default function Transactions() {
 
         {/* Filters */}
         <section className="px-4 pb-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
             <div>
               <label className="block text-sm font-medium text-muted-foreground mb-1">
                 Category

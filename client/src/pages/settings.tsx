@@ -104,12 +104,13 @@ export default function Settings() {
     : user?.email || "User";
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
       <Header title="Settings" />
       
       <main className="pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 p-4">
         {/* Profile Section */}
-        <section className="p-4">
+        <section className="lg:col-span-2">
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center space-x-4">
@@ -141,7 +142,7 @@ export default function Settings() {
         </section>
 
         {/* App Settings */}
-        <section className="px-4 pb-4">
+        <section className="col-span-1">
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">App Settings</CardTitle>
@@ -196,7 +197,7 @@ export default function Settings() {
         </section>
 
         {/* Budget Settings */}
-        <section className="px-4 pb-4">
+        <section className="col-span-1">
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Budget Settings</CardTitle>
@@ -234,7 +235,7 @@ export default function Settings() {
         </section>
 
         {/* Data & Privacy */}
-        <section className="px-4 pb-4">
+        <section className="col-span-1">
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Data & Privacy</CardTitle>
@@ -270,7 +271,7 @@ export default function Settings() {
         </section>
 
         {/* Support & Help */}
-        <section className="px-4 pb-4">
+        <section className="col-span-1">
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Support & Help</CardTitle>
@@ -321,30 +322,9 @@ export default function Settings() {
         </section>
 
         {/* Admin Section */}
-        {isAdmin && (
-          <section className="px-4 pb-4">
-            <Card className="border-2 border-yellow-200 bg-gradient-to-r from-yellow-50 to-yellow-100">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center">
-                  <Crown className="w-5 h-5 mr-2 text-yellow-600" />
-                  Admin Access
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  variant="default" 
-                  className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700"
-                  onClick={() => window.location.href = '/admin'}
-                  data-testid="button-admin-dashboard"
-                >
-                  <Shield className="w-5 h-5 mr-3" />
-                  Open Admin Dashboard
-                </Button>
-              </CardContent>
-            </Card>
-          </section>
-        )}
 
+
+        </div>
         {/* Sign Out */}
         <section className="px-4">
           <Button 
