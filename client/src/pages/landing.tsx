@@ -13,7 +13,7 @@ export default function Landing() {
   const { settings, toggleDarkMode } = useSettings();
   const [typedText, setTypedText] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const words = ["Snap.", "Scan.", "Track.", "Report."];
+  const words = ["Scan.", "Track.", "Report."];
   
   useEffect(() => {
     const typeText = () => {
@@ -22,8 +22,12 @@ export default function Landing() {
         let charIndex = 0;
         
         const typeInterval = setInterval(() => {
-          if (charIndex <= word.length) {
-            setTypedText(prev => prev + word[charIndex]);
+          if (charIndex < word.length) {
+            setTypedText(prev => {
+              const wordsCompleted = words.slice(0, currentWordIndex).join(' ');
+              const currentChar = word[charIndex];
+              return wordsCompleted + (wordsCompleted ? ' ' : '') + word.slice(0, charIndex + 1);
+            });
             charIndex++;
           } else {
             clearInterval(typeInterval);
@@ -38,7 +42,7 @@ export default function Landing() {
     if (currentWordIndex < words.length) {
       typeText();
     }
-  }, [currentWordIndex]);
+  }, [currentWordIndex, words]);
 
   // Reset animation on page load
   useEffect(() => {
@@ -58,14 +62,7 @@ export default function Landing() {
             </span>
           </Link>
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Sun className="h-4 w-4" />
-              <Switch
-                checked={settings.darkMode}
-                onCheckedChange={toggleDarkMode}
-              />
-              <Moon className="h-4 w-4" />
-            </div>
+
             <Link href="/login">
               <Button variant="outline">Sign in</Button>
             </Link>
@@ -78,11 +75,10 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto text-center w-full">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display min-h-[4rem] md:min-h-[5rem]">
             <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center">
-              {words.map((word, index) => (
-                <span key={index} className={`${index <= currentWordIndex ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-                  {index < currentWordIndex ? word : (index === currentWordIndex ? typedText.slice(words.slice(0, index).join(' ').length + index) : '')}
-                </span>
-              ))}
+              <span className="typing-text">
+                {currentWordIndex >= words.length ? words.join(' ') : typedText}
+                {currentWordIndex < words.length && <span className="animate-pulse">|</span>}
+              </span>
             </div>
           </h1>
           
@@ -277,32 +273,32 @@ export default function Landing() {
 
 
       {/* Company Logos */}
-      <section className="px-4 py-8 bg-secondary/30 w-full overflow-hidden">
+      <section className="px-4 py-8 w-full overflow-hidden" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
-          <div className="flex animate-slide-left-to-right gap-8 opacity-60">
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+          <h3 className="text-lg font-semibold mb-8 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
+          <div className="flex animate-trust-scroll gap-8">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Flutterwave
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
               Flutterwave
             </div>
           </div>
@@ -593,71 +589,131 @@ export default function Landing() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#22262A'}}>
+      <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center mb-12 font-display" style={{color: '#E1E7EF'}}>
-            What Our Users Say
+          <h2 className="text-3xl font-bold text-center mb-12 font-display text-white">
+            What Our Users Are Saying
           </h2>
           
           <div className="relative">
-            <div className="flex gap-6 animate-scroll">
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+            <div className="flex gap-6 animate-testimonials-scroll">
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                     <span className="text-white font-bold">C</span>
                   </div>
                   <div>
-                    <p className="font-semibold" style={{color: '#29A378'}}>Chidinma</p>
-                    <p className="text-sm" style={{color: '#959AA0'}}>Lagos entrepreneur</p>
+                    <p className="font-semibold text-white">Chidinma</p>
+                    <p className="text-sm text-white/70">Lagos entrepreneur</p>
                   </div>
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                     <span className="text-white font-bold">T</span>
                   </div>
                   <div>
-                    <p className="font-semibold" style={{color: '#29A378'}}>Tunde</p>
-                    <p className="text-sm" style={{color: '#959AA0'}}>Freelancer</p>
+                    <p className="font-semibold text-white">Tunde</p>
+                    <p className="text-sm text-white/70">Freelancer</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
+                  "Makes expense tracking easy! KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <span className="text-white font-bold">A</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Adebayo M.</p>
+                    <p className="text-sm text-white/70">Small business owner</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
+                  "Perfect for small business. KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <span className="text-white font-bold">K</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Kemi O.</p>
+                    <p className="text-sm text-white/70">Finance manager</p>
                   </div>
                 </div>
               </div>
               
               {/* Duplicate cards for seamless loop */}
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                     <span className="text-white font-bold">C</span>
                   </div>
                   <div>
-                    <p className="font-semibold" style={{color: '#29A378'}}>Chidinma</p>
-                    <p className="text-sm" style={{color: '#959AA0'}}>Lagos entrepreneur</p>
+                    <p className="font-semibold text-white">Chidinma</p>
+                    <p className="text-sm text-white/70">Lagos entrepreneur</p>
                   </div>
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-                <p className="text-lg mb-4" style={{color: '#E1E7EF'}}>
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                     <span className="text-white font-bold">T</span>
                   </div>
                   <div>
-                    <p className="font-semibold" style={{color: '#29A378'}}>Tunde</p>
-                    <p className="text-sm" style={{color: '#959AA0'}}>Freelancer</p>
+                    <p className="font-semibold text-white">Tunde</p>
+                    <p className="text-sm text-white/70">Freelancer</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
+                  "Makes expense tracking easy! KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <span className="text-white font-bold">A</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Adebayo M.</p>
+                    <p className="text-sm text-white/70">Small business owner</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+                <p className="text-lg mb-4 text-white">
+                  "Perfect for small business. KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <span className="text-white font-bold">K</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Kemi O.</p>
+                    <p className="text-sm text-white/70">Finance manager</p>
                   </div>
                 </div>
               </div>
@@ -736,6 +792,7 @@ export default function Landing() {
                 <div className="text-4xl font-bold mb-2" style={{color: '#E1E7EF'}}>
                   ₦3,000<span className="text-lg font-normal" style={{color: '#959AA0'}}>/month</span>
                 </div>
+                <p className="text-sm mb-2" style={{color: '#959AA0'}}>₦30,000/year - Save 17%</p>
                 <p style={{color: '#959AA0'}}>Complete financial management for individuals and businesses</p>
               </div>
               
@@ -791,22 +848,11 @@ export default function Landing() {
               </div>
               
               <Button size="lg" className="w-full bg-primary hover:bg-primary/90">
-                Start Premium Trial
+                Get Started
               </Button>
-              <p className="text-center mt-2 text-sm" style={{color: '#959AA0'}}>
-                14-day free trial, then ₦3,000/month
-              </p>
             </div>
           </div>
-          
-          <div className="text-center mt-12">
-            <p className="mb-4" style={{color: '#959AA0'}}>
-              Need enterprise features? Custom pricing available for teams of 10+ users.
-            </p>
-            <Button variant="link" style={{color: '#29A378'}}>
-              Contact Sales
-            </Button>
-          </div>
+
         </div>
       </section>
 
