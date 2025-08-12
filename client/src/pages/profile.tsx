@@ -123,7 +123,7 @@ export default function Profile() {
                   </span>
                   {isAdmin && (
                     <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs">★</span>
+                      <span className="text-xs text-white font-bold">A</span>
                     </div>
                   )}
                 </div>
@@ -149,6 +149,45 @@ export default function Profile() {
                 )}
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Subscription Status Card */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center justify-between">
+              <span>Subscription Status</span>
+              <Badge variant={(user as any)?.subscriptionPlan === "premium" ? "default" : "secondary"} className={(user as any)?.subscriptionPlan === "premium" ? "bg-primary" : ""}>
+                {(user as any)?.subscriptionPlan === "premium" ? "Premium" : "Freemium"}
+              </Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-muted-foreground">Monthly Scans Used</span>
+              <span className="text-sm font-mono">
+                {(user as any)?.monthlyScansUsed || 0} / {(user as any)?.subscriptionPlan === "premium" ? "Unlimited" : "10"}
+              </span>
+            </div>
+            {(user as any)?.subscriptionPlan === "freemium" && parseInt((user as any)?.monthlyScansUsed || "0") >= 8 && (
+              <div className="flex items-center gap-2 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                <span className="text-xs text-yellow-700 dark:text-yellow-400">
+                  {parseInt((user as any)?.monthlyScansUsed || "0") >= 10 
+                    ? "Monthly limit reached. Upgrade to Premium for unlimited scans."
+                    : "You're close to your monthly scan limit. Consider upgrading to Premium."
+                  }
+                </span>
+              </div>
+            )}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="w-full"
+              onClick={() => setLocation("/subscription")}
+              data-testid="button-manage-subscription"
+            >
+              Manage Subscription
+            </Button>
           </CardContent>
         </Card>
 

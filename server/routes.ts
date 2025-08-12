@@ -343,6 +343,136 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Subscription management endpoints
+  app.get("/api/subscription/info", isAuthenticated, async (req, res) => {
+    try {
+      const user = await storage.getUserById(getCurrentUser(req).id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      res.json({
+        subscriptionPlan: user.subscriptionPlan,
+        subscriptionStatus: user.subscriptionStatus,
+        subscriptionEndDate: user.subscriptionEndDate,
+        monthlyScansUsed: parseInt(user.monthlyScansUsed),
+        lastScanResetDate: user.lastScanResetDate,
+        paymentMethod: user.stripeCustomerId ? { last4: "1234" } : null
+      });
+    } catch (error) {
+      console.error("Error fetching subscription info:", error);
+      res.status(500).json({ message: "Failed to fetch subscription info" });
+    }
+  });
+
+  app.post("/api/subscription/create", isAuthenticated, async (req, res) => {
+    try {
+      const user = await storage.getUserById(getCurrentUser(req).id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      // In a real implementation, integrate with Stripe here
+      const mockCheckoutUrl = `https://buy.stripe.com/test_28o5kA0GKdWKgWQ288?client_reference_id=${user.id}`;
+      
+      res.json({ 
+        checkoutUrl: mockCheckoutUrl,
+        message: "Redirecting to payment..."
+      });
+    } catch (error) {
+      console.error("Error creating subscription:", error);
+      res.status(500).json({ message: "Failed to create subscription" });
+    }
+  });
+
+  app.post("/api/subscription/cancel", isAuthenticated, async (req, res) => {
+    try {
+      const user = await storage.getUserById(getCurrentUser(req).id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      await storage.updateUser(getCurrentUser(req).id, {
+        subscriptionStatus: "canceled",
+        subscriptionEndDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      });
+
+      res.json({ message: "Subscription cancelled successfully" });
+    } catch (error) {
+      console.error("Error canceling subscription:", error);
+      res.status(500).json({ message: "Failed to cancel subscription" });
+    }
+  });
+
+  // Check and enforce scan limits
+  app.post("/api/expenses/check-limit", isAuthenticated, async (req, res) => {
+    try {
+      const user = await storage.getUserById(getCurrentUser(req).id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      // Reset monthly scans if it's a new month
+      const now = new Date();
+      const lastReset = new Date(user.lastScanResetDate);
+      const isNewMonth = now.getMonth() !== lastReset.getMonth() || now.getFullYear() !== lastReset.getFullYear();
+
+      if (isNewMonth) {
+        await storage.updateUser(getCurrentUser(req).id, {
+          monthlyScansUsed: "0",
+          lastScanResetDate: now
+        });
+        return res.json({ 
+          canScan: true, 
+          scansUsed: 0, 
+          scansLimit: user.subscriptionPlan === "premium" ? -1 : 10,
+          message: "Monthly scans reset"
+        });
+      }
+
+      const scansUsed = parseInt(user.monthlyScansUsed);
+      const scansLimit = user.subscriptionPlan === "premium" ? -1 : 10;
+
+      if (user.subscriptionPlan === "freemium" && scansUsed >= 10) {
+        return res.json({ 
+          canScan: false, 
+          scansUsed, 
+          scansLimit: 10,
+          message: "Monthly scan limit reached. Upgrade to Premium for unlimited scans."
+        });
+      }
+
+      res.json({ 
+        canScan: true, 
+        scansUsed, 
+        scansLimit,
+        message: "Scan allowed"
+      });
+    } catch (error) {
+      console.error("Error checking scan limit:", error);
+      res.status(500).json({ message: "Failed to check scan limit" });
+    }
+  });
+
+  app.post("/api/expenses/increment-scan", isAuthenticated, async (req, res) => {
+    try {
+      const user = await storage.getUserById(getCurrentUser(req).id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const newScansUsed = parseInt(user.monthlyScansUsed) + 1;
+      await storage.updateUser(getCurrentUser(req).id, {
+        monthlyScansUsed: newScansUsed.toString()
+      });
+
+      res.json({ scansUsed: newScansUsed });
+    } catch (error) {
+      console.error("Error incrementing scan count:", error);
+      res.status(500).json({ message: "Failed to increment scan count" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
