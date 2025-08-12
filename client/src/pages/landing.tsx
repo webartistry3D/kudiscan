@@ -22,25 +22,30 @@ export default function Landing() {
         let charIndex = 0;
         
         const typeInterval = setInterval(() => {
-          if (charIndex < word.length) {
+          if (charIndex <= word.length) {
             setTypedText(prev => {
               const wordsCompleted = words.slice(0, currentWordIndex).join(' ');
-              const currentChar = word[charIndex];
-              return wordsCompleted + (wordsCompleted ? ' ' : '') + word.slice(0, charIndex + 1);
+              const currentPart = word.slice(0, charIndex);
+              return wordsCompleted + (wordsCompleted ? ' ' : '') + currentPart;
             });
+            
+            if (charIndex === word.length) {
+              clearInterval(typeInterval);
+              setTimeout(() => {
+                setCurrentWordIndex(prev => prev + 1);
+              }, 600);
+            }
             charIndex++;
-          } else {
-            clearInterval(typeInterval);
-            setTimeout(() => {
-              setCurrentWordIndex(prev => prev + 1);
-            }, 500);
           }
-        }, 200);
+        }, 180);
+        
+        return () => clearInterval(typeInterval);
       }
     };
     
     if (currentWordIndex < words.length) {
-      typeText();
+      const cleanup = typeText();
+      return cleanup;
     }
   }, [currentWordIndex, words]);
 
@@ -73,11 +78,14 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="px-4 py-16 w-full bg-primary-light">
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display h-[4rem] md:h-[5rem] flex items-center justify-center">
-            <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center">
-              <span className="typing-text inline-block" style={{width: '20ch', textAlign: 'center'}}>
-                {currentWordIndex >= words.length ? words.join(' ') : typedText}
-                {currentWordIndex < words.length && <span className="animate-pulse">|</span>}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-display h-[3rem] sm:h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-center justify-center">
+            <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center w-full">
+              <span className="typing-text inline-block text-center" style={{minWidth: '15ch'}}>
+                <span className="invisible absolute">{words.join(' ')}</span>
+                <span className="relative">
+                  {currentWordIndex >= words.length ? words.join(' ') : typedText}
+                  {currentWordIndex < words.length && <span className="animate-pulse">|</span>}
+                </span>
               </span>
             </div>
           </h1>
