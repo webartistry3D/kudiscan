@@ -333,7 +333,7 @@ export default function Settings() {
 
         </div>
         {/* Sign Out */}
-        <section className="lg:col-span-2 flex justify-end">
+        <section className="lg:col-span-2 flex justify-center">
           <Button 
             className="w-auto bg-red-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-600 shadow-lg"
             onClick={handleLogout}
