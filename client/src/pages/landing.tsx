@@ -532,7 +532,7 @@ export default function Landing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#0C3124'}}>
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center mb-12 font-display" style={{color: '#E1E7EF'}}>
             Frequently Asked Questions
@@ -570,7 +570,7 @@ export default function Landing() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#29A378'}}>
+      <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center mb-12 font-display text-white">
             What Our Users Are Saying
@@ -865,7 +865,10 @@ export default function Landing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {/* Company Info */}
             <div className="col-span-2 md:col-span-1">
-              <h3 className="text-lg font-bold mb-4 font-display text-foreground">KudiScan</h3>
+              <h3 className="text-lg font-bold mb-4 font-display">
+                <span style={{color: '#29A378'}}>Kudi</span>
+                <span className="text-white">Scan</span>
+              </h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
               </p>
@@ -917,15 +920,8 @@ export default function Landing() {
               </p>
             </div>
             
-            {/* Stylized KudiScan Logo and Scroll Arrow */}
-            <div className="flex items-center space-x-4">
-              <div className="transform rotate-12">
-                <span className="text-xl md:text-2xl font-bold font-display">
-                  <span style={{color: '#29A378'}}>Kudi</span>
-                  <span className="text-muted-foreground">Scan</span>
-                </span>
-              </div>
-              
+            {/* Scroll to Top Arrow */}
+            <div className="flex items-center">
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
