@@ -95,40 +95,47 @@
 
 
 
-/* Apply KudiScan dark theme by default with original dashboard green */
-:root {
-  --background: hsl(210 11% 15%);
-  --foreground: hsl(213 31% 91%);
-  --card: hsl(210 12% 20%);
-  --card-foreground: hsl(213 31% 91%);
-  --popover: hsl(210 12% 20%);
-  --popover-foreground: hsl(213 31% 91%);
+/* Light mode colors (when dark mode is disabled) */
+.light {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(210 25% 7.8431%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(210 25% 7.8431%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(210 25% 7.8431%);
   --primary: hsl(159 60% 40%);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(210 12% 16%);
-  --secondary-foreground: hsl(213 31% 91%);
-  --muted: hsl(210 12% 16%);
-  --muted-foreground: hsl(215 20.2% 65.1%);
-  --accent: hsl(210 12% 16%);
-  --accent-foreground: hsl(213 31% 91%);
+  --secondary: hsl(158 64% 24%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(210 40% 96%);
+  --muted-foreground: hsl(215 16% 47%);
+  --accent: hsl(42 92% 56%);
+  --accent-foreground: hsl(0 0% 0%);
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(210 12% 26%);
-  --input: hsl(210 12% 26%);
+  --border: hsl(214 32% 91%);
+  --input: hsl(214 32% 91%);
   --ring: hsl(159 60% 40%);
   --chart-1: hsl(159 60% 40%);
-  --chart-2: hsl(159 60% 50%);
-  --chart-3: hsl(159 60% 60%);
-  --chart-4: hsl(159 60% 30%);
-  --chart-5: hsl(159 60% 70%);
-  --sidebar: hsl(210 12% 20%);
-  --sidebar-foreground: hsl(213 31% 91%);
+  --chart-2: hsl(220 70% 50%);
+  --chart-3: hsl(262 83% 58%);
+  --chart-4: hsl(142 76% 36%);
+  --chart-5: hsl(343 75% 51%);
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(210 25% 7.8431%);
   --sidebar-primary: hsl(159 60% 40%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(210 12% 16%);
-  --sidebar-accent-foreground: hsl(215 20.2% 65.1%);
-  --sidebar-border: hsl(210 12% 26%);
+  --sidebar-accent: hsl(210 40% 96%);
+  --sidebar-accent-foreground: hsl(215 16% 47%);
+  --sidebar-border: hsl(214 32% 91%);
   --sidebar-ring: hsl(159 60% 40%);
+  
+  /* Custom KudiScan green backgrounds for light theme */
+  --primary-light: hsl(159 60% 92%);
+  --primary-medium: hsl(159 60% 88%);
+  
+  /* Process flow card background */
+  --process-card-bg: #29A378;
 }
 
 .dark {
@@ -178,11 +185,27 @@
     @apply border-border;
   }
 
-
-
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+}
+
+/* Fix autocomplete white background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+}
+
+/* Dark mode autocomplete fix */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
 }
 
 @layer utilities {

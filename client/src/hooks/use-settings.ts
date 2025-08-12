@@ -36,8 +36,10 @@ export function useSettings() {
   useEffect(() => {
     if (settings.darkMode) {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   }, [settings.darkMode]);
 

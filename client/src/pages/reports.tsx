@@ -46,7 +46,7 @@ export default function Reports() {
   const avgDaily = (stats?.monthlyTotal || 0) / new Date().getDate();
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
       <Header title="Reports" />
       
       <main className="pb-20">
@@ -185,9 +185,9 @@ export default function Reports() {
                 </div>
               )}
               
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-sm text-blue-800 font-medium">Track More</p>
-                <p className="text-xs text-blue-600 mt-1">
+              <div className="p-3 rounded-lg" style={{backgroundColor: '#24292E'}}>
+                <p className="text-sm font-medium" style={{color: '#E1E7EF'}}>Track More</p>
+                <p className="text-xs mt-1" style={{color: '#A1A7AE'}}>
                   Scan more receipts to get better insights into your spending patterns
                 </p>
               </div>

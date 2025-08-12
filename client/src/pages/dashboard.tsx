@@ -158,68 +158,70 @@ export default function Dashboard() {
   const budgetUsagePercent = ((stats?.monthlyTotal || 0) / budgetLimit) * 100;
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen overflow-x-hidden">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
       <Header />
       
       <main className="pb-20 max-w-full">
         {/* Dashboard Overview Section */}
         <section className="px-4 py-4 max-w-full">
-          <Card className="bg-primary text-white border-0">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between mb-4 max-w-full">
-                <div className="flex-1 min-w-0 pr-3">
-                  <p className="text-green-100 text-sm font-medium">Total Expenses</p>
-                  <h2 className="text-xl font-bold truncate" data-testid="text-total-expenses">
-                    {formatNaira(stats?.monthlyTotal || 0)}
-                  </h2>
-                  <p className="text-green-100 text-xs mt-1">This month</p>
-                </div>
-                <div className="text-right flex-1 min-w-0">
-                  <p className="text-green-100 text-sm">Budget Left</p>
-                  <p className="text-lg font-semibold truncate" data-testid="text-budget-left">
-                    {formatNaira(Math.max(0, budgetLeft))}
-                  </p>
-                  <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
-                    <div 
-                      className="h-full bg-green-300 rounded-full transition-all" 
-                      style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
-                    />
+          <div className="grid grid-cols-1 gap-6">
+            <Card className="bg-primary text-white border-0">
+              <CardContent className="p-4 lg:p-6">
+                <div className="flex items-center justify-between mb-4 max-w-full">
+                  <div className="flex-1 min-w-0 pr-3">
+                    <p className="text-green-100 text-sm font-medium">Total Expenses</p>
+                    <h2 className="text-xl lg:text-2xl font-bold truncate" data-testid="text-total-expenses">
+                      {formatNaira(stats?.monthlyTotal || 0)}
+                    </h2>
+                    <p className="text-green-100 text-xs mt-1">This month</p>
+                  </div>
+                  <div className="text-right flex-1 min-w-0">
+                    <p className="text-green-100 text-sm">Budget Left</p>
+                    <p className="text-lg lg:text-xl font-semibold truncate" data-testid="text-budget-left">
+                      {formatNaira(Math.max(0, budgetLeft))}
+                    </p>
+                    <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
+                      <div 
+                        className="h-full bg-green-300 rounded-full transition-all" 
+                        style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-3 mt-6 max-w-full">
-                <Card className="bg-white/10 border-0 max-w-full">
-                  <CardContent className="p-2 text-center">
-                    <i className="fas fa-receipt text-white/80 mb-1 text-sm" />
-                    <p className="text-xs text-green-100">Receipts</p>
-                    <p className="font-semibold text-sm" data-testid="text-receipt-count">
-                      {stats?.receiptCount || 0}
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-white/10 border-0 max-w-full">
-                  <CardContent className="p-2 text-center">
-                    <i className="fas fa-chart-line text-white/80 mb-1 text-sm" />
-                    <p className="text-xs text-green-100">Categories</p>
-                    <p className="font-semibold text-sm" data-testid="text-category-count">
-                      {stats?.categoryCount || 0}
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-white/10 border-0 max-w-full">
-                  <CardContent className="p-2 text-center">
-                    <i className="fas fa-calendar-day text-white/80 mb-1 text-sm" />
-                    <p className="text-xs text-green-100">This Week</p>
-                    <p className="font-semibold text-sm truncate" data-testid="text-weekly-expenses">
-                      {formatNaira(stats?.weeklyTotal || 0)}
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-            </CardContent>
-          </Card>
+                
+                {/* Quick Stats */}
+                <div className="grid grid-cols-3 gap-3 lg:gap-4 mt-6 max-w-full">
+                  <Card className="bg-white/10 border-0 max-w-full">
+                    <CardContent className="p-3 lg:p-4 text-center">
+                      <i className="fas fa-receipt text-white/80 mb-1 text-sm lg:text-base" />
+                      <p className="text-xs lg:text-sm text-green-100">Receipts</p>
+                      <p className="font-semibold text-sm lg:text-base" data-testid="text-receipt-count">
+                        {stats?.receiptCount || 0}
+                      </p>
+                    </CardContent>
+                  </Card>
+                  <Card className="bg-white/10 border-0 max-w-full">
+                    <CardContent className="p-3 lg:p-4 text-center">
+                      <i className="fas fa-chart-line text-white/80 mb-1 text-sm lg:text-base" />
+                      <p className="text-xs lg:text-sm text-green-100">Categories</p>
+                      <p className="font-semibold text-sm lg:text-base" data-testid="text-category-count">
+                        {stats?.categoryCount || 0}
+                      </p>
+                    </CardContent>
+                  </Card>
+                  <Card className="bg-white/10 border-0 max-w-full">
+                    <CardContent className="p-3 lg:p-4 text-center">
+                      <i className="fas fa-calendar-day text-white/80 mb-1 text-sm lg:text-base" />
+                      <p className="text-xs lg:text-sm text-green-100">This Week</p>
+                      <p className="font-semibold text-sm lg:text-base truncate" data-testid="text-weekly-expenses">
+                        {formatNaira(stats?.weeklyTotal || 0)}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </section>
 
         {/* Quick Actions */}

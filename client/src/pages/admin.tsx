@@ -140,11 +140,11 @@ export default function Admin() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen overflow-x-hidden">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
       <Header title="Admin Dashboard" />
       
       <main className="pb-20 pt-4">
-        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full max-w-md mx-auto">
+        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full mx-auto">
           <div className="px-4 mb-4">
             <TabsList className="grid w-full grid-cols-3 bg-card border border-border">
               <TabsTrigger value="overview" className="text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Overview</TabsTrigger>
@@ -155,7 +155,7 @@ export default function Admin() {
 
           <TabsContent value="overview" className="px-4 space-y-4 max-w-full">
             {/* Key Metrics */}
-            <div className="grid grid-cols-2 gap-3 w-full max-w-full">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 w-full max-w-full">
               <Card>
                 <CardContent className="p-3">
                   <div className="flex items-center justify-between">

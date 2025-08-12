@@ -67,11 +67,11 @@ export default function Register() {
       <div className="max-w-md w-full">
         {/* Logo Section */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-2xl mx-auto mb-4 flex items-center justify-center">
+          <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center">
             <span className="text-white text-2xl font-bold">K</span>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2 font-display">
-            <span style={{color: '#29A378'}}>Kudi</span><span style={{color: '#E8F0FE'}}>Scan</span>
+          <h1 className="text-3xl font-bold mb-2 font-display">
+            <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>
           </h1>
           <p className="text-gray-600">Start tracking your expenses today</p>
         </div>
