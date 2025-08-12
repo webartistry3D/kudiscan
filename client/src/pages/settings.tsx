@@ -321,9 +321,9 @@ export default function Settings() {
 
         </div>
         {/* Sign Out */}
-        <section className="px-4">
+        <section className="lg:col-span-2 flex justify-end">
           <Button 
-            className="w-auto bg-red-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-600 shadow-lg mx-auto"
+            className="w-auto bg-red-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-600 shadow-lg"
             onClick={handleLogout}
             disabled={isLoggingOut}
             data-testid="button-sign-out"

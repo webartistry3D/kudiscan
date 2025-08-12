@@ -86,6 +86,7 @@ export default function HelpCenter() {
       </header>
       
       <main className="pb-20 p-4">
+        <div className="max-w-6xl mx-auto">
         {/* Search */}
         <div className="mb-6">
           <div className="relative">
@@ -180,6 +181,7 @@ export default function HelpCenter() {
             <p className="text-sm text-muted-foreground mt-2">Try different search terms or contact support directly.</p>
           </div>
         )}
+        </div>
       </main>
 
       <BottomNavigation />

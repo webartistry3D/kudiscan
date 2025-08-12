@@ -92,6 +92,9 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Full-Screen Skeleton Loading**: Implemented comprehensive skeleton loading component for desktop and tablet devices
 - **Notification System**: Added subscription expiry alerts with notification bell badge and dropdown directing users to /subscription page for renewal
 - **Subscription Renewal Button**: Added dedicated Renew button in billing information section above Cancel Subscription with individual loading states
+- **UI Alignment Fixes**: Fixed Budget Settings and Help Center page margins/padding to match Privacy Settings layout consistency
+- **Sign Out Button Positioning**: Moved Sign Out button to right side of settings page using lg:col-span-2 and justify-end alignment
+- **Full-Screen Skeleton Enhancement**: Updated skeleton loading component to be truly full-screen on desktop with proper max-width constraints
 
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing

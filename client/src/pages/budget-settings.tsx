@@ -94,7 +94,8 @@ export default function BudgetSettings() {
       </header>
       
       <main className="pb-20 p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           {/* Monthly Budget */}
           <Card className="lg:col-span-2">
             <CardHeader>
@@ -183,6 +184,7 @@ export default function BudgetSettings() {
             <Save className="w-4 h-4 mr-2" />
             Save Settings
           </Button>
+        </div>
         </div>
       </main>
 

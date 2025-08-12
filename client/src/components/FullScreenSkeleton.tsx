@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function FullScreenSkeleton() {
   return (
-    <div className="w-full max-w-4xl mx-auto bg-background min-h-screen">
+    <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
       {/* Header Skeleton */}
       <div className="bg-background border-b border-border sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
