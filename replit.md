@@ -90,6 +90,7 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Dashboard Budget Bar Fix**: Limited dark green budget bar width to match amount text width for better visual proportion
 - **Settings Panel Enhancement**: Improved spacing (space-y-6 p-6), increased icon sizes to match App Settings, applied KudiScan green to all text and icons for consistency
 - **Budget Settings Calculation Fix**: Fixed Budget Remaining to show cumulative remaining budget (Total Monthly - Sum of all Category Budgets), changed all dollar icons to Naira symbols (₦)
+- **Dashboard & Settings Alignment Fix**: Centered Scan Receipt & Upload buttons, fixed Settings menu alignment and spacing (reduced from space-y-6 p-6 to space-y-3/4 p-4), removed green Naira icons from category headers, made budget bar width match text width across all screen sizes
 - **Fixed Budget Remaining Calculation**: Budget Remaining now correctly shows remaining amount from total monthly budget instead of individual category budgets
 - **Enhanced Budget Settings**: Shows real-time budget remaining calculations based on monthly budget totals
 - **Comprehensive Expense Categories Page**: Created full-featured category management with add/edit/delete, icon selection, and color customization

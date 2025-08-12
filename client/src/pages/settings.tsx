@@ -117,9 +117,9 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">App Settings</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 p-6">
+            <CardContent className="space-y-4 p-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
                   <Bell className="w-6 h-6 text-primary" />
                   <div>
                     <p className="font-medium text-primary">Push Notifications</p>
@@ -134,7 +134,7 @@ export default function Settings() {
               </div>
               
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
                   <Moon className="w-6 h-6 text-primary" />
                   <div>
                     <p className="font-medium text-primary">Dark Mode</p>
@@ -149,7 +149,7 @@ export default function Settings() {
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
                   <Camera className="w-6 h-6 text-primary" />
                   <div>
                     <p className="font-medium text-primary">Auto-Capture</p>
@@ -172,14 +172,14 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">Budget Settings</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 p-6">
+            <CardContent className="space-y-3 p-4">
               <Link href="/budget-settings">
                 <Button 
                   variant="ghost" 
-                  className="w-auto justify-start px-4 py-6 h-auto"
+                  className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-budget-settings"
                 >
-                  <span className="w-6 h-6 mr-4 text-primary flex items-center justify-center font-bold text-lg">₦</span>
+                  <span className="w-6 h-6 mr-3 text-primary flex items-center justify-center font-bold text-lg">₦</span>
                   <div className="text-left">
                     <p className="font-medium text-primary">Budget Settings</p>
                     <p className="text-sm text-primary/70">Set monthly budgets</p>
@@ -190,10 +190,10 @@ export default function Settings() {
               <Link href="/expense-categories">
                 <Button 
                   variant="ghost" 
-                  className="w-auto justify-start px-4 py-6 h-auto"
+                  className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-expense-categories"
                 >
-                  <Crown className="w-6 h-6 mr-4 text-primary" />
+                  <Crown className="w-6 h-6 mr-3 text-primary" />
                   <div className="text-left">
                     <p className="font-medium text-primary">Expense Categories</p>
                     <p className="text-sm text-primary/70">Manage expense categories</p>
@@ -210,14 +210,14 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">Data & Privacy</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 p-6">
+            <CardContent className="space-y-3 p-4">
               <Button 
                 variant="ghost" 
-                className="w-auto justify-start px-4 py-6 h-auto"
+                className="w-full justify-start px-4 py-3 h-auto"
                 onClick={handleExportData}
                 data-testid="button-export-data"
               >
-                <Download className="w-6 h-6 mr-4 text-primary" />
+                <Download className="w-6 h-6 mr-3 text-primary" />
                 <div className="text-left">
                   <p className="font-medium text-primary">Export Data</p>
                   <p className="text-sm text-primary/70">Download your expense data</p>
@@ -227,10 +227,10 @@ export default function Settings() {
               <Link href="/privacy-settings">
                 <Button 
                   variant="ghost" 
-                  className="w-auto justify-start px-4 py-6 h-auto"
+                  className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-privacy-settings"
                 >
-                  <Shield className="w-6 h-6 mr-4 text-primary" />
+                  <Shield className="w-6 h-6 mr-3 text-primary" />
                   <div className="text-left">
                     <p className="font-medium text-primary">Privacy Settings</p>
                     <p className="text-sm text-primary/70">Control your data usage</p>
@@ -247,14 +247,14 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="text-lg">Support & Help</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 p-6">
+            <CardContent className="space-y-3 p-4">
               <Link href="/help-center">
                 <Button 
                   variant="ghost" 
-                  className="w-auto justify-start px-4 py-6 h-auto"
+                  className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-help-center"
                 >
-                  <HelpCircle className="w-6 h-6 mr-4 text-primary" />
+                  <HelpCircle className="w-6 h-6 mr-3 text-primary" />
                   <div className="text-left">
                     <p className="font-medium text-primary">Help Center</p>
                     <p className="text-sm text-primary/70">FAQs and tutorials</p>
@@ -265,10 +265,10 @@ export default function Settings() {
               <Link href="/contact-support">
                 <Button 
                   variant="ghost" 
-                  className="w-auto justify-start px-4 py-6 h-auto"
+                  className="w-full justify-start px-4 py-3 h-auto"
                   data-testid="button-contact-support"
                 >
-                  <div className="w-6 h-6 mr-4 bg-primary/10 rounded flex items-center justify-center">
+                  <div className="w-6 h-6 mr-3 bg-primary/10 rounded flex items-center justify-center">
                     <span className="text-primary text-sm font-bold">@</span>
                   </div>
                   <div className="text-left">
@@ -280,11 +280,11 @@ export default function Settings() {
               
               <Button 
                 variant="ghost" 
-                className="w-auto justify-start px-4 py-6 h-auto"
+                className="w-full justify-start px-4 py-3 h-auto"
                 onClick={handleAbout}
                 data-testid="button-about"
               >
-                <Info className="w-6 h-6 mr-4 text-primary" />
+                <Info className="w-6 h-6 mr-3 text-primary" />
                 <div className="text-left">
                   <p className="font-medium text-primary">About KudiScan</p>
                   <p className="text-sm text-primary/70">Version 1.0.0</p>

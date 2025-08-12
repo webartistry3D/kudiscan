@@ -133,8 +133,7 @@ export default function BudgetSettings() {
           {Object.entries(categoryBudgets).map(([category, amount]) => (
             <Card key={category}>
               <CardHeader>
-                <CardTitle className="capitalize flex items-center">
-                  <span className="w-4 h-4 mr-2 text-primary font-bold">₦</span>
+                <CardTitle className="capitalize">
                   {category}
                 </CardTitle>
               </CardHeader>

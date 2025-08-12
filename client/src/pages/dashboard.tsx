@@ -192,13 +192,10 @@ export default function Dashboard() {
                     <p className="text-lg lg:text-xl font-semibold truncate" data-testid="text-budget-left">
                       {formatNaira(Math.max(0, budgetLeft))}
                     </p>
-                    <div className="w-full h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
+                    <div className="h-2 bg-green-800 rounded-full mt-2 overflow-hidden" style={{ width: `${formatNaira(Math.max(0, budgetLeft)).length * 8}px` }}>
                       <div 
                         className="h-full bg-green-300 rounded-full transition-all" 
-                        style={{ 
-                          width: `${Math.min(100, budgetUsagePercent)}%`,
-                          maxWidth: `${formatNaira(Math.max(0, budgetLeft)).length * 6}px`
-                        }}
+                        style={{ width: `${Math.min(100, budgetUsagePercent)}%` }}
                       />
                     </div>
                   </div>
@@ -241,7 +238,7 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
         <section className="px-4 py-4 max-w-full">
-          <div className="flex space-x-3 max-w-full">
+          <div className="flex justify-center space-x-3 max-w-full">
             <Button 
               onClick={() => setShowCameraModal(true)}
               className="w-auto bg-primary text-white py-4 px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg"
