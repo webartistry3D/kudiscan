@@ -2,17 +2,88 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Switch } from "@/components/ui/switch";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun } from "lucide-react";
+import { useSettings } from "@/hooks/use-settings";
+import { useState, useEffect } from "react";
 
 export default function Landing() {
+  const { settings, toggleDarkMode } = useSettings();
+  const [typedText, setTypedText] = useState("");
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const words = ["Snap.", "Scan.", "Track.", "Report."];
+  
+  useEffect(() => {
+    const typeText = () => {
+      if (currentWordIndex < words.length) {
+        const word = words[currentWordIndex];
+        let charIndex = 0;
+        
+        const typeInterval = setInterval(() => {
+          if (charIndex <= word.length) {
+            setTypedText(prev => prev + word[charIndex]);
+            charIndex++;
+          } else {
+            clearInterval(typeInterval);
+            setTimeout(() => {
+              setCurrentWordIndex(prev => prev + 1);
+            }, 500);
+          }
+        }, 100);
+      }
+    };
+    
+    if (currentWordIndex < words.length) {
+      typeText();
+    }
+  }, [currentWordIndex]);
+
+  // Reset animation on page load
+  useEffect(() => {
+    setTypedText("");
+    setCurrentWordIndex(0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Navbar */}
+      <nav className="px-4 py-4 bg-background border-b border-border">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="text-2xl font-bold">
+              <span style={{color: '#29A378'}}>Kudi</span>
+              <span className="text-white">Scan</span>
+            </span>
+          </Link>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <Sun className="h-4 w-4" />
+              <Switch
+                checked={settings.darkMode}
+                onCheckedChange={toggleDarkMode}
+              />
+              <Moon className="h-4 w-4" />
+            </div>
+            <Link href="/login">
+              <Button variant="outline">Sign in</Button>
+            </Link>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <section className="px-4 py-16 w-full bg-primary-light">
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display">
-            Snap. Scan. Track. Report.
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display min-h-[4rem] md:min-h-[5rem]">
+            <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center">
+              {words.map((word, index) => (
+                <span key={index} className={`${index <= currentWordIndex ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
+                  {index < currentWordIndex ? word : (index === currentWordIndex ? typedText.slice(words.slice(0, index).join(' ').length + index) : '')}
+                </span>
+              ))}
+            </div>
           </h1>
           
           {/* Trust Badge */}
@@ -114,8 +185,8 @@ export default function Landing() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4">
               {/* Step 1: Snap */}
               <div className="flex flex-col items-center text-center p-4 w-48 h-36">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
-                  <Camera className="w-6 h-6 text-white process-icon-1" />
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
+                  <Camera className="w-10 h-10 text-white process-icon-1" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Snap</h3>
                 <p className="text-xs leading-tight text-white">Snap / Upload a receipt to scan your expenses</p>
@@ -133,8 +204,8 @@ export default function Landing() {
               
               {/* Step 2: Track */}
               <div className="flex flex-col items-center text-center p-4 w-48 h-36">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
-                  <TrendingUp className="w-6 h-6 text-white process-icon-2" />
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
+                  <TrendingUp className="w-10 h-10 text-white process-icon-2" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Track</h3>
                 <p className="text-xs leading-tight text-white">Track spending across categories with intelligent insights</p>
@@ -152,8 +223,8 @@ export default function Landing() {
               
               {/* Step 3: Report */}
               <div className="flex flex-col items-center text-center p-4 w-48 h-36">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
-                  <FileText className="w-6 h-6 text-white process-icon-3" />
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
+                  <FileText className="w-10 h-10 text-white process-icon-3" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Report</h3>
                 <p className="text-xs leading-tight text-white">Generate professional expense reports for business use</p>
@@ -171,8 +242,8 @@ export default function Landing() {
               
               {/* Step 4: Scale */}
               <div className="flex flex-col items-center text-center p-4 w-48 h-36">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3">
-                  <Building className="w-6 h-6 text-white process-icon-4" />
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
+                  <Building className="w-10 h-10 text-white process-icon-4" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-sm">Scale</h3>
                 <p className="text-xs leading-tight text-white">Secure loans from banks and investors to scale your business</p>
@@ -193,7 +264,7 @@ export default function Landing() {
               
               <Link href="/register" className="w-full">
                 <Button variant="outline" size="lg" className="w-full justify-center text-center px-4" data-testid="button-small-business">
-                  Manage expenses for my small business
+                  Manage expenses for my business
                 </Button>
               </Link>
               
@@ -206,20 +277,32 @@ export default function Landing() {
 
 
       {/* Company Logos */}
-      <section className="px-4 py-8 bg-secondary/30 w-full">
+      <section className="px-4 py-8 bg-secondary/30 w-full overflow-hidden">
         <div className="max-w-4xl mx-auto text-center w-full">
           <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 opacity-60 w-full">
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+          <div className="flex animate-slide-left-to-right gap-8 opacity-60">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              Flutterwave
+            </div>
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              Konga
+            </div>
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              Jumia
+            </div>
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+              GTBank
+            </div>
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Flutterwave
             </div>
           </div>
@@ -227,85 +310,155 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
+      <section className="px-4 py-16 w-full bg-background">
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center mb-4 font-display" style={{color: '#082118'}}>Features</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 font-display text-foreground">Features</h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 w-full">
             {/* Receipt Scanning */}
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-12 h-12" style={{color: '#082118'}} />
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Scan className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Receipt Scanning</h3>
-              <p className="text-sm" style={{color: '#082118'}}>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Receipt Scanning</h3>
+              <p className="text-sm text-white mb-4">
                 Snap to Scan, Save & Track receipts.
               </p>
-              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Receipt Scanning</DialogTitle>
+                    <DialogDescription>
+                      Our advanced OCR technology instantly captures and digitizes your receipts. Simply snap a photo and our AI automatically extracts merchant names, amounts, dates, and itemized purchases. No more manual data entry or lost receipts - everything is stored securely in the cloud and categorized for easy tracking.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* AI + OCR Integration */}
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl" style={{color: '#082118'}}>🧠</span>
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Eye className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>AI + OCR Integration</h3>
-              <p className="text-sm" style={{color: '#082118'}}>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">AI + OCR Integration</h3>
+              <p className="text-sm text-white mb-4">
                 AI powered OCR technology automatically extracts and categorizes all data on receipts.
               </p>
-              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>AI + OCR Integration</DialogTitle>
+                    <DialogDescription>
+                      Our cutting-edge AI combines machine learning with optical character recognition to understand your receipts like a human would. It recognizes Nigerian merchants, understands local context, handles poor image quality, and learns from your patterns to improve accuracy over time. The system automatically categorizes expenses and even detects potential duplicates.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Financial Reporting */}
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-12 h-12" style={{color: '#082118'}} />
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <PieChart className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Financial Reporting</h3>
-              <p className="text-sm" style={{color: '#082118'}}>
-                Generate tailored reports to analyze spend, identify trends, make smarter decisions, secure bank loans.
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Financial Reporting</h3>
+              <p className="text-sm text-white mb-4">
+                Generate tailored reports to analyze spend, identify trends, make smarter decisions and secure bank loans.
               </p>
-              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Financial Reporting</DialogTitle>
+                    <DialogDescription>
+                      Create professional reports for business loans, investor presentations, or tax filing. Our reports include spending trends, category breakdowns, cash flow analysis, and projections. Export to PDF or Excel formats that banks and investors expect. Track profitability, identify cost-saving opportunities, and make data-driven financial decisions.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Mobile-First Approach */}
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-12 h-12" style={{color: '#082118'}} />
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Mobile-First Approach</h3>
-              <p className="text-sm" style={{color: '#082118'}}>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Mobile-First Approach</h3>
+              <p className="text-sm text-white mb-4">
                 Manage expenses and scan receipts on-the-go.
               </p>
-              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Mobile-First Approach</DialogTitle>
+                    <DialogDescription>
+                      KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices. The interface is optimized for touch, works on slow networks, and consumes minimal data. Perfect for busy entrepreneurs who need to track expenses while moving between meetings, markets, or client visits.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Bank-level Security */}
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-12 h-12" style={{color: '#082118'}} />
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Bank-level Security</h3>
-              <p className="text-sm" style={{color: '#082118'}}>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Bank-level Security</h3>
+              <p className="text-sm text-white mb-4">
                 Your financial data is protected with enterprise-grade encryption and security.
               </p>
-              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Bank-level Security</DialogTitle>
+                    <DialogDescription>
+                      Your data is protected with 256-bit AES encryption, the same standard used by major banks. We use secure data centers in Nigeria, comply with international privacy standards, and never store sensitive banking credentials. Two-factor authentication, regular security audits, and encrypted data transmission ensure your financial information stays private and secure.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Naira Currency */}
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-4xl" style={{color: '#082118'}}>₦</span>
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-4xl text-white">₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#082118'}}>Naira Currency</h3>
-              <p className="text-sm" style={{color: '#082118'}}>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Naira Currency</h3>
+              <p className="text-sm text-white mb-4">
                 Built for Nigerian users with native Naira support and local preferences.
               </p>
-              <Button variant="link" className="text-sm mt-2 p-0" style={{color: '#082118'}}>Learn More</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Naira Currency Support</DialogTitle>
+                    <DialogDescription>
+                      Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, local tax considerations, and support for cash-heavy business models. Integration with Nigerian payment systems, understanding of local business practices, and support for both formal and informal sector expense tracking needs.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -343,7 +496,7 @@ export default function Landing() {
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
-                Generate expense reports for tracking, reimbursements, investors and bank loan applications.
+                Generate expense reports for tracking, reimbursements, business investors and bank loan applications.
               </p>
             </div>
           </div>
@@ -408,34 +561,34 @@ export default function Landing() {
             Frequently Asked Questions
           </h2>
           
-          <div className="space-y-6">
-            <div className="p-6 rounded-2xl" style={{backgroundColor: '#2D3339'}}>
-              <h3 className="text-lg font-semibold mb-3" style={{color: '#29A378'}}>
-                Is KudiScan free?
-              </h3>
-              <p style={{color: '#E1E7EF'}}>
-                Yes, we offer a free plan for personal use, plus affordable plans for SMEs.
-              </p>
-            </div>
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-1" className="rounded-2xl" style={{backgroundColor: '#2D3339'}}>
+              <AccordionTrigger className="px-6 py-4 text-left" style={{color: '#29A378'}}>
+                <span className="text-lg font-semibold">Is KudiScan free?</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4" style={{color: '#E1E7EF'}}>
+                Yes, we offer a free plan for personal use with up to 10 receipt scans per month. For businesses and power users, our Premium plan starts at ₦3,000/month with unlimited scans, advanced reporting, and priority support.
+              </AccordionContent>
+            </AccordionItem>
             
-            <div className="p-6 rounded-2xl" style={{backgroundColor: '#2D3339'}}>
-              <h3 className="text-lg font-semibold mb-3" style={{color: '#29A378'}}>
-                Will it work with Nigerian banks?
-              </h3>
-              <p style={{color: '#E1E7EF'}}>
-                Yes — we're built with Nigerian financial data in mind.
-              </p>
-            </div>
+            <AccordionItem value="item-2" className="rounded-2xl" style={{backgroundColor: '#2D3339'}}>
+              <AccordionTrigger className="px-6 py-4 text-left" style={{color: '#29A378'}}>
+                <span className="text-lg font-semibold">Will it work with Nigerian banks?</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4" style={{color: '#E1E7EF'}}>
+                Absolutely! KudiScan is specifically built for the Nigerian market. We integrate with major Nigerian banks including GTBank, First Bank, UBA, Zenith, and others. Our system understands Nigerian transaction formats, supports Naira currency natively, and handles local payment methods including mobile money and POS transactions.
+              </AccordionContent>
+            </AccordionItem>
             
-            <div className="p-6 rounded-2xl" style={{backgroundColor: '#2D3339'}}>
-              <h3 className="text-lg font-semibold mb-3" style={{color: '#29A378'}}>
-                Is my data secure?
-              </h3>
-              <p style={{color: '#E1E7EF'}}>
-                100%. We use bank-grade encryption to protect your information.
-              </p>
-            </div>
-          </div>
+            <AccordionItem value="item-3" className="rounded-2xl" style={{backgroundColor: '#2D3339'}}>
+              <AccordionTrigger className="px-6 py-4 text-left" style={{color: '#29A378'}}>
+                <span className="text-lg font-semibold">Is my data secure?</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4" style={{color: '#E1E7EF'}}>
+                Your security is our top priority. We use bank-grade 256-bit AES encryption, secure Nigerian data centers, and comply with international privacy standards. We never store your banking credentials - only transaction data that you explicitly choose to share. All data transmission is encrypted and we undergo regular security audits.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
