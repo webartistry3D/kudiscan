@@ -9,11 +9,12 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { ArrowLeft, Check, Crown, CreditCard, Calendar, AlertCircle } from "lucide-react";
+import FullScreenSkeleton from "@/components/FullScreenSkeleton";
 
 export default function Subscription() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const { user } = useAuth();
+  const { user, isLoading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
   const [subscriptionInfo, setSubscriptionInfo] = useState<any>(null);
 
@@ -75,8 +76,10 @@ export default function Subscription() {
     }
   };
 
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
   const handleUpgrade = async (planType: 'monthly' | 'yearly' = 'yearly') => {
-    setLoading(true);
+    setLoadingPlan(planType);
     try {
       const response = await apiRequest("/api/subscription/create", "POST", { planType });
       const data = await response.json();
@@ -89,6 +92,7 @@ export default function Subscription() {
           description: "Failed to create checkout session",
           variant: "destructive",
         });
+        setLoadingPlan(null);
       }
     } catch (error) {
       toast({
@@ -96,8 +100,7 @@ export default function Subscription() {
         description: "Failed to upgrade subscription",
         variant: "destructive",
       });
-    } finally {
-      setLoading(false);
+      setLoadingPlan(null);
     }
   };
 
@@ -131,6 +134,11 @@ export default function Subscription() {
   const isPremium = subscriptionInfo?.subscriptionPlan === "premium" || (user as any)?.subscriptionPlan === "premium";
   const scansUsed = subscriptionInfo?.monthlyScansUsed ?? parseInt((user as any)?.monthlyScansUsed || "0");
   const scansLimit = subscriptionInfo?.scansLimit ?? (isPremium ? -1 : 10);
+
+  // Show skeleton while auth is loading or subscription info is not yet available
+  if (authLoading || !subscriptionInfo) {
+    return <FullScreenSkeleton />;
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-background min-h-screen">
@@ -183,17 +191,12 @@ export default function Subscription() {
             
             <div className="flex items-center justify-between">
               <span className="font-medium">Monthly Scans Used</span>
-              <Badge variant={(user as any)?.subscriptionStatus === "active" ? "default" : "destructive"}>
-                {(user as any)?.subscriptionStatus || "Active"}
-              </Badge>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <span className="font-medium">Monthly Scans Used</span>
               <span className="font-mono">
-                {scansUsed} / {isPremium ? "Unlimited" : scansLimit}
+                {scansUsed} / {scansLimit === -1 ? "Unlimited" : scansLimit}
               </span>
             </div>
+
+
 
             {subscriptionInfo?.subscriptionEndDate && (
               <div className="flex items-center justify-between">
@@ -296,21 +299,21 @@ export default function Subscription() {
                   <Button 
                     className="w-full bg-primary hover:bg-primary/90"
                     onClick={() => handleUpgrade('monthly')}
-                    disabled={loading}
+                    disabled={loadingPlan === 'monthly'}
                     data-testid="button-upgrade-monthly"
                   >
                     <Crown className="w-4 h-4 mr-2" />
-                    Get Monthly - {formatNaira(3000)}/month
+                    {loadingPlan === 'monthly' ? "Processing..." : `Get Monthly - ${formatNaira(3000)}/month`}
                   </Button>
                   <Button 
                     variant="outline"
                     className="w-full border-primary text-primary hover:bg-primary/10"
                     onClick={() => handleUpgrade('yearly')}
-                    disabled={loading}
+                    disabled={loadingPlan === 'yearly'}
                     data-testid="button-upgrade-yearly"
                   >
                     <Crown className="w-4 h-4 mr-2" />
-                    Get Yearly - {formatNaira(28800)}/year
+                    {loadingPlan === 'yearly' ? "Processing..." : `Get Yearly - ${formatNaira(28800)}/year`}
                   </Button>
                 </div>
               )}
