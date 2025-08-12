@@ -7,7 +7,7 @@ import { formatNaira } from "@/lib/currency";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
-import { apiRequest } from "@/lib/queryClient";
+import { apiRequest, queryClient } from "@/lib/queryClient";
 import { ArrowLeft, Check, Crown, CreditCard, Calendar, AlertCircle } from "lucide-react";
 
 export default function Subscription() {
@@ -50,12 +50,17 @@ export default function Subscription() {
         description: data.message || "Your subscription has been activated",
       });
       
-      // Wait a moment then refresh subscription info multiple times to ensure update
+      // Force refresh both auth and subscription data immediately and with delays
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
+      fetchSubscriptionInfo();
+      
       setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
         fetchSubscriptionInfo();
       }, 1000);
       
       setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
         fetchSubscriptionInfo();
       }, 2000);
       
@@ -108,6 +113,8 @@ export default function Subscription() {
         title: "Subscription Cancelled",
         description: "Your subscription has been cancelled. You'll retain access until your current period ends.",
       });
+      // Force refresh auth data and subscription info
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
       fetchSubscriptionInfo();
     } catch (error) {
       toast({
@@ -120,9 +127,10 @@ export default function Subscription() {
     }
   };
 
-  const isPremium = (user as any)?.subscriptionPlan === "premium";
-  const scansUsed = parseInt((user as any)?.monthlyScansUsed || "0");
-  const scansLimit = isPremium ? Infinity : 10;
+  // Use subscription info for display, fallback to user data
+  const isPremium = subscriptionInfo?.subscriptionPlan === "premium" || (user as any)?.subscriptionPlan === "premium";
+  const scansUsed = subscriptionInfo?.monthlyScansUsed ?? parseInt((user as any)?.monthlyScansUsed || "0");
+  const scansLimit = subscriptionInfo?.scansLimit ?? (isPremium ? -1 : 10);
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-background min-h-screen">
@@ -166,6 +174,15 @@ export default function Subscription() {
             
             <div className="flex items-center justify-between">
               <span className="font-medium">Status</span>
+              <Badge variant={subscriptionInfo?.subscriptionStatus === "active" ? "default" : 
+                              subscriptionInfo?.subscriptionStatus === "canceled" ? "destructive" : "secondary"}>
+                {subscriptionInfo?.subscriptionStatus === "active" ? "Active" :
+                 subscriptionInfo?.subscriptionStatus === "canceled" ? "Cancelled" : "Freemium"}
+              </Badge>
+            </div>
+            
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Monthly Scans Used</span>
               <Badge variant={(user as any)?.subscriptionStatus === "active" ? "default" : "destructive"}>
                 {(user as any)?.subscriptionStatus || "Active"}
               </Badge>
