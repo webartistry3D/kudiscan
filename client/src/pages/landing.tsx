@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
@@ -73,7 +73,7 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="px-4 py-16 w-full bg-primary-light">
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display min-h-[4rem] md:min-h-[5rem]">
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-display h-[4rem] md:h-[5rem] flex items-center justify-center">
             <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center">
               <span className="typing-text">
                 {currentWordIndex >= words.length ? words.join(' ') : typedText}
@@ -597,7 +597,7 @@ export default function Landing() {
           
           <div className="relative">
             <div className="flex gap-6 animate-testimonials-scroll">
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
@@ -612,7 +612,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
@@ -627,7 +627,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "Makes expense tracking easy! KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
                 </p>
@@ -642,7 +642,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "Perfect for small business. KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
                 </p>
@@ -658,7 +658,7 @@ export default function Landing() {
               </div>
               
               {/* Duplicate cards for seamless loop */}
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
@@ -673,7 +673,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
@@ -688,7 +688,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "Makes expense tracking easy! KudiScan has a really easy interface for uploading receipts and getting expense reports submitted. The OCR is incredibly accurate and saves me so much time every month."
                 </p>
@@ -703,7 +703,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              <div className="min-w-80 p-6 rounded-2xl bg-white/10">
+              <div className="min-w-80 p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <p className="text-lg mb-4 text-white">
                   "Perfect for small business. KudiScan helps our company ensure compliance and accountability. The automated report process really works and my finance team can easily track budget vs actual spending."
                 </p>
@@ -776,9 +776,11 @@ export default function Landing() {
                 </div>
               </div>
               
-              <Button size="lg" className="w-full" variant="outline" style={{borderColor: '#29A378', color: '#29A378'}}>
-                Get Started Free
-              </Button>
+              <div className="text-center">
+                <Button size="lg" variant="outline" className="px-8" style={{borderColor: '#29A378', color: '#29A378'}}>
+                  Get Started Free
+                </Button>
+              </div>
             </div>
 
             {/* Premium Plan */}
@@ -847,14 +849,95 @@ export default function Landing() {
                 </div>
               </div>
               
-              <Button size="lg" className="w-full bg-primary hover:bg-primary/90">
-                Get Started
-              </Button>
+              <div className="text-center">
+                <Button size="lg" className="px-8 bg-primary hover:bg-primary/90">
+                  Get Started
+                </Button>
+              </div>
             </div>
           </div>
 
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="px-4 py-16 w-full bg-background border-t border-border">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="md:col-span-1">
+              <h3 className="text-lg font-bold mb-4 font-display text-foreground">KudiScan</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
+              </p>
+              <div className="flex space-x-4">
+                <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">Privacy</Link>
+                <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">Terms</Link>
+              </div>
+            </div>
+
+            {/* Product Links */}
+            <div>
+              <h4 className="text-sm font-semibold mb-4 text-foreground">Product</h4>
+              <div className="space-y-3">
+                <Link href="/features" className="block text-sm text-muted-foreground hover:text-primary">Features</Link>
+                <Link href="/pricing" className="block text-sm text-muted-foreground hover:text-primary">Pricing</Link>
+                <Link href="/security" className="block text-sm text-muted-foreground hover:text-primary">Security</Link>
+                <Link href="/mobile" className="block text-sm text-muted-foreground hover:text-primary">Mobile App</Link>
+              </div>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h4 className="text-sm font-semibold mb-4 text-foreground">Resources</h4>
+              <div className="space-y-3">
+                <Link href="/help" className="block text-sm text-muted-foreground hover:text-primary">Help Center</Link>
+                <Link href="/blog" className="block text-sm text-muted-foreground hover:text-primary">Blog</Link>
+                <Link href="/api" className="block text-sm text-muted-foreground hover:text-primary">API Docs</Link>
+                <Link href="/status" className="block text-sm text-muted-foreground hover:text-primary">System Status</Link>
+              </div>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="text-sm font-semibold mb-4 text-foreground">Company</h4>
+              <div className="space-y-3">
+                <Link href="/about" className="block text-sm text-muted-foreground hover:text-primary">About Us</Link>
+                <Link href="/careers" className="block text-sm text-muted-foreground hover:text-primary">Careers</Link>
+                <Link href="/contact" className="block text-sm text-muted-foreground hover:text-primary">Contact</Link>
+                <Link href="/press" className="block text-sm text-muted-foreground hover:text-primary">Press Kit</Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section with Stylized Logo and Scroll to Top */}
+          <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <p className="text-sm text-muted-foreground">
+                © 2025 KudiScan. All rights reserved. Built for Nigeria 🇳🇬
+              </p>
+            </div>
+            
+            {/* Stylized KudiScan Logo and Scroll Arrow */}
+            <div className="flex items-center space-x-4">
+              <div className="transform rotate-12">
+                <span className="text-2xl font-bold font-display">
+                  <span style={{color: '#29A378'}}>Kudi</span>
+                  <span className="text-muted-foreground">Scan</span>
+                </span>
+              </div>
+              
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
+                aria-label="Scroll to top"
+              >
+                <ChevronUp className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Testimonials */}
       <section className="px-4 py-16 w-full bg-primary-medium">
