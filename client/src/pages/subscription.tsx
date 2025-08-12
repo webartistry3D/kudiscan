@@ -341,6 +341,24 @@ export default function Subscription() {
               <Separator />
               <div className="flex justify-between items-center">
                 <div>
+                  <p className="font-medium">Renew Subscription</p>
+                  <p className="text-sm text-muted-foreground">
+                    Extend your premium access with the same plan
+                  </p>
+                </div>
+                <Button 
+                  className="bg-primary hover:bg-primary/90"
+                  onClick={() => handleUpgrade('monthly')}
+                  disabled={loadingPlan !== null}
+                  data-testid="button-renew-subscription"
+                >
+                  <Crown className="w-4 h-4 mr-2" />
+                  {loadingPlan ? "Processing..." : "Renew"}
+                </Button>
+              </div>
+              <Separator />
+              <div className="flex justify-between items-center">
+                <div>
                   <p className="font-medium">Cancel Subscription</p>
                   <p className="text-sm text-muted-foreground">
                     You'll retain access until your current billing period ends
@@ -350,8 +368,9 @@ export default function Subscription() {
                   variant="destructive" 
                   onClick={handleCancelSubscription}
                   disabled={loading}
+                  data-testid="button-cancel-subscription"
                 >
-                  Cancel Subscription
+                  {loading ? "Cancelling..." : "Cancel Subscription"}
                 </Button>
               </div>
             </CardContent>

@@ -91,6 +91,7 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Button Interaction States**: Fixed Monthly/Yearly subscription buttons to show individual loading states instead of affecting both
 - **Full-Screen Skeleton Loading**: Implemented comprehensive skeleton loading component for desktop and tablet devices
 - **Notification System**: Added subscription expiry alerts with notification bell badge and dropdown directing users to /subscription page for renewal
+- **Subscription Renewal Button**: Added dedicated Renew button in billing information section above Cancel Subscription with individual loading states
 
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing
