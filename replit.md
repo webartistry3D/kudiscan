@@ -99,6 +99,8 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Dashboard Skeleton Full-Screen Fix**: Replaced mobile-only max-w-md with responsive full-width layout for dashboard, admin, and reports pages
 - **Visit Home Page Button**: Added top-right corner button on both Sign In and Register pages linking to landing page with KudiScan green styling
 - **Email Autocomplete Styling**: Enhanced existing CSS to prevent white highlighting when selecting from email autocomplete dropdown
+- **Landing Page Animation Fix**: Fixed Trust section and Testimonials scrolling animations to show all content before loop restart with seamless continuous scrolling
+- **Animation Timing Enhancement**: Increased Trust section animation duration to 20s and Testimonials to 30s for better visibility of all content
 
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing

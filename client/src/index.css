@@ -286,16 +286,16 @@ input:-webkit-autofill:active {
   }
   
   .animate-trust-scroll {
-    animation: trust-scroll 15s linear infinite;
+    animation: trust-scroll 20s linear infinite;
   }
   
   .animate-testimonials-scroll {
-    animation: testimonials-scroll 20s linear infinite;
+    animation: testimonials-scroll 30s linear infinite;
   }
   
   @keyframes trust-scroll {
     0% {
-      transform: translateX(100%);
+      transform: translateX(0%);
     }
     100% {
       transform: translateX(-100%);
@@ -304,7 +304,7 @@ input:-webkit-autofill:active {
   
   @keyframes testimonials-scroll {
     0% {
-      transform: translateX(100%);
+      transform: translateX(0%);
     }
     100% {
       transform: translateX(-100%);
