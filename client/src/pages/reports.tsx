@@ -26,10 +26,11 @@ export default function Reports() {
 
   if (isLoading) {
     return (
-      <div className="max-w-md mx-auto bg-background min-h-screen">
+      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
         <Header title="Reports" />
-        <div className="p-4">
-          <div className="animate-pulse space-y-4">
+        <div className="p-4 space-y-6">
+          <div className="animate-pulse">
+            {/* Report Cards */}
             {[...Array(4)].map((_, i) => (
               <div key={i} className="h-32 bg-muted rounded-lg"></div>
             ))}

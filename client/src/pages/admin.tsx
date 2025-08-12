@@ -125,19 +125,27 @@ export default function Admin() {
 
   if (statsLoading) {
     return (
-      <div className="max-w-md mx-auto bg-background min-h-screen">
-        <header className="bg-background border-b border-border sticky top-0 z-50">
-          <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
-            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
-              Admin Dashboard
-            </h1>
-          </div>
-        </header>
-        <div className="p-4">
-          <div className="animate-pulse space-y-4">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-24 bg-card rounded-lg"></div>
-            ))}
+      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
+        <Header title="Admin Dashboard" />
+        <div className="p-4 space-y-6">
+          <div className="animate-pulse">
+            {/* Stats Cards Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="h-24 bg-muted rounded-lg"></div>
+              ))}
+            </div>
+            
+            {/* User Management Section */}
+            <div className="space-y-4">
+              <div className="h-6 bg-muted rounded w-32"></div>
+              <div className="h-12 bg-muted rounded-lg"></div>
+              <div className="space-y-2">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="h-16 bg-muted rounded-lg"></div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
         <BottomNavigation />

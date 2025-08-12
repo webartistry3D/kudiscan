@@ -135,22 +135,33 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="max-w-md mx-auto bg-white min-h-screen">
-        <header className="bg-background border-b border-border sticky top-0 z-50">
-          <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
-            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
-              Dashboard
-            </h1>
-          </div>
-        </header>
-        <div className="p-4">
-          <div className="animate-pulse space-y-4">
-            <div className="h-32 bg-gray-200 rounded-lg"></div>
-            <div className="h-20 bg-gray-200 rounded-lg"></div>
+      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
+        <Header title="Dashboard" />
+        <div className="p-4 space-y-6">
+          <div className="animate-pulse">
+            {/* Stats Cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="h-20 bg-muted rounded-lg"></div>
+              <div className="h-20 bg-muted rounded-lg"></div>
+              <div className="h-20 bg-muted rounded-lg"></div>
+              <div className="h-20 bg-muted rounded-lg"></div>
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="h-12 bg-muted rounded-lg"></div>
+              <div className="h-12 bg-muted rounded-lg"></div>
+            </div>
+            
+            {/* Chart Area */}
+            <div className="h-64 bg-muted rounded-lg mb-6"></div>
+            
+            {/* Recent Transactions */}
             <div className="space-y-3">
-              <div className="h-16 bg-gray-200 rounded-lg"></div>
-              <div className="h-16 bg-gray-200 rounded-lg"></div>
-              <div className="h-16 bg-gray-200 rounded-lg"></div>
+              <div className="h-4 bg-muted rounded w-32"></div>
+              <div className="h-16 bg-muted rounded-lg"></div>
+              <div className="h-16 bg-muted rounded-lg"></div>
+              <div className="h-16 bg-muted rounded-lg"></div>
             </div>
           </div>
         </div>
