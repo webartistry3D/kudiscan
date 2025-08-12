@@ -309,7 +309,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>Receipt Scanning</DialogTitle>
                     <DialogDescription>
-                      Our advanced OCR technology instantly captures and digitizes your receipts. Simply snap a photo and our AI automatically extracts merchant names, amounts, dates, and itemized purchases. No more manual data entry or lost receipts - everything is stored securely in the cloud and categorized for easy tracking.
+                      Our advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts data such as name, item description, amount, date, and itemized purchases. No more manual data entry or lost receipts - everything is stored securely in the cloud and categorized for easy tracking.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -333,7 +333,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>AI + OCR Integration</DialogTitle>
                     <DialogDescription>
-                      Our cutting-edge AI combines machine learning with optical character recognition to understand your receipts like a human would. It recognizes Nigerian merchants, understands local context, handles poor image quality, and learns from your patterns to improve accuracy over time. The system automatically categorizes expenses and even detects potential duplicates.
+                      Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes and understands local context, handles poor image quality, and learns from your patterns to improve accuracy over time. The system automatically categorizes expenses and even detects potential duplicates.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -573,7 +573,7 @@ export default function Landing() {
       <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center mb-12 font-display text-white">
-            What Our Users Are Saying
+            What KudiScan Users Are Saying
           </h2>
           
           <div className="relative">
@@ -707,10 +707,10 @@ export default function Landing() {
       <section className="px-4 py-16 w-full" style={{backgroundColor: '#22262A'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center mb-4 font-display" style={{color: '#E1E7EF'}}>
-            Choose Your Plan
+            Choose Plan
           </h2>
           <p className="text-center mb-12" style={{color: '#959AA0'}}>
-            Start free and upgrade when you're ready to scale your financial management
+            Start free and upgrade when you're ready to scale your finance management.
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -775,8 +775,8 @@ export default function Landing() {
                 <div className="text-4xl font-bold mb-2" style={{color: '#E1E7EF'}}>
                   ₦3,000<span className="text-lg font-normal" style={{color: '#959AA0'}}>/month</span>
                 </div>
-                <p className="text-sm mb-2" style={{color: '#959AA0'}}>₦30,000/year - Save 17%</p>
-                <p style={{color: '#959AA0'}}>Complete financial management for individuals and businesses</p>
+                <p className="text-sm mb-2" style={{color: '#959AA0'}}>₦28,800/year - Save 20%</p>
+                <p style={{color: '#959AA0'}}>Complete finance management for individuals and businesses.</p>
               </div>
               
               <div className="space-y-3 mb-8">
@@ -916,7 +916,7 @@ export default function Landing() {
           <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0 text-center md:text-left">
               <p className="text-sm text-muted-foreground">
-                © 2025 KudiScan. All rights reserved. Built for Nigeria 🇳🇬
+                © 2025 KudiScan. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
               </p>
             </div>
             
