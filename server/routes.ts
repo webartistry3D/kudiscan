@@ -6,6 +6,7 @@ import { z } from "zod";
 import multer from "multer";
 import passport from "passport";
 import { setupAuth, isAuthenticated, isAdmin, getCurrentUser } from "./auth";
+import { getUserNotifications } from "./notifications";
 
 // Paystack configuration
 const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
@@ -359,6 +360,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const displayEndDate = user.subscriptionStatus === "canceled" ? null : user.subscriptionEndDate;
       const scansLimit = displayPlan === "premium" ? -1 : 10;
       
+      // Check if subscription is expiring soon (within 7 days)
+      let isExpiringSoon = false;
+      if (user.subscriptionEndDate && user.subscriptionStatus === "active") {
+        const expiryDate = new Date(user.subscriptionEndDate);
+        const sevenDaysFromNow = new Date();
+        sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
+        isExpiringSoon = expiryDate <= sevenDaysFromNow;
+      }
+      
       res.json({
         subscriptionPlan: displayPlan,
         subscriptionStatus: user.subscriptionStatus,
@@ -366,6 +376,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         monthlyScansUsed: parseInt(user.monthlyScansUsed),
         scansLimit: scansLimit,
         lastScanResetDate: user.lastScanResetDate,
+        isExpiringSoon: isExpiringSoon,
         paymentMethod: user.paystackCustomerCode ? { last4: "1234" } : null
       });
     } catch (error) {
@@ -462,6 +473,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Check and enforce scan limits
+  // Notifications endpoint
+  app.get("/api/notifications", isAuthenticated, async (req, res) => {
+    try {
+      const notifications = await getUserNotifications(getCurrentUser(req).id);
+      res.json({ notifications, count: notifications.length });
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+      res.status(500).json({ message: "Failed to fetch notifications" });
+    }
+  });
+
   app.post("/api/expenses/check-limit", isAuthenticated, async (req, res) => {
     try {
       const user = await storage.getUserById(getCurrentUser(req).id);

@@ -88,6 +88,9 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 - **Database State Consistency**: Enhanced subscription cancellation to immediately reset plan to freemium and clear billing dates
 - **Payment Flow Optimization**: Added delay mechanisms and multiple refresh calls to ensure UI updates reflect database changes
 - **Real-time Status Updates**: Subscription page now auto-verifies payments and updates status without manual refresh
+- **Button Interaction States**: Fixed Monthly/Yearly subscription buttons to show individual loading states instead of affecting both
+- **Full-Screen Skeleton Loading**: Implemented comprehensive skeleton loading component for desktop and tablet devices
+- **Notification System**: Added subscription expiry alerts with notification bell badge and dropdown directing users to /subscription page for renewal
 
 ## January 2025 - Paystack Payment Integration (Nigerian Optimization)
 - **Payment Provider Switch**: Migrated from Stripe to Paystack for optimized Nigerian payment processing
