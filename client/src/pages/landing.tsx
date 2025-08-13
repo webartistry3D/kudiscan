@@ -9,16 +9,20 @@ import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, C
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
-// Add CSS animations for sliding
+// Add CSS animations for full sliding carousel
 const slideAnimationCSS = `
-  @keyframes slideInFromRight {
+  @keyframes slideInOut {
     0% {
       transform: translateX(100%);
-      opacity: 0;
+    }
+    15% {
+      transform: translateX(0%);
+    }
+    85% {
+      transform: translateX(0%);
     }
     100% {
-      transform: translateX(0);
-      opacity: 1;
+      transform: translateX(-100%);
     }
   }
 `;
@@ -190,10 +194,9 @@ export default function Landing() {
                 <foreignObject x="50" y="60" width="500" height="260">
                   <div className="w-full h-full overflow-hidden relative">
                     <div 
-                      className="w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-2000 ease-in-out transform"
+                      className="w-full h-full flex flex-col items-center justify-center text-center p-8 absolute"
                       style={{
-                        transform: `translateX(0%)`,
-                        animation: `slideInFromRight 2s ease-in-out`
+                        animation: `slideInOut 6s ease-in-out`
                       }}
                       key={currentFeature}
                     >
@@ -279,10 +282,9 @@ export default function Landing() {
                 <foreignObject x="30" y="80" width="140" height="260">
                   <div className="w-full h-full overflow-hidden relative">
                     <div 
-                      className="w-full h-full flex flex-col items-center justify-center text-center p-4 transition-all duration-2000 ease-in-out transform"
+                      className="w-full h-full flex flex-col items-center justify-center text-center p-4 absolute"
                       style={{
-                        transform: `translateX(0%)`,
-                        animation: `slideInFromRight 2s ease-in-out`
+                        animation: `slideInOut 6s ease-in-out`
                       }}
                       key={currentFeature}
                     >
