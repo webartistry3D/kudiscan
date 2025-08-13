@@ -229,8 +229,8 @@ export default function Landing() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-card/60 border border-border rounded-2xl p-6 md:p-8 mb-8 w-full max-w-lg mx-auto">
-            <h3 className="text-lg font-semibold mb-4 font-display text-foreground text-center">I want to:</h3>
+          <div className="border border-border rounded-2xl p-6 md:p-8 mb-8 w-full max-w-lg mx-auto" style={{backgroundColor: '#082118'}}>
+            <h3 className="text-lg font-semibold mb-4 font-display text-white text-center">I want to:</h3>
             
             <div className="flex flex-col gap-3 w-full mx-auto">
               <Link href="/register" className="w-full">
@@ -254,35 +254,35 @@ export default function Landing() {
 
 
       {/* Company Logos */}
-      <section className="px-4 py-8 w-full overflow-hidden" style={{backgroundColor: '#29A378'}}>
+      <section className="px-4 py-8 w-full overflow-hidden bg-muted/30">
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h3 className="text-lg font-semibold mb-8 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
+          <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
           <div className="relative">
             <div className="flex animate-trust-scroll gap-8 select-none">
             {/* First set */}
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Flutterwave
             </div>
             {/* Duplicate set for seamless loop */}
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
+            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
               Flutterwave
             </div>
             </div>
