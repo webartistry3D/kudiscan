@@ -225,7 +225,11 @@ export default function Landing() {
                 <rect x="30" y="40" width="540" height="300" rx="4" fill="#111827"/>
                 
                 {/* Screen Content - Feature Display */}
-                <rect x="60" y="50" width="480" height="280" fill="#1e3a5f"/>
+                <rect x="60" y="50" width="480" height="280" fill="#111827"/>
+                
+                {/* Centered KudiBot Logo */}
+                <circle cx="300" cy="190" r="30" fill="none" stroke="white" strokeWidth="3"/>
+                <text x="300" y="200" fill="white" fontSize="40" textAnchor="middle" dominantBaseline="middle">🤖</text>
                 
                 {/* Feature Content */}
                 <foreignObject x="60" y="50" width="480" height="280">
@@ -234,15 +238,10 @@ export default function Landing() {
                       className="slide-content p-6"
                       style={{
                         animation: `slideInOut 6s ease-in-out`,
-                        background: features[currentFeature].color || '#1e3a5f'
+                        background: features[currentFeature].color || '#111827'
                       }}
                       key={currentFeature}
                     >
-                      {/* KudiBot Logo */}
-                      <div className="absolute top-4 right-4 w-12 h-12 border-2 border-white rounded-full flex items-center justify-center">
-                        <span className="text-2xl">🤖</span>
-                      </div>
-                      
                       {/* Icon */}
                       <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-4">
                         {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
@@ -302,7 +301,11 @@ export default function Landing() {
                 <text x="150" y="57" fill="white" fontSize="8">100%</text>
                 
                 {/* Mobile Feature Display */}
-                <rect x="35" y="70" width="130" height="280" fill="#1e3a5f"/>
+                <rect x="35" y="70" width="130" height="280" fill="#111827"/>
+                
+                {/* Mobile Centered KudiBot Logo */}
+                <circle cx="100" cy="210" r="20" fill="none" stroke="white" strokeWidth="2"/>
+                <text x="100" y="218" fill="white" fontSize="24" textAnchor="middle" dominantBaseline="middle">🤖</text>
                 
                 <foreignObject x="35" y="70" width="130" height="280">
                   <div className="slide-container">
@@ -310,15 +313,10 @@ export default function Landing() {
                       className="slide-content p-4"
                       style={{
                         animation: `slideInOut 6s ease-in-out`,
-                        background: features[currentFeature].color || '#1e3a5f'
+                        background: features[currentFeature].color || '#111827'
                       }}
                       key={currentFeature}
                     >
-                      {/* Mobile KudiBot Logo */}
-                      <div className="absolute top-2 right-2 w-8 h-8 border border-white rounded-full flex items-center justify-center">
-                        <span className="text-sm">🤖</span>
-                      </div>
-                      
                       {/* Mobile Icon */}
                       <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-3">
                         {features[currentFeature].icon === Scan && <Scan className="w-8 h-8 text-white" />}
