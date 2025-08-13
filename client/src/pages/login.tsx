@@ -62,11 +62,21 @@ export default function Login() {
     const fixAutofillStyles = () => {
       const emailInput = emailInputRef.current;
       if (emailInput) {
-        emailInput.style.backgroundColor = 'hsl(var(--input))';
-        emailInput.style.color = 'hsl(var(--foreground))';
+        // Get the computed styles for input fields to match password field
+        const computedStyles = getComputedStyle(emailInput);
+        const inputBg = 'hsl(214, 32%, 91%)'; // Light mode input color
+        const inputBgDark = 'hsl(210, 12%, 26%)'; // Dark mode input color
+        const textColor = 'hsl(var(--foreground))';
+        
+        // Check if we're in dark mode
+        const isDark = document.documentElement.classList.contains('dark');
+        const bgColor = isDark ? inputBgDark : inputBg;
+        
+        emailInput.style.backgroundColor = bgColor;
+        emailInput.style.color = textColor;
         emailInput.style.backgroundImage = 'none';
-        emailInput.style.webkitBoxShadow = '0 0 0 1000px hsl(var(--input)) inset';
-        emailInput.style.webkitTextFillColor = 'hsl(var(--foreground))';
+        emailInput.style.webkitBoxShadow = `0 0 0 1000px ${bgColor} inset`;
+        emailInput.style.webkitTextFillColor = textColor;
       }
     };
 
@@ -126,12 +136,12 @@ export default function Login() {
                           placeholder="Enter your email"
                           data-testid="input-email"
                           autoComplete="email"
-                          className="focus:ring-0 focus:ring-offset-0 bg-input border-border text-foreground"
+                          className="focus:ring-0 focus:ring-offset-0"
                           style={{ 
-                            backgroundColor: 'hsl(var(--input))',
+                            backgroundColor: 'hsl(214, 32%, 91%)',
                             color: 'hsl(var(--foreground))',
                             backgroundImage: 'none',
-                            WebkitBoxShadow: '0 0 0 1000px hsl(var(--input)) inset',
+                            WebkitBoxShadow: '0 0 0 1000px hsl(214, 32%, 91%) inset',
                             WebkitTextFillColor: 'hsl(var(--foreground))'
                           }}
                           {...field}

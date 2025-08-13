@@ -223,11 +223,12 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(214, 32%, 91%) inset !important;
   -webkit-text-fill-color: hsl(var(--foreground)) !important;
-  background-color: hsl(var(--input)) !important;
+  background-color: hsl(214, 32%, 91%) !important;
   background-image: none !important;
   transition: background-color 5000s ease-in-out 0s !important;
+  color: hsl(var(--foreground)) !important;
 }
 
 /* Dark mode autocomplete fix */
@@ -235,24 +236,50 @@ input:-webkit-autofill:active {
 .dark input:-webkit-autofill:hover,
 .dark input:-webkit-autofill:focus,
 .dark input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(210, 12%, 26%) inset !important;
   -webkit-text-fill-color: hsl(var(--foreground)) !important;
-  background-color: hsl(var(--input)) !important;
+  background-color: hsl(210, 12%, 26%) !important;
   background-image: none !important;
   transition: background-color 5000s ease-in-out 0s !important;
+  color: hsl(var(--foreground)) !important;
 }
 
-/* Additional email input specific styling */
+/* Email input specific styling to match password field */
 input[data-testid="input-email"],
-input[data-testid="input-email"]:focus,
+input[data-testid="input-email"]:focus {
+  background-color: hsl(214, 32%, 91%) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+.dark input[data-testid="input-email"],
+.dark input[data-testid="input-email"]:focus {
+  background-color: hsl(210, 12%, 26%) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Email autocomplete specific overrides */
 input[data-testid="input-email"]:-webkit-autofill,
 input[data-testid="input-email"]:-webkit-autofill:hover,
 input[data-testid="input-email"]:-webkit-autofill:focus,
 input[data-testid="input-email"]:-webkit-autofill:active {
-  background-color: hsl(var(--input)) !important;
+  background-color: hsl(214, 32%, 91%) !important;
   color: hsl(var(--foreground)) !important;
   background-image: none !important;
-  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(214, 32%, 91%) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  box-shadow: none !important;
+}
+
+.dark input[data-testid="input-email"]:-webkit-autofill,
+.dark input[data-testid="input-email"]:-webkit-autofill:hover,
+.dark input[data-testid="input-email"]:-webkit-autofill:focus,
+.dark input[data-testid="input-email"]:-webkit-autofill:active {
+  background-color: hsl(210, 12%, 26%) !important;
+  color: hsl(var(--foreground)) !important;
+  background-image: none !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(210, 12%, 26%) inset !important;
   -webkit-text-fill-color: hsl(var(--foreground)) !important;
   box-shadow: none !important;
 }
