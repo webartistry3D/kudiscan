@@ -69,7 +69,7 @@ export default function Landing() {
       type: "benefit",
       description: "Professional expense reports increase your loan approval chances by 85%.",
       detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding.",
-      color: "#1a4d3a" // Dark green
+      color: "#a7f3d0" // Light green
     },
     {
       icon: Scan,
@@ -77,7 +77,7 @@ export default function Landing() {
       type: "feature",
       description: "Snap to Scan, Save & Track receipts.",
       detail: "Advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts merchant data, amounts, dates, and itemized purchases.",
-      color: "#1e3a5f" // Dark blue
+      color: "#a5f3fc" // Light blue
     },
     {
       icon: TrendingUp,
@@ -85,7 +85,7 @@ export default function Landing() {
       type: "benefit",
       description: "Eliminate manual data entry and receipt organization completely.",
       detail: "No more typing expense amounts or hunting for lost receipts. KudiScan automates everything, giving you back hours each week to focus on growing your business instead of paperwork.",
-      color: "#4a1a4a" // Dark purple
+      color: "#ddd6fe" // Light purple
     },
     {
       icon: Eye,
@@ -93,7 +93,7 @@ export default function Landing() {
       type: "feature",
       description: "AI powered OCR technology automatically extracts and categorizes all data on receipts.",
       detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns.",
-      color: "#3d1a1a" // Dark red
+      color: "#fecaca" // Light red
     },
     {
       icon: FileText,
@@ -101,7 +101,7 @@ export default function Landing() {
       type: "benefit",
       description: "Professional financial reports that banks and investors trust.",
       detail: "Access to business credit becomes simple when you have organized financial records. Our reports meet banking standards and help you secure loans, investments, or government grants for business growth.",
-      color: "#1a3d3d" // Dark teal
+      color: "#a5f0f0" // Light teal
     },
     {
       icon: BarChart3,
@@ -109,7 +109,7 @@ export default function Landing() {
       type: "feature",
       description: "Generate tailored reports to analyze spend, identify trends, make smarter decisions and secure bank loans.",
       detail: "Create professional reports for business loans, investor presentations, or tax filing. Export to PDF or Excel formats that banks and investors expect.",
-      color: "#3d3d1a" // Dark olive
+      color: "#fef3c7" // Light yellow
     },
     {
       icon: Building,
@@ -117,7 +117,7 @@ export default function Landing() {
       type: "benefit",
       description: "Make data-driven decisions with real-time spending insights.",
       detail: "Know exactly where your money goes and identify cost-saving opportunities. Track profitability by category, spot trends early, and make smarter financial decisions that help your business grow sustainably.",
-      color: "#2a1a3d" // Dark indigo
+      color: "#c7d2fe" // Light indigo
     },
     {
       icon: Smartphone,
@@ -125,7 +125,7 @@ export default function Landing() {
       type: "feature",
       description: "Manage expenses and scan receipts on-the-go.",
       detail: "KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices.",
-      color: "#1a2a3d" // Dark slate
+      color: "#cbd5e1" // Light slate
     },
     {
       icon: Shield,
@@ -133,7 +133,7 @@ export default function Landing() {
       type: "benefit",
       description: "Your financial data stays private and completely secure.",
       detail: "Sleep peacefully knowing your sensitive business data is protected with the same 256-bit encryption used by major Nigerian banks. Your information never leaves secure Nigerian data centers.",
-      color: "#3d2a1a" // Dark brown
+      color: "#fed7aa" // Light orange
     },
     {
       icon: () => <span className="text-4xl">₦</span>,
@@ -141,7 +141,7 @@ export default function Landing() {
       type: "feature",
       description: "Built for Nigerian users with native Naira support and local preferences.",
       detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems.",
-      color: "#1a1a3d" // Dark navy
+      color: "#e0e7ff" // Light lavender
     },
     {
       icon: Star,
@@ -149,7 +149,7 @@ export default function Landing() {
       type: "benefit",
       description: "Begin tracking expenses immediately with no upfront costs.",
       detail: "Get started with 10 free receipt scans monthly. Experience the full KudiScan advantage risk-free, then upgrade when you're ready to unlock unlimited scanning and advanced features.",
-      color: "#4d1a2a" // Dark rose
+      color: "#fce7f3" // Light pink
     }
   ];
   
