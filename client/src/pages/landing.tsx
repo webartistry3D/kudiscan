@@ -220,9 +220,9 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
+      <section className="px-4 py-8 w-full" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 font-display h-[3rem] sm:h-[4rem] md:h-[5rem] lg:h-[6rem] xl:h-[7rem] flex items-center justify-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 font-display h-[3rem] sm:h-[4rem] md:h-[5rem] lg:h-[6rem] xl:h-[7rem] flex items-center justify-center">
             <span className="typing-text inline-block text-center">
               {displayText}
               {isTyping && <span className="animate-pulse">|</span>}
@@ -233,7 +233,7 @@ export default function Landing() {
 
           
           {/* Feature Carousel Display */}
-          <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-2 mt-2">
+          <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-1 -mt-2">
             {/* Samsung Tablet with Feature Carousel */}
             <div className="hidden md:block relative">
               <svg width="600" height="420" viewBox="0 0 720 480" className="drop-shadow-2xl">
@@ -369,13 +369,13 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="max-w-5xl mx-auto mb-4">
-            <p className="text-xl md:text-2xl lg:text-3xl text-white text-center mb-4 opacity-90 px-4 font-medium leading-relaxed">
+          <div className="max-w-5xl mx-auto mb-2">
+            <p className="text-xl md:text-2xl lg:text-3xl text-white text-center mb-2 opacity-90 px-4 font-medium leading-relaxed">
               Your <Bot className="inline-block w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mx-2 text-white animate-bot-pulse" /> automated finance assistant.
             </p>
             
             {/* Process Flow */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
               {/* Step 1: Snap */}
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
