@@ -228,10 +228,9 @@ export default function Landing() {
                 <rect x="60" y="50" width="480" height="280" fill="#111827"/>
                 
                 {/* Centered KudiBot Logo */}
-                <circle cx="300" cy="190" r="30" fill="none" stroke="white" strokeWidth="3"/>
-                <foreignObject x="270" y="160" width="60" height="60">
+                <foreignObject x="260" y="150" width="80" height="80">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-10 h-10 text-white" />
+                    <Bot className="w-20 h-20 text-white" />
                   </div>
                 </foreignObject>
                 
@@ -308,10 +307,9 @@ export default function Landing() {
                 <rect x="35" y="70" width="130" height="280" fill="#111827"/>
                 
                 {/* Mobile Centered KudiBot Logo */}
-                <circle cx="100" cy="210" r="20" fill="none" stroke="white" strokeWidth="2"/>
-                <foreignObject x="85" y="195" width="30" height="30">
+                <foreignObject x="80" y="190" width="40" height="40">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-white" />
+                    <Bot className="w-12 h-12 text-white" />
                   </div>
                 </foreignObject>
                 
