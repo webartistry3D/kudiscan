@@ -256,7 +256,7 @@ export default function Landing() {
       {/* Company Logos */}
       <section className="px-4 py-8 w-full overflow-hidden relative" style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                     url("https://images.pexels.com/photos/3274210/pexels-photo-3274210.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")`,
+                     url("https://images.pexels.com/photos/955395/pexels-photo-955395.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
