@@ -13,24 +13,24 @@ import { formatNaira } from "@/lib/currency";
 export default function BudgetSettings() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const [monthlyBudget, setMonthlyBudget] = useState("150000");
+  const [monthlyBudget, setMonthlyBudget] = useState("500000");
   const [categoryBudgets, setCategoryBudgets] = useState({
-    food: "50000",
-    transport: "30000",
-    utilities: "25000",
-    entertainment: "20000",
-    healthcare: "15000",
-    shopping: "10000"
+    food: "120000",
+    transport: "80000",
+    utilities: "60000",
+    entertainment: "50000",
+    healthcare: "40000",
+    shopping: "30000"
   });
 
   // Calculate spent amounts for budget remaining (mock data for now)
   const spentAmounts = {
-    food: 15000,
-    transport: 8000,
-    utilities: 12000,
-    entertainment: 5000,
-    healthcare: 3000,
-    shopping: 7000
+    food: 35000,
+    transport: 20000,
+    utilities: 28000,
+    entertainment: 12000,
+    healthcare: 8000,
+    shopping: 15000
   };
 
   useEffect(() => {
@@ -58,14 +58,14 @@ export default function BudgetSettings() {
   };
 
   const handleReset = () => {
-    setMonthlyBudget("150000");
+    setMonthlyBudget("500000");
     setCategoryBudgets({
-      food: "50000",
-      transport: "30000", 
-      utilities: "25000",
-      entertainment: "20000",
-      healthcare: "15000",
-      shopping: "10000"
+      food: "120000",
+      transport: "80000", 
+      utilities: "60000",
+      entertainment: "50000",
+      healthcare: "40000",
+      shopping: "30000"
     });
     toast({
       title: "Budget Reset",
