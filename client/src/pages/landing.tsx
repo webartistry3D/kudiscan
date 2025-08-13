@@ -56,7 +56,7 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-display h-[3rem] sm:h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-center justify-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 font-display h-[4rem] sm:h-[5rem] md:h-[6rem] lg:h-[7rem] xl:h-[8rem] flex items-center justify-center">
             <span className="typing-text inline-block text-center">
               {displayText}
               {isTyping && <span className="animate-pulse">|</span>}
@@ -70,7 +70,7 @@ export default function Landing() {
           <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
             {/* Desktop Dashboard */}
             <div className="hidden md:block relative">
-              <svg width="480" height="320" viewBox="0 0 600 400" className="drop-shadow-2xl">
+              <svg width="560" height="380" viewBox="0 0 600 400" className="drop-shadow-2xl md:scale-110 lg:scale-125 xl:scale-150">
                 {/* Monitor Frame */}
                 <rect x="20" y="30" width="560" height="320" rx="8" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
                 <rect x="30" y="40" width="540" height="300" rx="4" fill="#111827"/>
@@ -114,7 +114,7 @@ export default function Landing() {
 
             {/* Mobile Phone */}
             <div className="relative">
-              <svg width="160" height="320" viewBox="0 0 200 400" className="drop-shadow-2xl">
+              <svg width="180" height="360" viewBox="0 0 200 400" className="drop-shadow-2xl md:scale-110 lg:scale-125 xl:scale-150">
                 {/* Phone Frame */}
                 <rect x="10" y="10" width="180" height="380" rx="25" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
                 <rect x="20" y="40" width="160" height="320" rx="15" fill="#111827"/>
@@ -254,16 +254,16 @@ export default function Landing() {
 
 
       {/* Company Logos */}
-      <section className="px-4 py-8 w-full overflow-hidden relative" style={{
+      <section className="px-4 py-12 md:py-16 lg:py-20 w-full overflow-hidden relative min-h-[300px] md:min-h-[400px] lg:min-h-[500px]" style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                      url("https://images.pexels.com/photos/955395/pexels-photo-955395.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}>
-        <div className="max-w-4xl mx-auto text-center w-full">
-          <h3 className="text-lg font-semibold mb-8 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto text-center w-full flex flex-col justify-center h-full">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8 md:mb-12 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto">
             <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               Konga
             </div>
@@ -281,17 +281,17 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 py-16 w-full bg-background">
+      <section className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center mb-4 font-display text-foreground">Features</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-foreground">Features</h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 w-full">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mt-12 md:mt-16 lg:mt-20 w-full">
             {/* Receipt Scanning */}
-            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
-              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-12 h-12 text-white" />
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#082118'}}>
+              <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <Scan className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Receipt Scanning</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Receipt Scanning</h3>
               <p className="text-sm text-white mb-4">
                 Snap to Scan, Save & Track receipts.
               </p>
@@ -434,19 +434,19 @@ export default function Landing() {
       </section>
 
       {/* How It Works */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#2D3339'}}>
-        <div className="max-w-4xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center mb-12 font-display" style={{color: '#E1E7EF'}}>
+      <section className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#2D3339'}}>
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display" style={{color: '#E1E7EF'}}>
             How KudiScan works
           </h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
-            <div className="text-center w-full max-w-sm mx-auto">
-              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="w-16 h-16" style={{color: '#29A378'}} />
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 w-full">
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
+              <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <Scan className="w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
-              <p className="text-sm" style={{color: '#959AA0'}}>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
                 Press the Scan or Upload button to add receipt
               </p>
             </div>
@@ -482,16 +482,16 @@ export default function Landing() {
       </section>
 
       {/* Nigerian Federal Government Compliance Section */}
-      <section className="px-4 py-16 w-full bg-background">
+      <section className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center mb-4 font-display text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-foreground">
             Supporting Nigerian Business Growth
           </h2>
-          <p className="text-center mb-12 text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-center mb-12 md:mb-16 lg:mb-20 text-base md:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             KudiScan aligns with Federal Government initiatives to drive economic development by providing businesses with the financial transparency and documentation needed for growth opportunities.
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 max-w-6xl mx-auto">
             <div className="text-center p-6 rounded-2xl bg-card border border-border">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{backgroundColor: '#29A378'}}>
                 <Building className="w-8 h-8 text-white" />
@@ -535,42 +535,48 @@ export default function Landing() {
       </section>
 
       {/* Integration Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#22262A'}}>
-        <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl font-bold text-center mb-4 font-display" style={{color: '#E1E7EF'}}>
+      <section className="px-4 py-16 md:py-20 lg:py-24 w-full relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px]" style={{
+        background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                     url("https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <div className="max-w-6xl mx-auto w-full flex flex-col justify-center h-full">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-white">
             Seamless Integration
           </h2>
-          <p className="text-center mb-12" style={{color: '#959AA0'}}>
+          <p className="text-center mb-12 md:mb-16 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
             KudiScan works with your favorite tools and platforms
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📧</span>
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            <div className="text-center p-6 md:p-8 lg:p-10 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl md:text-4xl">📧</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{color: '#E1E7EF'}}>Email Integration</h3>
-              <p className="text-sm" style={{color: '#959AA0'}}>
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">Email Integration</h3>
+              <p className="text-sm md:text-base text-white/80 leading-relaxed">
                 Forward receipts to receipts@kudiscan.com for automatic processing
               </p>
             </div>
             
-            <div className="text-center p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🏦</span>
+            <div className="text-center p-6 md:p-8 lg:p-10 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl md:text-4xl">🏦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{color: '#E1E7EF'}}>Bank Integration</h3>
-              <p className="text-sm" style={{color: '#959AA0'}}>
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">Bank Integration</h3>
+              <p className="text-sm md:text-base text-white/80 leading-relaxed">
                 Connect with major Nigerian banks for complete financial oversight
               </p>
             </div>
             
-            <div className="text-center p-6 rounded-2xl" style={{backgroundColor: '#292E33'}}>
-              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📊</span>
+            <div className="text-center p-6 md:p-8 lg:p-10 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl md:text-4xl">📊</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{color: '#E1E7EF'}}>Export Options</h3>
-              <p className="text-sm" style={{color: '#959AA0'}}>
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">Export Options</h3>
+              <p className="text-sm md:text-base text-white/80 leading-relaxed">
                 Export data to Excel, PDF, or your accounting software
               </p>
             </div>
