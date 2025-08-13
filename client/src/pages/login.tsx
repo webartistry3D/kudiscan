@@ -64,7 +64,7 @@ export default function Login() {
           <Button 
             variant="outline" 
             size="sm" 
-            className="bg-white/90 backdrop-blur-sm hover:bg-white border-primary/30 hover:border-primary/50 shadow-md text-xs sm:text-sm px-2 sm:px-4"
+            className="bg-white/90 backdrop-blur-sm hover:bg-white border-primary/30 hover:border-primary/50 shadow-md text-xs sm:text-sm px-2 sm:px-4 text-primary hover:text-primary"
             data-testid="button-visit-home"
           >
             <Home className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />

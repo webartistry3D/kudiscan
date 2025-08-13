@@ -257,34 +257,18 @@ export default function Landing() {
       <section className="px-4 py-8 w-full overflow-hidden bg-muted/30">
         <div className="max-w-4xl mx-auto text-center w-full">
           <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
-          <div className="relative">
-            <div className="flex animate-trust-scroll gap-8 select-none">
-            {/* First set */}
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
+            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
               Flutterwave
-            </div>
-            {/* Duplicate set for seamless loop */}
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              Konga
-            </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              Jumia
-            </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              GTBank
-            </div>
-            <div className="flex items-center justify-center h-12 min-w-32 bg-card border border-border rounded text-sm font-semibold text-foreground">
-              Flutterwave
-            </div>
             </div>
           </div>
         </div>
@@ -627,174 +611,70 @@ export default function Landing() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="px-4 py-16 w-full overflow-hidden" style={{backgroundColor: '#2D3339'}}>
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl font-bold text-center mb-12 font-display text-white">
             What KudiScan Users Are Saying
           </h2>
           
-          <div className="relative">
-            <div className="flex gap-6 animate-testimonials-scroll select-none">
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="p-6 rounded-2xl hover:scale-105 transition-transform duration-300" style={{backgroundColor: '#0C3124'}}>
+              <div className="flex items-center mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-lg mb-4 text-white break-words">
+                "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-white font-bold">C</span>
                 </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">C</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Chidinma</p>
-                    <p className="text-sm text-white/70">Lagos entrepreneur</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-white">Chidinma</p>
+                  <p className="text-sm text-white/70">Lagos entrepreneur</p>
                 </div>
               </div>
-              
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(4)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                  <Star className="w-4 h-4 text-gray-300" />
+            </div>
+            
+            <div className="p-6 rounded-2xl hover:scale-105 transition-transform duration-300" style={{backgroundColor: '#0C3124'}}>
+              <div className="flex items-center mb-3">
+                {[...Array(4)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+                <Star className="w-4 h-4 text-gray-300" />
+              </div>
+              <p className="text-lg mb-4 text-white break-words">
+                "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-white font-bold">T</span>
                 </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">T</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Tunde</p>
-                    <p className="text-sm text-white/70">Freelancer</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-white">Tunde</p>
+                  <p className="text-sm text-white/70">Freelancer</p>
                 </div>
               </div>
-              
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding - saves me hours every month."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">A</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Adebayo M.</p>
-                    <p className="text-sm text-white/70">Small business owner</p>
-                  </div>
-                </div>
+            </div>
+            
+            <div className="p-6 rounded-2xl hover:scale-105 transition-transform duration-300" style={{backgroundColor: '#0C3124'}}>
+              <div className="flex items-center mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
               </div>
-              
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
+              <p className="text-lg mb-4 text-white break-words">
+                "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-white font-bold">A</span>
                 </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "Perfect for small businesses. KudiScan helps our company ensure compliance and accountability. The automated reporting works brilliantly."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">K</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Kemi O.</p>
-                    <p className="text-sm text-white/70">Finance manager</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Duplicate cards for seamless loop */}
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">C</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Chidinma</p>
-                    <p className="text-sm text-white/70">Lagos entrepreneur</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(4)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                  <Star className="w-4 h-4 text-gray-300" />
-                </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">T</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Tunde</p>
-                    <p className="text-sm text-white/70">Freelancer</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding - saves me hours every month."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">A</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Adebayo M.</p>
-                    <p className="text-sm text-white/70">Small business owner</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-lg mb-4 text-white break-words">
-                  "Perfect for small businesses. KudiScan helps our company ensure compliance and accountability. The automated reporting works brilliantly."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <span className="text-white font-bold">K</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Kemi O.</p>
-                    <p className="text-sm text-white/70">Finance manager</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-white">Adebayo M.</p>
+                  <p className="text-sm text-white/70">Small business owner</p>
                 </div>
               </div>
             </div>
