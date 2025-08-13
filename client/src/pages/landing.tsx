@@ -163,7 +163,7 @@ export default function Landing() {
               {/* Step 1: Snap */}
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
-                  <Camera className="w-10 h-10 text-white process-icon-1" />
+                  <Camera className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Snap</h3>
                 <p className="text-sm md:text-base leading-tight text-white">Snap / Upload a receipt to scan your expenses</p>
@@ -182,7 +182,7 @@ export default function Landing() {
               {/* Step 2: Track */}
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
-                  <TrendingUp className="w-10 h-10 text-white process-icon-2" />
+                  <TrendingUp className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Track</h3>
                 <p className="text-sm md:text-base leading-tight text-white">Track spending across categories with intelligent insights</p>
@@ -201,7 +201,7 @@ export default function Landing() {
               {/* Step 3: Report */}
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
-                  <FileText className="w-10 h-10 text-white process-icon-3" />
+                  <FileText className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Report</h3>
                 <p className="text-sm md:text-base leading-tight text-white">Generate professional expense reports for business use</p>
@@ -220,7 +220,7 @@ export default function Landing() {
               {/* Step 4: Scale */}
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
-                  <Building className="w-10 h-10 text-white process-icon-4" />
+                  <Building className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Scale</h3>
                 <p className="text-sm md:text-base leading-tight text-white">Secure loans from banks and investors to scale your business</p>
@@ -923,7 +923,7 @@ export default function Landing() {
             <div className="mb-4 md:mb-0 text-center md:text-left relative">
               {/* 2-color KudiScan background */}
               <div className="absolute inset-0 flex items-center justify-center md:justify-start opacity-5 pointer-events-none">
-                <span className="text-6xl md:text-7xl font-bold">
+                <span className="text-[12rem] md:text-[15rem] lg:text-[18rem] font-bold">
                   <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>
                 </span>
               </div>
