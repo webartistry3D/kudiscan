@@ -254,20 +254,23 @@ export default function Landing() {
 
 
       {/* Company Logos */}
-      <section className="px-4 py-8 w-full overflow-hidden bg-muted/30">
+      <section className="px-4 py-8 w-full overflow-hidden relative" style={{
+        background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                     url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}>
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h3 className="text-lg font-semibold mb-8 font-display text-foreground">Join 100,000+ users who trust KudiScan</h3>
+          <h3 className="text-lg font-semibold mb-8 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
+            <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               Konga
             </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
+            <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               Jumia
             </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
+            <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               GTBank
             </div>
-            <div className="flex items-center justify-center h-12 bg-card border border-border rounded text-sm font-semibold text-foreground hover:scale-105 transition-transform duration-200">
+            <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               Flutterwave
             </div>
           </div>
