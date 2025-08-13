@@ -171,11 +171,11 @@ export default function Landing() {
               
               {/* Arrow 1 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
+                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
+                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
                 </div>
               </div>
               
@@ -190,11 +190,11 @@ export default function Landing() {
               
               {/* Arrow 2 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
+                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
+                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
                 </div>
               </div>
               
@@ -209,11 +209,11 @@ export default function Landing() {
               
               {/* Arrow 3 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
+                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
+                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
                 </div>
               </div>
               
@@ -437,7 +437,7 @@ export default function Landing() {
       <section className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display" style={{color: '#E1E7EF'}}>
-            How KudiScan works
+            How <span style={{color: '#29A378'}}>Kudi</span><span style={{color: '#E1E7EF'}}>Scan</span> Works
           </h2>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 w-full">
@@ -453,11 +453,11 @@ export default function Landing() {
 
             {/* Arrow 1 */}
             <div className="hidden md:block">
-              <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+              <ArrowRight className="w-8 h-8 animate-arrow-pulse" style={{color: '#29A378'}} />
             </div>
             <div className="md:hidden">
               <div className="w-8 h-8 rotate-90">
-                <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+                <ArrowRight className="w-8 h-8 animate-arrow-pulse" style={{color: '#29A378'}} />
               </div>
             </div>
 
@@ -465,19 +465,19 @@ export default function Landing() {
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <BarChart3 className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Track & Analyze</h3>
-              <p className="text-sm" style={{color: '#959AA0'}}>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Track & Analyze</h3>
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
                 View spending analytics, category breakdowns, and budget tracking to understand your spending patterns.
               </p>
             </div>
 
             {/* Arrow 2 */}
             <div className="hidden md:block">
-              <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+              <ArrowRight className="w-8 h-8 animate-arrow-pulse" style={{color: '#29A378'}} />
             </div>
             <div className="md:hidden">
               <div className="w-8 h-8 rotate-90">
-                <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+                <ArrowRight className="w-8 h-8 animate-arrow-pulse" style={{color: '#29A378'}} />
               </div>
             </div>
 
@@ -485,8 +485,8 @@ export default function Landing() {
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <FileBarChart className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
-              <p className="text-sm" style={{color: '#959AA0'}}>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
                 Generate expense reports for tracking, reimbursements, business investors and bank loan applications.
               </p>
             </div>
@@ -646,7 +646,7 @@ export default function Landing() {
       <section className="px-4 py-16 w-full" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display text-white">
-            What KudiScan Users Are Saying
+            What <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span> Users Are Saying
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -854,7 +854,7 @@ export default function Landing() {
         <div className="max-w-2xl mx-auto text-center w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 font-display text-primary-foreground">Start managing your expenses today</h2>
           <p className="text-primary-foreground/80 mb-8">
-            Join thousands of Nigerian users who trust KudiScan for their expense tracking needs.
+            Join thousands of Nigerian users who trust <span style={{color: '#29A378'}}>Kudi</span><span className="text-primary-foreground">Scan</span> for their expense tracking needs.
           </p>
           <Link href="/register">
             <Button size="lg" variant="secondary" className="px-8" data-testid="button-footer-cta">
@@ -920,9 +920,15 @@ export default function Landing() {
 
           {/* Bottom Section with Stylized Logo and Scroll to Top */}
           <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0 text-center md:text-left">
-              <p className="text-sm text-muted-foreground">
-                © 2025 KudiScan. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
+            <div className="mb-4 md:mb-0 text-center md:text-left relative">
+              {/* 2-color KudiScan background */}
+              <div className="absolute inset-0 flex items-center justify-center md:justify-start opacity-5 pointer-events-none">
+                <span className="text-6xl md:text-7xl font-bold">
+                  <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground relative z-10">
+                © 2025 <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
               </p>
             </div>
             
