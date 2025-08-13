@@ -236,56 +236,56 @@ export default function Landing() {
           <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
             {/* Samsung Tablet with Feature Carousel */}
             <div className="hidden md:block relative">
-              <svg width="400" height="280" viewBox="0 0 480 320" className="drop-shadow-2xl">
-                {/* Tablet Frame - Horizontal Samsung Style */}
-                <rect x="10" y="20" width="460" height="280" rx="20" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
-                <rect x="20" y="30" width="440" height="260" rx="15" fill="#111827"/>
+              <svg width="600" height="420" viewBox="0 0 720 480" className="drop-shadow-2xl">
+                {/* Tablet Frame - Horizontal Samsung Style (1.5x larger) */}
+                <rect x="15" y="30" width="690" height="420" rx="30" fill="#1f2937" stroke="#374151" strokeWidth="3"/>
+                <rect x="30" y="45" width="660" height="390" rx="22" fill="#111827"/>
                 
-                {/* Samsung Home Button */}
-                <circle cx="240" cy="300" r="8" fill="#374151"/>
+                {/* Samsung Home Button (1.5x larger) */}
+                <circle cx="360" cy="450" r="12" fill="#374151"/>
                 
-                {/* Screen Content - Feature Display */}
-                <rect x="40" y="40" width="400" height="240" fill="#111827"/>
+                {/* Screen Content - Feature Display (1.5x larger) */}
+                <rect x="60" y="60" width="600" height="360" fill="#111827"/>
                 
-                {/* Centered KudiBot Logo */}
-                <foreignObject x="200" y="130" width="80" height="80">
+                {/* Centered KudiBot Logo (1.5x larger) */}
+                <foreignObject x="300" y="195" width="120" height="120">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-16 h-16 text-white" />
+                    <Bot className="w-24 h-24 text-white" />
                   </div>
                 </foreignObject>
                 
-                {/* Feature Content */}
-                <foreignObject x="40" y="40" width="400" height="240">
+                {/* Feature Content (1.5x larger) */}
+                <foreignObject x="60" y="60" width="600" height="360">
                   <div className="slide-container">
                     <div 
-                      className="slide-content p-6"
+                      className="slide-content p-9"
                       style={{
                         animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : 'none',
                         background: features[currentFeature].color || '#111827'
                       }}
                       key={currentFeature}
                     >
-                      {/* Icon */}
-                      <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-4">
-                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
-                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl text-white">₦</span>}
+                      {/* Icon (1.5x larger) */}
+                      <div className="w-24 h-24 bg-white/10 flex items-center justify-center mb-6">
+                        {features[currentFeature].icon === Scan && <Scan className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-15 h-15 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-6xl text-white">₦</span>}
                       </div>
                       
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-white mb-3">
+                      {/* Title (1.5x larger) */}
+                      <h3 className="text-3xl font-bold text-white mb-4">
                         {features[currentFeature].title}
                       </h3>
                       
-                      {/* Description */}
-                      <p className="text-white/90 text-sm leading-relaxed">
+                      {/* Description (1.5x larger) */}
+                      <p className="text-white/90 text-base leading-relaxed">
                         {features[currentFeature].description}
                       </p>
                     </div>
