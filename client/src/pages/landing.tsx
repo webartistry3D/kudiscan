@@ -77,7 +77,7 @@ export default function Landing() {
       type: "feature",
       description: "Snap to Scan, Save & Track receipts.",
       detail: "Advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts merchant data, amounts, dates, and itemized purchases.",
-      color: "#38bdf8" // Medium blue
+      color: "#1e3a8a" // Dark blue
     },
     {
       icon: TrendingUp,
@@ -85,7 +85,7 @@ export default function Landing() {
       type: "benefit",
       description: "Eliminate manual data entry and receipt organization completely.",
       detail: "No more typing expense amounts or hunting for lost receipts. KudiScan automates everything, giving you back hours each week to focus on growing your business instead of paperwork.",
-      color: "#a78bfa" // Medium purple
+      color: "#581c87" // Dark purple
     },
     {
       icon: Eye,
@@ -93,7 +93,7 @@ export default function Landing() {
       type: "feature",
       description: "AI powered OCR technology automatically extracts and categorizes all data on receipts.",
       detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns.",
-      color: "#f87171" // Medium red
+      color: "#991b1b" // Dark red
     },
     {
       icon: FileText,
@@ -101,7 +101,7 @@ export default function Landing() {
       type: "benefit",
       description: "Professional financial reports that banks and investors trust.",
       detail: "Access to business credit becomes simple when you have organized financial records. Our reports meet banking standards and help you secure loans, investments, or government grants for business growth.",
-      color: "#2dd4bf" // Medium teal
+      color: "#134e4a" // Dark teal
     },
     {
       icon: BarChart3,
@@ -109,7 +109,7 @@ export default function Landing() {
       type: "feature",
       description: "Generate tailored reports to analyze spend, identify trends, make smarter decisions and secure bank loans.",
       detail: "Create professional reports for business loans, investor presentations, or tax filing. Export to PDF or Excel formats that banks and investors expect.",
-      color: "#fbbf24" // Medium yellow
+      color: "#a16207" // Dark yellow
     },
     {
       icon: Building,
@@ -117,7 +117,7 @@ export default function Landing() {
       type: "benefit",
       description: "Make data-driven decisions with real-time spending insights.",
       detail: "Know exactly where your money goes and identify cost-saving opportunities. Track profitability by category, spot trends early, and make smarter financial decisions that help your business grow sustainably.",
-      color: "#818cf8" // Medium indigo
+      color: "#3730a3" // Dark indigo
     },
     {
       icon: Smartphone,
@@ -125,7 +125,7 @@ export default function Landing() {
       type: "feature",
       description: "Manage expenses and scan receipts on-the-go.",
       detail: "KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices.",
-      color: "#64748b" // Medium slate
+      color: "#334155" // Dark slate
     },
     {
       icon: Shield,
@@ -133,7 +133,7 @@ export default function Landing() {
       type: "benefit",
       description: "Your financial data stays private and completely secure.",
       detail: "Sleep peacefully knowing your sensitive business data is protected with the same 256-bit encryption used by major Nigerian banks. Your information never leaves secure Nigerian data centers.",
-      color: "#fb923c" // Medium orange
+      color: "#9a3412" // Dark orange
     },
     {
       icon: () => <span className="text-4xl">₦</span>,
@@ -141,7 +141,7 @@ export default function Landing() {
       type: "feature",
       description: "Built for Nigerian users with native Naira support and local preferences.",
       detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems.",
-      color: "#8b5cf6" // Medium violet
+      color: "#5b21b6" // Dark violet
     },
     {
       icon: Star,
@@ -149,7 +149,7 @@ export default function Landing() {
       type: "benefit",
       description: "Begin tracking expenses immediately with no upfront costs.",
       detail: "Get started with 10 free receipt scans monthly. Experience the full KudiScan advantage risk-free, then upgrade when you're ready to unlock unlimited scanning and advanced features.",
-      color: "#ec4899" // Medium pink
+      color: "#be185d" // Dark pink
     }
   ];
   
@@ -230,7 +230,7 @@ export default function Landing() {
                 {/* Centered KudiBot Logo */}
                 <foreignObject x="260" y="150" width="80" height="80">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-20 h-20" style={{color: '#29A378'}} />
+                    <Bot className="w-20 h-20 text-white" />
                   </div>
                 </foreignObject>
                 
@@ -247,25 +247,25 @@ export default function Landing() {
                     >
                       {/* Icon */}
                       <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-4">
-                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Building && <Building className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Star && <Star className="w-10 h-10" style={{color: '#29A378'}} />}
-                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl" style={{color: '#29A378'}}>₦</span>}
+                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl text-white">₦</span>}
                       </div>
                       
                       {/* Title */}
-                      <h3 className="text-xl font-bold mb-3" style={{color: '#29A378'}}>
+                      <h3 className="text-xl font-bold text-white mb-3">
                         {features[currentFeature].title}
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-sm leading-relaxed" style={{color: '#29A378'}}>
+                      <p className="text-white/90 text-sm leading-relaxed">
                         {features[currentFeature].description}
                       </p>
                     </div>
@@ -310,7 +310,7 @@ export default function Landing() {
                 {/* Mobile Centered KudiBot Logo */}
                 <foreignObject x="80" y="190" width="40" height="40">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-12 h-12" style={{color: '#29A378'}} />
+                    <Bot className="w-12 h-12 text-white" />
                   </div>
                 </foreignObject>
                 
@@ -326,25 +326,25 @@ export default function Landing() {
                     >
                       {/* Mobile Icon */}
                       <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-3">
-                        {features[currentFeature].icon === Scan && <Scan className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Building && <Building className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {features[currentFeature].icon === Star && <Star className="w-8 h-8" style={{color: '#29A378'}} />}
-                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-3xl" style={{color: '#29A378'}}>₦</span>}
+                        {features[currentFeature].icon === Scan && <Scan className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-8 h-8 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-3xl text-white">₦</span>}
                       </div>
                       
                       {/* Mobile Title */}
-                      <h4 className="text-sm font-bold mb-2 leading-tight" style={{color: '#29A378'}}>
+                      <h4 className="text-sm font-bold text-white mb-2 leading-tight">
                         {features[currentFeature].title}
                       </h4>
                       
                       {/* Mobile Description */}
-                      <p className="text-xs leading-relaxed" style={{color: '#29A378'}}>
+                      <p className="text-white/90 text-xs leading-relaxed">
                         {features[currentFeature].description}
                       </p>
                     </div>
@@ -711,10 +711,11 @@ export default function Landing() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="px-8" data-testid="button-get-started-main">
-              Get Started
-            </Button>
-
+            <Link href="/register">
+              <Button size="lg" className="px-8" data-testid="button-get-started-main">
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -987,9 +988,11 @@ export default function Landing() {
               </div>
               
               <div className="text-center">
-                <Button size="lg" variant="outline" className="px-8" style={{borderColor: '#29A378', color: '#29A378'}}>
-                  Get Started Free
-                </Button>
+                <Link href="/register">
+                  <Button size="lg" variant="outline" className="px-8" style={{borderColor: '#29A378', color: '#29A378'}} data-testid="button-freemium-plan">
+                    Get Started Free
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -1055,9 +1058,11 @@ export default function Landing() {
               </div>
               
               <div className="text-center">
-                <Button size="lg" className="px-8 bg-primary hover:bg-primary/90">
-                  Get Started
-                </Button>
+                <Link href="/register">
+                  <Button size="lg" className="px-8 bg-primary hover:bg-primary/90" data-testid="button-premium-plan">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
