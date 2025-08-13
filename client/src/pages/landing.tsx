@@ -61,6 +61,7 @@ export default function Landing() {
   
   // Carousel state for features
   const [currentFeature, setCurrentFeature] = useState(0);
+  const [isCarouselLoaded, setIsCarouselLoaded] = useState(false);
   
   const features = [
     {
@@ -171,19 +172,25 @@ export default function Landing() {
     return () => clearInterval(typeTimer);
   }, []);
   
-  // Carousel effect with initial delay to prevent loading bugs
+  // Carousel effect with proper initialization to prevent loading bugs
   useEffect(() => {
     let carouselTimer: NodeJS.Timeout;
     
-    // Add a small initial delay to prevent animation glitches on first load
-    const initialDelay = setTimeout(() => {
+    // Set initial load state
+    const loadingDelay = setTimeout(() => {
+      setIsCarouselLoaded(true);
+    }, 500);
+    
+    // Initialize carousel after component is fully loaded
+    const initializationDelay = setTimeout(() => {
       carouselTimer = setInterval(() => {
         setCurrentFeature((prev) => (prev + 1) % features.length);
       }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
-    }, 1000); // 1 second delay before starting carousel
+    }, 2000);
     
     return () => {
-      clearTimeout(initialDelay);
+      clearTimeout(loadingDelay);
+      clearTimeout(initializationDelay);
       if (carouselTimer) clearInterval(carouselTimer);
     };
   }, []);
@@ -280,19 +287,7 @@ export default function Landing() {
                   </div>
                 </foreignObject>
                 
-                {/* Desktop Carousel Dots - centered under monitor */}
-                <g>
-                  {features.map((_, index) => (
-                    <circle
-                      key={index}
-                      cx={300 + (index - (features.length - 1) / 2) * 15}
-                      cy={365}
-                      r="3"
-                      fill={index === currentFeature ? "#29A378" : "#4b5563"}
-                      className="transition-colors duration-500"
-                    />
-                  ))}
-                </g>
+
                 
                 {/* Monitor Stand */}
                 <rect x="280" y="350" width="40" height="20" rx="4" fill="#374151"/>
@@ -300,29 +295,32 @@ export default function Landing() {
               </svg>
             </div>
 
-            {/* Mobile Phone with Feature Carousel */}
+            {/* iPhone with Feature Carousel */}
             <div className="relative">
               <svg width="160" height="320" viewBox="0 0 200 400" className="drop-shadow-2xl md:scale-90 lg:scale-100 xl:scale-110">
-                {/* Phone Frame */}
-                <rect x="10" y="10" width="180" height="380" rx="25" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
-                <rect x="20" y="40" width="160" height="320" rx="15" fill="#111827"/>
+                {/* iPhone Frame */}
+                <rect x="10" y="10" width="180" height="380" rx="45" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
+                <rect x="20" y="25" width="160" height="350" rx="35" fill="#111827"/>
+                
+                {/* iPhone Notch */}
+                <rect x="75" y="10" width="50" height="25" rx="12" fill="#1f2937"/>
                 
                 {/* Status Bar */}
-                <rect x="25" y="45" width="150" height="20" fill="#111827"/>
-                <text x="30" y="57" fill="white" fontSize="8">9:41</text>
-                <text x="150" y="57" fill="white" fontSize="8">100%</text>
+                <rect x="25" y="35" width="150" height="20" fill="#111827"/>
+                <text x="30" y="47" fill="white" fontSize="8">9:41</text>
+                <text x="150" y="47" fill="white" fontSize="8">100%</text>
                 
                 {/* Mobile Feature Display */}
-                <rect x="35" y="70" width="130" height="280" fill="#111827"/>
+                <rect x="35" y="60" width="130" height="290" fill="#111827"/>
                 
-                {/* Mobile Centered KudiBot Logo */}
-                <foreignObject x="80" y="190" width="40" height="40">
+                {/* iPhone Centered KudiBot Logo */}
+                <foreignObject x="80" y="180" width="40" height="40">
                   <div className="w-full h-full flex items-center justify-center">
                     <Bot className="w-12 h-12 text-white" />
                   </div>
                 </foreignObject>
                 
-                <foreignObject x="35" y="70" width="130" height="280">
+                <foreignObject x="35" y="60" width="130" height="290">
                   <div className="slide-container">
                     <div 
                       className="slide-content p-4"
@@ -359,21 +357,7 @@ export default function Landing() {
                   </div>
                 </foreignObject>
                 
-                {/* Mobile Carousel Dots - centered under phone */}
-                <g>
-                  {features.map((_, index) => (
-                    <circle
-                      key={index}
-                      cx={100 + (index - (features.length - 1) / 2) * 8}
-                      cy={375}
-                      r="2"
-                      fill={index === currentFeature ? "#29A378" : "#4b5563"}
-                      className="transition-colors duration-500"
-                    />
-                  ))}
-                </g>
-                
-                {/* Home Indicator */}
+                {/* iPhone Home Indicator */}
                 <rect x="85" y="385" width="30" height="4" rx="2" fill="#4b5563"/>
               </svg>
             </div>
@@ -397,11 +381,11 @@ export default function Landing() {
               
               {/* Arrow 1 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
+                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
+                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
                 </div>
               </div>
               
@@ -416,11 +400,11 @@ export default function Landing() {
               
               {/* Arrow 2 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
+                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
+                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
                 </div>
               </div>
               
@@ -435,11 +419,11 @@ export default function Landing() {
               
               {/* Arrow 3 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
+                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#082118'}} />
+                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
                 </div>
               </div>
               
