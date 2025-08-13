@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { BottomNavigation } from "@/components/bottom-navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,13 +10,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Plus, Trash2, Edit3, Palette } from "lucide-react";
 import * as Icons from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
+import type { Category } from "@shared/schema";
 
-interface Category {
-  id: string;
-  name: string;
-  icon: string;
-  color: string;
-}
+// Category interface comes from shared schema
 
 const defaultCategories: Category[] = [
   { id: "food", name: "Food & Dining", icon: "UtensilsCrossed", color: "#FF6B6B" },
@@ -42,7 +40,7 @@ const availableColors = [
 export default function ExpenseCategories() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const [categories, setCategories] = useState<Category[]>(defaultCategories);
+  const queryClient = useQueryClient();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [newCategory, setNewCategory] = useState({
@@ -55,6 +53,76 @@ export default function ExpenseCategories() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
+  // Fetch categories from backend
+  const { data: categories = [], isLoading } = useQuery<Category[]>({
+    queryKey: ["/api/categories"]
+  });
+
+  // Mutations for category management
+  const createCategoryMutation = useMutation({
+    mutationFn: async (categoryData: { name: string; icon: string; color: string }) => {
+      return apiRequest("POST", "/api/categories", categoryData);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+      setIsAddDialogOpen(false);
+      setNewCategory({ name: "", icon: "ShoppingBag", color: "#FF6B6B" });
+      toast({
+        title: "Category Added",
+        description: "Category has been added successfully."
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to add category",
+        variant: "destructive"
+      });
+    }
+  });
+
+  const updateCategoryMutation = useMutation({
+    mutationFn: async ({ id, data }: { id: string; data: { name: string; icon: string; color: string } }) => {
+      return apiRequest("PUT", `/api/categories/${id}`, data);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+      setEditingCategory(null);
+      setNewCategory({ name: "", icon: "ShoppingBag", color: "#FF6B6B" });
+      toast({
+        title: "Category Updated",
+        description: "Category has been updated successfully."
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update category",
+        variant: "destructive"
+      });
+    }
+  });
+
+  const deleteCategoryMutation = useMutation({
+    mutationFn: async (id: string) => {
+      return apiRequest("DELETE", `/api/categories/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+      toast({
+        title: "Category Deleted",
+        description: "Category has been removed successfully."
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete category",
+        variant: "destructive"
+      });
+    }
+  });
+
   const handleAddCategory = () => {
     if (!newCategory.name.trim()) {
       toast({
@@ -65,20 +133,10 @@ export default function ExpenseCategories() {
       return;
     }
 
-    const category: Category = {
-      id: newCategory.name.toLowerCase().replace(/[^a-z0-9]/g, ''),
+    createCategoryMutation.mutate({
       name: newCategory.name,
       icon: newCategory.icon,
       color: newCategory.color
-    };
-
-    setCategories(prev => [...prev, category]);
-    setNewCategory({ name: "", icon: "ShoppingBag", color: "#FF6B6B" });
-    setIsAddDialogOpen(false);
-    
-    toast({
-      title: "Category Added",
-      description: `${newCategory.name} has been added to your expense categories.`
     });
   };
 
@@ -94,28 +152,19 @@ export default function ExpenseCategories() {
   const handleUpdateCategory = () => {
     if (!editingCategory || !newCategory.name.trim()) return;
 
-    setCategories(prev => prev.map(cat => 
-      cat.id === editingCategory.id 
-        ? { ...cat, name: newCategory.name, icon: newCategory.icon, color: newCategory.color }
-        : cat
-    ));
-    
-    setEditingCategory(null);
-    setNewCategory({ name: "", icon: "ShoppingBag", color: "#FF6B6B" });
-    
-    toast({
-      title: "Category Updated",
-      description: "Category has been updated successfully."
+    updateCategoryMutation.mutate({
+      id: editingCategory.id,
+      data: {
+        name: newCategory.name,
+        icon: newCategory.icon,
+        color: newCategory.color
+      }
     });
   };
 
   const handleDeleteCategory = (categoryId: string) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
-      setCategories(prev => prev.filter(cat => cat.id !== categoryId));
-      toast({
-        title: "Category Deleted",
-        description: "Category has been removed from your list."
-      });
+      deleteCategoryMutation.mutate(categoryId);
     }
   };
 
@@ -123,6 +172,34 @@ export default function ExpenseCategories() {
     const IconComponent = Icons[iconName as keyof typeof Icons] as any;
     return IconComponent ? <IconComponent className="w-6 h-6" style={{ color }} /> : null;
   };
+
+  if (isLoading) {
+    return (
+      <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
+        <header className="bg-background border-b border-border sticky top-0 z-50">
+          <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
+            <div className="flex items-center space-x-3">
+              <Button 
+                variant="ghost" 
+                size="icon"
+                onClick={() => setLocation("/settings")}
+                data-testid="button-back"
+              >
+                <ArrowLeft className="w-5 h-5 text-muted-foreground" />
+              </Button>
+              <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
+                Expense Categories
+              </h1>
+            </div>
+          </div>
+        </header>
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" aria-label="Loading"/>
+        </div>
+        <BottomNavigation />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
@@ -144,9 +221,12 @@ export default function ExpenseCategories() {
           
           <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
             <DialogTrigger asChild>
-              <Button data-testid="button-add-category">
+              <Button 
+                data-testid="button-add-category"
+                disabled={createCategoryMutation.isPending}
+              >
                 <Plus className="w-4 h-4 mr-2" />
-                Add Category
+                {createCategoryMutation.isPending ? "Adding..." : "Add Category"}
               </Button>
             </DialogTrigger>
             <DialogContent>
@@ -200,8 +280,13 @@ export default function ExpenseCategories() {
                   </div>
                 </div>
                 
-                <Button onClick={handleAddCategory} className="w-full" data-testid="button-save-category">
-                  Add Category
+                <Button 
+                  onClick={handleAddCategory} 
+                  className="w-full" 
+                  data-testid="button-save-category"
+                  disabled={createCategoryMutation.isPending}
+                >
+                  {createCategoryMutation.isPending ? "Adding..." : "Add Category"}
                 </Button>
               </div>
             </DialogContent>
@@ -234,6 +319,7 @@ export default function ExpenseCategories() {
                       onClick={() => handleDeleteCategory(category.id)}
                       className="text-red-500 hover:text-red-700"
                       data-testid={`button-delete-${category.id}`}
+                      disabled={deleteCategoryMutation.isPending}
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
@@ -295,8 +381,13 @@ export default function ExpenseCategories() {
                 </div>
               </div>
               
-              <Button onClick={handleUpdateCategory} className="w-full" data-testid="button-update-category">
-                Update Category
+              <Button 
+                onClick={handleUpdateCategory} 
+                className="w-full" 
+                data-testid="button-update-category"
+                disabled={updateCategoryMutation.isPending}
+              >
+                {updateCategoryMutation.isPending ? "Updating..." : "Update Category"}
               </Button>
             </div>
           </DialogContent>

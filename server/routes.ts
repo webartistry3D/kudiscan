@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertExpenseSchema, loginSchema, registerSchema } from "@shared/schema";
+import { insertExpenseSchema, insertCategorySchema, loginSchema, registerSchema } from "@shared/schema";
 import { z } from "zod";
 import multer from "multer";
 import passport from "passport";
@@ -201,6 +201,61 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Dashboard stats error:", error);
       res.status(500).json({ message: "Failed to fetch dashboard stats" });
+    }
+  });
+
+  // Category management routes
+  app.get("/api/categories", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const categories = await storage.getCategories(userId);
+      res.json(categories);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch categories" });
+    }
+  });
+
+  app.post("/api/categories", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const validatedData = insertCategorySchema.parse(req.body);
+      const category = await storage.createCategory(validatedData, userId);
+      res.status(201).json(category);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid data", errors: error.errors });
+      }
+      res.status(500).json({ message: "Failed to create category" });
+    }
+  });
+
+  app.put("/api/categories/:id", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const validatedData = insertCategorySchema.parse(req.body);
+      const category = await storage.updateCategory(req.params.id, validatedData, userId);
+      if (!category) {
+        return res.status(404).json({ message: "Category not found" });
+      }
+      res.json(category);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid data", errors: error.errors });
+      }
+      res.status(500).json({ message: "Failed to update category" });
+    }
+  });
+
+  app.delete("/api/categories/:id", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const deleted = await storage.deleteCategory(req.params.id, userId);
+      if (!deleted) {
+        return res.status(404).json({ message: "Category not found" });
+      }
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete category" });
     }
   });
 

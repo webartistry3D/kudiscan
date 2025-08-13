@@ -3,8 +3,11 @@ import {
   type InsertExpense, 
   type User, 
   type InsertUser,
+  type Category,
+  type InsertCategory,
   users,
-  expenses
+  expenses,
+  categories
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, and, gte, lte } from "drizzle-orm";
@@ -28,6 +31,13 @@ export interface IStorage {
   getExpensesByCategory(userId: string, category: string): Promise<Expense[]>;
   getTotalExpenses(userId: string): Promise<number>;
   getCategoryTotals(userId: string): Promise<Record<string, number>>;
+  
+  // Category operations
+  getCategories(userId: string): Promise<Category[]>;
+  getCategoryById(id: string, userId: string): Promise<Category | undefined>;
+  createCategory(category: InsertCategory, userId: string): Promise<Category>;
+  updateCategory(id: string, updates: Partial<InsertCategory>, userId: string): Promise<Category | undefined>;
+  deleteCategory(id: string, userId: string): Promise<boolean>;
   
   // Admin operations
   getAllUsers(): Promise<User[]>;
@@ -155,6 +165,68 @@ export class DatabaseStorage implements IStorage {
     }
     
     return totals;
+  }
+
+  // Category operations
+  async getCategories(userId: string): Promise<Category[]> {
+    const userCategories = await db.select().from(categories).where(eq(categories.userId, userId));
+    
+    // If user has no categories, create default ones
+    if (userCategories.length === 0) {
+      await this.createDefaultCategories(userId);
+      return await db.select().from(categories).where(eq(categories.userId, userId));
+    }
+    
+    return userCategories;
+  }
+
+  async createDefaultCategories(userId: string): Promise<void> {
+    const defaultCategories = [
+      { name: "Food & Dining", icon: "UtensilsCrossed", color: "#FF6B6B", isDefault: true },
+      { name: "Transportation", icon: "Car", color: "#4ECDC4", isDefault: true },
+      { name: "Utilities", icon: "Zap", color: "#45B7D1", isDefault: true },
+      { name: "Healthcare", icon: "Heart", color: "#96CEB4", isDefault: true },
+      { name: "Entertainment", icon: "Music", color: "#FFEAA7", isDefault: true },
+      { name: "Shopping", icon: "ShoppingBag", color: "#DDA0DD", isDefault: true },
+      { name: "Education", icon: "GraduationCap", color: "#98D8C8", isDefault: true },
+      { name: "Other", icon: "MoreHorizontal", color: "#A8E6CF", isDefault: true }
+    ];
+
+    await db.insert(categories).values(
+      defaultCategories.map(cat => ({ ...cat, userId }))
+    );
+  }
+
+  async getCategoryById(id: string, userId: string): Promise<Category | undefined> {
+    const [category] = await db
+      .select()
+      .from(categories)
+      .where(and(eq(categories.id, id), eq(categories.userId, userId)));
+    return category;
+  }
+
+  async createCategory(category: InsertCategory, userId: string): Promise<Category> {
+    const [newCategory] = await db
+      .insert(categories)
+      .values({ ...category, userId })
+      .returning();
+    return newCategory;
+  }
+
+  async updateCategory(id: string, updates: Partial<InsertCategory>, userId: string): Promise<Category | undefined> {
+    const [category] = await db
+      .update(categories)
+      .set(updates)
+      .where(and(eq(categories.id, id), eq(categories.userId, userId)))
+      .returning();
+    return category;
+  }
+
+  async deleteCategory(id: string, userId: string): Promise<boolean> {
+    const result = await db
+      .delete(categories)
+      .where(and(eq(categories.id, id), eq(categories.userId, userId)));
+    return result.rowCount > 0;
   }
 
   // Admin operations

@@ -37,6 +37,16 @@ export const users = pgTable("users", {
 });
 
 // Expenses table with user relationship
+export const categories = pgTable("categories", {
+  id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: uuid("user_id").references(() => users.id).notNull(),
+  name: text("name").notNull(),
+  icon: text("icon").notNull(),
+  color: text("color").notNull(),
+  isDefault: boolean("is_default").default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const expenses = pgTable("expenses", {
   id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
   userId: uuid("user_id").references(() => users.id).notNull(),
@@ -53,6 +63,14 @@ export const expenses = pgTable("expenses", {
 // Define relations
 export const usersRelations = relations(users, ({ many }) => ({
   expenses: many(expenses),
+  categories: many(categories),
+}));
+
+export const categoriesRelations = relations(categories, ({ one }) => ({
+  user: one(users, {
+    fields: [categories.userId],
+    references: [users.id],
+  }),
 }));
 
 export const expensesRelations = relations(expenses, ({ one }) => ({
@@ -82,6 +100,12 @@ export const registerSchema = insertUserSchema.extend({
   path: ["confirmPassword"],
 });
 
+export const insertCategorySchema = createInsertSchema(categories).omit({
+  id: true,
+  userId: true,
+  createdAt: true,
+});
+
 export const insertExpenseSchema = createInsertSchema(expenses).omit({
   id: true,
   userId: true,
@@ -93,5 +117,7 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type LoginData = z.infer<typeof loginSchema>;
 export type RegisterData = z.infer<typeof registerSchema>;
+export type Category = typeof categories.$inferSelect;
+export type InsertCategory = z.infer<typeof insertCategorySchema>;
 export type Expense = typeof expenses.$inferSelect;
 export type InsertExpense = z.infer<typeof insertExpenseSchema>;
