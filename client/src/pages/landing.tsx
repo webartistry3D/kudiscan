@@ -133,7 +133,7 @@ export default function Landing() {
       type: "benefit",
       description: "Your financial data stays private and completely secure.",
       detail: "Sleep peacefully knowing your sensitive business data is protected with the same 256-bit encryption used by major Nigerian banks. Your information never leaves secure Nigerian data centers.",
-      color: "#9a3412" // Dark orange
+      color: "#166534" // Dark green
     },
     {
       icon: () => <span className="text-4xl">₦</span>,
@@ -171,13 +171,21 @@ export default function Landing() {
     return () => clearInterval(typeTimer);
   }, []);
   
-  // Carousel effect
+  // Carousel effect with initial delay to prevent loading bugs
   useEffect(() => {
-    const carouselTimer = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % features.length);
-    }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
+    let carouselTimer: NodeJS.Timeout;
     
-    return () => clearInterval(carouselTimer);
+    // Add a small initial delay to prevent animation glitches on first load
+    const initialDelay = setTimeout(() => {
+      carouselTimer = setInterval(() => {
+        setCurrentFeature((prev) => (prev + 1) % features.length);
+      }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
+    }, 1000); // 1 second delay before starting carousel
+    
+    return () => {
+      clearTimeout(initialDelay);
+      if (carouselTimer) clearInterval(carouselTimer);
+    };
   }, []);
 
   return (
