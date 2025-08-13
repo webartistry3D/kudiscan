@@ -49,6 +49,8 @@ const slideAnimationCSS = `
     text-align: center;
     border-radius: 6px;
     box-sizing: border-box;
+    top: 0;
+    left: 0;
   }
 `;
 
@@ -227,7 +229,7 @@ export default function Landing() {
                 <rect x="60" y="50" width="480" height="280" rx="6" fill="#082118"/>
                 
                 {/* Feature Content */}
-                <foreignObject x="70" y="60" width="460" height="260">
+                <foreignObject x="60" y="50" width="480" height="280">
                   <div className="slide-container">
                     <div 
                       className="slide-content p-6"
@@ -298,10 +300,10 @@ export default function Landing() {
                 {/* Mobile Feature Display */}
                 <rect x="35" y="70" width="130" height="280" rx="15" fill="#082118"/>
                 
-                <foreignObject x="40" y="80" width="120" height="260">
+                <foreignObject x="35" y="70" width="130" height="280">
                   <div className="slide-container">
                     <div 
-                      className="slide-content p-3"
+                      className="slide-content p-4"
                       style={{
                         animation: `slideInOut 6s ease-in-out`,
                         background: features[currentFeature].color || '#082118'
