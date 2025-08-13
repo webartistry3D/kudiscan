@@ -69,7 +69,7 @@ export default function Landing() {
       type: "benefit",
       description: "Professional expense reports increase your loan approval chances by 85%.",
       detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding.",
-      color: "#34d399" // Medium green
+      color: "#166534" // Dark green
     },
     {
       icon: Scan,
