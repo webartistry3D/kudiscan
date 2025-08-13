@@ -39,9 +39,7 @@ export default function Landing() {
       <nav className="px-4 py-4 bg-background border-b border-border">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
-              <Bot className="w-5 h-5 text-white" />
-            </div>
+            <Bot className="w-10 h-10 text-primary mr-2" />
             <span className="text-2xl font-bold">
               <span style={{color: '#29A378'}}>Kudi</span>
               <span className="text-white">Scan</span>
@@ -874,10 +872,13 @@ export default function Landing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {/* Company Info */}
             <div className="col-span-2 md:col-span-1">
-              <h3 className="text-lg font-bold mb-4 font-display">
-                <span style={{color: '#29A378'}}>Kudi</span>
-                <span className="text-white">Scan</span>
-              </h3>
+              <div className="flex items-center mb-4">
+                <Bot className="w-12 h-12 text-primary mr-3" />
+                <h3 className="text-lg font-bold font-display">
+                  <span style={{color: '#29A378'}}>Kudi</span>
+                  <span className="text-white">Scan</span>
+                </h3>
+              </div>
               <p className="text-sm text-muted-foreground mb-4">
                 Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
               </p>

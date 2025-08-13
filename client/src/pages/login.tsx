@@ -111,7 +111,7 @@ export default function Login() {
         {/* Logo Section */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-            <Bot className="w-8 h-8 text-primary" />
+            <Bot className="w-16 h-16 text-primary" />
           </div>
           <h1 className="text-3xl font-bold mb-2 font-display">
             <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>

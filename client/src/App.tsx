@@ -30,8 +30,8 @@ function ProtectedRoute({ component: Component, adminOnly = false }: { component
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center animate-pulse">
-            <Bot className="w-8 h-8 text-primary-foreground" />
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center animate-pulse">
+            <Bot className="w-16 h-16 text-primary" />
           </div>
           <p className="text-muted-foreground">Loading...</p>
         </div>
@@ -57,8 +57,8 @@ function Router() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center animate-pulse">
-            <Bot className="w-8 h-8 text-primary-foreground" />
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center animate-pulse">
+            <Bot className="w-16 h-16 text-primary" />
           </div>
           <p className="text-muted-foreground">Loading...</p>
         </div>
