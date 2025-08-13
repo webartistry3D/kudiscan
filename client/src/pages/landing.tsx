@@ -229,7 +229,11 @@ export default function Landing() {
                 
                 {/* Centered KudiBot Logo */}
                 <circle cx="300" cy="190" r="30" fill="none" stroke="white" strokeWidth="3"/>
-                <text x="300" y="200" fill="white" fontSize="40" textAnchor="middle" dominantBaseline="middle">🤖</text>
+                <foreignObject x="270" y="160" width="60" height="60">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Bot className="w-10 h-10 text-white" />
+                  </div>
+                </foreignObject>
                 
                 {/* Feature Content */}
                 <foreignObject x="60" y="50" width="480" height="280">
@@ -305,7 +309,11 @@ export default function Landing() {
                 
                 {/* Mobile Centered KudiBot Logo */}
                 <circle cx="100" cy="210" r="20" fill="none" stroke="white" strokeWidth="2"/>
-                <text x="100" y="218" fill="white" fontSize="24" textAnchor="middle" dominantBaseline="middle">🤖</text>
+                <foreignObject x="85" y="195" width="30" height="30">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Bot className="w-6 h-6 text-white" />
+                  </div>
+                </foreignObject>
                 
                 <foreignObject x="35" y="70" width="130" height="280">
                   <div className="slide-container">
