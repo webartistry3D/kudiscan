@@ -11,18 +11,22 @@ import { useState, useEffect } from "react";
 
 // Add CSS animations for seamless sliding carousel
 const slideAnimationCSS = `
-  @keyframes fadeInOut {
+  @keyframes slideInOut {
     0% {
-      opacity: 0;
-    }
-    10% {
+      transform: translateX(120%);
       opacity: 1;
     }
-    90% {
+    8% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    92% {
+      transform: translateX(0%);
       opacity: 1;
     }
     100% {
-      opacity: 0;
+      transform: translateX(-120%);
+      opacity: 1;
     }
   }
   
@@ -30,6 +34,7 @@ const slideAnimationCSS = `
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     background: transparent;
   }
   
@@ -45,10 +50,6 @@ const slideAnimationCSS = `
     box-sizing: border-box;
     top: 0;
     left: 0;
-  }
-  
-  .slide-content.animate {
-    animation: fadeInOut 6s ease-in-out;
   }
 `;
 
@@ -231,11 +232,71 @@ export default function Landing() {
           {/* Trust Badge */}
 
           
-          {/* Feature Carousel Display - iPhone Only */}
-          <div className="relative flex items-center justify-center max-w-4xl mx-auto mb-6">
+          {/* Feature Carousel Display */}
+          <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
+            {/* Samsung Tablet with Feature Carousel */}
+            <div className="hidden md:block relative">
+              <svg width="400" height="280" viewBox="0 0 480 320" className="drop-shadow-2xl">
+                {/* Tablet Frame - Horizontal Samsung Style */}
+                <rect x="10" y="20" width="460" height="280" rx="20" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
+                <rect x="20" y="30" width="440" height="260" rx="15" fill="#111827"/>
+                
+                {/* Samsung Home Button */}
+                <circle cx="240" cy="300" r="8" fill="#374151"/>
+                
+                {/* Screen Content - Feature Display */}
+                <rect x="40" y="40" width="400" height="240" fill="#111827"/>
+                
+                {/* Centered KudiBot Logo */}
+                <foreignObject x="200" y="130" width="80" height="80">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Bot className="w-16 h-16 text-white" />
+                  </div>
+                </foreignObject>
+                
+                {/* Feature Content */}
+                <foreignObject x="40" y="40" width="400" height="240">
+                  <div className="slide-container">
+                    <div 
+                      className="slide-content p-6"
+                      style={{
+                        animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : 'none',
+                        background: features[currentFeature].color || '#111827'
+                      }}
+                      key={currentFeature}
+                    >
+                      {/* Icon */}
+                      <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-4">
+                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl text-white">₦</span>}
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        {features[currentFeature].title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-white/90 text-sm leading-relaxed">
+                        {features[currentFeature].description}
+                      </p>
+                    </div>
+                  </div>
+                </foreignObject>
+              </svg>
+            </div>
+
             {/* iPhone with Feature Carousel */}
-            <div className="relative mx-auto">
-              <svg width="200" height="400" viewBox="0 0 200 400" className="drop-shadow-2xl">
+            <div className="relative">
+              <svg width="160" height="320" viewBox="0 0 200 400" className="drop-shadow-2xl md:scale-90 lg:scale-100 xl:scale-110">
                 {/* iPhone Frame */}
                 <rect x="10" y="10" width="180" height="380" rx="45" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
                 <rect x="20" y="25" width="160" height="350" rx="35" fill="#111827"/>
@@ -261,11 +322,12 @@ export default function Landing() {
                 <foreignObject x="35" y="60" width="130" height="290">
                   <div className="slide-container">
                     <div 
-                      className={`slide-content p-4 ${hasAnimated && currentFeature > 0 ? 'animate' : ''}`}
+                      className="slide-content p-4"
                       style={{
+                        animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : 'none',
                         background: features[currentFeature].color || '#111827'
                       }}
-                      key={`slide-${currentFeature}`}
+                      key={currentFeature}
                     >
                       {/* Mobile Icon */}
                       <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-3">
