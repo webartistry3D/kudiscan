@@ -49,6 +49,7 @@ const slideAnimationCSS = `
     text-align: center;
     background: #082118;
     border-radius: 6px;
+    box-sizing: border-box;
   }
 `;
 
@@ -64,9 +65,9 @@ export default function Landing() {
   const features = [
     {
       icon: TrendingUp,
-      title: "85% Higher Loan Approval",
+      title: "85% Higher Loan Approval Rate",
       type: "benefit",
-      description: "Professional expense reports increase your chances of securing business loans and investor funding.",
+      description: "Professional expense reports increase your loan approval chances by 85%.",
       detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding."
     },
     {
@@ -219,51 +220,33 @@ export default function Landing() {
                 <foreignObject x="70" y="60" width="460" height="260">
                   <div className="slide-container">
                     <div 
-                      className="slide-content p-8"
+                      className="slide-content p-6"
                       style={{
                         animation: `slideInOut 6s ease-in-out`
                       }}
                       key={currentFeature}
                     >
-                      {/* Feature/Benefit Badge */}
-                      <div className="mb-3">
-                        <Badge 
-                          variant="secondary" 
-                          className={`text-xs font-medium px-3 py-1 ${
-                            features[currentFeature].type === 'feature' 
-                              ? 'bg-blue-500/20 text-blue-200 border-blue-400/30' 
-                              : 'bg-green-500/20 text-green-200 border-green-400/30'
-                          }`}
-                        >
-                          {features[currentFeature].type === 'feature' ? 'FEATURE' : 'BENEFIT'}
-                        </Badge>
-                      </div>
-                      
                       {/* Icon */}
-                      <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
-                        {features[currentFeature].icon === Scan && <Scan className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-12 h-12 text-green-400 animate-pulse" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-12 h-12 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-12 h-12 text-white" />}
-                        {typeof features[currentFeature].icon === 'function' && (
-                          <span className="text-4xl text-white">₦</span>
-                        )}
+                      <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-4">
+                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-green-400 animate-pulse" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
                       </div>
                       
                       {/* Title */}
-                      <h3 className="text-2xl font-bold text-white mb-4">
+                      <h3 className="text-xl font-bold text-white mb-3">
                         {features[currentFeature].title}
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-white/90 text-sm leading-relaxed max-w-md">
-                        {features[currentFeature].detail}
+                      <p className="text-white/90 text-sm leading-relaxed">
+                        {features[currentFeature].description}
                       </p>
                     </div>
                   </div>
@@ -307,44 +290,27 @@ export default function Landing() {
                 <foreignObject x="40" y="80" width="120" height="260">
                   <div className="slide-container">
                     <div 
-                      className="slide-content p-4"
+                      className="slide-content p-3"
                       style={{
                         animation: `slideInOut 6s ease-in-out`
                       }}
                       key={currentFeature}
                     >
-                      {/* Mobile Feature/Benefit Badge */}
-                      <div className="mb-2">
-                        <span 
-                          className={`text-xs font-medium px-2 py-1 rounded-full ${
-                            features[currentFeature].type === 'feature' 
-                              ? 'bg-blue-500/20 text-blue-200' 
-                              : 'bg-green-500/20 text-green-200'
-                          }`}
-                        >
-                          {features[currentFeature].type === 'feature' ? 'FEATURE' : 'BENEFIT'}
-                        </span>
-                      </div>
-                      
                       {/* Mobile Icon */}
-                      <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4">
-                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-10 h-10 text-green-400 animate-pulse" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
-                        {typeof features[currentFeature].icon === 'function' && (
-                          <span className="text-2xl text-white">₦</span>
-                        )}
+                      <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-3">
+                        {features[currentFeature].icon === Scan && <Scan className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-8 h-8 text-green-400 animate-pulse" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-8 h-8 text-white" />}
                       </div>
                       
                       {/* Mobile Title */}
-                      <h4 className="text-sm font-bold text-white mb-3 leading-tight">
+                      <h4 className="text-sm font-bold text-white mb-2 leading-tight">
                         {features[currentFeature].title}
                       </h4>
                       
