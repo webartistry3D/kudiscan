@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useLocation } from "wouter";
-import { Eye, EyeOff, Loader2, Home } from "lucide-react";
+import { Eye, EyeOff, Loader2, Home, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -78,7 +78,7 @@ export default function Login() {
         {/* Logo Section */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">K</span>
+            <Bot className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold mb-2 font-display">
             <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>
@@ -105,7 +105,7 @@ export default function Login() {
                           placeholder="Enter your email"
                           data-testid="input-email"
                           autoComplete="email"
-                          className="focus:ring-0 focus:ring-offset-0"
+                          className="focus:ring-0 focus:ring-offset-0 focus:bg-transparent"
                           {...field}
                         />
                       </FormControl>

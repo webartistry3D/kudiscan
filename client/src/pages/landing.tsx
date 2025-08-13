@@ -39,6 +39,9 @@ export default function Landing() {
       <nav className="px-4 py-4 bg-background border-b border-border">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+              <Bot className="w-5 h-5 text-white" />
+            </div>
             <span className="text-2xl font-bold">
               <span style={{color: '#29A378'}}>Kudi</span>
               <span className="text-white">Scan</span>
