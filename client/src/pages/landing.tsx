@@ -54,9 +54,9 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section className="px-4 py-16 w-full bg-primary-light">
+      <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-display h-[3rem] sm:h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-center justify-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-display h-[3rem] sm:h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-center justify-center">
             <span className="typing-text inline-block text-center">
               {displayText}
               {isTyping && <span className="animate-pulse">|</span>}
@@ -154,7 +154,7 @@ export default function Landing() {
           </div>
 
           <div className="max-w-5xl mx-auto mb-6">
-            <p className="text-lg text-muted-foreground text-center mb-6">
+            <p className="text-lg text-white text-center mb-6 opacity-90">
               Your automated finance assistant.
             </p>
             
