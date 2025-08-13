@@ -47,7 +47,6 @@ const slideAnimationCSS = `
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #082118;
     border-radius: 6px;
     box-sizing: border-box;
   }
@@ -68,77 +67,88 @@ export default function Landing() {
       title: "85% Higher Loan Approval Rate",
       type: "benefit",
       description: "Professional expense reports increase your loan approval chances by 85%.",
-      detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding."
+      detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding.",
+      color: "#1a4d3a" // Dark green
     },
     {
       icon: Scan,
       title: "Receipt Scanning",
       type: "feature",
       description: "Snap to Scan, Save & Track receipts.",
-      detail: "Advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts merchant data, amounts, dates, and itemized purchases."
+      detail: "Advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts merchant data, amounts, dates, and itemized purchases.",
+      color: "#1e3a5f" // Dark blue
     },
     {
       icon: TrendingUp,
       title: "Save 5+ Hours Weekly",
       type: "benefit",
       description: "Eliminate manual data entry and receipt organization completely.",
-      detail: "No more typing expense amounts or hunting for lost receipts. KudiScan automates everything, giving you back hours each week to focus on growing your business instead of paperwork."
+      detail: "No more typing expense amounts or hunting for lost receipts. KudiScan automates everything, giving you back hours each week to focus on growing your business instead of paperwork.",
+      color: "#4a1a4a" // Dark purple
     },
     {
       icon: Eye,
       title: "AI + OCR Integration", 
       type: "feature",
       description: "AI powered OCR technology automatically extracts and categorizes all data on receipts.",
-      detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns."
+      detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns.",
+      color: "#3d1a1a" // Dark red
     },
     {
       icon: FileText,
       title: "Get Bank Loans Faster",
       type: "benefit",
       description: "Professional financial reports that banks and investors trust.",
-      detail: "Access to business credit becomes simple when you have organized financial records. Our reports meet banking standards and help you secure loans, investments, or government grants for business growth."
+      detail: "Access to business credit becomes simple when you have organized financial records. Our reports meet banking standards and help you secure loans, investments, or government grants for business growth.",
+      color: "#1a3d3d" // Dark teal
     },
     {
       icon: BarChart3,
       title: "Financial Reporting",
       type: "feature",
       description: "Generate tailored reports to analyze spend, identify trends, make smarter decisions and secure bank loans.",
-      detail: "Create professional reports for business loans, investor presentations, or tax filing. Export to PDF or Excel formats that banks and investors expect."
+      detail: "Create professional reports for business loans, investor presentations, or tax filing. Export to PDF or Excel formats that banks and investors expect.",
+      color: "#3d3d1a" // Dark olive
     },
     {
       icon: Building,
       title: "Scale Your Business",
       type: "benefit",
       description: "Make data-driven decisions with real-time spending insights.",
-      detail: "Know exactly where your money goes and identify cost-saving opportunities. Track profitability by category, spot trends early, and make smarter financial decisions that help your business grow sustainably."
+      detail: "Know exactly where your money goes and identify cost-saving opportunities. Track profitability by category, spot trends early, and make smarter financial decisions that help your business grow sustainably.",
+      color: "#2a1a3d" // Dark indigo
     },
     {
       icon: Smartphone,
       title: "Mobile-First Approach",
       type: "feature",
       description: "Manage expenses and scan receipts on-the-go.",
-      detail: "KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices."
+      detail: "KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices.",
+      color: "#1a2a3d" // Dark slate
     },
     {
       icon: Shield,
       title: "Bank-Level Security",
       type: "benefit",
       description: "Your financial data stays private and completely secure.",
-      detail: "Sleep peacefully knowing your sensitive business data is protected with the same 256-bit encryption used by major Nigerian banks. Your information never leaves secure Nigerian data centers."
+      detail: "Sleep peacefully knowing your sensitive business data is protected with the same 256-bit encryption used by major Nigerian banks. Your information never leaves secure Nigerian data centers.",
+      color: "#3d2a1a" // Dark brown
     },
     {
       icon: () => <span className="text-4xl">₦</span>,
       title: "Naira Currency Support",
       type: "feature",
       description: "Built for Nigerian users with native Naira support and local preferences.",
-      detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems."
+      detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems.",
+      color: "#1a1a3d" // Dark navy
     },
     {
       icon: Star,
       title: "Start Free Today",
       type: "benefit",
       description: "Begin tracking expenses immediately with no upfront costs.",
-      detail: "Get started with 10 free receipt scans monthly. Experience the full KudiScan advantage risk-free, then upgrade when you're ready to unlock unlimited scanning and advanced features."
+      detail: "Get started with 10 free receipt scans monthly. Experience the full KudiScan advantage risk-free, then upgrade when you're ready to unlock unlimited scanning and advanced features.",
+      color: "#4d1a2a" // Dark rose
     }
   ];
   
@@ -222,7 +232,8 @@ export default function Landing() {
                     <div 
                       className="slide-content p-6"
                       style={{
-                        animation: `slideInOut 6s ease-in-out`
+                        animation: `slideInOut 6s ease-in-out`,
+                        background: features[currentFeature].color || '#082118'
                       }}
                       key={currentFeature}
                     >
@@ -292,7 +303,8 @@ export default function Landing() {
                     <div 
                       className="slide-content p-3"
                       style={{
-                        animation: `slideInOut 6s ease-in-out`
+                        animation: `slideInOut 6s ease-in-out`,
+                        background: features[currentFeature].color || '#082118'
                       }}
                       key={currentFeature}
                     >
