@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
@@ -289,7 +289,7 @@ export default function Landing() {
             {/* Receipt Scanning */}
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Scan className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-white" />
+                <Scan className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Receipt Scanning</h3>
               <p className="text-sm text-white mb-4">
@@ -337,7 +337,7 @@ export default function Landing() {
             {/* Financial Reporting */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-12 h-12 text-white" />
+                <BarChart3 className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Financial Reporting</h3>
               <p className="text-sm text-white mb-4">
@@ -440,10 +440,10 @@ export default function Landing() {
             How KudiScan works
           </h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 w-full">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 w-full">
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
               <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Scan className="w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20" style={{color: '#29A378'}} />
+                <Plus className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
               <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
@@ -451,9 +451,19 @@ export default function Landing() {
               </p>
             </div>
 
+            {/* Arrow 1 */}
+            <div className="hidden md:block">
+              <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+            </div>
+            <div className="md:hidden">
+              <div className="w-8 h-8 rotate-90">
+                <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+              </div>
+            </div>
+
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <PieChart className="w-16 h-16" style={{color: '#29A378'}} />
+                <BarChart3 className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Track & Analyze</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
@@ -461,9 +471,19 @@ export default function Landing() {
               </p>
             </div>
 
+            {/* Arrow 2 */}
+            <div className="hidden md:block">
+              <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+            </div>
+            <div className="md:hidden">
+              <div className="w-8 h-8 rotate-90">
+                <ArrowRight className="w-8 h-8" style={{color: '#29A378'}} />
+              </div>
+            </div>
+
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-5xl" style={{color: '#29A378'}}>₦</span>
+                <FileBarChart className="w-16 h-16" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
