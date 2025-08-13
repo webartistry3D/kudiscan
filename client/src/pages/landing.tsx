@@ -920,14 +920,14 @@ export default function Landing() {
 
           {/* Bottom Section with Stylized Logo and Scroll to Top */}
           <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0 text-center md:text-left relative">
+            <div className="mb-4 md:mb-0 text-center md:text-left relative w-full overflow-hidden">
               {/* 2-color KudiScan background */}
-              <div className="absolute inset-0 flex items-center justify-center md:justify-start opacity-5 pointer-events-none">
-                <span className="text-[12rem] md:text-[15rem] lg:text-[18rem] font-bold">
+              <div className="absolute -top-16 left-0 w-full flex items-center justify-center md:justify-start opacity-5 pointer-events-none">
+                <span className="text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold whitespace-nowrap">
                   <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground relative z-10">
+              <p className="text-sm text-muted-foreground relative z-10 pt-8">
                 © 2025 <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
               </p>
             </div>
