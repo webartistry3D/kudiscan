@@ -161,7 +161,7 @@ export default function Landing() {
             {/* Process Flow */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4">
               {/* Step 1: Snap */}
-              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+              <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <Camera className="w-10 h-10 text-white process-icon-1" />
                 </div>
@@ -180,7 +180,7 @@ export default function Landing() {
               </div>
               
               {/* Step 2: Track */}
-              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+              <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <TrendingUp className="w-10 h-10 text-white process-icon-2" />
                 </div>
@@ -199,7 +199,7 @@ export default function Landing() {
               </div>
               
               {/* Step 3: Report */}
-              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+              <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <FileText className="w-10 h-10 text-white process-icon-3" />
                 </div>
@@ -218,7 +218,7 @@ export default function Landing() {
               </div>
               
               {/* Step 4: Scale */}
-              <div className="flex flex-col items-center text-center p-4 w-48 h-36">
+              <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <Building className="w-10 h-10 text-white process-icon-4" />
                 </div>
@@ -288,8 +288,8 @@ export default function Landing() {
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mt-12 md:mt-16 lg:mt-20 w-full">
             {/* Receipt Scanning */}
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#082118'}}>
-              <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Scan className="w-12 h-12 text-white" />
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <Scan className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Receipt Scanning</h3>
               <p className="text-sm text-white mb-4">
@@ -442,7 +442,7 @@ export default function Landing() {
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 w-full">
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
-              <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
                 <Plus className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
