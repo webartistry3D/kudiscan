@@ -83,7 +83,7 @@ export default function Landing() {
     },
     {
       icon: TrendingUp,
-      title: "Save 5+ Hours Weekly",
+      title: "Save Several Hours of Weekly Work",
       type: "benefit",
       description: "Eliminate manual data entry and receipt organization completely.",
       detail: "No more typing expense amounts or hunting for lost receipts. KudiScan automates everything, giving you back hours each week to focus on growing your business instead of paperwork.",
@@ -241,8 +241,11 @@ export default function Landing() {
                 <rect x="15" y="30" width="690" height="420" rx="30" fill="#1f2937" stroke="#374151" strokeWidth="3"/>
                 <rect x="30" y="45" width="660" height="390" rx="22" fill="#111827"/>
                 
-                {/* Samsung Home Button (1.5x larger) */}
-                <circle cx="360" cy="450" r="12" fill="#374151"/>
+                {/* Front Camera */}
+                <circle cx="600" cy="70" r="4" fill="#374151"/>
+                <circle cx="600" cy="70" r="2" fill="#1f2937"/>
+                
+
                 
                 {/* Screen Content - Feature Display (1.5x larger) */}
                 <rect x="60" y="60" width="600" height="360" fill="#111827"/>
@@ -265,17 +268,17 @@ export default function Landing() {
                       }}
                       key={currentFeature}
                     >
-                      {/* Icon (1.5x larger) */}
+                      {/* Icon (same size as Naira logo) */}
                       <div className="w-24 h-24 bg-white/10 flex items-center justify-center mb-6">
-                        {features[currentFeature].icon === Scan && <Scan className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-15 h-15 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-15 h-15 text-white" />}
+                        {features[currentFeature].icon === Scan && <Scan className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-24 h-24 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-24 h-24 text-white" />}
                         {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-6xl text-white">₦</span>}
                       </div>
                       
@@ -303,6 +306,10 @@ export default function Landing() {
                 
                 {/* iPhone Notch */}
                 <rect x="75" y="10" width="50" height="25" rx="12" fill="#1f2937"/>
+                
+                {/* Front Camera in notch */}
+                <circle cx="100" cy="22" r="3" fill="#374151"/>
+                <circle cx="100" cy="22" r="1.5" fill="#1f2937"/>
                 
                 {/* Status Bar */}
                 <rect x="25" y="35" width="150" height="20" fill="#111827"/>
