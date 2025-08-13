@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/use-auth";
+import { Bot } from "lucide-react";
 import NotFound from "@/pages/not-found";
 import Landing from "@/pages/landing";
 import Login from "@/pages/login";
@@ -30,7 +31,7 @@ function ProtectedRoute({ component: Component, adminOnly = false }: { component
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center animate-pulse">
-            <span className="text-primary-foreground text-2xl font-bold">K</span>
+            <Bot className="w-8 h-8 text-primary-foreground" />
           </div>
           <p className="text-muted-foreground">Loading...</p>
         </div>
@@ -57,7 +58,7 @@ function Router() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center animate-pulse">
-            <span className="text-primary-foreground text-2xl font-bold">K</span>
+            <Bot className="w-8 h-8 text-primary-foreground" />
           </div>
           <p className="text-muted-foreground">Loading...</p>
         </div>

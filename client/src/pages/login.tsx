@@ -136,7 +136,11 @@ export default function Login() {
                           }}
                           {...field}
                           ref={(el) => {
-                            emailInputRef.current = el;
+                            // Assign to our custom ref
+                            if (emailInputRef) {
+                              (emailInputRef as any).current = el;
+                            }
+                            // Also call the field's ref if it exists
                             if (field.ref) field.ref(el);
                           }}
                         />
