@@ -15,6 +15,48 @@ export default function Landing() {
   const [isTyping, setIsTyping] = useState(true);
   const fullText = "Scan. Track. Report.";
   
+  // Carousel state for features
+  const [currentFeature, setCurrentFeature] = useState(0);
+  
+  const features = [
+    {
+      icon: Scan,
+      title: "Receipt Scanning",
+      description: "Snap to Scan, Save & Track receipts.",
+      detail: "Advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts merchant data, amounts, dates, and itemized purchases."
+    },
+    {
+      icon: Eye,
+      title: "AI + OCR Integration", 
+      description: "AI powered OCR technology automatically extracts and categorizes all data on receipts.",
+      detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns."
+    },
+    {
+      icon: BarChart3,
+      title: "Financial Reporting",
+      description: "Generate tailored reports to analyze spend, identify trends, make smarter decisions and secure bank loans.",
+      detail: "Create professional reports for business loans, investor presentations, or tax filing. Export to PDF or Excel formats that banks and investors expect."
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile-First Approach",
+      description: "Manage expenses and scan receipts on-the-go.",
+      detail: "KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices."
+    },
+    {
+      icon: Shield,
+      title: "Bank-level Security",
+      description: "Your financial data is protected with enterprise-grade encryption and security.",
+      detail: "Your data is protected with 256-bit AES encryption, the same standard used by major banks. We use secure data centers in Nigeria with two-factor authentication."
+    },
+    {
+      icon: () => <span className="text-4xl">₦</span>,
+      title: "Naira Currency",
+      description: "Built for Nigerian users with native Naira support and local preferences.",
+      detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems."
+    }
+  ];
+  
   useEffect(() => {
     let currentIndex = 0;
     setDisplayText("");
@@ -31,6 +73,15 @@ export default function Landing() {
     }, 150);
     
     return () => clearInterval(typeTimer);
+  }, []);
+  
+  // Carousel effect
+  useEffect(() => {
+    const carouselTimer = setInterval(() => {
+      setCurrentFeature((prev) => (prev + 1) % features.length);
+    }, 4000); // Change feature every 4 seconds
+    
+    return () => clearInterval(carouselTimer);
   }, []);
 
   return (
@@ -67,45 +118,58 @@ export default function Landing() {
           {/* Trust Badge */}
 
           
-          {/* Dashboard and Mobile Preview */}
+          {/* Feature Carousel Display */}
           <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
-            {/* Desktop Dashboard */}
+            {/* Desktop Monitor with Feature Carousel */}
             <div className="hidden md:block relative">
               <svg width="480" height="320" viewBox="0 0 600 400" className="drop-shadow-2xl md:scale-90 lg:scale-100 xl:scale-110">
                 {/* Monitor Frame */}
                 <rect x="20" y="30" width="560" height="320" rx="8" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
                 <rect x="30" y="40" width="540" height="300" rx="4" fill="#111827"/>
                 
-                {/* Screen Content - Dashboard */}
-                <rect x="40" y="50" width="520" height="60" rx="6" fill="#29A378"/>
-                <text x="60" y="75" fill="white" fontSize="16" fontWeight="bold">KudiScan Dashboard</text>
-                <text x="60" y="95" fill="white" fontSize="12" opacity="0.8">Welcome back, User</text>
+                {/* Screen Content - Feature Display */}
+                <rect x="40" y="50" width="520" height="280" rx="6" fill="#082118"/>
                 
-                {/* Cards */}
-                <rect x="50" y="130" width="150" height="80" rx="8" fill="#374151"/>
-                <text x="60" y="150" fill="#9ca3af" fontSize="10">Total Expenses</text>
-                <text x="60" y="170" fill="white" fontSize="16" fontWeight="bold">₦125,450</text>
-                <text x="60" y="190" fill="#22c55e" fontSize="10">↗ 12% this month</text>
+                {/* Feature Content */}
+                <foreignObject x="50" y="60" width="500" height="260">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-1000">
+                    {/* Feature Icon */}
+                    <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                      {features[currentFeature].icon === Scan && <Scan className="w-12 h-12 text-white" />}
+                      {features[currentFeature].icon === Eye && <Eye className="w-12 h-12 text-white" />}
+                      {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-12 h-12 text-white" />}
+                      {features[currentFeature].icon === Smartphone && <Smartphone className="w-12 h-12 text-white" />}
+                      {features[currentFeature].icon === Shield && <Shield className="w-12 h-12 text-white" />}
+                      {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== Eye && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && (
+                        <span className="text-4xl text-white">₦</span>
+                      )}
+                    </div>
+                    
+                    {/* Feature Title */}
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      {features[currentFeature].title}
+                    </h3>
+                    
+                    {/* Feature Description */}
+                    <p className="text-white/90 text-sm leading-relaxed max-w-md">
+                      {features[currentFeature].detail}
+                    </p>
+                  </div>
+                </foreignObject>
                 
-                <rect x="220" y="130" width="150" height="80" rx="8" fill="#374151"/>
-                <text x="230" y="150" fill="#9ca3af" fontSize="10">Categories</text>
-                <text x="230" y="170" fill="white" fontSize="16" fontWeight="bold">8 Active</text>
-                <text x="230" y="190" fill="#29A378" fontSize="10">Food • Transport • Bills</text>
-                
-                <rect x="390" y="130" width="150" height="80" rx="8" fill="#374151"/>
-                <text x="400" y="150" fill="#9ca3af" fontSize="10">Recent Scans</text>
-                <text x="400" y="170" fill="white" fontSize="16" fontWeight="bold">23 Receipts</text>
-                <text x="400" y="190" fill="#29A378" fontSize="10">✓ All processed</text>
-                
-                {/* Chart Area */}
-                <rect x="50" y="230" width="490" height="100" rx="8" fill="#374151"/>
-                <text x="60" y="250" fill="white" fontSize="12" fontWeight="bold">Spending Trends</text>
-                
-                {/* Simple Chart Lines */}
-                <polyline points="70,310 120,290 170,280 220,295 270,275 320,285 370,270 420,280 470,265 520,270" 
-                          stroke="#29A378" strokeWidth="3" fill="none"/>
-                <polyline points="70,320 120,315 170,305 220,310 270,300 320,308 370,295 420,305 470,290 520,295" 
-                          stroke="#60a5fa" strokeWidth="2" fill="none"/>
+                {/* Carousel Dots */}
+                <g>
+                  {features.map((_, index) => (
+                    <circle
+                      key={index}
+                      cx={280 + (index - 2.5) * 20}
+                      cy={360}
+                      r="4"
+                      fill={index === currentFeature ? "#29A378" : "#4b5563"}
+                      className="transition-colors duration-300"
+                    />
+                  ))}
+                </g>
                 
                 {/* Monitor Stand */}
                 <rect x="280" y="350" width="40" height="20" rx="4" fill="#374151"/>
@@ -113,7 +177,7 @@ export default function Landing() {
               </svg>
             </div>
 
-            {/* Mobile Phone */}
+            {/* Mobile Phone with Feature Carousel */}
             <div className="relative">
               <svg width="160" height="320" viewBox="0 0 200 400" className="drop-shadow-2xl md:scale-90 lg:scale-100 xl:scale-110">
                 {/* Phone Frame */}
@@ -125,31 +189,51 @@ export default function Landing() {
                 <text x="30" y="57" fill="white" fontSize="8">9:41</text>
                 <text x="150" y="57" fill="white" fontSize="8">100%</text>
                 
-                {/* Header */}
-                <rect x="25" y="70" width="150" height="40" rx="6" fill="#29A378"/>
-                <text x="35" y="85" fill="white" fontSize="10" fontWeight="bold">KudiScan</text>
-                <text x="35" y="100" fill="white" fontSize="8" opacity="0.8">Tap to scan receipt</text>
+                {/* Mobile Feature Display */}
+                <rect x="25" y="70" width="150" height="280" rx="15" fill="#082118"/>
                 
-                {/* Camera Button */}
-                <circle cx="100" cy="160" r="30" fill="#29A378"/>
-                <circle cx="100" cy="160" r="20" fill="white" fillOpacity="0.2"/>
-                <text x="95" y="165" fill="white" fontSize="12">📷</text>
+                <foreignObject x="30" y="80" width="140" height="260">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-4 transition-all duration-1000">
+                    {/* Mobile Feature Icon */}
+                    <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4">
+                      {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
+                      {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
+                      {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
+                      {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
+                      {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
+                      {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== Eye && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && (
+                        <span className="text-2xl text-white">₦</span>
+                      )}
+                    </div>
+                    
+                    {/* Mobile Feature Title */}
+                    <h4 className="text-sm font-bold text-white mb-3 leading-tight">
+                      {features[currentFeature].title}
+                    </h4>
+                    
+                    {/* Mobile Feature Description */}
+                    <p className="text-white/90 text-xs leading-relaxed">
+                      {features[currentFeature].description}
+                    </p>
+                  </div>
+                </foreignObject>
                 
-                {/* Recent Transactions */}
-                <rect x="30" y="220" width="140" height="30" rx="4" fill="#374151"/>
-                <text x="35" y="235" fill="white" fontSize="8">Shoprite - ₦3,450</text>
-                <text x="35" y="245" fill="#9ca3af" fontSize="6">Food & Groceries</text>
-                
-                <rect x="30" y="260" width="140" height="30" rx="4" fill="#374151"/>
-                <text x="35" y="275" fill="white" fontSize="8">Uber - ₦1,200</text>
-                <text x="35" y="285" fill="#9ca3af" fontSize="6">Transportation</text>
-                
-                <rect x="30" y="300" width="140" height="30" rx="4" fill="#374151"/>
-                <text x="35" y="315" fill="white" fontSize="8">NEPA Bill - ₦8,500</text>
-                <text x="35" y="325" fill="#9ca3af" fontSize="6">Utilities</text>
+                {/* Mobile Carousel Dots */}
+                <g>
+                  {features.map((_, index) => (
+                    <circle
+                      key={index}
+                      cx={100 + (index - 2.5) * 10}
+                      cy={370}
+                      r="2"
+                      fill={index === currentFeature ? "#29A378" : "#4b5563"}
+                      className="transition-colors duration-300"
+                    />
+                  ))}
+                </g>
                 
                 {/* Home Indicator */}
-                <rect x="85" y="375" width="30" height="4" rx="2" fill="#4b5563"/>
+                <rect x="85" y="385" width="30" height="4" rx="2" fill="#4b5563"/>
               </svg>
             </div>
           </div>
