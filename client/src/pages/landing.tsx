@@ -11,22 +11,18 @@ import { useState, useEffect } from "react";
 
 // Add CSS animations for seamless sliding carousel
 const slideAnimationCSS = `
-  @keyframes slideInOut {
+  @keyframes fadeInOut {
     0% {
-      transform: translateX(120%);
+      opacity: 0;
+    }
+    10% {
       opacity: 1;
     }
-    8% {
-      transform: translateX(0%);
-      opacity: 1;
-    }
-    92% {
-      transform: translateX(0%);
+    90% {
       opacity: 1;
     }
     100% {
-      transform: translateX(-120%);
-      opacity: 1;
+      opacity: 0;
     }
   }
   
@@ -34,7 +30,6 @@ const slideAnimationCSS = `
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     background: transparent;
   }
   
@@ -51,6 +46,10 @@ const slideAnimationCSS = `
     top: 0;
     left: 0;
   }
+  
+  .slide-content.animate {
+    animation: fadeInOut 6s ease-in-out;
+  }
 `;
 
 export default function Landing() {
@@ -62,6 +61,7 @@ export default function Landing() {
   // Carousel state for features
   const [currentFeature, setCurrentFeature] = useState(0);
   const [isCarouselLoaded, setIsCarouselLoaded] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   
   const features = [
     {
@@ -183,6 +183,7 @@ export default function Landing() {
     
     // Initialize carousel after component is fully loaded
     const initializationDelay = setTimeout(() => {
+      setHasAnimated(true); // Enable animations for subsequent slides
       carouselTimer = setInterval(() => {
         setCurrentFeature((prev) => (prev + 1) % features.length);
       }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
@@ -260,12 +261,11 @@ export default function Landing() {
                 <foreignObject x="35" y="60" width="130" height="290">
                   <div className="slide-container">
                     <div 
-                      className="slide-content p-4"
+                      className={`slide-content p-4 ${hasAnimated && currentFeature > 0 ? 'animate' : ''}`}
                       style={{
-                        animation: isCarouselLoaded ? `slideInOut 6s ease-in-out` : 'none',
                         background: features[currentFeature].color || '#111827'
                       }}
-                      key={currentFeature}
+                      key={`slide-${currentFeature}`}
                     >
                       {/* Mobile Icon */}
                       <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-3">
