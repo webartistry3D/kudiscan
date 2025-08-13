@@ -83,6 +83,13 @@ export default function Landing() {
       detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems."
     },
     {
+      icon: TrendingUp,
+      title: "85% Higher Loan Approval",
+      type: "benefit",
+      description: "Professional expense reports increase your chances of securing business loans and investor funding.",
+      detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding."
+    },
+    {
       icon: Star,
       title: "Start Free Today",
       type: "benefit",
@@ -113,7 +120,7 @@ export default function Landing() {
   useEffect(() => {
     const carouselTimer = setInterval(() => {
       setCurrentFeature((prev) => (prev + 1) % features.length);
-    }, 3500); // Change feature/benefit every 3.5 seconds
+    }, 5000); // Change feature/benefit every 5 seconds for captivating viewing
     
     return () => clearInterval(carouselTimer);
   }, []);
@@ -166,7 +173,7 @@ export default function Landing() {
                 
                 {/* Feature Content */}
                 <foreignObject x="50" y="60" width="500" height="260">
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-1000">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-1500 ease-in-out">
                     {/* Feature/Benefit Badge */}
                     <div className="mb-3">
                       <Badge 
@@ -184,7 +191,8 @@ export default function Landing() {
                     {/* Icon */}
                     <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
                       {features[currentFeature].icon === Scan && <Scan className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-12 h-12 text-white" />}
+                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-12 h-12 text-white" />}
+                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-12 h-12 text-green-400 animate-pulse" />}
                       {features[currentFeature].icon === Eye && <Eye className="w-12 h-12 text-white" />}
                       {features[currentFeature].icon === FileText && <FileText className="w-12 h-12 text-white" />}
                       {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-12 h-12 text-white" />}
@@ -245,7 +253,7 @@ export default function Landing() {
                 <rect x="25" y="70" width="150" height="280" rx="15" fill="#082118"/>
                 
                 <foreignObject x="30" y="80" width="140" height="260">
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-4 transition-all duration-1000">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-4 transition-all duration-1500 ease-in-out">
                     {/* Mobile Feature/Benefit Badge */}
                     <div className="mb-2">
                       <span 
@@ -262,7 +270,8 @@ export default function Landing() {
                     {/* Mobile Icon */}
                     <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4">
                       {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-white" />}
+                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-10 h-10 text-white" />}
+                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-10 h-10 text-green-400 animate-pulse" />}
                       {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
                       {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
                       {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
