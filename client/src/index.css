@@ -290,7 +290,7 @@ input:-webkit-autofill:active {
   }
   
   .animate-testimonials-scroll {
-    animation: testimonials-scroll 30s linear infinite;
+    animation: testimonials-scroll 45s linear infinite;
   }
   
   @keyframes trust-scroll {

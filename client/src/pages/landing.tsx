@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
@@ -581,6 +581,11 @@ export default function Landing() {
           <div className="relative">
             <div className="flex gap-6 animate-testimonials-scroll">
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
@@ -596,6 +601,12 @@ export default function Landing() {
               </div>
               
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  <Star className="w-4 h-4 text-gray-300" />
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
@@ -611,6 +622,11 @@ export default function Landing() {
               </div>
               
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding - saves me hours every month."
                 </p>
@@ -626,6 +642,11 @@ export default function Landing() {
               </div>
               
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "Perfect for small businesses. KudiScan helps our company ensure compliance and accountability. The automated reporting works brilliantly."
                 </p>
@@ -642,6 +663,11 @@ export default function Landing() {
               
               {/* Duplicate cards for seamless loop */}
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "KudiScan has saved me hours every week. No more manual tracking — my expenses just flow in."
                 </p>
@@ -657,6 +683,12 @@ export default function Landing() {
               </div>
               
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  <Star className="w-4 h-4 text-gray-300" />
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "Before KudiScan, I lost track of small expenses. Now, I know exactly where my Naira goes."
                 </p>
@@ -672,6 +704,11 @@ export default function Landing() {
               </div>
               
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "KudiScan makes expense tracking incredibly easy! The interface is intuitive and the OCR accuracy is outstanding - saves me hours every month."
                 </p>
@@ -687,6 +724,11 @@ export default function Landing() {
               </div>
               
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
                 <p className="text-lg mb-4 text-white break-words">
                   "Perfect for small businesses. KudiScan helps our company ensure compliance and accountability. The automated reporting works brilliantly."
                 </p>
