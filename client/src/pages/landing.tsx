@@ -9,6 +9,20 @@ import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, C
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
+// Add CSS animations for sliding
+const slideAnimationCSS = `
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+`;
+
 export default function Landing() {
   const { settings, toggleDarkMode } = useSettings();
   const [displayText, setDisplayText] = useState("");
@@ -19,6 +33,13 @@ export default function Landing() {
   const [currentFeature, setCurrentFeature] = useState(0);
   
   const features = [
+    {
+      icon: TrendingUp,
+      title: "85% Higher Loan Approval",
+      type: "benefit",
+      description: "Professional expense reports increase your chances of securing business loans and investor funding.",
+      detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding."
+    },
     {
       icon: Scan,
       title: "Receipt Scanning",
@@ -83,13 +104,6 @@ export default function Landing() {
       detail: "Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, and integration with Nigerian payment systems."
     },
     {
-      icon: TrendingUp,
-      title: "85% Higher Loan Approval",
-      type: "benefit",
-      description: "Professional expense reports increase your chances of securing business loans and investor funding.",
-      detail: "Banks and investors approve 85% more loan applications when backed by organized financial records. KudiScan's professional reports demonstrate financial discipline and provide the documentation lenders require for business expansion funding."
-    },
-    {
       icon: Star,
       title: "Start Free Today",
       type: "benefit",
@@ -120,13 +134,14 @@ export default function Landing() {
   useEffect(() => {
     const carouselTimer = setInterval(() => {
       setCurrentFeature((prev) => (prev + 1) % features.length);
-    }, 5000); // Change feature/benefit every 5 seconds for captivating viewing
+    }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
     
     return () => clearInterval(carouselTimer);
   }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <style dangerouslySetInnerHTML={{__html: slideAnimationCSS}} />
       {/* Navbar */}
       <nav className="px-4 py-4 bg-background border-b border-border">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -173,60 +188,69 @@ export default function Landing() {
                 
                 {/* Feature Content */}
                 <foreignObject x="50" y="60" width="500" height="260">
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-1500 ease-in-out">
-                    {/* Feature/Benefit Badge */}
-                    <div className="mb-3">
-                      <Badge 
-                        variant="secondary" 
-                        className={`text-xs font-medium px-3 py-1 ${
-                          features[currentFeature].type === 'feature' 
-                            ? 'bg-blue-500/20 text-blue-200 border-blue-400/30' 
-                            : 'bg-green-500/20 text-green-200 border-green-400/30'
-                        }`}
-                      >
-                        {features[currentFeature].type === 'feature' ? 'FEATURE' : 'BENEFIT'}
-                      </Badge>
+                  <div className="w-full h-full overflow-hidden relative">
+                    <div 
+                      className="w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-2000 ease-in-out transform"
+                      style={{
+                        transform: `translateX(0%)`,
+                        animation: `slideInFromRight 2s ease-in-out`
+                      }}
+                      key={currentFeature}
+                    >
+                      {/* Feature/Benefit Badge */}
+                      <div className="mb-3">
+                        <Badge 
+                          variant="secondary" 
+                          className={`text-xs font-medium px-3 py-1 ${
+                            features[currentFeature].type === 'feature' 
+                              ? 'bg-blue-500/20 text-blue-200 border-blue-400/30' 
+                              : 'bg-green-500/20 text-green-200 border-green-400/30'
+                          }`}
+                        >
+                          {features[currentFeature].type === 'feature' ? 'FEATURE' : 'BENEFIT'}
+                        </Badge>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                        {features[currentFeature].icon === Scan && <Scan className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-12 h-12 text-green-400 animate-pulse" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-12 h-12 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-12 h-12 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && (
+                          <span className="text-4xl text-white">₦</span>
+                        )}
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-2xl font-bold text-white mb-4">
+                        {features[currentFeature].title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-white/90 text-sm leading-relaxed max-w-md">
+                        {features[currentFeature].detail}
+                      </p>
                     </div>
-                    
-                    {/* Icon */}
-                    <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
-                      {features[currentFeature].icon === Scan && <Scan className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-12 h-12 text-green-400 animate-pulse" />}
-                      {features[currentFeature].icon === Eye && <Eye className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === FileText && <FileText className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === Building && <Building className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === Smartphone && <Smartphone className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === Shield && <Shield className="w-12 h-12 text-white" />}
-                      {features[currentFeature].icon === Star && <Star className="w-12 h-12 text-white" />}
-                      {typeof features[currentFeature].icon === 'function' && (
-                        <span className="text-4xl text-white">₦</span>
-                      )}
-                    </div>
-                    
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      {features[currentFeature].title}
-                    </h3>
-                    
-                    {/* Description */}
-                    <p className="text-white/90 text-sm leading-relaxed max-w-md">
-                      {features[currentFeature].detail}
-                    </p>
                   </div>
                 </foreignObject>
                 
-                {/* Carousel Dots */}
+                {/* Desktop Carousel Dots - centered under monitor */}
                 <g>
                   {features.map((_, index) => (
                     <circle
                       key={index}
-                      cx={280 + (index - 2.5) * 20}
-                      cy={360}
-                      r="4"
+                      cx={300 + (index - (features.length - 1) / 2) * 15}
+                      cy={365}
+                      r="3"
                       fill={index === currentFeature ? "#29A378" : "#4b5563"}
-                      className="transition-colors duration-300"
+                      className="transition-colors duration-500"
                     />
                   ))}
                 </g>
@@ -253,59 +277,68 @@ export default function Landing() {
                 <rect x="25" y="70" width="150" height="280" rx="15" fill="#082118"/>
                 
                 <foreignObject x="30" y="80" width="140" height="260">
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-4 transition-all duration-1500 ease-in-out">
-                    {/* Mobile Feature/Benefit Badge */}
-                    <div className="mb-2">
-                      <span 
-                        className={`text-xs font-medium px-2 py-1 rounded-full ${
-                          features[currentFeature].type === 'feature' 
-                            ? 'bg-blue-500/20 text-blue-200' 
-                            : 'bg-green-500/20 text-green-200'
-                        }`}
-                      >
-                        {features[currentFeature].type === 'feature' ? 'FEATURE' : 'BENEFIT'}
-                      </span>
+                  <div className="w-full h-full overflow-hidden relative">
+                    <div 
+                      className="w-full h-full flex flex-col items-center justify-center text-center p-4 transition-all duration-2000 ease-in-out transform"
+                      style={{
+                        transform: `translateX(0%)`,
+                        animation: `slideInFromRight 2s ease-in-out`
+                      }}
+                      key={currentFeature}
+                    >
+                      {/* Mobile Feature/Benefit Badge */}
+                      <div className="mb-2">
+                        <span 
+                          className={`text-xs font-medium px-2 py-1 rounded-full ${
+                            features[currentFeature].type === 'feature' 
+                              ? 'bg-blue-500/20 text-blue-200' 
+                              : 'bg-green-500/20 text-green-200'
+                          }`}
+                        >
+                          {features[currentFeature].type === 'feature' ? 'FEATURE' : 'BENEFIT'}
+                        </span>
+                      </div>
+                      
+                      {/* Mobile Icon */}
+                      <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4">
+                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-10 h-10 text-green-400 animate-pulse" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && (
+                          <span className="text-2xl text-white">₦</span>
+                        )}
+                      </div>
+                      
+                      {/* Mobile Title */}
+                      <h4 className="text-sm font-bold text-white mb-3 leading-tight">
+                        {features[currentFeature].title}
+                      </h4>
+                      
+                      {/* Mobile Description */}
+                      <p className="text-white/90 text-xs leading-relaxed">
+                        {features[currentFeature].description}
+                      </p>
                     </div>
-                    
-                    {/* Mobile Icon */}
-                    <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4">
-                      {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "Save 5+ Hours Weekly" && <TrendingUp className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === TrendingUp && features[currentFeature].title === "85% Higher Loan Approval" && <TrendingUp className="w-10 h-10 text-green-400 animate-pulse" />}
-                      {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
-                      {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
-                      {typeof features[currentFeature].icon === 'function' && (
-                        <span className="text-2xl text-white">₦</span>
-                      )}
-                    </div>
-                    
-                    {/* Mobile Title */}
-                    <h4 className="text-sm font-bold text-white mb-3 leading-tight">
-                      {features[currentFeature].title}
-                    </h4>
-                    
-                    {/* Mobile Description */}
-                    <p className="text-white/90 text-xs leading-relaxed">
-                      {features[currentFeature].description}
-                    </p>
                   </div>
                 </foreignObject>
                 
-                {/* Mobile Carousel Dots */}
+                {/* Mobile Carousel Dots - centered under phone */}
                 <g>
                   {features.map((_, index) => (
                     <circle
                       key={index}
-                      cx={100 + (index - 2.5) * 10}
-                      cy={370}
+                      cx={100 + (index - (features.length - 1) / 2) * 8}
+                      cy={375}
                       r="2"
                       fill={index === currentFeature ? "#29A378" : "#4b5563"}
-                      className="transition-colors duration-300"
+                      className="transition-colors duration-500"
                     />
                   ))}
                 </g>
