@@ -230,7 +230,7 @@ export default function Landing() {
                 {/* Centered KudiBot Logo */}
                 <foreignObject x="260" y="150" width="80" height="80">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-20 h-20 text-white" />
+                    <Bot className="w-20 h-20" style={{color: '#29A378'}} />
                   </div>
                 </foreignObject>
                 
@@ -247,24 +247,25 @@ export default function Landing() {
                     >
                       {/* Icon */}
                       <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-4">
-                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-green-400 animate-pulse" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Building && <Building className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Star && <Star className="w-10 h-10" style={{color: '#29A378'}} />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl" style={{color: '#29A378'}}>₦</span>}
                       </div>
                       
                       {/* Title */}
-                      <h3 className="text-xl font-bold text-white mb-3">
+                      <h3 className="text-xl font-bold mb-3" style={{color: '#29A378'}}>
                         {features[currentFeature].title}
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-white/90 text-sm leading-relaxed">
+                      <p className="text-sm leading-relaxed" style={{color: '#29A378'}}>
                         {features[currentFeature].description}
                       </p>
                     </div>
@@ -309,7 +310,7 @@ export default function Landing() {
                 {/* Mobile Centered KudiBot Logo */}
                 <foreignObject x="80" y="190" width="40" height="40">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-12 h-12 text-white" />
+                    <Bot className="w-12 h-12" style={{color: '#29A378'}} />
                   </div>
                 </foreignObject>
                 
@@ -325,24 +326,25 @@ export default function Landing() {
                     >
                       {/* Mobile Icon */}
                       <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-3">
-                        {features[currentFeature].icon === Scan && <Scan className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-8 h-8 text-green-400 animate-pulse" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-8 h-8 text-white" />}
+                        {features[currentFeature].icon === Scan && <Scan className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Building && <Building className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {features[currentFeature].icon === Star && <Star className="w-8 h-8" style={{color: '#29A378'}} />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-3xl" style={{color: '#29A378'}}>₦</span>}
                       </div>
                       
                       {/* Mobile Title */}
-                      <h4 className="text-sm font-bold text-white mb-2 leading-tight">
+                      <h4 className="text-sm font-bold mb-2 leading-tight" style={{color: '#29A378'}}>
                         {features[currentFeature].title}
                       </h4>
                       
                       {/* Mobile Description */}
-                      <p className="text-white/90 text-xs leading-relaxed">
+                      <p className="text-xs leading-relaxed" style={{color: '#29A378'}}>
                         {features[currentFeature].description}
                       </p>
                     </div>
