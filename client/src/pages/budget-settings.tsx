@@ -13,7 +13,7 @@ import { formatNaira } from "@/lib/currency";
 export default function BudgetSettings() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const [monthlyBudget, setMonthlyBudget] = useState("500000");
+  const [monthlyBudget, setMonthlyBudget] = useState("5000000");
   const [categoryBudgets, setCategoryBudgets] = useState({
     food: "120000",
     transport: "80000",
@@ -58,7 +58,7 @@ export default function BudgetSettings() {
   };
 
   const handleReset = () => {
-    setMonthlyBudget("500000");
+    setMonthlyBudget("5000000");
     setCategoryBudgets({
       food: "120000",
       transport: "80000", 

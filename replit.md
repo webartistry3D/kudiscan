@@ -73,8 +73,8 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 # Recent Changes & Updates
 
 ## January 2025 - Budget Limit Adjustments
-- **Increased Budget Limits**: Updated default monthly budget from ₦150,000 to ₦500,000 to reflect current Nigerian economic realities
-  - Monthly budget default raised to ₦500,000 for more realistic expense tracking
+- **Increased Budget Limits**: Updated default monthly budget from ₦150,000 to ₦5,000,000 to reflect current Nigerian economic realities
+  - Monthly budget default raised to ₦5,000,000 for more realistic expense tracking
   - Category budget defaults proportionally increased (Food: ₦120k, Transport: ₦80k, Utilities: ₦60k, Entertainment: ₦50k, Healthcare: ₦40k, Shopping: ₦30k)
   - Dashboard budget calculations updated to match new limits
   - Mock spending data adjusted to reflect realistic usage patterns

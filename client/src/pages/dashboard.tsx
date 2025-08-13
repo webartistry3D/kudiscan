@@ -170,7 +170,7 @@ export default function Dashboard() {
     );
   }
 
-  const budgetLimit = 500000; // Default budget of ₦500,000
+  const budgetLimit = 5000000; // Default budget of ₦5,000,000
   const budgetLeft = budgetLimit - (stats?.monthlyTotal || 0);
   const budgetUsagePercent = ((stats?.monthlyTotal || 0) / budgetLimit) * 100;
 
