@@ -176,16 +176,7 @@ export default function Dashboard() {
 
   return (
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
-      <header className="bg-background border-b border-border sticky top-0 z-50">
-        <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
-          <div className="flex items-center space-x-3">
-            <Bot className="w-8 h-8 lg:w-10 lg:h-10 text-primary" />
-            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
-              Dashboard
-            </h1>
-          </div>
-        </div>
-      </header>
+      <Header title="Dashboard" />
       
       <main className="pb-20 max-w-full">
         {/* Dashboard Overview Section */}

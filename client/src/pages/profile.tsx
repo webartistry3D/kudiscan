@@ -79,7 +79,7 @@ export default function Profile() {
     : user?.email || "User";
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen">
+    <div className="w-full bg-background min-h-screen">
       {/* Header */}
       <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
