@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom bot pulse animation */
+@keyframes bot-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+}
+
+.animate-bot-pulse {
+  animation: bot-pulse 2s ease-in-out infinite;
+}
+
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(210 25% 7.8431%);

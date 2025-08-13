@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus, Bot } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
@@ -154,8 +154,8 @@ export default function Landing() {
           </div>
 
           <div className="max-w-5xl mx-auto mb-8">
-            <p className="text-base md:text-lg text-white text-center mb-8 opacity-90 px-4">
-              Your automated finance assistant.
+            <p className="text-xl md:text-2xl lg:text-3xl text-white text-center mb-8 opacity-90 px-4 font-medium leading-relaxed">
+              Your <Bot className="inline-block w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mx-2 text-white animate-bot-pulse" /> automated finance assistant.
             </p>
             
             {/* Process Flow */}
