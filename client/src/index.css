@@ -259,17 +259,18 @@ input[data-testid="input-email"]:focus {
   border-color: hsl(var(--border)) !important;
 }
 
-/* Email autocomplete specific overrides */
+/* Email autocomplete specific overrides - Force white text */
 input[data-testid="input-email"]:-webkit-autofill,
 input[data-testid="input-email"]:-webkit-autofill:hover,
 input[data-testid="input-email"]:-webkit-autofill:focus,
 input[data-testid="input-email"]:-webkit-autofill:active {
   background-color: hsl(214, 32%, 91%) !important;
-  color: hsl(var(--foreground)) !important;
+  color: #ffffff !important;
   background-image: none !important;
   -webkit-box-shadow: 0 0 0 1000px hsl(214, 32%, 91%) inset !important;
-  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  -webkit-text-fill-color: #ffffff !important;
   box-shadow: none !important;
+  caret-color: #ffffff !important;
 }
 
 .dark input[data-testid="input-email"]:-webkit-autofill,
@@ -277,11 +278,23 @@ input[data-testid="input-email"]:-webkit-autofill:active {
 .dark input[data-testid="input-email"]:-webkit-autofill:focus,
 .dark input[data-testid="input-email"]:-webkit-autofill:active {
   background-color: hsl(210, 12%, 26%) !important;
-  color: hsl(var(--foreground)) !important;
+  color: #ffffff !important;
   background-image: none !important;
   -webkit-box-shadow: 0 0 0 1000px hsl(210, 12%, 26%) inset !important;
-  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  -webkit-text-fill-color: #ffffff !important;
   box-shadow: none !important;
+  caret-color: #ffffff !important;
+}
+
+/* Additional override for any missed autocomplete states */
+input[data-testid="input-email"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.dark input[data-testid="input-email"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 @layer utilities {

@@ -63,20 +63,22 @@ export default function Login() {
       const emailInput = emailInputRef.current;
       if (emailInput) {
         // Get the computed styles for input fields to match password field
-        const computedStyles = getComputedStyle(emailInput);
         const inputBg = 'hsl(214, 32%, 91%)'; // Light mode input color
         const inputBgDark = 'hsl(210, 12%, 26%)'; // Dark mode input color
-        const textColor = 'hsl(var(--foreground))';
+        const whiteTextColor = '#ffffff'; // Force white text
+        const foregroundColor = 'hsl(var(--foreground))';
         
         // Check if we're in dark mode
         const isDark = document.documentElement.classList.contains('dark');
         const bgColor = isDark ? inputBgDark : inputBg;
         
-        emailInput.style.backgroundColor = bgColor;
-        emailInput.style.color = textColor;
-        emailInput.style.backgroundImage = 'none';
-        emailInput.style.webkitBoxShadow = `0 0 0 1000px ${bgColor} inset`;
-        emailInput.style.webkitTextFillColor = textColor;
+        // Apply styles with priority on white text for autocomplete
+        emailInput.style.setProperty('background-color', bgColor, 'important');
+        emailInput.style.setProperty('color', whiteTextColor, 'important');
+        emailInput.style.setProperty('background-image', 'none', 'important');
+        emailInput.style.setProperty('-webkit-box-shadow', `0 0 0 1000px ${bgColor} inset`, 'important');
+        emailInput.style.setProperty('-webkit-text-fill-color', whiteTextColor, 'important');
+        emailInput.style.setProperty('caret-color', whiteTextColor, 'important');
       }
     };
 
@@ -108,8 +110,8 @@ export default function Login() {
       <div className="max-w-md w-full mx-auto mt-8 sm:mt-0">
         {/* Logo Section */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center">
-            <Bot className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <Bot className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-3xl font-bold mb-2 font-display">
             <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>
@@ -139,10 +141,11 @@ export default function Login() {
                           className="focus:ring-0 focus:ring-offset-0"
                           style={{ 
                             backgroundColor: 'hsl(214, 32%, 91%)',
-                            color: 'hsl(var(--foreground))',
+                            color: '#ffffff',
                             backgroundImage: 'none',
                             WebkitBoxShadow: '0 0 0 1000px hsl(214, 32%, 91%) inset',
-                            WebkitTextFillColor: 'hsl(var(--foreground))'
+                            WebkitTextFillColor: '#ffffff',
+                            caretColor: '#ffffff'
                           }}
                           {...field}
                           ref={(el) => {
