@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Plus, Trash2, Edit3, Palette } from "lucide-react";
 import * as Icons from "lucide-react";
@@ -15,16 +15,7 @@ import type { Category } from "@shared/schema";
 
 // Category interface comes from shared schema
 
-const defaultCategories: Category[] = [
-  { id: "food", name: "Food & Dining", icon: "UtensilsCrossed", color: "#FF6B6B" },
-  { id: "transport", name: "Transportation", icon: "Car", color: "#4ECDC4" },
-  { id: "utilities", name: "Utilities", icon: "Zap", color: "#45B7D1" },
-  { id: "entertainment", name: "Entertainment", icon: "Gamepad2", color: "#96CEB4" },
-  { id: "healthcare", name: "Healthcare", icon: "Heart", color: "#FFEAA7" },
-  { id: "shopping", name: "Shopping", icon: "ShoppingBag", color: "#DDA0DD" },
-  { id: "education", name: "Education", icon: "GraduationCap", color: "#98D8C8" },
-  { id: "travel", name: "Travel", icon: "MapPin", color: "#F06292" }
-];
+// Categories are now fetched from the database
 
 const availableIcons = [
   "UtensilsCrossed", "Car", "Zap", "Gamepad2", "Heart", "ShoppingBag", 
@@ -61,7 +52,7 @@ export default function ExpenseCategories() {
   // Mutations for category management
   const createCategoryMutation = useMutation({
     mutationFn: async (categoryData: { name: string; icon: string; color: string }) => {
-      return apiRequest("POST", "/api/categories", categoryData);
+      return apiRequest("/api/categories", "POST", categoryData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
@@ -83,7 +74,7 @@ export default function ExpenseCategories() {
 
   const updateCategoryMutation = useMutation({
     mutationFn: async ({ id, data }: { id: string; data: { name: string; icon: string; color: string } }) => {
-      return apiRequest("PUT", `/api/categories/${id}`, data);
+      return apiRequest(`/api/categories/${id}`, "PUT", data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
@@ -105,7 +96,7 @@ export default function ExpenseCategories() {
 
   const deleteCategoryMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/categories/${id}`);
+      return apiRequest(`/api/categories/${id}`, "DELETE");
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
@@ -232,6 +223,9 @@ export default function ExpenseCategories() {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Add New Category</DialogTitle>
+                <DialogDescription>
+                  Create a custom expense category with a name, icon, and color.
+                </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 py-4">
                 <div>
@@ -335,6 +329,9 @@ export default function ExpenseCategories() {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Edit Category</DialogTitle>
+              <DialogDescription>
+                Modify the category name, icon, or color.
+              </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div>
