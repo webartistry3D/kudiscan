@@ -58,22 +58,23 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center justify-center p-4 relative">
-      {/* Visit Home Page Button */}
-      <div className="absolute top-4 right-4">
+      {/* Visit Home Page Button - Responsive positioning */}
+      <div className="absolute top-4 left-4 sm:left-auto sm:right-4 z-10">
         <Link href="/">
           <Button 
             variant="outline" 
             size="sm" 
-            className="bg-white/80 backdrop-blur-sm hover:bg-white border-primary/20 hover:border-primary/40"
+            className="bg-white/90 backdrop-blur-sm hover:bg-white border-primary/30 hover:border-primary/50 shadow-md text-xs sm:text-sm px-2 sm:px-4"
             data-testid="button-visit-home"
           >
-            <Home className="w-4 h-4 mr-2" />
-            Visit Home Page
+            <Home className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Visit Home Page</span>
+            <span className="sm:hidden">Home</span>
           </Button>
         </Link>
       </div>
       
-      <div className="max-w-md w-full">
+      <div className="max-w-md w-full mx-auto mt-8 sm:mt-0">
         {/* Logo Section */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center">

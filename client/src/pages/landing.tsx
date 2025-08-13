@@ -171,11 +171,11 @@ export default function Landing() {
               
               {/* Arrow 1 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 text-primary" />
+                <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 text-primary" />
+                  <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
                 </div>
               </div>
               
@@ -190,11 +190,11 @@ export default function Landing() {
               
               {/* Arrow 2 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 text-primary" />
+                <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 text-primary" />
+                  <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
                 </div>
               </div>
               
@@ -209,11 +209,11 @@ export default function Landing() {
               
               {/* Arrow 3 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 text-primary" />
+                <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 text-primary" />
+                  <ArrowRight className="w-6 h-6" style={{color: '#082118'}} />
                 </div>
               </div>
               
@@ -487,6 +487,59 @@ export default function Landing() {
               Get Started
             </Button>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Nigerian Federal Government Compliance Section */}
+      <section className="px-4 py-16 w-full bg-background">
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-3xl font-bold text-center mb-4 font-display text-foreground">
+            Supporting Nigerian Business Growth
+          </h2>
+          <p className="text-center mb-12 text-muted-foreground max-w-3xl mx-auto">
+            KudiScan aligns with Federal Government initiatives to drive economic development by providing businesses with the financial transparency and documentation needed for growth opportunities.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="text-center p-6 rounded-2xl bg-card border border-border">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{backgroundColor: '#29A378'}}>
+                <Building className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Business Credit Readiness</h3>
+              <p className="text-sm text-muted-foreground">
+                Generate comprehensive financial reports that meet Central Bank of Nigeria (CBN) lending requirements and help establish creditworthiness for SME development programs.
+              </p>
+            </div>
+            
+            <div className="text-center p-6 rounded-2xl bg-card border border-border">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{backgroundColor: '#29A378'}}>
+                <FileText className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Tax Compliance</h3>
+              <p className="text-sm text-muted-foreground">
+                Maintain accurate expense records that support VAT filing, company income tax returns, and comply with Federal Inland Revenue Service (FIRS) digital documentation standards.
+              </p>
+            </div>
+            
+            <div className="text-center p-6 rounded-2xl bg-card border border-border">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{backgroundColor: '#29A378'}}>
+                <TrendingUp className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-foreground">Economic Growth Support</h3>
+              <p className="text-sm text-muted-foreground">
+                Support the National Economic Recovery and Growth Plan (ERGP) by providing transparent financial management tools that help Nigerian businesses scale and contribute to economic diversification.
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <div className="max-w-2xl mx-auto p-6 rounded-2xl" style={{backgroundColor: '#29A378'}}>
+              <h4 className="text-xl font-semibold mb-3 text-white">Empowering Nigerian Businesses for the Future</h4>
+              <p className="text-white/90 text-sm leading-relaxed">
+                KudiScan helps businesses build the financial foundation needed to access government intervention funds, participate in economic development programs, and meet regulatory requirements that drive sustainable growth across Nigeria's emerging sectors.
+              </p>
+            </div>
           </div>
         </div>
       </section>
