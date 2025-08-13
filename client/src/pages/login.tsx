@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +17,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
@@ -55,6 +56,24 @@ export default function Login() {
   const onSubmit = (data: LoginData) => {
     loginMutation.mutate(data);
   };
+
+  // Force remove autocomplete background
+  useEffect(() => {
+    const removeAutofillBg = () => {
+      const emailInput = emailInputRef.current;
+      if (emailInput) {
+        emailInput.style.backgroundColor = 'transparent';
+        emailInput.style.backgroundImage = 'none';
+        emailInput.style.webkitBoxShadow = '0 0 0 1000px transparent inset';
+      }
+    };
+
+    // Run immediately and set up interval to continuously override
+    removeAutofillBg();
+    const interval = setInterval(removeAutofillBg, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center justify-center p-4 relative">
@@ -101,11 +120,17 @@ export default function Login() {
                       <FormLabel>Email Address</FormLabel>
                       <FormControl>
                         <Input
+                          ref={emailInputRef}
                           type="email"
                           placeholder="Enter your email"
                           data-testid="input-email"
                           autoComplete="email"
                           className="focus:ring-0 focus:ring-offset-0 focus:bg-transparent"
+                          style={{ 
+                            backgroundColor: 'transparent',
+                            backgroundImage: 'none',
+                            WebkitBoxShadow: '0 0 0 1000px transparent inset'
+                          }}
                           {...field}
                         />
                       </FormControl>
