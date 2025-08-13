@@ -165,8 +165,8 @@ export default function Landing() {
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <Camera className="w-10 h-10 text-white process-icon-1" />
                 </div>
-                <h3 className="font-semibold text-white mb-1 text-sm">Snap</h3>
-                <p className="text-xs leading-tight text-white">Snap / Upload a receipt to scan your expenses</p>
+                <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Snap</h3>
+                <p className="text-sm md:text-base leading-tight text-white">Snap / Upload a receipt to scan your expenses</p>
               </div>
               
               {/* Arrow 1 */}
@@ -184,8 +184,8 @@ export default function Landing() {
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <TrendingUp className="w-10 h-10 text-white process-icon-2" />
                 </div>
-                <h3 className="font-semibold text-white mb-1 text-sm">Track</h3>
-                <p className="text-xs leading-tight text-white">Track spending across categories with intelligent insights</p>
+                <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Track</h3>
+                <p className="text-sm md:text-base leading-tight text-white">Track spending across categories with intelligent insights</p>
               </div>
               
               {/* Arrow 2 */}
@@ -203,8 +203,8 @@ export default function Landing() {
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <FileText className="w-10 h-10 text-white process-icon-3" />
                 </div>
-                <h3 className="font-semibold text-white mb-1 text-sm">Report</h3>
-                <p className="text-xs leading-tight text-white">Generate professional expense reports for business use</p>
+                <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Report</h3>
+                <p className="text-sm md:text-base leading-tight text-white">Generate professional expense reports for business use</p>
               </div>
               
               {/* Arrow 3 */}
@@ -222,25 +222,25 @@ export default function Landing() {
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <Building className="w-10 h-10 text-white process-icon-4" />
                 </div>
-                <h3 className="font-semibold text-white mb-1 text-sm">Scale</h3>
-                <p className="text-xs leading-tight text-white">Secure loans from banks and investors to scale your business</p>
+                <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Scale</h3>
+                <p className="text-sm md:text-base leading-tight text-white">Secure loans from banks and investors to scale your business</p>
               </div>
             </div>
           </div>
 
           {/* CTA Section */}
           <div className="border border-border rounded-2xl p-6 md:p-8 mb-8 w-full max-w-lg mx-auto" style={{backgroundColor: '#082118'}}>
-            <h3 className="text-lg font-semibold mb-4 font-display text-white text-center">I want to:</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mb-4 font-display text-white text-center">I want to:</h3>
             
             <div className="flex flex-col gap-3 w-full mx-auto">
               <Link href="/register" className="w-full">
-                <Button size="lg" className="w-full justify-center text-center px-4" data-testid="button-personal">
+                <Button size="lg" className="w-full justify-center text-center px-4 text-base md:text-lg" data-testid="button-personal">
                   Track my personal expenses
                 </Button>
               </Link>
               
               <Link href="/register" className="w-full">
-                <Button variant="outline" size="lg" className="w-full justify-center text-center px-4" data-testid="button-small-business">
+                <Button variant="outline" size="lg" className="w-full justify-center text-center px-4 text-base md:text-lg" data-testid="button-small-business">
                   Manage expenses for my business
                 </Button>
               </Link>
@@ -313,7 +313,7 @@ export default function Landing() {
             {/* AI + OCR Integration */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Eye className="w-12 h-12 text-white" />
+                <Eye className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">AI + OCR Integration</h3>
               <p className="text-sm text-white mb-4">
@@ -337,7 +337,7 @@ export default function Landing() {
             {/* Financial Reporting */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-12 h-12 text-white" />
+                <BarChart3 className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Financial Reporting</h3>
               <p className="text-sm text-white mb-4">
@@ -361,7 +361,7 @@ export default function Landing() {
             {/* Mobile-First Approach */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-12 h-12 text-white" />
+                <Smartphone className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Mobile-First Approach</h3>
               <p className="text-sm text-white mb-4">
@@ -385,7 +385,7 @@ export default function Landing() {
             {/* Bank-level Security */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-12 h-12 text-white" />
+                <Shield className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Bank-level Security</h3>
               <p className="text-sm text-white mb-4">
@@ -443,7 +443,7 @@ export default function Landing() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 w-full">
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
               <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Plus className="w-16 h-16" style={{color: '#29A378'}} />
+                <Plus className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
               <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
@@ -463,7 +463,7 @@ export default function Landing() {
 
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-16 h-16" style={{color: '#29A378'}} />
+                <BarChart3 className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Track & Analyze</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
@@ -483,7 +483,7 @@ export default function Landing() {
 
             <div className="text-center w-full max-w-sm mx-auto">
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <FileBarChart className="w-16 h-16" style={{color: '#29A378'}} />
+                <FileBarChart className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
               <p className="text-sm" style={{color: '#959AA0'}}>
