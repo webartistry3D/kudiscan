@@ -230,74 +230,11 @@ export default function Landing() {
           {/* Trust Badge */}
 
           
-          {/* Feature Carousel Display */}
-          <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
-            {/* Desktop Monitor with Feature Carousel */}
-            <div className="hidden md:block relative">
-              <svg width="480" height="320" viewBox="0 0 600 400" className="drop-shadow-2xl md:scale-90 lg:scale-100 xl:scale-110">
-                {/* Monitor Frame */}
-                <rect x="20" y="30" width="560" height="320" rx="8" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
-                <rect x="30" y="40" width="540" height="300" rx="4" fill="#111827"/>
-                
-                {/* Screen Content - Feature Display */}
-                <rect x="60" y="50" width="480" height="280" fill="#111827"/>
-                
-                {/* Centered KudiBot Logo */}
-                <foreignObject x="260" y="150" width="80" height="80">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <Bot className="w-20 h-20 text-white" />
-                  </div>
-                </foreignObject>
-                
-                {/* Feature Content */}
-                <foreignObject x="60" y="50" width="480" height="280">
-                  <div className="slide-container">
-                    <div 
-                      className="slide-content p-6"
-                      style={{
-                        animation: `slideInOut 6s ease-in-out`,
-                        background: features[currentFeature].color || '#111827'
-                      }}
-                      key={currentFeature}
-                    >
-                      {/* Icon */}
-                      <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-4">
-                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
-                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl text-white">₦</span>}
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-white mb-3">
-                        {features[currentFeature].title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-white/90 text-sm leading-relaxed">
-                        {features[currentFeature].description}
-                      </p>
-                    </div>
-                  </div>
-                </foreignObject>
-                
-
-                
-                {/* Monitor Stand */}
-                <rect x="280" y="350" width="40" height="20" rx="4" fill="#374151"/>
-                <rect x="250" y="370" width="100" height="8" rx="4" fill="#4b5563"/>
-              </svg>
-            </div>
-
+          {/* Feature Carousel Display - iPhone Only */}
+          <div className="relative flex items-center justify-center max-w-4xl mx-auto mb-6">
             {/* iPhone with Feature Carousel */}
-            <div className="relative">
-              <svg width="160" height="320" viewBox="0 0 200 400" className="drop-shadow-2xl md:scale-90 lg:scale-100 xl:scale-110">
+            <div className="relative mx-auto">
+              <svg width="200" height="400" viewBox="0 0 200 400" className="drop-shadow-2xl">
                 {/* iPhone Frame */}
                 <rect x="10" y="10" width="180" height="380" rx="45" fill="#1f2937" stroke="#374151" strokeWidth="2"/>
                 <rect x="20" y="25" width="160" height="350" rx="35" fill="#111827"/>
@@ -325,7 +262,7 @@ export default function Landing() {
                     <div 
                       className="slide-content p-4"
                       style={{
-                        animation: `slideInOut 6s ease-in-out`,
+                        animation: isCarouselLoaded ? `slideInOut 6s ease-in-out` : 'none',
                         background: features[currentFeature].color || '#111827'
                       }}
                       key={currentFeature}
