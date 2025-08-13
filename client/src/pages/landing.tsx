@@ -9,21 +9,43 @@ import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, C
 import { useSettings } from "@/hooks/use-settings";
 import { useState, useEffect } from "react";
 
-// Add CSS animations for full sliding carousel
+// Add CSS animations for seamless sliding carousel
 const slideAnimationCSS = `
   @keyframes slideInOut {
     0% {
       transform: translateX(100%);
+      opacity: 1;
     }
-    15% {
+    10% {
       transform: translateX(0%);
+      opacity: 1;
     }
-    85% {
+    90% {
       transform: translateX(0%);
+      opacity: 1;
     }
     100% {
       transform: translateX(-100%);
+      opacity: 1;
     }
+  }
+  
+  .slide-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .slide-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 `;
 
@@ -192,9 +214,9 @@ export default function Landing() {
                 
                 {/* Feature Content */}
                 <foreignObject x="50" y="60" width="500" height="260">
-                  <div className="w-full h-full overflow-hidden relative">
+                  <div className="slide-container">
                     <div 
-                      className="w-full h-full flex flex-col items-center justify-center text-center p-8 absolute"
+                      className="slide-content p-8"
                       style={{
                         animation: `slideInOut 6s ease-in-out`
                       }}
@@ -280,9 +302,9 @@ export default function Landing() {
                 <rect x="25" y="70" width="150" height="280" rx="15" fill="#082118"/>
                 
                 <foreignObject x="30" y="80" width="140" height="260">
-                  <div className="w-full h-full overflow-hidden relative">
+                  <div className="slide-container">
                     <div 
-                      className="w-full h-full flex flex-col items-center justify-center text-center p-4 absolute"
+                      className="slide-content p-4"
                       style={{
                         animation: `slideInOut 6s ease-in-out`
                       }}
