@@ -57,20 +57,22 @@ export default function Login() {
     loginMutation.mutate(data);
   };
 
-  // Force remove autocomplete background
+  // Force proper styling for autocomplete
   useEffect(() => {
-    const removeAutofillBg = () => {
+    const fixAutofillStyles = () => {
       const emailInput = emailInputRef.current;
       if (emailInput) {
-        emailInput.style.backgroundColor = 'transparent';
+        emailInput.style.backgroundColor = 'hsl(var(--input))';
+        emailInput.style.color = 'hsl(var(--foreground))';
         emailInput.style.backgroundImage = 'none';
-        emailInput.style.webkitBoxShadow = '0 0 0 1000px transparent inset';
+        emailInput.style.webkitBoxShadow = '0 0 0 1000px hsl(var(--input)) inset';
+        emailInput.style.webkitTextFillColor = 'hsl(var(--foreground))';
       }
     };
 
     // Run immediately and set up interval to continuously override
-    removeAutofillBg();
-    const interval = setInterval(removeAutofillBg, 100);
+    fixAutofillStyles();
+    const interval = setInterval(fixAutofillStyles, 100);
 
     return () => clearInterval(interval);
   }, []);
@@ -120,18 +122,23 @@ export default function Login() {
                       <FormLabel>Email Address</FormLabel>
                       <FormControl>
                         <Input
-                          ref={emailInputRef}
                           type="email"
                           placeholder="Enter your email"
                           data-testid="input-email"
                           autoComplete="email"
-                          className="focus:ring-0 focus:ring-offset-0 focus:bg-transparent"
+                          className="focus:ring-0 focus:ring-offset-0 bg-input border-border text-foreground"
                           style={{ 
-                            backgroundColor: 'transparent',
+                            backgroundColor: 'hsl(var(--input))',
+                            color: 'hsl(var(--foreground))',
                             backgroundImage: 'none',
-                            WebkitBoxShadow: '0 0 0 1000px transparent inset'
+                            WebkitBoxShadow: '0 0 0 1000px hsl(var(--input)) inset',
+                            WebkitTextFillColor: 'hsl(var(--foreground))'
                           }}
                           {...field}
+                          ref={(el) => {
+                            emailInputRef.current = el;
+                            if (field.ref) field.ref(el);
+                          }}
                         />
                       </FormControl>
                       <FormMessage />

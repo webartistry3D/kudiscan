@@ -218,14 +218,14 @@
   }
 }
 
-/* Fix autocomplete white background - Enhanced */
+/* Fix autocomplete styling to match input theme */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: inherit !important;
-  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  background-color: hsl(var(--input)) !important;
   background-image: none !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
@@ -235,9 +235,9 @@ input:-webkit-autofill:active {
 .dark input:-webkit-autofill:hover,
 .dark input:-webkit-autofill:focus,
 .dark input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: inherit !important;
-  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  background-color: hsl(var(--input)) !important;
   background-image: none !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
@@ -249,9 +249,11 @@ input[data-testid="input-email"]:-webkit-autofill,
 input[data-testid="input-email"]:-webkit-autofill:hover,
 input[data-testid="input-email"]:-webkit-autofill:focus,
 input[data-testid="input-email"]:-webkit-autofill:active {
-  background-color: transparent !important;
+  background-color: hsl(var(--input)) !important;
+  color: hsl(var(--foreground)) !important;
   background-image: none !important;
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
   box-shadow: none !important;
 }
 
