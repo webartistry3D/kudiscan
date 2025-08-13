@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Camera, Upload } from "lucide-react";
+import { Camera, Upload, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/header";
@@ -136,7 +136,7 @@ export default function Dashboard() {
   if (isLoading) {
     return (
       <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
-        <Header title="🤖 Dashboard" />
+        <Header title="Dashboard" />
         <div className="p-4 space-y-6">
           <div className="animate-pulse">
             {/* Stats Cards */}
@@ -178,9 +178,12 @@ export default function Dashboard() {
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen overflow-x-hidden">
       <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
-          <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
-            🤖 Dashboard
-          </h1>
+          <div className="flex items-center space-x-3">
+            <Bot className="w-8 h-8 lg:w-10 lg:h-10 text-primary" />
+            <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
+              Dashboard
+            </h1>
+          </div>
         </div>
       </header>
       
