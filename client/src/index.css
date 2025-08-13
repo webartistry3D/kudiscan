@@ -286,11 +286,22 @@ input:-webkit-autofill:active {
   }
   
   .animate-trust-scroll {
-    animation: trust-scroll 20s linear infinite;
+    animation: trust-scroll 25s linear infinite;
+    will-change: transform;
   }
   
   .animate-testimonials-scroll {
-    animation: testimonials-scroll 45s linear infinite;
+    animation: testimonials-scroll 50s linear infinite;
+    will-change: transform;
+  }
+  
+  /* Pause animation on hover for better UX */
+  .animate-trust-scroll:hover {
+    animation-play-state: paused;
+  }
+  
+  .animate-testimonials-scroll:hover {
+    animation-play-state: paused;
   }
   
   @keyframes trust-scroll {
@@ -298,7 +309,7 @@ input:-webkit-autofill:active {
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
   }
   
@@ -307,7 +318,62 @@ input:-webkit-autofill:active {
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
+  }
+  
+  /* Mask fade effect for smoother edges */
+  .mask-fade {
+    -webkit-mask: linear-gradient(90deg, transparent 0%, white 5%, white 95%, transparent 100%);
+    mask: linear-gradient(90deg, transparent 0%, white 5%, white 95%, transparent 100%);
+  }
+  
+  /* Performance optimizations */
+  .animate-trust-scroll,
+  .animate-testimonials-scroll {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+  
+  /* Smooth scrolling experience improvements */
+  .animate-trust-scroll .flex-shrink-0,
+  .animate-testimonials-scroll .flex-shrink-0 {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-trust-scroll,
+    .animate-testimonials-scroll {
+      animation: none;
+      will-change: auto;
+    }
+    
+    .animate-trust-scroll {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+    
+    .animate-testimonials-scroll {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+    
+    .mask-fade {
+      -webkit-mask: none;
+      mask: none;
+    }
+  }
+  
+  /* Enhanced easing for ultra-smooth animation */
+  .animate-trust-scroll {
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .animate-testimonials-scroll {
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
   }
 }

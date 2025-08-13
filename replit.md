@@ -69,3 +69,16 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 
 ## Payment Gateway
 - Paystack
+
+# Recent Changes & Updates
+
+## January 2025 - Landing Page Animation Improvements
+- **Smooth Infinite Scroll Animation Refinement**: Implemented advanced performance optimizations for testimonials and trust sections including:
+  - Hardware acceleration with will-change: transform and backface-visibility optimizations
+  - Mask fade effects for smoother visual edges using CSS linear gradients
+  - Hover-to-pause functionality for better user experience
+  - Extended animation durations (Trust: 25s, Testimonials: 50s) for seamless loop visibility
+  - Enhanced cubic-bezier easing functions for ultra-smooth motion
+  - Accessibility support with reduced motion preferences and fallback scroll behavior
+  - User-select prevention to improve interaction experience
+  - Transform3d optimizations for individual scroll items
