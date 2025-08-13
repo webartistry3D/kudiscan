@@ -233,7 +233,7 @@ export default function Landing() {
 
           
           {/* Feature Carousel Display */}
-          <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-6">
+          <div className="relative flex items-center justify-center gap-6 max-w-4xl mx-auto mb-2 mt-2">
             {/* Samsung Tablet with Feature Carousel */}
             <div className="hidden md:block relative">
               <svg width="600" height="420" viewBox="0 0 720 480" className="drop-shadow-2xl">
@@ -369,8 +369,8 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="max-w-5xl mx-auto mb-8">
-            <p className="text-xl md:text-2xl lg:text-3xl text-white text-center mb-8 opacity-90 px-4 font-medium leading-relaxed">
+          <div className="max-w-5xl mx-auto mb-4">
+            <p className="text-xl md:text-2xl lg:text-3xl text-white text-center mb-4 opacity-90 px-4 font-medium leading-relaxed">
               Your <Bot className="inline-block w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mx-2 text-white animate-bot-pulse" /> automated finance assistant.
             </p>
             
