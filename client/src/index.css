@@ -286,22 +286,13 @@ input:-webkit-autofill:active {
   }
   
   .animate-trust-scroll {
-    animation: trust-scroll 25s linear infinite;
+    animation: trust-scroll 30s linear infinite;
     will-change: transform;
   }
   
   .animate-testimonials-scroll {
-    animation: testimonials-scroll 50s linear infinite;
+    animation: testimonials-scroll 60s linear infinite;
     will-change: transform;
-  }
-  
-  /* Pause animation on hover for better UX */
-  .animate-trust-scroll:hover {
-    animation-play-state: paused;
-  }
-  
-  .animate-testimonials-scroll:hover {
-    animation-play-state: paused;
   }
   
   @keyframes trust-scroll {
@@ -322,17 +313,13 @@ input:-webkit-autofill:active {
     }
   }
   
-  /* Mask fade effect for smoother edges */
-  .mask-fade {
-    -webkit-mask: linear-gradient(90deg, transparent 0%, white 5%, white 95%, transparent 100%);
-    mask: linear-gradient(90deg, transparent 0%, white 5%, white 95%, transparent 100%);
-  }
-  
-  /* Performance optimizations */
+  /* Performance optimizations for smooth animations */
   .animate-trust-scroll,
   .animate-testimonials-scroll {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
   }
@@ -352,28 +339,10 @@ input:-webkit-autofill:active {
       will-change: auto;
     }
     
-    .animate-trust-scroll {
-      overflow-x: auto;
-      scroll-behavior: smooth;
-    }
-    
+    .animate-trust-scroll,
     .animate-testimonials-scroll {
       overflow-x: auto;
       scroll-behavior: smooth;
     }
-    
-    .mask-fade {
-      -webkit-mask: none;
-      mask: none;
-    }
-  }
-  
-  /* Enhanced easing for ultra-smooth animation */
-  .animate-trust-scroll {
-    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-  }
-  
-  .animate-testimonials-scroll {
-    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
   }
 }

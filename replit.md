@@ -73,12 +73,11 @@ Typography preference: Official KudiScan font style using Montserrat for all tex
 # Recent Changes & Updates
 
 ## January 2025 - Landing Page Animation Improvements
-- **Smooth Infinite Scroll Animation Refinement**: Implemented advanced performance optimizations for testimonials and trust sections including:
-  - Hardware acceleration with will-change: transform and backface-visibility optimizations
-  - Mask fade effects for smoother visual edges using CSS linear gradients
-  - Hover-to-pause functionality for better user experience
-  - Extended animation durations (Trust: 25s, Testimonials: 50s) for seamless loop visibility
-  - Enhanced cubic-bezier easing functions for ultra-smooth motion
-  - Accessibility support with reduced motion preferences and fallback scroll behavior
-  - User-select prevention to improve interaction experience
-  - Transform3d optimizations for individual scroll items
+- **Expensify-Style Free-Flowing Animations**: Implemented continuous infinite scroll animations inspired by Expensify including:
+  - Pure linear animations with no interruptions or pauses (Trust: 30s, Testimonials: 60s)
+  - Hardware acceleration optimizations for smooth performance
+  - Clean, unobstructed scrolling without fade effects or hover interactions
+  - Seamless loop transitions using -50% translateX for perfect continuity
+  - Accessibility support with reduced motion preferences
+  - User-select prevention for cleaner interaction experience
+  - Transform3d optimizations for enhanced performance

@@ -257,7 +257,7 @@ export default function Landing() {
       <section className="px-4 py-8 w-full overflow-hidden" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
           <h3 className="text-lg font-semibold mb-8 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
-          <div className="relative mask-fade">
+          <div className="relative">
             <div className="flex animate-trust-scroll gap-8 select-none">
             {/* First set */}
             <div className="flex items-center justify-center h-12 min-w-32 bg-white/10 rounded text-sm font-semibold text-white">
@@ -580,7 +580,7 @@ export default function Landing() {
             What KudiScan Users Are Saying
           </h2>
           
-          <div className="relative mask-fade">
+          <div className="relative">
             <div className="flex gap-6 animate-testimonials-scroll select-none">
               <div className="flex-shrink-0 w-80 max-w-sm p-6 rounded-2xl" style={{backgroundColor: '#0C3124'}}>
                 <div className="flex items-center mb-3">
