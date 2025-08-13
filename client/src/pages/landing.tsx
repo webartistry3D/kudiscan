@@ -13,19 +13,19 @@ import { useState, useEffect } from "react";
 const slideAnimationCSS = `
   @keyframes slideInOut {
     0% {
-      transform: translateX(100%);
+      transform: translateX(120%);
       opacity: 1;
     }
-    10% {
+    8% {
       transform: translateX(0%);
       opacity: 1;
     }
-    90% {
+    92% {
       transform: translateX(0%);
       opacity: 1;
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-120%);
       opacity: 1;
     }
   }
@@ -35,6 +35,7 @@ const slideAnimationCSS = `
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: transparent;
   }
   
   .slide-content {
@@ -46,6 +47,8 @@ const slideAnimationCSS = `
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: #082118;
+    border-radius: 6px;
   }
 `;
 
@@ -210,10 +213,10 @@ export default function Landing() {
                 <rect x="30" y="40" width="540" height="300" rx="4" fill="#111827"/>
                 
                 {/* Screen Content - Feature Display */}
-                <rect x="40" y="50" width="520" height="280" rx="6" fill="#082118"/>
+                <rect x="60" y="50" width="480" height="280" rx="6" fill="#082118"/>
                 
                 {/* Feature Content */}
-                <foreignObject x="50" y="60" width="500" height="260">
+                <foreignObject x="70" y="60" width="460" height="260">
                   <div className="slide-container">
                     <div 
                       className="slide-content p-8"
@@ -299,9 +302,9 @@ export default function Landing() {
                 <text x="150" y="57" fill="white" fontSize="8">100%</text>
                 
                 {/* Mobile Feature Display */}
-                <rect x="25" y="70" width="150" height="280" rx="15" fill="#082118"/>
+                <rect x="35" y="70" width="130" height="280" rx="15" fill="#082118"/>
                 
-                <foreignObject x="30" y="80" width="140" height="260">
+                <foreignObject x="40" y="80" width="120" height="260">
                   <div className="slide-container">
                     <div 
                       className="slide-content p-4"
