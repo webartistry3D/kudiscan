@@ -919,28 +919,31 @@ export default function Landing() {
           </div>
 
           {/* Bottom Section with Stylized Logo and Scroll to Top */}
-          <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0 text-center md:text-left relative w-full overflow-hidden">
-              {/* 2-color KudiScan background */}
-              <div className="absolute -top-16 left-0 w-full flex items-center justify-center md:justify-start opacity-5 pointer-events-none">
-                <span className="text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold whitespace-nowrap">
-                  <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>
-                </span>
-              </div>
-              <p className="text-sm text-muted-foreground relative z-10 pt-8">
-                © 2025 <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
-              </p>
+          <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border relative">
+            {/* 2-color KudiScan background - full width */}
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center opacity-5 pointer-events-none overflow-hidden">
+              <span className="text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold whitespace-nowrap">
+                <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>
+              </span>
             </div>
             
-            {/* Scroll to Top Arrow */}
-            <div className="flex items-center">
-              <button 
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
-                aria-label="Scroll to top"
-              >
-                <ChevronUp className="w-5 h-5" />
-              </button>
+            <div className="flex flex-col md:flex-row justify-between items-center relative z-10">
+              <div className="mb-4 md:mb-0 text-center md:text-left">
+                <p className="text-sm text-muted-foreground">
+                  © 2025 <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
+                </p>
+              </div>
+              
+              {/* Scroll to Top Arrow */}
+              <div className="flex items-center">
+                <button 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
+                  aria-label="Scroll to top"
+                >
+                  <ChevronUp className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
