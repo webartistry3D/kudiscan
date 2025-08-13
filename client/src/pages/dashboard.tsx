@@ -136,7 +136,7 @@ export default function Dashboard() {
   if (isLoading) {
     return (
       <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
-        <Header title="Dashboard" />
+        <Header title="🤖 Dashboard" />
         <div className="p-4 space-y-6">
           <div className="animate-pulse">
             {/* Stats Cards */}
@@ -179,7 +179,7 @@ export default function Dashboard() {
       <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 lg:px-6 py-3 max-w-6xl mx-auto">
           <h1 className="text-xl lg:text-2xl font-bold text-foreground font-display">
-            Dashboard
+            🤖 Dashboard
           </h1>
         </div>
       </header>
@@ -261,7 +261,7 @@ export default function Dashboard() {
             <Button 
               onClick={handleFileUpload}
               variant="outline"
-              className="w-auto p-4 rounded-xl hover:bg-gray-100"
+              className="w-auto p-4 rounded-xl md:hover:bg-transparent"
               data-testid="button-upload-file"
             >
               <Upload className="w-5 h-5" />
