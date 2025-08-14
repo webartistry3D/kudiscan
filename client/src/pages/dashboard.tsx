@@ -260,7 +260,7 @@ export default function Dashboard() {
                 data-testid="button-manual-entry"
               >
                 <Edit3 className="w-5 h-5 mr-2" />
-                <span>Manual Entry</span>
+                <span>Type</span>
               </Button>
             </Link>
             <Button 
