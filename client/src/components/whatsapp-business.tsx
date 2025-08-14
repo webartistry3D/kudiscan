@@ -51,12 +51,23 @@ Thank you for your assistance!`;
     // Create WhatsApp URL with pre-filled message
     const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(formattedMessage)}`;
 
-    // Open WhatsApp in new tab/window
-    window.open(whatsappUrl, '_blank');
+    // Detect device type for optimal experience
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // On mobile, open WhatsApp app directly
+      window.location.href = whatsappUrl;
+    } else {
+      // On desktop/tablet, open WhatsApp Web in new tab
+      const whatsappWebUrl = `https://web.whatsapp.com/send?phone=${whatsappNumber.replace('+', '')}&text=${encodeURIComponent(formattedMessage)}`;
+      window.open(whatsappWebUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+    }
 
     toast({
       title: "Opening WhatsApp",
-      description: "You'll be redirected to WhatsApp with your message ready to send.",
+      description: isMobile 
+        ? "Opening WhatsApp app with your message ready to send."
+        : "Opening WhatsApp Web with your message ready to send.",
     });
 
     // Reset form and close modal
@@ -171,8 +182,8 @@ Thank you for your assistance!`;
               <div className="text-sm">
                 <p className="font-medium text-green-800 dark:text-green-200">WhatsApp Business</p>
                 <p className="text-green-700 dark:text-green-300 text-xs">
-                  You'll be redirected to WhatsApp with your message pre-filled. 
-                  Our team typically responds within 2-4 hours during business hours.
+                  Opens WhatsApp app on mobile or WhatsApp Web on desktop with your message pre-filled. 
+                  Our team typically responds within 2-4 hours during business hours (9 AM - 6 PM WAT).
                 </p>
               </div>
             </div>

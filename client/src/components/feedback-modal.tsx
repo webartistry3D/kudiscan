@@ -33,10 +33,9 @@ export function FeedbackModal({ trigger }: FeedbackModalProps) {
     setIsSubmitting(true);
     try {
       await apiRequest("POST", "/api/feedback", {
+        type: category,
         rating: parseInt(rating),
-        category,
         message: message.trim(),
-        timestamp: new Date().toISOString(),
       });
 
       toast({
