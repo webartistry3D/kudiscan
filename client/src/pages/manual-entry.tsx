@@ -279,18 +279,26 @@ export default function ManualEntry() {
                         <FormLabel>Total Amount (₦)</FormLabel>
                         <FormControl>
                           <Input 
-                            placeholder="₦0.00"
-                            {...field}
+                            placeholder="0"
+                            value={field.value}
                             onChange={(e) => {
-                              // Allow user to type numbers and format in real-time
+                              // Simply store the raw input, no formatting during typing
+                              field.onChange(e.target.value);
+                            }}
+                            onBlur={(e) => {
+                              // Format only when user leaves the field
                               const value = e.target.value.replace(/[^\d.]/g, '');
-                              if (value) {
-                                const numValue = parseFloat(value);
-                                if (!isNaN(numValue)) {
-                                  field.onChange(formatNaira(numValue));
-                                }
-                              } else {
+                              if (value && parseFloat(value) > 0) {
+                                field.onChange(formatNaira(parseFloat(value)));
+                              } else if (!value) {
                                 field.onChange('');
+                              }
+                            }}
+                            onFocus={(e) => {
+                              // Remove formatting when user focuses to allow easy editing
+                              const value = parseAmount(e.target.value);
+                              if (value > 0) {
+                                field.onChange(value.toString());
                               }
                             }}
                             data-testid="input-amount"
@@ -359,14 +367,23 @@ export default function ManualEntry() {
                             placeholder="₦Price"
                             value={item.price}
                             onChange={(e) => {
+                              // Store raw input during typing
+                              updateItem(index, 'price', e.target.value);
+                            }}
+                            onBlur={(e) => {
+                              // Format when user leaves the field
                               const value = e.target.value.replace(/[^\d.]/g, '');
-                              if (value) {
-                                const numValue = parseFloat(value);
-                                if (!isNaN(numValue)) {
-                                  updateItem(index, 'price', formatNaira(numValue));
-                                }
-                              } else {
+                              if (value && parseFloat(value) > 0) {
+                                updateItem(index, 'price', formatNaira(parseFloat(value)));
+                              } else if (!value) {
                                 updateItem(index, 'price', '');
+                              }
+                            }}
+                            onFocus={(e) => {
+                              // Remove formatting when user focuses
+                              const value = parseAmount(e.target.value);
+                              if (value > 0) {
+                                updateItem(index, 'price', value.toString());
                               }
                             }}
                             data-testid={`input-item-price-${index}`}
