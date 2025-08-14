@@ -85,7 +85,7 @@ export default function Landing() {
     },
     {
       icon: TrendingUp,
-      title: "Save Several Hours of Weekly Work",
+      title: "Save 10+ Hours of Work, Weekly",
       type: "benefit",
       description: "Eliminate manual data entry and receipt organization completely.",
       detail: "No more typing expense amounts or hunting for lost receipts. KudiScan automates everything, giving you back hours each week to focus on growing your business instead of paperwork.",
@@ -213,19 +213,7 @@ export default function Landing() {
             </span>
           </Link>
           <div className="flex items-center space-x-4">
-            <FeedbackModal 
-              trigger={
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-200"
-                  data-testid="feedback-nav"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Feedback
-                </Button>
-              }
-            />
+
             <Link href="/login">
               <Button variant="outline">Sign in</Button>
             </Link>
@@ -282,18 +270,18 @@ export default function Landing() {
                       }}
                       key={currentFeature}
                     >
-                      {/* Icon (same size as Naira logo) */}
-                      <div className="w-24 h-24 bg-white/10 flex items-center justify-center mb-6">
-                        {features[currentFeature].icon === Scan && <Scan className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-24 h-24 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-24 h-24 text-white" />}
-                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-6xl text-white">₦</span>}
+                      {/* Icon - Larger container to reach closer to margins */}
+                      <div className="w-32 h-32 bg-white/10 flex items-center justify-center mb-6 rounded-xl">
+                        {features[currentFeature].icon === Scan && <Scan className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-28 h-28 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-28 h-28 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-7xl text-white">₦</span>}
                       </div>
                       
                       {/* Title (1.5x larger) */}
@@ -325,10 +313,16 @@ export default function Landing() {
                 <circle cx="100" cy="22" r="3" fill="#374151"/>
                 <circle cx="100" cy="22" r="1.5" fill="#1f2937"/>
                 
-                {/* Status Bar */}
-                <rect x="25" y="35" width="150" height="20" fill="#111827"/>
-                <text x="30" y="47" fill="white" fontSize="8">9:41</text>
-                <text x="150" y="47" fill="white" fontSize="8">100%</text>
+                {/* Status Bar - Reduced for mobile */}
+                <rect x="25" y="35" width="150" height="18" fill="#111827"/>
+                <text x="30" y="45" fill="white" fontSize="7">9:41</text>
+                <g>
+                  {/* Battery Icon - Compact */}
+                  <rect x="145" y="38" width="12" height="6" rx="1" fill="white" stroke="white" strokeWidth="0.5"/>
+                  <rect x="157" y="40" width="1" height="2" fill="white"/>
+                  <rect x="146" y="39" width="8" height="4" fill="#4ade80"/>
+                  <text x="135" y="44" fill="white" fontSize="6">100%</text>
+                </g>
                 
                 {/* Mobile Feature Display */}
                 <rect x="35" y="60" width="130" height="290" fill="#111827"/>
@@ -350,18 +344,18 @@ export default function Landing() {
                       }}
                       key={currentFeature}
                     >
-                      {/* Mobile Icon */}
-                      <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-3">
-                        {features[currentFeature].icon === Scan && <Scan className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Eye && <Eye className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === FileText && <FileText className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Building && <Building className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Shield && <Shield className="w-8 h-8 text-white" />}
-                        {features[currentFeature].icon === Star && <Star className="w-8 h-8 text-white" />}
-                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-3xl text-white">₦</span>}
+                      {/* Mobile Icon - Larger container */}
+                      <div className="w-16 h-16 bg-white/10 flex items-center justify-center mb-3 rounded-lg">
+                        {features[currentFeature].icon === Scan && <Scan className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === TrendingUp && <TrendingUp className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Eye && <Eye className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === FileText && <FileText className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === BarChart3 && <BarChart3 className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Building && <Building className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Smartphone && <Smartphone className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Shield && <Shield className="w-10 h-10 text-white" />}
+                        {features[currentFeature].icon === Star && <Star className="w-10 h-10 text-white" />}
+                        {typeof features[currentFeature].icon === 'function' && features[currentFeature].icon !== Scan && features[currentFeature].icon !== TrendingUp && features[currentFeature].icon !== Eye && features[currentFeature].icon !== FileText && features[currentFeature].icon !== BarChart3 && features[currentFeature].icon !== Building && features[currentFeature].icon !== Smartphone && features[currentFeature].icon !== Shield && features[currentFeature].icon !== Star && <span className="text-4xl text-white">₦</span>}
                       </div>
                       
                       {/* Mobile Title */}
