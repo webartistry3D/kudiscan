@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -62,19 +62,25 @@ export default function Register() {
     registerMutation.mutate(data);
   };
 
+  // Scroll to top when component loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center justify-center p-4 relative">
-      {/* Visit Home Page Button */}
-      <div className="absolute top-4 right-4">
+      {/* Visit Home Page Button - Responsive positioning */}
+      <div className="absolute top-4 left-4 sm:left-auto sm:right-4 z-10">
         <Link href="/">
           <Button 
             variant="outline" 
             size="sm" 
-            className="bg-white/80 backdrop-blur-sm hover:bg-white border-primary/20 hover:border-primary/40"
+            className="bg-gradient-to-br from-primary/10 via-white to-secondary/10 hover:bg-gradient-to-br hover:from-primary/15 hover:via-white hover:to-secondary/15 border-primary hover:border-primary shadow-md text-xs sm:text-sm px-2 sm:px-4 text-primary hover:text-primary"
             data-testid="button-visit-home"
           >
-            <Home className="w-4 h-4 mr-2" />
-            Visit Home Page
+            <Home className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Visit Home Page</span>
+            <span className="sm:hidden">Home</span>
           </Button>
         </Link>
       </div>

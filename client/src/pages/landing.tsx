@@ -97,7 +97,7 @@ export default function Landing() {
       type: "feature",
       description: "AI powered OCR technology automatically extracts and categorizes all data on receipts.",
       detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns.",
-      color: "#991b1b" // Dark red
+      color: "#ea580c" // Orange
     },
     {
       icon: FileText,
@@ -315,13 +315,13 @@ export default function Landing() {
                 
                 {/* Status Bar - Reduced for mobile */}
                 <rect x="25" y="35" width="150" height="18" fill="#111827"/>
-                <text x="30" y="45" fill="white" fontSize="7">9:41</text>
+                <text x="35" y="45" fill="white" fontSize="7">9:41</text>
                 <g>
-                  {/* Battery Icon - Compact */}
-                  <rect x="145" y="38" width="12" height="6" rx="1" fill="white" stroke="white" strokeWidth="0.5"/>
-                  <rect x="157" y="40" width="1" height="2" fill="white"/>
-                  <rect x="146" y="39" width="8" height="4" fill="#4ade80"/>
-                  <text x="135" y="44" fill="white" fontSize="6">100%</text>
+                  {/* Battery Icon - Proper icon design */}
+                  <rect x="140" y="38" width="14" height="7" rx="1" fill="none" stroke="white" strokeWidth="0.5"/>
+                  <rect x="154" y="40" width="1.5" height="3" fill="white"/>
+                  <rect x="141" y="39" width="10" height="5" fill="#4ade80"/>
+                  <text x="128" y="44" fill="white" fontSize="6">100%</text>
                 </g>
                 
                 {/* Mobile Feature Display */}
@@ -486,7 +486,7 @@ export default function Landing() {
         backgroundRepeat: 'no-repeat'
       }}>
         <div className="max-w-4xl mx-auto text-center w-full flex flex-col justify-center h-full">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8 md:mb-12 font-display text-white">Join 100,000+ users who trust KudiScan</h3>
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8 md:mb-12 font-display text-white">Brands who trust us</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto">
             <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               Konga
@@ -789,41 +789,102 @@ export default function Landing() {
       }}>
         <div className="max-w-6xl mx-auto w-full flex flex-col justify-center h-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-3 md:mb-4 font-display text-white">
-            Seamless Integration
+            KudiScan Integration Ecosystem
           </h2>
           <p className="text-center mb-8 md:mb-10 text-base md:text-lg text-white/90 max-w-3xl mx-auto">
-            KudiScan works with your favorite tools and platforms
+            Connect with leading Nigerian and global platforms
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-4 md:p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <div className="w-16 h-16 md:w-18 md:h-18 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl md:text-3xl">📧</span>
+          {/* Payment, Financial & Banking Platforms */}
+          <div className="mb-8">
+            <h3 className="text-xl md:text-2xl font-semibold mb-6 text-white text-center">Payment, Financial & Banking Platforms</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-lg">₦</span>
+                </div>
+                <p className="text-sm text-white font-medium">Paystack</p>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">Email Integration</h3>
-              <p className="text-sm text-white/80 leading-relaxed">
-                Forward receipts to receipts@kudiscan.com for automatic processing
-              </p>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">GTB</span>
+                </div>
+                <p className="text-sm text-white font-medium">GTBank</p>
+              </div>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-blue-800 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">UBA</span>
+                </div>
+                <p className="text-sm text-white font-medium">UBA</p>
+              </div>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">ZEN</span>
+                </div>
+                <p className="text-sm text-white font-medium">Zenith Bank</p>
+              </div>
             </div>
-            
-            <div className="text-center p-4 md:p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <div className="w-16 h-16 md:w-18 md:h-18 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl md:text-3xl">🏦</span>
+          </div>
+
+          {/* Business & Productivity Tools */}
+          <div className="mb-8">
+            <h3 className="text-xl md:text-2xl font-semibold mb-6 text-white text-center">Business & Productivity Tools</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">MS</span>
+                </div>
+                <p className="text-sm text-white font-medium">Microsoft 365</p>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">Bank Integration</h3>
-              <p className="text-sm text-white/80 leading-relaxed">
-                Connect with major Nigerian banks for complete financial oversight
-              </p>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">XL</span>
+                </div>
+                <p className="text-sm text-white font-medium">Excel</p>
+              </div>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">PDF</span>
+                </div>
+                <p className="text-sm text-white font-medium">Adobe PDF</p>
+              </div>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">QB</span>
+                </div>
+                <p className="text-sm text-white font-medium">QuickBooks</p>
+              </div>
             </div>
-            
-            <div className="text-center p-4 md:p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <div className="w-16 h-16 md:w-18 md:h-18 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl md:text-3xl">📊</span>
+          </div>
+
+          {/* Data Processing & Storage */}
+          <div>
+            <h3 className="text-xl md:text-2xl font-semibold mb-6 text-white text-center">Data Processing & Storage</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">AWS</span>
+                </div>
+                <p className="text-sm text-white font-medium">Amazon Web Services</p>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">Export Options</h3>
-              <p className="text-sm text-white/80 leading-relaxed">
-                Export data to Excel, PDF, or your accounting software
-              </p>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">AZ</span>
+                </div>
+                <p className="text-sm text-white font-medium">Microsoft Azure</p>
+              </div>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">GC</span>
+                </div>
+                <p className="text-sm text-white font-medium">Google Cloud</p>
+              </div>
+              <div className="text-center p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white font-bold text-xs">DB</span>
+                </div>
+                <p className="text-sm text-white font-medium">Database Systems</p>
+              </div>
             </div>
           </div>
         </div>
