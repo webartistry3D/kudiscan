@@ -717,6 +717,175 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Benefits Section */}
+      <section className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#082118'}}>
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-white">
+            Why Nigerian Businesses Choose <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>
+          </h2>
+          <p className="text-center mb-12 md:mb-16 lg:mb-20 text-base md:text-lg lg:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+            Join thousands of Nigerian SMEs, freelancers, and entrepreneurs who trust KudiScan to streamline their financial management and unlock business growth opportunities.
+          </p>
+          
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mt-12 md:mt-16 lg:mt-20 w-full">
+            {/* Save Time & Reduce Errors */}
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <Camera className="w-14 h-14 text-white" />
+              </div>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Save 10+ Hours Weekly</h3>
+              <p className="text-sm text-white mb-4">
+                Eliminate manual data entry and receipt organization. Our AI does the work for you.
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Save 10+ Hours Weekly</DialogTitle>
+                    <DialogDescription>
+                      Stop wasting time on manual expense tracking. KudiScan's AI-powered OCR technology captures receipt data in seconds, automatically categorizes expenses, and generates reports instantly. Nigerian business owners report saving 10+ hours weekly on financial admin tasks, allowing them to focus on growing their business instead of paperwork.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </div>
+
+            {/* Unlock Business Credit */}
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-14 h-14 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Unlock Business Loans</h3>
+              <p className="text-sm text-white mb-4">
+                Generate bank-ready financial reports that meet CBN lending requirements.
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Unlock Business Loans</DialogTitle>
+                    <DialogDescription>
+                      Access business credit and government intervention funds with professional financial reports. Our reports meet Central Bank of Nigeria (CBN) requirements for SME lending, helping you secure loans from banks like GTBank, UBA, Zenith Bank, and access programs like BOI, NIRSAL, and AGSMEIS funding opportunities.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </div>
+
+            {/* Tax Compliance Made Easy */}
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-14 h-14 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Tax Compliance</h3>
+              <p className="text-sm text-white mb-4">
+                Stay FIRS compliant with automated VAT and income tax documentation.
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Tax Compliance Made Easy</DialogTitle>
+                    <DialogDescription>
+                      Never worry about FIRS audits again. KudiScan automatically organizes all expense receipts with proper categorization for VAT filing, company income tax returns, and withholding tax documentation. Built-in compliance features ensure all records meet Federal Inland Revenue Service (FIRS) digital documentation standards.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </div>
+
+            {/* Real-Time Financial Insights */}
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="w-14 h-14 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Smart Financial Insights</h3>
+              <p className="text-sm text-white mb-4">
+                Get real-time spending analytics and budget alerts to make better business decisions.
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Smart Financial Insights</DialogTitle>
+                    <DialogDescription>
+                      Make data-driven decisions with real-time financial analytics. Track spending patterns, identify cost-saving opportunities, monitor budget performance, and receive alerts before overspending. Our Nigerian market-specific insights help you optimize cash flow and identify profitable growth areas for your business.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </div>
+
+            {/* Mobile-First Nigerian Design */}
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="w-14 h-14 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Built for Nigeria</h3>
+              <p className="text-sm text-white mb-4">
+                Mobile-first design with native Naira support and offline capabilities.
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Built for Nigeria</DialogTitle>
+                    <DialogDescription>
+                      Designed specifically for the Nigerian market with mobile-first functionality, native Naira currency support, offline capabilities for unreliable network areas, and integration with local payment systems like Paystack. Works seamlessly across Nigerian banks and supports both formal and informal business expense tracking needs.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </div>
+
+            {/* Bank-Level Security */}
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Users className="w-14 h-14 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Trusted by 10,000+ Users</h3>
+              <p className="text-sm text-white mb-4">
+                Join Nigerian entrepreneurs and SMEs who trust KudiScan with their financial data.
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-sm p-0 text-white hover:text-white/80">Learn More</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Trusted by 10,000+ Nigerian Users</DialogTitle>
+                    <DialogDescription>
+                      Protected with 256-bit encryption used by major Nigerian banks. Your sensitive business data never leaves secure Nigerian data centers. Trusted by over 10,000 Nigerian SMEs, freelancers, and entrepreneurs from Lagos to Abuja, Kano to Port Harcourt. GDPR compliant with local Nigerian data protection standards.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12 md:mt-16 lg:mt-20">
+            <Link href="/register">
+              <Button size="lg" className="px-8" data-testid="button-benefits-cta">
+                Start Your Free Trial
+              </Button>
+            </Link>
+            <p className="text-white/60 text-sm mt-4">
+              10 free receipt scans monthly • No credit card required • Upgrade anytime
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Nigerian Federal Government Compliance Section */}
       <section className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
         <div className="max-w-6xl mx-auto w-full">
