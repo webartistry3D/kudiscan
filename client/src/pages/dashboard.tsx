@@ -251,7 +251,7 @@ export default function Dashboard() {
               data-testid="button-scan-receipt"
             >
               <Camera className="w-5 h-5 mr-2" />
-              <span>Scan Receipt</span>
+              <span>Scan</span>
             </Button>
             <Link href="/manual-entry">
               <Button 
