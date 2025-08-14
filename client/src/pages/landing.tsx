@@ -62,9 +62,10 @@ export default function Landing() {
   const fullText = "Scan. Track. Report.";
   
   // Carousel state for features
-  const [currentFeature, setCurrentFeature] = useState(0);
+  const [currentFeature, setCurrentFeature] = useState(-1); // Start with -1 to hide first slide initially
   const [isCarouselLoaded, setIsCarouselLoaded] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [showSlides, setShowSlides] = useState(false);
   
   const features = [
     {
@@ -184,16 +185,23 @@ export default function Landing() {
       setIsCarouselLoaded(true);
     }, 500);
     
-    // Initialize carousel after component is fully loaded
+    // Show first slide after a delay (3 seconds after page load)
+    const firstSlideDelay = setTimeout(() => {
+      setShowSlides(true);
+      setCurrentFeature(0); // Show first slide
+    }, 3000);
+    
+    // Initialize carousel after first slide is shown
     const initializationDelay = setTimeout(() => {
       setHasAnimated(true); // Enable animations for subsequent slides
       carouselTimer = setInterval(() => {
         setCurrentFeature((prev) => (prev + 1) % features.length);
       }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
-    }, 2000);
+    }, 4000); // Start carousel 1 second after first slide appears
     
     return () => {
       clearTimeout(loadingDelay);
+      clearTimeout(firstSlideDelay);
       clearTimeout(initializationDelay);
       if (carouselTimer) clearInterval(carouselTimer);
     };
@@ -262,10 +270,11 @@ export default function Landing() {
                 {/* Feature Content (1.5x larger) */}
                 <foreignObject x="60" y="60" width="600" height="360">
                   <div className="slide-container">
+                    {showSlides && currentFeature >= 0 && (
                     <div 
                       className="slide-content p-9"
                       style={{
-                        animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : 'none',
+                        animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : currentFeature === 0 ? `slideInOut 6s ease-in-out` : 'none',
                         background: features[currentFeature].color || '#111827'
                       }}
                       key={currentFeature}
@@ -294,6 +303,7 @@ export default function Landing() {
                         {features[currentFeature].description}
                       </p>
                     </div>
+                    )}
                   </div>
                 </foreignObject>
               </svg>
@@ -327,10 +337,11 @@ export default function Landing() {
                 
                 <foreignObject x="35" y="60" width="130" height="290">
                   <div className="slide-container">
+                    {showSlides && currentFeature >= 0 && (
                     <div 
                       className="slide-content p-4"
                       style={{
-                        animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : 'none',
+                        animation: hasAnimated && currentFeature > 0 ? `slideInOut 6s ease-in-out` : currentFeature === 0 ? `slideInOut 6s ease-in-out` : 'none',
                         background: features[currentFeature].color || '#111827'
                       }}
                       key={currentFeature}
@@ -359,6 +370,7 @@ export default function Landing() {
                         {features[currentFeature].description}
                       </p>
                     </div>
+                    )}
                   </div>
                 </foreignObject>
                 
