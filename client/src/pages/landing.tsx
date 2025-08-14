@@ -731,7 +731,7 @@ export default function Landing() {
             {/* Save Time & Reduce Errors */}
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Camera className="w-14 h-14 text-white" />
+                <Receipt className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Save 10+ Hours Weekly</h3>
               <p className="text-sm text-white mb-4">
@@ -755,7 +755,7 @@ export default function Landing() {
             {/* Unlock Business Credit */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-14 h-14 text-white" />
+                <Building className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Unlock Business Loans</h3>
               <p className="text-sm text-white mb-4">
@@ -779,7 +779,7 @@ export default function Landing() {
             {/* Tax Compliance Made Easy */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-14 h-14 text-white" />
+                <FileText className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Tax Compliance</h3>
               <p className="text-sm text-white mb-4">
@@ -803,7 +803,7 @@ export default function Landing() {
             {/* Real-Time Financial Insights */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-14 h-14 text-white" />
+                <PieChart className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Smart Financial Insights</h3>
               <p className="text-sm text-white mb-4">
@@ -851,7 +851,7 @@ export default function Landing() {
             {/* Bank-Level Security */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Users className="w-14 h-14 text-white" />
+                <Shield className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Trusted by 10,000+ Users</h3>
               <p className="text-sm text-white mb-4">
