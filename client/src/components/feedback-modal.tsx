@@ -32,11 +32,23 @@ export function FeedbackModal({ trigger }: FeedbackModalProps) {
 
     setIsSubmitting(true);
     try {
-      await apiRequest("POST", "/api/feedback", {
-        type: category,
-        rating: parseInt(rating),
-        message: message.trim(),
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: category,
+          rating: parseInt(rating),
+          message: message.trim(),
+        }),
+        credentials: "include",
       });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      }
 
       toast({
         title: "Feedback Submitted!",
@@ -50,11 +62,24 @@ export function FeedbackModal({ trigger }: FeedbackModalProps) {
       setOpen(false);
     } catch (error) {
       console.error("Error submitting feedback:", error);
-      toast({
-        title: "Submission Failed",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+      
+      if (errorMessage.includes("401")) {
+        toast({
+          title: "Authentication Required",
+          description: "Please log in to submit feedback.",
+          variant: "destructive",
+        });
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }

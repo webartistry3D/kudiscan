@@ -55,12 +55,12 @@ Thank you for your assistance!`;
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-      // On mobile, open WhatsApp app directly
-      window.location.href = whatsappUrl;
+      // On mobile, open WhatsApp directly
+      window.open(whatsappUrl, '_self');
     } else {
-      // On desktop/tablet, open WhatsApp Web in new tab
+      // On desktop/tablet, use WhatsApp Web
       const whatsappWebUrl = `https://web.whatsapp.com/send?phone=${whatsappNumber.replace('+', '')}&text=${encodeURIComponent(formattedMessage)}`;
-      window.open(whatsappWebUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+      window.open(whatsappWebUrl, '_blank');
     }
 
     toast({
@@ -106,7 +106,7 @@ Thank you for your assistance!`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
+      <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
         <DialogHeader>
           <DialogTitle className="text-gray-900 dark:text-white flex items-center gap-2">
             <MessageCircle className="w-5 h-5" style={{ color: '#25D366' }} />
