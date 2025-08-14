@@ -109,7 +109,7 @@ Thank you for your assistance!`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="w-[95vw] max-w-[425px] max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 mx-auto">
+      <DialogContent className="w-[95vw] max-w-[425px] max-h-[85vh] overflow-y-auto overflow-x-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 mx-auto">
         <DialogHeader>
           <DialogTitle className="text-gray-900 dark:text-white flex items-center gap-2">
             <MessageCircle className="w-5 h-5" style={{ color: '#25D366' }} />
@@ -120,24 +120,24 @@ Thank you for your assistance!`;
           </DialogDescription>
         </DialogHeader>
         
-        <div className="space-y-4 py-4">
+        <div className="space-y-4 py-4 w-full min-w-0">
           {/* Quick Message Options */}
-          <div className="space-y-2">
+          <div className="space-y-2 w-full">
             <Label className="text-gray-900 dark:text-white text-sm font-medium">
               Quick Messages
             </Label>
-            <div className="grid gap-2">
+            <div className="grid gap-2 w-full">
               {quickMessages.map((quickMsg, index) => (
                 <Button
                   key={index}
                   variant="outline"
-                  className="text-left justify-start h-auto p-3 text-sm"
+                  className="text-left justify-start h-auto p-3 text-sm w-full whitespace-normal"
                   onClick={() => handleQuickMessage(quickMsg)}
                   data-testid={`quick-message-${quickMsg.type}`}
                 >
-                  <div className="flex flex-col items-start">
-                    <span className="font-medium">{inquiryTypes.find(t => t.value === quickMsg.type)?.label}</span>
-                    <span className="text-gray-500 text-xs">{quickMsg.text}</span>
+                  <div className="flex flex-col items-start w-full min-w-0">
+                    <span className="font-medium text-left break-words">{inquiryTypes.find(t => t.value === quickMsg.type)?.label}</span>
+                    <span className="text-gray-500 text-xs text-left break-words">{quickMsg.text}</span>
                   </div>
                 </Button>
               ))}
@@ -145,17 +145,17 @@ Thank you for your assistance!`;
           </div>
 
           {/* Inquiry Type */}
-          <div className="space-y-2">
-            <Label htmlFor="inquiry-type" className="text-gray-900 dark:text-white">
+          <div className="space-y-2 w-full">
+            <Label htmlFor="inquiry-type" className="text-gray-900 dark:text-white text-sm">
               Inquiry Type
             </Label>
             <Select value={inquiryType} onValueChange={setInquiryType}>
-              <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600" data-testid="inquiry-type-select">
+              <SelectTrigger className="w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-sm" data-testid="inquiry-type-select">
                 <SelectValue placeholder="Select inquiry type" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="w-full">
                 {inquiryTypes.map((type) => (
-                  <SelectItem key={type.value} value={type.value}>
+                  <SelectItem key={type.value} value={type.value} className="text-sm">
                     {type.label}
                   </SelectItem>
                 ))}
@@ -164,8 +164,8 @@ Thank you for your assistance!`;
           </div>
 
           {/* Message */}
-          <div className="space-y-2">
-            <Label htmlFor="message" className="text-gray-900 dark:text-white">
+          <div className="space-y-2 w-full">
+            <Label htmlFor="message" className="text-gray-900 dark:text-white text-sm">
               Your Message
             </Label>
             <Textarea
@@ -173,18 +173,18 @@ Thank you for your assistance!`;
               placeholder="Describe your inquiry or how we can help you..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="min-h-[100px] bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
+              className="w-full min-h-[100px] bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm resize-none"
               data-testid="whatsapp-message"
             />
           </div>
 
           {/* WhatsApp Info */}
-          <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
-            <div className="flex items-start gap-2">
-              <MessageCircle className="w-4 h-4 mt-0.5" style={{ color: '#25D366' }} />
-              <div className="text-sm">
+          <div className="w-full bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
+            <div className="flex items-start gap-2 w-full">
+              <MessageCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#25D366' }} />
+              <div className="text-sm flex-1 min-w-0">
                 <p className="font-medium text-green-800 dark:text-green-200">WhatsApp Business</p>
-                <p className="text-green-700 dark:text-green-300 text-xs">
+                <p className="text-green-700 dark:text-green-300 text-xs break-words">
                   Opens WhatsApp app on mobile or WhatsApp Web on desktop with your message pre-filled. 
                   Our team typically responds within 2-4 hours during business hours (9 AM - 6 PM WAT).
                 </p>
@@ -193,10 +193,11 @@ Thank you for your assistance!`;
           </div>
         </div>
 
-        <div className="flex justify-end gap-3 pt-4">
+        <div className="flex justify-end gap-3 pt-4 w-full">
           <Button
             variant="outline"
             onClick={() => setOpen(false)}
+            className="text-sm"
             data-testid="whatsapp-cancel"
           >
             Cancel
@@ -204,7 +205,7 @@ Thank you for your assistance!`;
           <Button
             onClick={handleSendWhatsApp}
             disabled={!inquiryType || !message.trim()}
-            className="gap-2"
+            className="gap-2 text-sm whitespace-nowrap"
             style={{ backgroundColor: '#25D366' }}
             data-testid="whatsapp-send"
           >
