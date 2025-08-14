@@ -163,7 +163,7 @@ export default function ManualEntry() {
       merchant: data.merchant,
       category: selectedCategory?.name || "Uncategorized",
       amount: parseAmount(data.amount).toString(), // Convert formatted amount back to decimal string
-      date: data.date, 
+      date: new Date(data.date), // Convert to Date object for backend validation
       notes: data.notes || "",
       items: validItems.map(item => 
         `${item.name} (Qty: ${item.quantity}, Price: ${item.price})`
