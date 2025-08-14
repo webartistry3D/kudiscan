@@ -66,6 +66,7 @@ export default function Landing() {
   const [isCarouselLoaded, setIsCarouselLoaded] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [showSlides, setShowSlides] = useState(false);
+  const [isFirstSlideShown, setIsFirstSlideShown] = useState(false);
   
   const features = [
     {
@@ -189,15 +190,24 @@ export default function Landing() {
     const firstSlideDelay = setTimeout(() => {
       setShowSlides(true);
       setCurrentFeature(0); // Show first slide
+      setIsFirstSlideShown(true);
     }, 3000);
     
-    // Initialize carousel after first slide is shown
+    // Initialize carousel after first slide is shown (start with slide 1, not cycling back to 0)
     const initializationDelay = setTimeout(() => {
       setHasAnimated(true); // Enable animations for subsequent slides
+      setCurrentFeature(1); // Move to second slide immediately
+      
+      let slideIndex = 1; // Start from second slide
       carouselTimer = setInterval(() => {
-        setCurrentFeature((prev) => (prev + 1) % features.length);
+        slideIndex = slideIndex + 1;
+        // Skip slide 0 (first slide) in the cycle to prevent reappearance
+        if (slideIndex >= features.length) {
+          slideIndex = 1; // Skip back to slide 1, not slide 0
+        }
+        setCurrentFeature(slideIndex);
       }, 6000); // Change feature/benefit every 6 seconds for slow, captivating viewing
-    }, 4000); // Start carousel 1 second after first slide appears
+    }, 9000); // Start carousel after first slide has been displayed for 6 seconds
     
     return () => {
       clearTimeout(loadingDelay);
