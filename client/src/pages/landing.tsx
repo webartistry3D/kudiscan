@@ -208,7 +208,7 @@ export default function Landing() {
           <Link href="/" className="flex items-center space-x-2">
             <Bot className="w-10 h-10 text-primary mr-2" />
             <span className="text-2xl font-bold">
-              <span style={{color: '#29A378'}}>Kudi</span>
+              <span className="text-white">Kudi</span>
               <span className="text-white">Scan</span>
             </span>
           </Link>
@@ -314,13 +314,13 @@ export default function Landing() {
                 <circle cx="100" cy="22" r="1.5" fill="#1f2937"/>
                 
                 {/* Status Bar - Reduced for mobile */}
-                <rect x="25" y="35" width="150" height="18" fill="#111827"/>
+                <rect x="25" y="35" width="150" height="18" rx="4" fill="#111827"/>
                 <text x="35" y="45" fill="white" fontSize="7">9:41</text>
                 <g>
-                  {/* Battery Icon - Proper icon design */}
+                  {/* Battery Icon - No color, just outline */}
                   <rect x="140" y="38" width="14" height="7" rx="1" fill="none" stroke="white" strokeWidth="0.5"/>
                   <rect x="154" y="40" width="1.5" height="3" fill="white"/>
-                  <rect x="141" y="39" width="10" height="5" fill="#4ade80"/>
+                  <rect x="141" y="39" width="10" height="5" fill="none" stroke="white" strokeWidth="0.3"/>
                   <text x="128" y="44" fill="white" fontSize="6">100%</text>
                 </g>
                 
@@ -465,7 +465,7 @@ export default function Landing() {
               
               <Link href="/register" className="w-full">
                 <Button variant="outline" size="lg" className="w-full justify-center text-center px-4 text-base md:text-lg" data-testid="button-small-business">
-                  Manage expenses for my business
+                  Manage my business expenses
                 </Button>
               </Link>
               
@@ -1252,7 +1252,7 @@ export default function Landing() {
                   className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
                   aria-label="Scroll to top"
                 >
-                  <ChevronUp className="w-5 h-5" />
+                  <ChevronUp className="w-5 h-5 text-white" />
                 </button>
               </div>
             </div>
