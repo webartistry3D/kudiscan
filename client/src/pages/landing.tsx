@@ -723,9 +723,7 @@ export default function Landing() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-white">
             Why Nigerian Businesses Choose <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>
           </h2>
-          <p className="text-center mb-12 md:mb-16 lg:mb-20 text-base md:text-lg lg:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-            Join thousands of Nigerian SMEs, freelancers, and entrepreneurs who trust KudiScan to streamline their financial management and unlock business growth opportunities.
-          </p>
+
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mt-12 md:mt-16 lg:mt-20 w-full">
             {/* Save Time & Reduce Errors */}
@@ -781,7 +779,7 @@ export default function Landing() {
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <FileText className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Tax Compliance</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Tax & Audit</h3>
               <p className="text-sm text-white mb-4">
                 Stay FIRS compliant with automated VAT and income tax documentation.
               </p>
@@ -952,7 +950,7 @@ export default function Landing() {
             KudiScan Integration Ecosystem
           </h2>
           <p className="text-center mb-8 md:mb-10 text-base md:text-lg text-white/90 max-w-3xl mx-auto">
-            Connect with leading Nigerian and global platforms
+            We connect with leading Nigerian and global platforms
           </p>
           
           {/* Payment, Financial & Banking Platforms */}
@@ -1401,7 +1399,7 @@ export default function Landing() {
             <div className="flex flex-col md:flex-row justify-between items-center relative z-10">
               <div className="mb-4 md:mb-0 text-center md:text-left">
                 <p className="text-sm text-muted-foreground">
-                  © 2025 <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>. © Powered by WebArtistry. All rights reserved. Built for Nigeria 🇳🇬
+                  © 2025 <span style={{color: '#29A378'}}>Kudi</span><span className="text-muted-foreground">Scan</span>. © Powered by WebArtistry. All rights reserved.
                 </p>
               </div>
               
