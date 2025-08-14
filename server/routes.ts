@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertExpenseSchema, insertCategorySchema, loginSchema, registerSchema } from "@shared/schema";
+import { insertExpenseSchema, insertCategorySchema, insertFeedbackSchema, loginSchema, registerSchema } from "@shared/schema";
 import { z } from "zod";
 import multer from "multer";
 import passport from "passport";
@@ -714,6 +714,62 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error processing Paystack webhook:", error);
       res.status(500).json({ message: "Webhook processing failed" });
+    }
+  });
+
+  // Feedback routes
+  app.post("/api/feedback", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const validatedData = insertFeedbackSchema.parse(req.body);
+      const feedback = await storage.createFeedback(validatedData, userId);
+      res.status(201).json(feedback);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid data", errors: error.errors });
+      }
+      console.error("Feedback submission error:", error);
+      res.status(500).json({ message: "Failed to submit feedback" });
+    }
+  });
+
+  app.get("/api/feedback", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getCurrentUser(req).id;
+      const feedback = await storage.getFeedback(userId);
+      res.json(feedback);
+    } catch (error) {
+      console.error("Feedback fetch error:", error);
+      res.status(500).json({ message: "Failed to fetch feedback" });
+    }
+  });
+
+  // Admin feedback management
+  app.get("/api/admin/feedback", isAdmin, async (req, res) => {
+    try {
+      const allFeedback = await storage.getFeedback();
+      res.json(allFeedback);
+    } catch (error) {
+      console.error("Admin feedback fetch error:", error);
+      res.status(500).json({ message: "Failed to fetch feedback" });
+    }
+  });
+
+  app.put("/api/admin/feedback/:id", isAdmin, async (req, res) => {
+    try {
+      const { isResolved, adminResponse } = req.body;
+      const feedback = await storage.updateFeedbackStatus(
+        parseInt(req.params.id), 
+        isResolved, 
+        adminResponse
+      );
+      if (!feedback) {
+        return res.status(404).json({ message: "Feedback not found" });
+      }
+      res.json(feedback);
+    } catch (error) {
+      console.error("Admin feedback update error:", error);
+      res.status(500).json({ message: "Failed to update feedback" });
     }
   });
 

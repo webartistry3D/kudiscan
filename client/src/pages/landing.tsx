@@ -5,8 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus, Bot } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus, Bot, MessageCircle } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
+import { FeedbackModal } from "@/components/feedback-modal";
+import { WhatsAppBusiness } from "@/components/whatsapp-business";
 import { useState, useEffect } from "react";
 
 // Add CSS animations for seamless sliding carousel
@@ -211,7 +213,19 @@ export default function Landing() {
             </span>
           </Link>
           <div className="flex items-center space-x-4">
-
+            <FeedbackModal 
+              trigger={
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-200"
+                  data-testid="feedback-nav"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Feedback
+                </Button>
+              }
+            />
             <Link href="/login">
               <Button variant="outline">Sign in</Button>
             </Link>
@@ -1102,6 +1116,35 @@ export default function Landing() {
               <p className="text-sm text-muted-foreground mb-4">
                 Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
               </p>
+              {/* Contact Options */}
+              <div className="space-y-2 mb-4">
+                <FeedbackModal 
+                  trigger={
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="gap-2 w-full border-gray-600 text-gray-300 hover:bg-gray-800"
+                      data-testid="feedback-footer"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      Send Feedback
+                    </Button>
+                  }
+                />
+                <WhatsAppBusiness 
+                  trigger={
+                    <Button 
+                      size="sm" 
+                      className="gap-2 w-full" 
+                      style={{ backgroundColor: '#25D366' }}
+                      data-testid="whatsapp-footer"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      WhatsApp Support
+                    </Button>
+                  }
+                />
+              </div>
               <div className="flex space-x-4">
                 <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">Privacy</Link>
                 <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">Terms</Link>

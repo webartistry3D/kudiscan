@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, decimal, timestamp, uuid, boolean, index, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, decimal, timestamp, uuid, boolean, index, jsonb, serial, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
@@ -60,10 +60,26 @@ export const expenses = pgTable("expenses", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+// Feedback table for in-app feedback collection
+export const feedback = pgTable("feedback", {
+  id: serial("id").primaryKey(),
+  userId: uuid("user_id").references(() => users.id),
+  type: varchar("type", { length: 50 }).notNull(), // "feature", "bug", "support", "general"
+  rating: integer("rating"), // 1-5 star rating
+  subject: varchar("subject", { length: 200 }),
+  message: text("message").notNull(),
+  page: varchar("page", { length: 100 }), // which page feedback was submitted from
+  isResolved: boolean("is_resolved").default(false),
+  adminResponse: text("admin_response"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 // Define relations
 export const usersRelations = relations(users, ({ many }) => ({
   expenses: many(expenses),
   categories: many(categories),
+  feedback: many(feedback),
 }));
 
 export const categoriesRelations = relations(categories, ({ one }) => ({
@@ -76,6 +92,13 @@ export const categoriesRelations = relations(categories, ({ one }) => ({
 export const expensesRelations = relations(expenses, ({ one }) => ({
   user: one(users, {
     fields: [expenses.userId],
+    references: [users.id],
+  }),
+}));
+
+export const feedbackRelations = relations(feedback, ({ one }) => ({
+  user: one(users, {
+    fields: [feedback.userId],
     references: [users.id],
   }),
 }));
@@ -112,6 +135,13 @@ export const insertExpenseSchema = createInsertSchema(expenses).omit({
   createdAt: true,
 });
 
+export const insertFeedbackSchema = createInsertSchema(feedback).omit({
+  id: true,
+  userId: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
 // Types
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -121,3 +151,5 @@ export type Category = typeof categories.$inferSelect;
 export type InsertCategory = z.infer<typeof insertCategorySchema>;
 export type Expense = typeof expenses.$inferSelect;
 export type InsertExpense = z.infer<typeof insertExpenseSchema>;
+export type Feedback = typeof feedback.$inferSelect;
+export type InsertFeedback = z.infer<typeof insertFeedbackSchema>;

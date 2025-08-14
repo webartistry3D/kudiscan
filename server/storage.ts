@@ -5,9 +5,12 @@ import {
   type InsertUser,
   type Category,
   type InsertCategory,
+  type Feedback,
+  type InsertFeedback,
   users,
   expenses,
-  categories
+  categories,
+  feedback
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, and, gte, lte } from "drizzle-orm";
@@ -38,6 +41,11 @@ export interface IStorage {
   createCategory(category: InsertCategory, userId: string): Promise<Category>;
   updateCategory(id: string, updates: Partial<InsertCategory>, userId: string): Promise<Category | undefined>;
   deleteCategory(id: string, userId: string): Promise<boolean>;
+  
+  // Feedback operations
+  createFeedback(feedback: InsertFeedback, userId: string): Promise<Feedback>;
+  getFeedback(userId?: string): Promise<Feedback[]>;
+  updateFeedbackStatus(id: number, isResolved: boolean, adminResponse?: string): Promise<Feedback | undefined>;
   
   // Admin operations
   getAllUsers(): Promise<User[]>;
@@ -226,7 +234,36 @@ export class DatabaseStorage implements IStorage {
     const result = await db
       .delete(categories)
       .where(and(eq(categories.id, id), eq(categories.userId, userId)));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
+  }
+
+  // Feedback operations
+  async createFeedback(feedbackData: InsertFeedback, userId: string): Promise<Feedback> {
+    const [newFeedback] = await db
+      .insert(feedback)
+      .values({ ...feedbackData, userId })
+      .returning();
+    return newFeedback;
+  }
+
+  async getFeedback(userId?: string): Promise<Feedback[]> {
+    if (userId) {
+      return await db.select().from(feedback).where(eq(feedback.userId, userId)).orderBy(feedback.createdAt);
+    }
+    return await db.select().from(feedback).orderBy(feedback.createdAt);
+  }
+
+  async updateFeedbackStatus(id: number, isResolved: boolean, adminResponse?: string): Promise<Feedback | undefined> {
+    const [updatedFeedback] = await db
+      .update(feedback)
+      .set({ 
+        isResolved, 
+        adminResponse,
+        updatedAt: new Date()
+      })
+      .where(eq(feedback.id, id))
+      .returning();
+    return updatedFeedback;
   }
 
   // Admin operations
