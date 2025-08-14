@@ -22,7 +22,10 @@ const expenseSchema = z.object({
   merchant: z.string().min(1, "Merchant name is required"),
   categoryId: z.string().min(1, "Please select a category"),
   amount: z.string().min(1, "Amount is required").refine(
-    (val) => parseAmount(val) > 0,
+    (val) => {
+      const cleanVal = val.replace(/[₦,\s]/g, '');
+      return parseFloat(cleanVal) > 0;
+    },
     "Amount must be greater than 0"
   ),
   date: z.string().min(1, "Date is required"),
@@ -133,7 +136,7 @@ export default function ManualEntry() {
   const calculateItemsTotal = () => {
     return items.reduce((total, item) => {
       if (item.name && item.price) {
-        const itemPrice = parseAmount(item.price);
+        const itemPrice = parseFloat(item.price) || 0;
         return total + (itemPrice * item.quantity);
       }
       return total;
@@ -144,7 +147,7 @@ export default function ManualEntry() {
   useEffect(() => {
     const itemsTotal = calculateItemsTotal();
     if (itemsTotal > 0) {
-      form.setValue('amount', formatNaira(itemsTotal));
+      form.setValue('amount', itemsTotal.toString());
     }
   }, [items, form]);
 
@@ -153,17 +156,18 @@ export default function ManualEntry() {
     // Filter out empty items
     const validItems = items.filter(item => item.name && item.price);
     
+    // Find the selected category name
+    const selectedCategory = categories.find(cat => cat.id === data.categoryId);
+    
     const expenseData = {
       merchant: data.merchant,
-      categoryId: data.categoryId,
-      amount: parseAmount(data.amount),
-      date: new Date(data.date),
+      category: selectedCategory?.name || "Uncategorized",
+      amount: data.amount, // Keep as formatted string 
+      date: data.date, // Keep as string - backend will handle conversion
       notes: data.notes || "",
-      items: validItems.map(item => ({
-        name: item.name,
-        quantity: item.quantity,
-        price: parseAmount(item.price)
-      }))
+      items: validItems.map(item => 
+        `${item.name} (Qty: ${item.quantity}, Price: ${item.price})`
+      )
     };
 
     await createExpenseMutation.mutateAsync(expenseData);
@@ -278,11 +282,15 @@ export default function ManualEntry() {
                             placeholder="₦0.00"
                             {...field}
                             onChange={(e) => {
+                              // Allow user to type numbers, format on blur or submit
                               const value = e.target.value.replace(/[^\d.]/g, '');
-                              if (value) {
-                                field.onChange(formatNaira(parseAmount(value)));
-                              } else {
-                                field.onChange('');
+                              field.onChange(value);
+                            }}
+                            onBlur={(e) => {
+                              // Format the value when user leaves the field
+                              const value = e.target.value.replace(/[^\d.]/g, '');
+                              if (value && parseFloat(value) > 0) {
+                                field.onChange(parseFloat(value).toString());
                               }
                             }}
                             data-testid="input-amount"
@@ -352,7 +360,13 @@ export default function ManualEntry() {
                             value={item.price}
                             onChange={(e) => {
                               const value = e.target.value.replace(/[^\d.]/g, '');
-                              updateItem(index, 'price', value ? formatNaira(parseAmount(value)) : '');
+                              updateItem(index, 'price', value);
+                            }}
+                            onBlur={(e) => {
+                              const value = e.target.value.replace(/[^\d.]/g, '');
+                              if (value && parseFloat(value) > 0) {
+                                updateItem(index, 'price', parseFloat(value).toString());
+                              }
                             }}
                             data-testid={`input-item-price-${index}`}
                           />
@@ -377,7 +391,7 @@ export default function ManualEntry() {
                     <div className="pt-2 border-t">
                       <div className="flex justify-between text-sm">
                         <span>Calculated Total:</span>
-                        <span className="font-semibold">{formatNaira(calculateItemsTotal())}</span>
+                        <span className="font-semibold">₦{calculateItemsTotal().toLocaleString()}</span>
                       </div>
                     </div>
                   )}
