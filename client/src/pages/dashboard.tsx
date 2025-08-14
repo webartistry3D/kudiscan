@@ -244,32 +244,33 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
         <section className="px-4 py-4 max-w-full">
-          <div className="flex justify-center space-x-3 max-w-full">
+          <div className="flex justify-center space-x-2 sm:space-x-3 max-w-full overflow-x-auto">
             <Button 
               onClick={() => setShowCameraModal(true)}
-              className="w-auto bg-primary text-white py-4 px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg"
+              className="flex-shrink-0 min-w-0 bg-primary text-white py-3 px-4 sm:py-4 sm:px-6 rounded-xl font-semibold hover:bg-primary/90 shadow-lg text-sm sm:text-base"
               data-testid="button-scan-receipt"
             >
-              <Camera className="w-5 h-5 mr-2" />
-              <span>Scan</span>
+              <Camera className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="whitespace-nowrap">Scan</span>
             </Button>
             <Link href="/manual-entry">
               <Button 
                 variant="outline"
-                className="w-auto bg-secondary text-secondary-foreground py-4 px-6 rounded-xl font-semibold hover:bg-secondary/80 shadow-lg border-2"
+                className="flex-shrink-0 min-w-0 bg-secondary text-secondary-foreground py-3 px-4 sm:py-4 sm:px-6 rounded-xl font-semibold hover:bg-secondary/80 shadow-lg border-2 text-sm sm:text-base"
                 data-testid="button-manual-entry"
               >
-                <Edit3 className="w-5 h-5 mr-2" />
-                <span>Type</span>
+                <Edit3 className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                <span className="whitespace-nowrap">Type</span>
               </Button>
             </Link>
             <Button 
               onClick={handleFileUpload}
               variant="outline"
-              className="w-auto p-4 rounded-xl md:hover:bg-transparent"
+              className="flex-shrink-0 min-w-0 bg-secondary text-secondary-foreground py-3 px-4 sm:py-4 sm:px-6 rounded-xl font-semibold hover:bg-secondary/80 shadow-lg border-2 text-sm sm:text-base"
               data-testid="button-upload-file"
             >
-              <Upload className="w-5 h-5" />
+              <Upload className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="whitespace-nowrap">Upload</span>
             </Button>
           </div>
         </section>
