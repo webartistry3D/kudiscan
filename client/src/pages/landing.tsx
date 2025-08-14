@@ -624,7 +624,7 @@ export default function Landing() {
             {/* Naira Currency */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-4xl text-white">₦</span>
+                <span className="text-4xl font-bold text-white">₦</span>
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Naira Currency</h3>
               <p className="text-sm text-white mb-4">
