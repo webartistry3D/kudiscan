@@ -253,6 +253,15 @@ export default function Dashboard() {
               <Camera className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
               <span className="whitespace-nowrap">Scan</span>
             </Button>
+            <Button 
+              onClick={handleFileUpload}
+              variant="outline"
+              className="flex-shrink-0 min-w-0 bg-secondary text-secondary-foreground py-3 px-4 sm:py-4 sm:px-6 rounded-xl font-semibold hover:bg-secondary/80 shadow-lg border-2 text-sm sm:text-base"
+              data-testid="button-upload-file"
+            >
+              <Upload className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="whitespace-nowrap">Upload</span>
+            </Button>
             <Link href="/manual-entry">
               <Button 
                 variant="outline"
@@ -263,15 +272,6 @@ export default function Dashboard() {
                 <span className="whitespace-nowrap">Type</span>
               </Button>
             </Link>
-            <Button 
-              onClick={handleFileUpload}
-              variant="outline"
-              className="flex-shrink-0 min-w-0 bg-secondary text-secondary-foreground py-3 px-4 sm:py-4 sm:px-6 rounded-xl font-semibold hover:bg-secondary/80 shadow-lg border-2 text-sm sm:text-base"
-              data-testid="button-upload-file"
-            >
-              <Upload className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-              <span className="whitespace-nowrap">Upload</span>
-            </Button>
           </div>
         </section>
 
