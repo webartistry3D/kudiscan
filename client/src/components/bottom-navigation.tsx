@@ -1,10 +1,11 @@
-import { Home, List, BarChart3, Settings, Shield, Users } from "lucide-react";
+import { Home, List, BarChart3, Settings, Shield, Users, Edit3 } from "lucide-react";
 import { useLocation } from "wouter";
 import { Link } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 
 const userNavItems = [
   { path: "/", label: "Home", icon: Home },
+  { path: "/manual-entry", label: "Manual", icon: Edit3 },
   { path: "/transactions", label: "Transactions", icon: List },
   { path: "/reports", label: "Reports", icon: BarChart3 },
   { path: "/settings", label: "Settings", icon: Settings },

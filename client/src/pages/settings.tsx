@@ -305,7 +305,7 @@ export default function Settings() {
               </Button>
               
               {/* Feedback and WhatsApp Support */}
-              <div className="flex gap-2">
+              <div className="flex gap-2 justify-center">
                 <FeedbackModal 
                   trigger={
                     <Button 
@@ -315,7 +315,7 @@ export default function Settings() {
                       data-testid="button-feedback"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
-                      Send Feedback
+                      Feedback
                     </Button>
                   }
                 />
@@ -329,7 +329,7 @@ export default function Settings() {
                       data-testid="button-whatsapp-support"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
-                      WhatsApp Support
+                      WhatsApp
                     </Button>
                   }
                 />

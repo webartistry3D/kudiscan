@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Camera, Upload, Bot } from "lucide-react";
+import { Camera, Upload, Bot, Edit3 } from "lucide-react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/header";
@@ -252,6 +253,16 @@ export default function Dashboard() {
               <Camera className="w-5 h-5 mr-2" />
               <span>Scan Receipt</span>
             </Button>
+            <Link href="/manual-entry">
+              <Button 
+                variant="outline"
+                className="w-auto bg-secondary text-secondary-foreground py-4 px-6 rounded-xl font-semibold hover:bg-secondary/80 shadow-lg border-2"
+                data-testid="button-manual-entry"
+              >
+                <Edit3 className="w-5 h-5 mr-2" />
+                <span>Manual Entry</span>
+              </Button>
+            </Link>
             <Button 
               onClick={handleFileUpload}
               variant="outline"

@@ -1365,7 +1365,7 @@ export default function Landing() {
                       data-testid="whatsapp-footer"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      WhatsApp Support
+                      WhatsApp
                     </Button>
                   }
                 />

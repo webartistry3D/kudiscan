@@ -10,6 +10,7 @@ import Landing from "@/pages/landing";
 import Login from "@/pages/login";
 import Register from "@/pages/register";
 import Dashboard from "@/pages/dashboard";
+import ManualEntry from "@/pages/manual-entry";
 import Transactions from "@/pages/transactions";
 import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
@@ -81,6 +82,7 @@ function Router() {
       {/* Protected routes */}
       <Route path="/" component={HomeComponent} />
       <Route path="/dashboard" component={() => <ProtectedRoute component={Dashboard} />} />
+      <Route path="/manual-entry" component={() => <ProtectedRoute component={ManualEntry} />} />
       <Route path="/transactions" component={() => <ProtectedRoute component={Transactions} />} />
       <Route path="/reports" component={() => <ProtectedRoute component={Reports} />} />
       <Route path="/settings" component={() => <ProtectedRoute component={Settings} />} />
