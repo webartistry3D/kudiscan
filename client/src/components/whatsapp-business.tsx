@@ -68,12 +68,15 @@ Thank you for your assistance!`;
       description: isMobile 
         ? "Opening WhatsApp app with your message ready to send."
         : "Opening WhatsApp Web with your message ready to send.",
+      duration: 3000,
     });
 
-    // Reset form and close modal
-    setInquiryType("");
-    setMessage("");
-    setOpen(false);
+    // Reset form and close modal after a short delay to prevent redirection issues
+    setTimeout(() => {
+      setInquiryType("");
+      setMessage("");
+      setOpen(false);
+    }, 100);
   };
 
   const quickMessages = [
@@ -106,7 +109,7 @@ Thank you for your assistance!`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
+      <DialogContent className="w-[95vw] max-w-[425px] max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 mx-auto">
         <DialogHeader>
           <DialogTitle className="text-gray-900 dark:text-white flex items-center gap-2">
             <MessageCircle className="w-5 h-5" style={{ color: '#25D366' }} />

@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/use-auth";
 import { useSettings } from "@/hooks/use-settings";
 import { useToast } from "@/hooks/use-toast";
+import { FeedbackModal } from "@/components/feedback-modal";
+import { WhatsAppBusiness } from "@/components/whatsapp-business";
 import { 
   User, 
   Bell, 
@@ -21,7 +23,8 @@ import {
   Download,
   Crown,
   Loader2,
-  IndianRupee
+  IndianRupee,
+  MessageCircle
 } from "lucide-react";
 
 export default function Settings() {
@@ -300,6 +303,37 @@ export default function Settings() {
                   <p className="text-sm text-primary/70">Version 1.0.0</p>
                 </div>
               </Button>
+              
+              {/* Feedback and WhatsApp Support */}
+              <div className="flex gap-2">
+                <FeedbackModal 
+                  trigger={
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="flex-1"
+                      data-testid="button-feedback"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Send Feedback
+                    </Button>
+                  }
+                />
+                
+                <WhatsAppBusiness 
+                  trigger={
+                    <Button 
+                      size="sm"
+                      className="flex-1" 
+                      style={{ backgroundColor: '#25D366' }}
+                      data-testid="button-whatsapp-support"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      WhatsApp Support
+                    </Button>
+                  }
+                />
+              </div>
             </CardContent>
           </Card>
 

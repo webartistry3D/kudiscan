@@ -1116,35 +1116,7 @@ export default function Landing() {
               <p className="text-sm text-muted-foreground mb-4">
                 Your automated finance assistant for Nigerian businesses. Scan, track, and scale with confidence.
               </p>
-              {/* Contact Options */}
-              <div className="space-y-2 mb-4">
-                <FeedbackModal 
-                  trigger={
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="gap-2 w-full border-gray-600 text-gray-300 hover:bg-gray-800"
-                      data-testid="feedback-footer"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Send Feedback
-                    </Button>
-                  }
-                />
-                <WhatsAppBusiness 
-                  trigger={
-                    <Button 
-                      size="sm" 
-                      className="gap-2 w-full" 
-                      style={{ backgroundColor: '#25D366' }}
-                      data-testid="whatsapp-footer"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      WhatsApp Support
-                    </Button>
-                  }
-                />
-              </div>
+
               <div className="flex space-x-4">
                 <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">Privacy</Link>
                 <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">Terms</Link>
