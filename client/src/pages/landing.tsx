@@ -208,7 +208,7 @@ export default function Landing() {
           <Link href="/" className="flex items-center space-x-2">
             <Bot className="w-10 h-10 text-primary mr-2" />
             <span className="text-2xl font-bold">
-              <span className="text-white">Kudi</span>
+              <span style={{color: '#29A378'}}>Kudi</span>
               <span className="text-white">Scan</span>
             </span>
           </Link>
@@ -1144,7 +1144,7 @@ export default function Landing() {
         <div className="max-w-2xl mx-auto text-center w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 font-display text-primary-foreground">Start managing your expenses today</h2>
           <p className="text-primary-foreground/80 mb-8">
-            Join thousands of Nigerian users who trust <span style={{color: '#29A378'}}>Kudi</span><span className="text-primary-foreground">Scan</span> for their expense tracking needs.
+            Join thousands of Nigerian users who trust <span className="text-primary-foreground">Kudi</span><span className="text-primary-foreground">Scan</span> for their expense tracking needs.
           </p>
           <Link href="/register">
             <Button size="lg" variant="secondary" className="px-8" data-testid="button-footer-cta">
