@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus, Bot, MessageCircle } from "lucide-react";
+import { Scan, PieChart, Receipt, Shield, Users, Smartphone, ArrowRight, Star, Car, Camera, TrendingUp, FileText, Building, Eye, Moon, Sun, ChevronUp, StarIcon, BarChart3, FileBarChart, Plus, Bot, MessageCircle, Calendar } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
 import { FeedbackModal } from "@/components/feedback-modal";
 import { WhatsAppBusiness } from "@/components/whatsapp-business";
@@ -731,7 +731,7 @@ export default function Landing() {
             {/* Save Time & Reduce Errors */}
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Receipt className="w-14 h-14 text-white" />
+                <Calendar className="w-14 h-14 text-white" />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Save 10+ Hours Weekly</h3>
               <p className="text-sm text-white mb-4">
@@ -755,7 +755,7 @@ export default function Landing() {
             {/* Unlock Business Credit */}
             <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Building className="w-14 h-14 text-white" />
+                <span className="text-4xl font-bold text-white">₦</span>
               </div>
               <h3 className="text-lg font-semibold mb-2 font-display text-white">Unlock Business Loans</h3>
               <p className="text-sm text-white mb-4">
@@ -829,7 +829,7 @@ export default function Landing() {
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Smartphone className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Built for Nigeria</h3>
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Mobile-First</h3>
               <p className="text-sm text-white mb-4">
                 Mobile-first design with native Naira support and offline capabilities.
               </p>
