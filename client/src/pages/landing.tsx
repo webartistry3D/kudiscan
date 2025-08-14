@@ -313,16 +313,7 @@ export default function Landing() {
                 <circle cx="100" cy="22" r="3" fill="#374151"/>
                 <circle cx="100" cy="22" r="1.5" fill="#1f2937"/>
                 
-                {/* Status Bar - Reduced for mobile */}
-                <rect x="25" y="35" width="150" height="18" rx="4" fill="#111827"/>
-                <text x="35" y="45" fill="white" fontSize="7">9:41</text>
-                <g>
-                  {/* Battery Icon - No color, just outline */}
-                  <rect x="140" y="38" width="14" height="7" rx="1" fill="none" stroke="white" strokeWidth="0.5"/>
-                  <rect x="154" y="40" width="1.5" height="3" fill="white"/>
-                  <rect x="141" y="39" width="10" height="5" fill="none" stroke="white" strokeWidth="0.3"/>
-                  <text x="128" y="44" fill="white" fontSize="6">100%</text>
-                </g>
+
                 
                 {/* Mobile Feature Display */}
                 <rect x="35" y="60" width="130" height="290" fill="#111827"/>
@@ -395,11 +386,11 @@ export default function Landing() {
               
               {/* Arrow 1 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
+                <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
+                  <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
                 </div>
               </div>
               
@@ -414,11 +405,11 @@ export default function Landing() {
               
               {/* Arrow 2 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
+                <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
+                  <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
                 </div>
               </div>
               
@@ -433,11 +424,11 @@ export default function Landing() {
               
               {/* Arrow 3 */}
               <div className="hidden md:block">
-                <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
+                <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
               </div>
               <div className="md:hidden">
                 <div className="w-6 h-6 rotate-90">
-                  <ArrowRight className="w-6 h-6 animate-arrow-pulse" style={{color: '#29A378'}} />
+                  <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
                 </div>
               </div>
               
