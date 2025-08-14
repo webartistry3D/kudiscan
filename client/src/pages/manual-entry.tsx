@@ -136,7 +136,7 @@ export default function ManualEntry() {
   const calculateItemsTotal = () => {
     return items.reduce((total, item) => {
       if (item.name && item.price) {
-        const itemPrice = parseFloat(item.price) || 0;
+        const itemPrice = parseAmount(item.price);
         return total + (itemPrice * item.quantity);
       }
       return total;
@@ -147,7 +147,7 @@ export default function ManualEntry() {
   useEffect(() => {
     const itemsTotal = calculateItemsTotal();
     if (itemsTotal > 0) {
-      form.setValue('amount', itemsTotal.toString());
+      form.setValue('amount', formatNaira(itemsTotal));
     }
   }, [items, form]);
 
@@ -162,8 +162,8 @@ export default function ManualEntry() {
     const expenseData = {
       merchant: data.merchant,
       category: selectedCategory?.name || "Uncategorized",
-      amount: data.amount, // Keep as formatted string 
-      date: data.date, // Keep as string - backend will handle conversion
+      amount: parseAmount(data.amount).toString(), // Convert formatted amount back to decimal string
+      date: data.date, 
       notes: data.notes || "",
       items: validItems.map(item => 
         `${item.name} (Qty: ${item.quantity}, Price: ${item.price})`
@@ -282,15 +282,15 @@ export default function ManualEntry() {
                             placeholder="₦0.00"
                             {...field}
                             onChange={(e) => {
-                              // Allow user to type numbers, format on blur or submit
+                              // Allow user to type numbers and format in real-time
                               const value = e.target.value.replace(/[^\d.]/g, '');
-                              field.onChange(value);
-                            }}
-                            onBlur={(e) => {
-                              // Format the value when user leaves the field
-                              const value = e.target.value.replace(/[^\d.]/g, '');
-                              if (value && parseFloat(value) > 0) {
-                                field.onChange(parseFloat(value).toString());
+                              if (value) {
+                                const numValue = parseFloat(value);
+                                if (!isNaN(numValue)) {
+                                  field.onChange(formatNaira(numValue));
+                                }
+                              } else {
+                                field.onChange('');
                               }
                             }}
                             data-testid="input-amount"
@@ -360,12 +360,13 @@ export default function ManualEntry() {
                             value={item.price}
                             onChange={(e) => {
                               const value = e.target.value.replace(/[^\d.]/g, '');
-                              updateItem(index, 'price', value);
-                            }}
-                            onBlur={(e) => {
-                              const value = e.target.value.replace(/[^\d.]/g, '');
-                              if (value && parseFloat(value) > 0) {
-                                updateItem(index, 'price', parseFloat(value).toString());
+                              if (value) {
+                                const numValue = parseFloat(value);
+                                if (!isNaN(numValue)) {
+                                  updateItem(index, 'price', formatNaira(numValue));
+                                }
+                              } else {
+                                updateItem(index, 'price', '');
                               }
                             }}
                             data-testid={`input-item-price-${index}`}
