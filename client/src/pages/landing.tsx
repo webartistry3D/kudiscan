@@ -876,7 +876,7 @@ export default function Landing() {
           <div className="text-center mt-12 md:mt-16 lg:mt-20">
             <Link href="/register">
               <Button size="lg" className="px-8" data-testid="button-benefits-cta">
-                Start Your Free Trial
+                Start Free
               </Button>
             </Link>
             <p className="text-white/60 text-sm mt-4">
