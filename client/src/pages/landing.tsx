@@ -155,7 +155,7 @@ export default function Landing() {
       type: "benefit",
       description: "Begin tracking expenses immediately with no upfront costs.",
       detail: "Get started with 10 free receipt scans monthly. Experience the full KudiScan advantage risk-free, then upgrade when you're ready to unlock unlimited scanning and advanced features.",
-      color: "#be185d" // Dark pink
+      color: "#a855f7" // Lilac
     }
   ];
   
@@ -499,7 +499,9 @@ export default function Landing() {
         backgroundRepeat: 'no-repeat'
       }}>
         <div className="max-w-4xl mx-auto text-center w-full flex flex-col justify-center h-full">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8 md:mb-12 font-display text-white">Brands who trust us</h3>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display text-white">
+            Brands Who Trust Us
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto">
             <div className="flex items-center justify-center h-12 bg-white/10 border border-white/20 rounded text-sm font-semibold text-white hover:scale-105 hover:bg-white/15 transition-all duration-200">
               Konga
@@ -548,7 +550,7 @@ export default function Landing() {
             </div>
 
             {/* AI + OCR Integration */}
-            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0ea5e9'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Eye className="w-14 h-14 text-white" />
               </div>
@@ -1358,7 +1360,7 @@ export default function Landing() {
                   trigger={
                     <Button 
                       size="sm" 
-                      className="gap-2 w-full" 
+                      className="gap-2 w-fit px-3" 
                       style={{ backgroundColor: '#25D366' }}
                       data-testid="whatsapp-footer"
                     >

@@ -311,7 +311,7 @@ export default function Settings() {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="flex-1"
+                      className="w-fit px-3"
                       data-testid="button-feedback"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
@@ -324,7 +324,7 @@ export default function Settings() {
                   trigger={
                     <Button 
                       size="sm"
-                      className="flex-1" 
+                      className="w-fit px-3" 
                       style={{ backgroundColor: '#25D366' }}
                       data-testid="button-whatsapp-support"
                     >
