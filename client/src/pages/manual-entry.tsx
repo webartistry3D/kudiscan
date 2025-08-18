@@ -159,14 +159,14 @@ export default function ManualEntry() {
     // Find the selected category name
     const selectedCategory = categories.find(cat => cat.id === data.categoryId);
     
-    // Prepare the date as an ISO string for backend
-    const dateValue = typeof data.date === 'string' ? new Date(data.date) : data.date;
+    // Ensure the date is formatted as YYYY-MM-DD string for database
+    const dateValue = typeof data.date === 'string' ? data.date : data.date.toISOString().split('T')[0];
     
     const expenseData = {
       merchant: data.merchant,
       category: selectedCategory?.name || "Uncategorized",
       amount: parseAmount(data.amount).toString(), // Convert formatted amount back to decimal string
-      date: dateValue.toISOString(), // Convert to ISO string for backend
+      date: dateValue, // Send as YYYY-MM-DD string
       notes: data.notes || "",
       items: validItems.map(item => 
         `${item.name} (Qty: ${item.quantity}, Price: ${item.price})`
@@ -182,22 +182,7 @@ export default function ManualEntry() {
       
       <main className="pb-24 px-4 py-4">
         <div className="max-w-2xl mx-auto">
-          {/* Header Section */}
-          <Card className="mb-6">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <Edit3 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle className="text-xl">Manual Receipt Entry</CardTitle>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Manually add expense details when OCR scanning isn't available
-                  </p>
-                </div>
-              </div>
-            </CardHeader>
-          </Card>
+
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
