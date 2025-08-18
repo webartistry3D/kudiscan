@@ -159,11 +159,14 @@ export default function ManualEntry() {
     // Find the selected category name
     const selectedCategory = categories.find(cat => cat.id === data.categoryId);
     
+    // Prepare the date as an ISO string for backend
+    const dateValue = typeof data.date === 'string' ? new Date(data.date) : data.date;
+    
     const expenseData = {
       merchant: data.merchant,
       category: selectedCategory?.name || "Uncategorized",
       amount: parseAmount(data.amount).toString(), // Convert formatted amount back to decimal string
-      date: new Date(data.date), // Convert to Date object for backend validation
+      date: dateValue.toISOString(), // Convert to ISO string for backend
       notes: data.notes || "",
       items: validItems.map(item => 
         `${item.name} (Qty: ${item.quantity}, Price: ${item.price})`
