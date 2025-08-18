@@ -159,14 +159,11 @@ export default function ManualEntry() {
     // Find the selected category name
     const selectedCategory = categories.find(cat => cat.id === data.categoryId);
     
-    // Ensure the date is formatted as YYYY-MM-DD string for database
-    const dateValue = typeof data.date === 'string' ? data.date : data.date.toISOString().split('T')[0];
-    
     const expenseData = {
       merchant: data.merchant,
       category: selectedCategory?.name || "Uncategorized",
-      amount: parseAmount(data.amount).toString(), // Convert formatted amount back to decimal string
-      date: dateValue, // Send as YYYY-MM-DD string
+      amount: parseAmount(data.amount).toString(),
+      date: data.date, // Send as date string - backend will convert it
       notes: data.notes || "",
       items: validItems.map(item => 
         `${item.name} (Qty: ${item.quantity}, Price: ${item.price})`
