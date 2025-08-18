@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -66,6 +66,25 @@ export default function ManualEntry() {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  // Handle input focus to prevent keyboard blocking
+  useEffect(() => {
+    const handleInputFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT') {
+        setTimeout(() => {
+          target.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center',
+            inline: 'nearest'
+          });
+        }, 300); // Delay to allow keyboard to appear
+      }
+    };
+
+    document.addEventListener('focusin', handleInputFocus);
+    return () => document.removeEventListener('focusin', handleInputFocus);
   }, []);
 
   // Fetch categories
@@ -177,7 +196,7 @@ export default function ManualEntry() {
     <div className="w-full max-w-none md:max-w-4xl lg:max-w-6xl mx-auto bg-background min-h-screen">
       <Header title="Manual Entry" />
       
-      <main className="pb-24 px-4 py-4">
+      <main className="pb-24 px-4 py-4" style={{ minHeight: '100vh' }}>
         <div className="max-w-2xl mx-auto">
 
 
