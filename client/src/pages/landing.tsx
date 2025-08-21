@@ -10,6 +10,8 @@ import { useSettings } from "@/hooks/use-settings";
 import { FeedbackModal } from "@/components/feedback-modal";
 import { WhatsAppBusiness } from "@/components/whatsapp-business";
 import { useState, useEffect } from "react";
+import Navbar from "@/components/navbar";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 // Add CSS animations for seamless sliding carousel
 const slideAnimationCSS = `
@@ -59,7 +61,7 @@ export default function Landing() {
   const { settings, toggleDarkMode } = useSettings();
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-  const fullText = "Scan. Track. Report.";
+  const fullText = "Scan. Track. Report. Secure Business Loans.";
   
   // Carousel state for features
   const [currentFeature, setCurrentFeature] = useState(-1); // Start with -1 to hide first slide initially
@@ -99,7 +101,7 @@ export default function Landing() {
       type: "feature",
       description: "AI powered OCR technology automatically extracts and categorizes all data on receipts.",
       detail: "Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes local context and learns from your patterns.",
-      color: "#ea580c" // Orange
+      color: "#b44a11ff" // Orange
     },
     {
       icon: FileText,
@@ -218,10 +220,12 @@ export default function Landing() {
   }, []);
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <style dangerouslySetInnerHTML={{__html: slideAnimationCSS}} />
       {/* Navbar */}
-      <nav className="px-4 py-4 bg-background border-b border-border">
+      {/* <nav className="px-4 py-4 bg-background border-b border-border">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Bot className="w-10 h-10 text-primary mr-2" />
@@ -237,19 +241,20 @@ export default function Landing() {
             </Link>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Hero Section */}
-      <section className="px-4 py-8 w-full" style={{backgroundColor: '#29A378'}}>
+      <section id="home" className="px-4 py-8 w-full pt-24 md:pt-28 lg:pt-32" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto text-center w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 font-display h-[3rem] sm:h-[4rem] md:h-[5rem] lg:h-[6rem] xl:h-[7rem] flex items-center justify-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 font-display h-[3rem] sm:h-[4rem] md:h-[5rem] lg:h-[6rem] xl:h-[7rem] flex items-center justify-center">
             <span className="typing-text inline-block text-center">
               {displayText}
               {isTyping && <span className="animate-pulse">|</span>}
             </span>
           </h1>
+        
           
-          {/* Trust Badge */}
+      {/* Trust Badge */}
 
           
           {/* Feature Carousel Display */}
@@ -392,12 +397,12 @@ export default function Landing() {
 
           <div className="max-w-5xl mx-auto mb-2">
             <p className="text-xl md:text-2xl lg:text-3xl text-white text-center mb-2 opacity-90 px-4 font-medium leading-relaxed">
-              Your <Bot className="inline-block w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mx-2 text-white animate-bot-pulse" /> automated finance assistant.
+              Your <Bot className="inline-block w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mx-2 text-white animate-bot-pulse" /> automated expense tracker.
             </p>
             
-            {/* Process Flow */}
+            {/* Process Flow 
             <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
-              {/* Step 1: Snap */}
+              {/* Step 1: Snap
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <Camera className="w-10 h-10 text-white" />
@@ -406,7 +411,7 @@ export default function Landing() {
                 <p className="text-sm md:text-base leading-tight text-white">Snap / Upload a receipt to scan your expenses</p>
               </div>
               
-              {/* Arrow 1 */}
+              {/* Arrow 1 
               <div className="hidden md:block">
                 <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
               </div>
@@ -416,7 +421,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              {/* Step 2: Track */}
+              {/* Step 2: Track
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <TrendingUp className="w-10 h-10 text-white" />
@@ -425,7 +430,7 @@ export default function Landing() {
                 <p className="text-sm md:text-base leading-tight text-white">Track spending across categories with intelligent insights</p>
               </div>
               
-              {/* Arrow 2 */}
+              {/* Arrow 2 
               <div className="hidden md:block">
                 <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
               </div>
@@ -435,7 +440,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              {/* Step 3: Report */}
+              {/* Step 3: Report 
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <FileText className="w-10 h-10 text-white" />
@@ -444,7 +449,7 @@ export default function Landing() {
                 <p className="text-sm md:text-base leading-tight text-white">Generate professional expense reports for business use</p>
               </div>
               
-              {/* Arrow 3 */}
+              {/* Arrow 3 
               <div className="hidden md:block">
                 <ArrowRight className="w-6 h-6 text-white animate-arrow-pulse" />
               </div>
@@ -454,7 +459,7 @@ export default function Landing() {
                 </div>
               </div>
               
-              {/* Step 4: Scale */}
+              {/* Step 4: Scale 
               <div className="flex flex-col items-center text-center p-4 w-48 min-h-[140px]">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3">
                   <Building className="w-10 h-10 text-white" />
@@ -462,7 +467,7 @@ export default function Landing() {
                 <h3 className="font-semibold text-white mb-1 text-base md:text-lg">Scale</h3>
                 <p className="text-sm md:text-base leading-tight text-white">Secure loans from banks and investors to scale your business</p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* CTA Section */}
@@ -470,12 +475,16 @@ export default function Landing() {
             <h3 className="text-xl md:text-2xl font-semibold mb-4 font-display text-white text-center">I want to:</h3>
             
             <div className="flex flex-col gap-3 w-full mx-auto">
+              <a href="#trust" className="w-full">
+                <Button variant="outline" size="lg" className="w-full justify-center text-center px-4 text-base md:text-lg" data-testid="button-small-business">
+                  Learn More
+                </Button>
+              </a>
               <Link href="/register" className="w-full">
                 <Button size="lg" className="w-full justify-center text-center px-4 text-base md:text-lg" data-testid="button-personal">
                   Track my personal expenses
                 </Button>
               </Link>
-              
               <Link href="/register" className="w-full">
                 <Button variant="outline" size="lg" className="w-full justify-center text-center px-4 text-base md:text-lg" data-testid="button-small-business">
                   Manage my business expenses
@@ -491,7 +500,7 @@ export default function Landing() {
 
 
       {/* Company Logos */}
-      <section className="px-4 py-12 md:py-14 lg:py-16 w-full overflow-hidden relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px]" style={{
+      <section id="trust" className="px-4 py-12 md:py-14 lg:py-16 w-full overflow-hidden relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px]" style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                      url("https://images.pexels.com/photos/955395/pexels-photo-955395.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")`,
         backgroundSize: 'cover',
@@ -520,13 +529,13 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
+      <section id="features" className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-foreground">Features</h2>
+          <h2 className="text-3xl md  :text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-foreground">Features</h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mt-12 md:mt-16 lg:mt-20 w-full">
             {/* Receipt Scanning */}
-            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#082118'}}>
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#1e3a8a'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
                 <Scan className="w-14 h-14 text-white" />
               </div>
@@ -542,7 +551,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>Receipt Scanning</DialogTitle>
                     <DialogDescription>
-                      Our advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts data such as name, item description, amount, date, and itemized purchases. No more manual data entry or lost receipts - everything is stored securely in the cloud and categorized for easy tracking.
+                      <br/>Our advanced OCR technology instantly captures and stores your receipts. Simply snap a photo and our AI automatically extracts data such as name, item description, amount, date, and itemized purchases. <br/><br/>No more manual data entry or lost receipts - everything is stored securely in the cloud and categorized for easy tracking.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -550,11 +559,11 @@ export default function Landing() {
             </div>
 
             {/* AI + OCR Integration */}
-            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0ea5e9'}}>
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#b44a11ff'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Eye className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">AI + OCR Integration</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 font-display text-white">AI + OCR Integration</h3>
               <p className="text-sm text-white mb-4">
                 AI powered OCR technology automatically extracts and categorizes all data on receipts.
               </p>
@@ -566,7 +575,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>AI + OCR Integration</DialogTitle>
                     <DialogDescription>
-                      Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. It recognizes and understands local context, handles poor image quality, and learns from your patterns to improve accuracy over time. The system automatically categorizes expenses and even detects potential duplicates.
+                      <br/>Our AI combines Machine Learning with optical character recognition to understand your receipts like a human would. <br/><br/>It recognizes and understands local context, handles poor image quality, and learns from your patterns to improve accuracy over time. The system automatically categorizes expenses and even detects potential duplicates.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -574,11 +583,11 @@ export default function Landing() {
             </div>
 
             {/* Financial Reporting */}
-            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#134E4A'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <BarChart3 className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Financial Reporting</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 font-display text-white">Financial Reporting</h3>
               <p className="text-sm text-white mb-4">
                 Generate tailored reports to analyze spend, identify trends, make smarter decisions and secure bank loans.
               </p>
@@ -590,7 +599,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>Financial Reporting</DialogTitle>
                     <DialogDescription>
-                      Create professional reports for business loans, investor presentations, or tax filing. Our reports include spending trends, category breakdowns, cash flow analysis, and projections. Export to PDF or Excel formats that banks and investors expect. Track profitability, identify cost-saving opportunities, and make data-driven financial decisions.
+                      <br/>Create professional reports for business loans, investor presentations, or tax filing. Our reports include spending trends, category breakdowns, cash flow analysis, and projections. <br/><br/>Export to PDF or Excel formats that banks and investors expect. Track profitability, identify cost-saving opportunities, and make data-driven financial decisions.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -598,11 +607,11 @@ export default function Landing() {
             </div>
 
             {/* Mobile-First Approach */}
-            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#334155'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Smartphone className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Mobile-First Approach</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 font-display text-white">Mobile-First Approach</h3>
               <p className="text-sm text-white mb-4">
                 Manage expenses and scan receipts on-the-go.
               </p>
@@ -614,7 +623,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>Mobile-First Approach</DialogTitle>
                     <DialogDescription>
-                      KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices. The interface is optimized for touch, works on slow networks, and consumes minimal data. Perfect for busy entrepreneurs who need to track expenses while moving between meetings, markets, or client visits.
+                      <br/>KudiScan was designed for the mobile-first Nigerian market. Capture receipts instantly, work offline when needed, and sync across all devices. <br/><br/>The interface is optimized for touch, works on slow networks, and consumes minimal data. Perfect for busy entrepreneurs who need to track expenses while moving between meetings, markets, or client visits.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -622,11 +631,11 @@ export default function Landing() {
             </div>
 
             {/* Bank-level Security */}
-            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#082118'}}>
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#581C87'}}>
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Bank-level Security</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 font-display text-white">Bank-level Security</h3>
               <p className="text-sm text-white mb-4">
                 Your financial data is protected with enterprise-grade encryption and security.
               </p>
@@ -638,7 +647,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>Bank-level Security</DialogTitle>
                     <DialogDescription>
-                      Your data is protected with 256-bit AES encryption, the same standard used by major banks. We use secure data centers in Nigeria, comply with international privacy standards, and never store sensitive banking credentials. Two-factor authentication, regular security audits, and encrypted data transmission ensure your financial information stays private and secure.
+                      <br/>Your data is protected with 256-bit AES encryption, the same standard used by major banks. We use secure data centers in Nigeria, comply with international privacy standards, and never store sensitive banking credentials. <br/><br/>Two-factor authentication, regular security audits, and encrypted data transmission ensure your financial information stays private and secure.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -650,7 +659,7 @@ export default function Landing() {
               <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-4xl font-bold text-white">₦</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2 font-display text-white">Naira Currency</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 font-display text-white">Naira Currency</h3>
               <p className="text-sm text-white mb-4">
                 Built for Nigerian users with native Naira support and local preferences.
               </p>
@@ -662,7 +671,7 @@ export default function Landing() {
                   <DialogHeader>
                     <DialogTitle>Naira Currency Support</DialogTitle>
                     <DialogDescription>
-                      Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, local tax considerations, and support for cash-heavy business models. Integration with Nigerian payment systems, understanding of local business practices, and support for both formal and informal sector expense tracking needs.
+                      <br/>Every feature is built with Nigerian Naira as the primary currency. Automatic kobo calculations, proper number formatting, local tax considerations, and support for cash-heavy business models. <br/><br/>Integration with Nigerian payment systems, understanding of local business practices, and support for both formal and informal sector expense tracking needs.
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -673,7 +682,7 @@ export default function Landing() {
       </section>
 
       {/* How It Works */}
-      <section className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#2D3339'}}>
+      <section id="howitworks" className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display" style={{color: '#E1E7EF'}}>
             How <span style={{color: '#29A378'}}>Kudi</span><span style={{color: '#E1E7EF'}}>Scan</span> Works
@@ -681,12 +690,12 @@ export default function Landing() {
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 w-full">
             <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
-              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+              <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Plus className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Add Expense</h3>
               <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
-                Press the Scan or Upload button to add receipt
+                You have 3 options to add a receipt record. Press Scan, Upload or Type button to add receipt.
               </p>
             </div>
 
@@ -700,13 +709,14 @@ export default function Landing() {
               </div>
             </div>
 
-            <div className="text-center w-full max-w-sm mx-auto">
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <BarChart3 className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Track & Analyze</h3>
               <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
-                View spending analytics, category breakdowns, and budget tracking to understand your spending patterns.
+                OCR extracts relevant expense data from receipts and stores them in an organized format.
+                {/*View spending analytics, category breakdowns, and budget tracking to understand your spending patterns.*/}
               </p>
             </div>
 
@@ -720,20 +730,20 @@ export default function Landing() {
               </div>
             </div>
 
-            <div className="text-center w-full max-w-sm mx-auto">
+            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto">
               <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <FileBarChart className="w-20 h-20" style={{color: '#29A378'}} />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display" style={{color: '#E1E7EF'}}>Generate Reports</h3>
               <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{color: '#959AA0'}}>
-                Generate expense reports for tracking, reimbursements, business investors and bank loan applications.
+                View records and generate professional expense reports for tracking and bank loan applications.
               </p>
             </div>
           </div>
 
           <div className="text-center mt-12">
             <Link href="/register">
-              <Button size="lg" className="px-8" data-testid="button-get-started-main">
+              <Button size="lg" className="px-8 text-lg md:text-xl font-semibold" data-testid="button-get-started-main">
                 Get Started
               </Button>
             </Link>
@@ -742,7 +752,7 @@ export default function Landing() {
       </section>
 
       {/* Benefits Section */}
-      <section className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#082118'}}>
+      <section id="benefits" className="px-4 py-16 md:py-20 lg:py-24 w-full" style={{backgroundColor: '#082118'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-white">
             Why Nigerian Businesses Choose <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span>
@@ -751,11 +761,12 @@ export default function Landing() {
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mt-12 md:mt-16 lg:mt-20 w-full">
             {/* Save Time & Reduce Errors */}
-            <div className="text-center w-full max-w-sm lg:max-w-md mx-auto p-6 md:p-8 lg:p-10 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
-              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+            <div className="text-center w-full max-w-sm mx-auto p-6 rounded-2xl" style={{backgroundColor: '#0f2a1e'}}>
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Calendar className="w-14 h-14 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Save 10+ Hours Weekly</h3>
+              {/*<h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 lg:mb-4 font-display text-white">Save 10+ Hours Weekly</h3>*/}
+              <h3 className="text-lg font-semibold mb-2 font-display text-white">Save 10+ Hours Weekly</h3>
               <p className="text-sm text-white mb-4">
                 Eliminate manual data entry and receipt organization. Our AI does the work for you.
               </p>
@@ -897,7 +908,7 @@ export default function Landing() {
           
           <div className="text-center mt-12 md:mt-16 lg:mt-20">
             <Link href="/register">
-              <Button size="lg" className="px-8" data-testid="button-benefits-cta">
+              <Button size="lg" className="px-8 text-lg md:text-xl font-semibold" data-testid="button-benefits-cta">
                 Start Free
               </Button>
             </Link>
@@ -909,7 +920,7 @@ export default function Landing() {
       </section>
 
       {/* Nigerian Federal Government Compliance Section */}
-      <section className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
+      <section id="nergp" className="px-4 py-16 md:py-20 lg:py-24 w-full bg-background">
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display text-foreground">
             Supporting Nigerian Business Growth
@@ -962,7 +973,7 @@ export default function Landing() {
       </section>
 
       {/* Integration Section */}
-      <section className="px-4 py-12 md:py-14 lg:py-16 w-full relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px]" style={{
+      <section id="integration" className="px-4 py-12 md:py-14 lg:py-16 w-full relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px]" style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
                      url("https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")`,
         backgroundSize: 'cover',
@@ -1073,7 +1084,7 @@ export default function Landing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
+      <section id="faqs" className="px-4 py-16 w-full" style={{backgroundColor: '#29A378'}}>
         <div className="max-w-4xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display" style={{color: '#E1E7EF'}}>
             Frequently Asked Questions
@@ -1111,7 +1122,7 @@ export default function Landing() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#2D3339'}}>
+      <section id="testimonials" className="px-4 py-16 w-full" style={{backgroundColor: '#2D3339'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 lg:mb-20 font-display text-white">
             What <span style={{color: '#29A378'}}>Kudi</span><span className="text-white">Scan</span> Users Are Saying
@@ -1183,7 +1194,7 @@ export default function Landing() {
       </section>
 
       {/* Pricing Section */}
-      <section className="px-4 py-16 w-full" style={{backgroundColor: '#22262A'}}>
+      <section id="pricing" className="px-4 py-16 w-full" style={{backgroundColor: '#22262A'}}>
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 font-display" style={{color: '#E1E7EF'}}>
             Choose Plan
@@ -1337,6 +1348,48 @@ export default function Landing() {
         </div>
       </section>
 
+      <section id="contact" className="px-4 py-20 bg-muted text-muted-foreground w-full">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-display text-foreground">
+            Get in Touch
+          </h2>
+          <p className="text-muted-foreground/80 mb-12">
+            Have questions, feedback, or partnership inquiries?  
+            Our team is ready to support you.
+          </p>
+
+          {/* Contact Info */}
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div className="flex flex-col items-center md:items-start">
+              <Mail className="h-8 w-8 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-foreground">Email</h3>
+              <p className="text-sm">support@kudiscan.com</p>
+            </div>
+            <div className="flex flex-col items-center md:items-start">
+              <Phone className="h-8 w-8 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-foreground">Phone</h3>
+              <p className="text-sm">+234 812 345 6789</p>
+            </div>
+            <div className="flex flex-col items-center md:items-start">
+              <MapPin className="h-8 w-8 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-foreground">Office</h3>
+              <p className="text-sm">Lagos, Nigeria</p>
+            </div>
+          </div>
+
+          {/* Call-to-action */}
+          <div className="mt-12">
+            <a
+              href="mailto:support@kudiscan.com"
+              className="inline-flex items-center px-8 py-3 bg-primary text-white rounded-lg shadow hover:bg-primary/90 transition"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="px-4 py-12 md:py-16 w-full bg-background border-t border-border">
         <div className="max-w-6xl mx-auto w-full">
@@ -1442,5 +1495,6 @@ export default function Landing() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

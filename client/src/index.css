@@ -374,3 +374,24 @@ input[data-testid="input-email"] {
     animation: slide-left-to-right 20s linear infinite;
   }
 }
+
+/* Avrimile loader animations */
+@keyframes avrimile-progress-move {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+.avrimile-progress {
+  /* gradient bar that sweeps left→right */
+  background-image: linear-gradient(90deg, #34d399, #10b981, #34d399);
+  animation: avrimile-progress-move 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .avrimile-progress { animation: none; width: 40%; transform: none; }
+}
+
+html {
+  scroll-behavior: smooth;
+}

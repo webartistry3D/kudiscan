@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KudiScan - AI-Powered Finance Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#059669',
+                        secondary: '#0F766E',
+                        accent: '#F59E0B',
+                        success: '#10B981',
+                        error: '#EF4444'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- @COMPONENT: App Container -->
+    <div class="max-w-md mx-auto bg-white min-h-screen shadow-xl relative">
+        
+        <!-- @COMPONENT: Header Navigation -->
+        <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+            <div class="flex items-center justify-between px-4 py-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-scan text-white text-sm"></i>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-900">KudiScan</h1>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="p-2 text-gray-600 hover:text-gray-900" data-event="click:showNotifications">
+                        <i class="fas fa-bell text-lg"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" data-event="click:showProfile">
+                        <i class="fas fa-user text-gray-600 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- @COMPONENT: Main Content Container -->
+        <main class="pb-20" id="mainContent">
+            
+            <!-- @COMPONENT: Dashboard Overview Section -->
+            <section class="px-4 py-6 bg-gradient-to-br from-primary to-secondary text-white">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <p class="text-green-100 text-sm font-medium">Total Expenses</p>
+                        <h2 class="text-2xl font-bold" data-bind="totalExpenses">₦127,450</h2>
+                        <p class="text-green-100 text-xs mt-1">This month</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-green-100 text-sm">Budget Left</p>
+                        <p class="text-lg font-semibold" data-bind="budgetLeft">₦22,550</p>
+                        <div class="w-20 h-2 bg-green-800 rounded-full mt-2 overflow-hidden">
+                            <div class="h-full bg-white rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-3 gap-3 mt-6">
+                    <div class="bg-white/10 backdrop-blur rounded-lg p-3 text-center">
+                        <i class="fas fa-receipt text-white/80 mb-1"></i>
+                        <p class="text-xs text-green-100">Receipts</p>
+                        <p class="font-semibold" data-bind="receiptCount">47</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-lg p-3 text-center">
+                        <i class="fas fa-chart-line text-white/80 mb-1"></i>
+                        <p class="text-xs text-green-100">Categories</p>
+                        <p class="font-semibold" data-bind="categoryCount">8</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-lg p-3 text-center">
+                        <i class="fas fa-calendar-day text-white/80 mb-1"></i>
+                        <p class="text-xs text-green-100">This Week</p>
+                        <p class="font-semibold" data-bind="weeklyExpenses">₦15,200</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- @COMPONENT: Quick Actions -->
+            <section class="px-4 py-4">
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary text-white py-4 px-6 rounded-xl font-semibold flex items-center justify-center space-x-2 shadow-lg hover:bg-primary/90 transition-colors" 
+                            data-event="click:openCamera" data-implementation="Should open camera interface for receipt capture">
+                        <i class="fas fa-camera text-lg"></i>
+                        <span>Scan Receipt</span>
+                    </button>
+                    <button class="bg-gray-100 text-gray-700 p-4 rounded-xl hover:bg-gray-200 transition-colors" 
+                            data-event="click:uploadFile" data-implementation="Should open file picker for receipt upload">
+                        <i class="fas fa-upload text-lg"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- @COMPONENT: Recent Transactions -->
+            <section class="px-4 py-2">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Recent Transactions</h3>
+                    <button class="text-primary text-sm font-medium" data-event="click:viewAllTransactions">View All</button>
+                </div>
+                
+                <!-- Transaction List -->
+                <!-- @MAP: recentTransactions.map(transaction => ( -->
+                <div class="space-y-3" data-mock="true">
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-shopping-cart text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900" data-bind="transaction.merchant">Shoprite Ikeja</p>
+                                    <p class="text-sm text-gray-500" data-bind="transaction.category">Groceries</p>
+                                    <p class="text-xs text-gray-400" data-bind="transaction.date">Today, 2:30 PM</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900" data-bind="transaction.amount">₦8,750</p>
+                                <span class="inline-block w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-gas-pump text-orange-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900" data-bind="transaction.merchant">Total Filling Station</p>
+                                    <p class="text-sm text-gray-500" data-bind="transaction.category">Transport</p>
+                                    <p class="text-xs text-gray-400" data-bind="transaction.date">Yesterday, 8:15 AM</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900" data-bind="transaction.amount">₦15,000</p>
+                                <span class="inline-block w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-utensils text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900" data-bind="transaction.merchant">Mama Cass Restaurant</p>
+                                    <p class="text-sm text-gray-500" data-bind="transaction.category">Food & Dining</p>
+                                    <p class="text-xs text-gray-400" data-bind="transaction.date">Yesterday, 1:45 PM</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900" data-bind="transaction.amount">₦3,500</p>
+                                <span class="inline-block w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </section>
+
+            <!-- @COMPONENT: Spending Categories -->
+            <section class="px-4 py-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Spending by Category</h3>
+                <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-shopping-cart text-blue-600 text-sm"></i>
+                                </div>
+                                <span class="font-medium text-gray-900">Groceries</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900">₦45,200</p>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full mt-1">
+                                    <div class="h-full bg-blue-500 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-gas-pump text-orange-600 text-sm"></i>
+                                </div>
+                                <span class="font-medium text-gray-900">Transport</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900">₦32,800</p>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full mt-1">
+                                    <div class="h-full bg-orange-500 rounded-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-utensils text-purple-600 text-sm"></i>
+                                </div>
+                                <span class="font-medium text-gray-900">Food & Dining</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900">₦28,400</p>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full mt-1">
+                                    <div class="h-full bg-purple-500 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-pills text-green-600 text-sm"></i>
+                                </div>
+                                <span class="font-medium text-gray-900">Healthcare</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900">₦21,050</p>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full mt-1">
+                                    <div class="h-full bg-green-500 rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- @COMPONENT: Bottom Navigation -->
+        <nav class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-200 px-4 py-2">
+            <div class="flex justify-around items-center">
+                <button class="flex flex-col items-center py-2 px-3 text-primary" data-event="click:showDashboard">
+                    <i class="fas fa-home text-lg mb-1"></i>
+                    <span class="text-xs font-medium">Home</span>
+                </button>
+                <button class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-primary transition-colors" data-event="click:showTransactions">
+                    <i class="fas fa-list text-lg mb-1"></i>
+                    <span class="text-xs">Transactions</span>
+                </button>
+                <button class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-primary transition-colors" data-event="click:showReports">
+                    <i class="fas fa-chart-bar text-lg mb-1"></i>
+                    <span class="text-xs">Reports</span>
+                </button>
+                <button class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-primary transition-colors" data-event="click:showSettings">
+                    <i class="fas fa-cog text-lg mb-1"></i>
+                    <span class="text-xs">Settings</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- @COMPONENT: Camera Interface Modal -->
+        <!-- @STATE: showCameraModal:boolean = false -->
+        <div id="cameraModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden">
+            <div class="flex flex-col h-full">
+                <!-- Camera Header -->
+                <div class="flex items-center justify-between p-4 text-white">
+                    <button class="p-2" data-event="click:closeCameraModal">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                    <h2 class="text-lg font-semibold">Scan Receipt</h2>
+                    <button class="p-2" data-event="click:toggleFlash">
+                        <i class="fas fa-bolt text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Camera Viewfinder -->
+                <div class="flex-1 relative overflow-hidden">
+                    <!-- @FUNCTIONALITY: This should implement camera API for receipt capture -->
+                    <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <div class="w-80 h-96 border-2 border-white border-dashed rounded-lg flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-camera text-4xl mb-2 opacity-50"></i>
+                                <p class="text-sm opacity-75">Position receipt within frame</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Capture Guides -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-96">
+                            <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white"></div>
+                            <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white"></div>
+                            <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white"></div>
+                            <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera Controls -->
+                <div class="p-6 bg-black/50">
+                    <div class="flex items-center justify-center space-x-8">
+                        <button class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg" 
+                                data-event="click:captureReceipt" data-implementation="Should capture photo and process with OCR">
+                            <i class="fas fa-camera text-gray-800 text-xl"></i>
+                        </button>
+                    </div>
+                    <p class="text-white text-center text-sm mt-4 opacity-75">
+                        Ensure receipt is flat and well-lit for best results
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- @COMPONENT: OCR Processing Modal -->
+        <!-- @STATE: showProcessingModal:boolean = false -->
+        <div id="processingModal" class="fixed inset-0 bg-white z-50 hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-4 border-b">
+                    <h2 class="text-lg font-semibold text-gray-900">Processing Receipt</h2>
+                    <button class="p-2 text-gray-500" data-event="click:cancelProcessing">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="flex-1 p-6">
+                    <!-- Receipt Preview -->
+                    <div class="bg-gray-100 rounded-lg p-4 mb-6">
+                        <!-- A sample Nigerian receipt with various items and text -->
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Receipt being processed" class="w-full h-48 object-cover rounded" data-mock-image="true" />
+                    </div>
+
+                    <!-- Processing Status -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-success rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-900">Image captured successfully</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                                <div class="animate-spin w-3 h-3 border-2 border-white border-t-transparent rounded-full"></div>
+                            </div>
+                            <span class="text-gray-900">Extracting text with OCR...</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                                <i class="fas fa-tag text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-500">Categorizing expenses</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="mt-8">
+                        <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full transition-all duration-1000" style="width: 65%"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-2 text-center">Processing... 65% complete</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- @COMPONENT: Receipt Results Modal -->
+        <!-- @STATE: showResultsModal:boolean = false -->
+        <div id="resultsModal" class="fixed inset-0 bg-white z-50 hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-4 border-b">
+                    <h2 class="text-lg font-semibold text-gray-900">Review & Save</h2>
+                    <button class="p-2 text-gray-500" data-event="click:closeResults">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-4">
+                    <!-- Extracted Data -->
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                        <h3 class="font-semibold text-gray-900 mb-3">Extracted Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Merchant:</span>
+                                <span class="font-medium" data-bind="extractedData.merchant" data-mock="true">Shoprite Ikeja</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Date:</span>
+                                <span class="font-medium" data-bind="extractedData.date" data-mock="true">2024-01-15</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Total Amount:</span>
+                                <span class="font-semibold text-lg text-primary" data-bind="extractedData.total" data-mock="true">₦8,750.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Items List -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+                        <h3 class="font-semibold text-gray-900 mb-3">Items</h3>
+                        <!-- @MAP: extractedItems.map(item => ( -->
+                        <div class="space-y-2" data-mock="true">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-700" data-bind="item.name">Rice - 5kg</span>
+                                <span class="font-medium" data-bind="item.price">₦3,500</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-700" data-bind="item.name">Cooking Oil - 1L</span>
+                                <span class="font-medium" data-bind="item.price">₦1,200</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-700" data-bind="item.name">Eggs - 1 Crate</span>
+                                <span class="font-medium" data-bind="item.price">₦2,800</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-700" data-bind="item.name">Bread - 2 Loaves</span>
+                                <span class="font-medium" data-bind="item.price">₦800</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-700" data-bind="item.name">Tomatoes - 2kg</span>
+                                <span class="font-medium" data-bind="item.price">₦450</span>
+                            </div>
+                            <hr class="my-2">
+                            <div class="flex justify-between font-semibold">
+                                <span>Total:</span>
+                                <span>₦8,750</span>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <!-- Category Selection -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" 
+                                data-bind="selectedCategory" data-implementation="Should populate with Nigerian-relevant expense categories">
+                            <option value="groceries">Groceries</option>
+                            <option value="transport">Transport</option>
+                            <option value="food">Food & Dining</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="education">Education</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Notes (Optional)</label>
+                        <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none" 
+                                  rows="3" placeholder="Add any additional notes about this expense..." 
+                                  data-bind="expenseNotes"></textarea>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="p-4 border-t bg-white space-y-3">
+                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary/90 transition-colors" 
+                            data-event="click:saveExpense" data-implementation="Should save expense to database and update dashboard">
+                        Save Expense
+                    </button>
+                    <button class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition-colors" 
+                            data-event="click:retakePicture">
+                        Retake Picture
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: App Container -->
+
+    <script>
+    (function() {
+        // TODO: Implement camera functionality, OCR processing, and data management
+        
+        // Modal management
+        const modals = {
+            camera: document.getElementById('cameraModal'),
+            processing: document.getElementById('processingModal'),
+            results: document.getElementById('resultsModal')
+        };
+
+        function showModal(modalName) {
+            Object.values(modals).forEach(modal => modal?.classList.add('hidden'));
+            modals[modalName]?.classList.remove('hidden');
+        }
+
+        function hideAllModals() {
+            Object.values(modals).forEach(modal => modal?.classList.add('hidden'));
+        }
+
+        // Event listeners for demo purposes
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('[data-event]');
+            if (!target) return;
+
+            const event = target.getAttribute('data-event');
+            
+            switch(event) {
+                case 'click:openCamera':
+                    showModal('camera');
+                    break;
+                case 'click:closeCameraModal':
+                    hideAllModals();
+                    break;
+                case 'click:captureReceipt':
+                    showModal('processing');
+                    // Simulate processing delay
+                    setTimeout(() => {
+                        showModal('results');
+                    }, 3000);
+                    break;
+                case 'click:closeResults':
+                case 'click:saveExpense':
+                    hideAllModals();
+                    break;
+                case 'click:retakePicture':
+                    showModal('camera');
+                    break;
+                default:
+                    console.log('Event:', event);
+            }
+        });
+
+        // Simulate real-time updates
+        function updateDashboardData() {
+            // TODO: Implement real data binding and updates
+            console.log('Dashboard data updated');
+        }
+
+        // Initialize app
+        updateDashboardData();
+    })();
+    </script>
+</body>
+</html>
