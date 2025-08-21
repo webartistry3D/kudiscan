@@ -10,7 +10,7 @@ import { useSettings } from "@/hooks/use-settings";
 import { FeedbackModal } from "@/components/feedback-modal";
 import { WhatsAppBusiness } from "@/components/whatsapp-business";
 import { useState, useEffect } from "react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 // Add CSS animations for seamless sliding carousel
