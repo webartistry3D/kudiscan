@@ -34,4 +34,7 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
+  preview: {
+    allowedHosts: ["kudiscan.onrender.com"]
+  },
 });
