@@ -15,7 +15,7 @@ export async function apiRequest(
   method: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(`${BASE_URL}${url}`, { // prepend BASE_URL + /api
+  const res = await fetch(`${BASE_URL}/api${url}`, { // prepend BASE_URL + /api
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
