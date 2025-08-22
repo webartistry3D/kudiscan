@@ -57,7 +57,7 @@ export default function Register() {
         title: "Account Created!",
         description:
           "Welcome to KudiScan! You are now registered and logged in.",
-        variant: "success",
+        variant: "default",
       });
       setTimeout(() => setLocation("/"), 100);
     },
@@ -121,7 +121,7 @@ export default function Register() {
                       <FormItem>
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John" {...field} />
+                          <Input placeholder="John" {...field} value={field.value ?? ""} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -134,7 +134,7 @@ export default function Register() {
                       <FormItem>
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Doe" {...field} />
+                          <Input placeholder="Doe" {...field} value={field.value ?? ""} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

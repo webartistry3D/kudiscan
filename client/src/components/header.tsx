@@ -1,4 +1,4 @@
-import { Bell, User, Bot } from "lucide-react";
+import { Bell, Menu, X, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
@@ -6,6 +6,21 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
+// --- add this ---
+interface NotificationItem {
+  id: string;
+  title: string;
+  message: string;
+  actionLink?: string;
+  actionText?: string;
+}
+
+interface NotificationsResponse {
+  count: number;
+  notifications: NotificationItem[];
+}
+// --- end add ---
 
 interface HeaderProps {
   title?: string;
@@ -16,7 +31,7 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
   const [, setLocation] = useLocation();
   const [showNotifications, setShowNotifications] = useState(false);
 
-  const { data: notifications } = useQuery({
+  const { data: notifications } = useQuery<NotificationsResponse>({
     queryKey: ['/api/notifications'],
     refetchInterval: 30000, // Refetch every 30 seconds
   });
