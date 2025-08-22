@@ -35,6 +35,6 @@ export default defineConfig({
     },
   },
   preview: {
-    allowedHosts: ["kudiscan.onrender.com"]
+    allowedHosts: ["kudiscan.onrender.com", "kudiscan-api.onrender.com"],
   },
 });
