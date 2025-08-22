@@ -2,19 +2,31 @@ import express, { type Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import path from "path";
 
 const app = express(); // define app first
 
-// CORS
+// --- CORS and JSON parsing first ---
+const FRONTEND_URL = "https://kudiscan.onrender.com";
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "https://kudiscan.onrender.com",
+  origin: FRONTEND_URL,
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+// Handle OPTIONS preflight for all routes
+app.options("*", cors({
+  origin: FRONTEND_URL,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 // JSON parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// --- End CORS + JSON setup ---
 
 // Request logging
 app.use((req, res, next) => {
