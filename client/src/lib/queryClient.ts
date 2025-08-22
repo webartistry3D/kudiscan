@@ -7,12 +7,15 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
+// --- UPDATED apiRequest to include BASE_URL ---
+const BASE_URL = import.meta.env.VITE_API_URL; // e.g., "https://kudiscan-backend.onrender.com"
+
 export async function apiRequest(
   url: string,
   method: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
+  const res = await fetch(`${BASE_URL}/api${url}`, { // prepend BASE_URL + /api
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
@@ -22,6 +25,7 @@ export async function apiRequest(
   await throwIfResNotOk(res);
   return res;
 }
+// --- END UPDATE ---
 
 type UnauthorizedBehavior = "returnNull" | "throw";
 export const getQueryFn: <T>(options: {
