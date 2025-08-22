@@ -15,12 +15,13 @@ export async function apiRequest(
   method: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(`${BASE_URL}/${url}`, { // prepend BASE_URL + /api
+  const res = await fetch(`${BASE_URL.replace(/\/$/, "")}${url.startsWith("/") ? url : "/" + url}`, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });
+
 
   await throwIfResNotOk(res);
   return res;

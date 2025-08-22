@@ -3,9 +3,9 @@ import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
-const app = express(); // define app first
+const app = express();
 
-// --- CORS and JSON parsing first ---
+// --- CORS first ---
 const FRONTEND_URL = "https://kudiscan.onrender.com";
 
 app.use(cors({
@@ -15,20 +15,11 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// Handle OPTIONS preflight for all routes
-app.options("*", cors({
-  origin: FRONTEND_URL,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-
-// JSON parsing
+// --- JSON parsing ---
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// --- End CORS + JSON setup ---
 
-// Request logging
+// --- Request logging (no changes) ---
 app.use((req, res, next) => {
   const start = Date.now();
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
@@ -50,7 +41,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Mount your API routes
+// --- Mount your API routes ---
 (async () => {
   const server = await registerRoutes(app);
 
