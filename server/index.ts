@@ -17,28 +17,25 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // ✅ handles all OPTIONS preflights
-
-/*
-app.use(cors({
-  origin: FRONTEND_URL,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-
-// ✅ Let Express handle all OPTIONS preflight automatically
-app.options("*", cors({
-  origin: FRONTEND_URL,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-*/
+app.options("*", cors(corsOptions)); // handles all OPTIONS preflights
 
 // --- JSON parsing ---
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// --- Rewrite middleware: strip leading /api so existing routes match ---
+// This lets your backend continue to register routes like "/auth/register"
+// while accepting requests from the client to "/api/auth/register".
+app.use("/api", (req: Request, _res: Response, next: NextFunction) => {
+  // Remove the "/api" prefix so downstream route matching sees "/auth/..."
+  // Example: incoming "/api/auth/register" -> becomes "/auth/register"
+  if (req.url.startsWith("/")) {
+    // req.url includes the path _after_ the mount point when using app.use('/api', ...)
+    // but to be safe, replace any leading /api in case of proxy differences.
+    req.url = req.url.replace(/^\/api/, "") || "/";
+  }
+  next();
+});
 
 // --- Request logging ---
 app.use((req, res, next) => {
@@ -46,13 +43,15 @@ app.use((req, res, next) => {
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  res.json = function (bodyJson: any, ...args: any[]) {
     capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
+    // @ts-ignore call original with proper this
+    return originalResJson.apply(this, [bodyJson, ...args]);
   };
 
   res.on("finish", () => {
-    if (req.path.startsWith("/api")) {
+    if (req.path.startsWith("/api") || req.path.startsWith("/auth") || req.path.startsWith("/")) {
       let logLine = `${req.method} ${req.path} ${res.statusCode} in ${Date.now() - start}ms`;
       if (capturedJsonResponse) logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       log(logLine.length > 80 ? logLine.slice(0, 79) + "…" : logLine);
@@ -64,6 +63,7 @@ app.use((req, res, next) => {
 
 // --- Mount your API routes ---
 (async () => {
+  // Keep calling registerRoutes(app) as before; the /api prefix is handled by the middleware above.
   const server = await registerRoutes(app);
 
   // Error handler
