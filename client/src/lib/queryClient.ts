@@ -1,3 +1,5 @@
+// queryClient.ts
+
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
 async function throwIfResNotOk(res: Response) {
@@ -7,36 +9,38 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-// --- UPDATED apiRequest to include BASE_URL ---
-const BASE_URL = import.meta.env.VITE_API_URL; // e.g., "https://kudiscan-backend.onrender.com"
+// --- UPDATED apiRequest to include BASE_URL and normalize URL ---
+const BASE_URL = import.meta.env.VITE_API_URL.replace(/\/$/, ""); 
+// Example: "https://kudiscan-backend.onrender.com/api" (ensure your .env includes /api)
 
 export async function apiRequest(
   url: string,
   method: string,
-  data?: unknown | undefined,
+  data?: unknown
 ): Promise<Response> {
-  const res = await fetch(`${BASE_URL.replace(/\/$/, "")}${url.startsWith("/") ? url : "/" + url}`, {
+  // Ensure single slash between BASE_URL and endpoint
+  const endpoint = url.startsWith("/") ? url : `/${url}`;
+
+  const res = await fetch(`${BASE_URL}${endpoint}`, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });
 
-
   await throwIfResNotOk(res);
   return res;
 }
+
 // --- END UPDATE ---
 
 type UnauthorizedBehavior = "returnNull" | "throw";
-export const getQueryFn: <T>(options: {
-  on401: UnauthorizedBehavior;
-}) => QueryFunction<T> =
+
+export const getQueryFn: <T>(options: { on401: UnauthorizedBehavior }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey.join("/") as string, {
-      credentials: "include",
-    });
+    const endpoint = queryKey.join("/");
+    const res = await fetch(endpoint, { credentials: "include" });
 
     if (unauthorizedBehavior === "returnNull" && res.status === 401) {
       return null;
