@@ -1,7 +1,16 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from "cors";
 
+// allow your frontend URL
+app.use(cors({
+  origin: "https://kudiscan.onrender.com", // frontend deployed URL
+  credentials: true,
+}));
+
+// JSON parsing middleware
+app.use(express.json());
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
