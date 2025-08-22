@@ -19,6 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions)); // ✅ handles all OPTIONS preflights
 
+/*
 app.use(cors({
   origin: FRONTEND_URL,
   credentials: true,
@@ -33,6 +34,7 @@ app.options("*", cors({
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
+*/
 
 // --- JSON parsing ---
 app.use(express.json());
