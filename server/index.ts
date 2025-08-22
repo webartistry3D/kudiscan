@@ -23,35 +23,20 @@ app.options("*", cors(corsOptions)); // handles all OPTIONS preflights
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// --- Rewrite middleware: strip leading /api so existing routes match ---
-// This lets your backend continue to register routes like "/auth/register"
-// while accepting requests from the client to "/api/auth/register".
-app.use("/api", (req: Request, _res: Response, next: NextFunction) => {
-  // Remove the "/api" prefix so downstream route matching sees "/auth/..."
-  // Example: incoming "/api/auth/register" -> becomes "/auth/register"
-  if (req.url.startsWith("/")) {
-    // req.url includes the path _after_ the mount point when using app.use('/api', ...)
-    // but to be safe, replace any leading /api in case of proxy differences.
-    req.url = req.url.replace(/^\/api/, "") || "/";
-  }
-  next();
-});
-
 // --- Request logging ---
 app.use((req, res, next) => {
   const start = Date.now();
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  res.json = function (bodyJson: any, ...args: any[]) {
+  res.json = function (bodyJson, ...args) {
     capturedJsonResponse = bodyJson;
-    // @ts-ignore call original with proper this
+    // @ts-ignore
     return originalResJson.apply(this, [bodyJson, ...args]);
   };
 
   res.on("finish", () => {
-    if (req.path.startsWith("/api") || req.path.startsWith("/auth") || req.path.startsWith("/")) {
+    if (req.path.startsWith("/api")) {
       let logLine = `${req.method} ${req.path} ${res.statusCode} in ${Date.now() - start}ms`;
       if (capturedJsonResponse) logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       log(logLine.length > 80 ? logLine.slice(0, 79) + "…" : logLine);
@@ -63,7 +48,7 @@ app.use((req, res, next) => {
 
 // --- Mount your API routes ---
 (async () => {
-  // Keep calling registerRoutes(app) as before; the /api prefix is handled by the middleware above.
+  // ✅ Just register normally — your routes already include /api/ prefix
   const server = await registerRoutes(app);
 
   // Error handler
