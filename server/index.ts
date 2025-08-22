@@ -1,3 +1,4 @@
+// server/index.ts
 import express, { type Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { registerRoutes } from "./routes";
@@ -5,7 +6,7 @@ import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 
-// --- CORS first ---
+// --- ✅ CORS at the very top ---
 const FRONTEND_URL = "https://kudiscan.onrender.com";
 
 app.use(cors({
@@ -15,7 +16,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// Handle OPTIONS preflight globally
+// ✅ Let Express handle all OPTIONS preflight automatically
 app.options("*", cors({
   origin: FRONTEND_URL,
   credentials: true,
@@ -62,8 +63,11 @@ app.use((req, res, next) => {
   });
 
   // Only setup Vite in development
-  if (app.get("env") === "development") await setupVite(app, server);
-  else serveStatic(app);
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
 
   const port = parseInt(process.env.PORT || "5000", 10);
   server.listen({ port, host: "0.0.0.0", reusePort: true }, () =>
