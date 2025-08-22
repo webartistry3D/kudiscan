@@ -15,19 +15,11 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// Handle OPTIONS preflight for all routes
-app.options("*", cors({
-  origin: FRONTEND_URL,
-  credentials: true,
-  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
-  allowedHeaders: ["Content-Type","Authorization"],
-}));
-
 // --- JSON parsing ---
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// --- Request logging (no changes) ---
+// --- Request logging ---
 app.use((req, res, next) => {
   const start = Date.now();
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
