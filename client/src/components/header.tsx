@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-// --- add this ---
+// types
 interface NotificationItem {
   id: string;
   title: string;
@@ -15,12 +15,10 @@ interface NotificationItem {
   actionLink?: string;
   actionText?: string;
 }
-
 interface NotificationsResponse {
   count: number;
   notifications: NotificationItem[];
 }
-// --- end add ---
 
 interface HeaderProps {
   title?: string;
@@ -33,8 +31,13 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
 
   const { data: notifications } = useQuery<NotificationsResponse>({
     queryKey: ['/api/notifications'],
-    refetchInterval: 30000, // Refetch every 30 seconds
+    refetchInterval: 30000,
   });
+
+  // ---- added: safe locals to avoid "possibly undefined" ----
+  const notifCount = notifications?.count ?? 0;
+  const notifItems = notifications?.notifications ?? [];
+  // ----------------------------------------------------------
 
   const handleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -62,24 +65,24 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
         </div>
         <div className="flex items-center space-x-3 relative">
           <div className="relative">
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="text-muted-foreground hover:text-foreground w-10 h-10 lg:w-12 lg:h-12 relative"
               onClick={handleNotifications}
               data-testid="button-notifications"
             >
               <Bell className="w-5 h-5 lg:w-6 lg:h-6" />
-              {notifications?.count > 0 && (
-                <Badge 
+              {notifCount > 0 && (
+                <Badge
                   className="absolute -top-1 -right-1 w-5 h-5 text-xs flex items-center justify-center p-0 bg-red-500 hover:bg-red-500"
                   variant="destructive"
                 >
-                  {notifications.count > 9 ? '9+' : notifications.count}
+                  {notifCount > 9 ? '9+' : notifCount}
                 </Badge>
               )}
             </Button>
-            
+
             {/* Notifications Dropdown */}
             {showNotifications && (
               <div className="absolute right-0 top-12 w-80 max-h-96 overflow-y-auto z-50">
@@ -87,16 +90,16 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="font-semibold text-sm">Notifications</h3>
-                      {notifications?.count > 0 && (
+                      {notifCount > 0 && (
                         <Badge variant="secondary" className="text-xs">
-                          {notifications.count}
+                          {notifCount}
                         </Badge>
                       )}
                     </div>
-                    
-                    {notifications?.notifications?.length > 0 ? (
+
+                    {notifItems.length > 0 ? (
                       <div className="space-y-2">
-                        {notifications.notifications.map((notification: any) => (
+                        {notifItems.map((notification: NotificationItem) => (
                           <div
                             key={notification.id}
                             className="p-3 rounded-lg bg-accent/50 hover:bg-accent cursor-pointer transition-colors"
@@ -131,10 +134,10 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
               </div>
             )}
           </div>
-          
-          <Button 
-            variant="ghost" 
-            size="icon" 
+
+          <Button
+            variant="ghost"
+            size="icon"
             className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-muted hover:bg-accent"
             onClick={handleProfile}
             data-testid="button-profile"
@@ -143,11 +146,11 @@ export function Header({ title = "KudiScan" }: HeaderProps) {
           </Button>
         </div>
       </div>
-      
+
       {/* Overlay to close notifications when clicking outside */}
       {showNotifications && (
-        <div 
-          className="fixed inset-0 z-40" 
+        <div
+          className="fixed inset-0 z-40"
           onClick={() => setShowNotifications(false)}
         />
       )}
