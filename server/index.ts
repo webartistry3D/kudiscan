@@ -7,17 +7,25 @@ import { setupVite, serveStatic, log } from "./vite";
 const app = express();
 
 // --- ✅ CORS at the very top ---
-const FRONTEND_URL = "https://kudiscan.onrender.com";
+const allowedOrigins = ["https://kudiscan.onrender.com"];
 
-const corsOptions = {
-  origin: FRONTEND_URL,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // handles all OPTIONS preflights
+// ✅ Ensure preflight OPTIONS handled for all routes
+app.options("*", cors());
 
 // --- JSON parsing ---
 app.use(express.json());
