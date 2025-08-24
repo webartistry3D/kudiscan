@@ -44,7 +44,7 @@ app.use((req, res, next) => {
   };
 
   res.on("finish", () => {
-    if (req.path.startsWith("/api")) {
+    if (req.path.startsWith("")) {
       let logLine = `${req.method} ${req.path} ${res.statusCode} in ${Date.now() - start}ms`;
       if (capturedJsonResponse) logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       log(logLine.length > 80 ? logLine.slice(0, 79) + "…" : logLine);
