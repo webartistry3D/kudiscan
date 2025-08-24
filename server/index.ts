@@ -10,15 +10,15 @@ const app = express();
 const allowedOrigins = ["https://kudiscan.onrender.com"];
 
 // ✅ Ensure preflight OPTIONS handled for all routes
-app.options("*", cors());
+app.options("*", cors()); 
 
 app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
+        callback(null, true); // ✅ This allows the request
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error("Not allowed by CORS"));  // ❌ This triggers failure
       }
     },
     credentials: true,
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
   };
 
   res.on("finish", () => {
-    if (req.path.startsWith("/api")) {
+    if (req.path.startsWith("")) {
       let logLine = `${req.method} ${req.path} ${res.statusCode} in ${Date.now() - start}ms`;
       if (capturedJsonResponse) logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       log(logLine.length > 80 ? logLine.slice(0, 79) + "…" : logLine);
