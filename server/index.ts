@@ -9,9 +9,6 @@ const app = express();
 // --- ✅ CORS at the very top ---
 const allowedOrigins = ["https://kudiscan.onrender.com"];
 
-// ✅ Ensure preflight OPTIONS handled for all routes
-app.options("*", cors()); 
-
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -27,7 +24,8 @@ app.use(
   })
 );
 
-
+// ✅ Ensure preflight OPTIONS handled for all routes
+app.options("*", cors()); 
 
 // --- JSON parsing ---
 app.use(express.json());
